@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backblur"
+    tools:context=".createNewCard">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="350dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/backwhite"
+                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/iconbank" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Choose Card Type"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linVisa"
+                    android:layout_width="160dp"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="35dp"
+                    android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btnVisa"
+                    android:layout_width="120dp"
+                    android:layout_gravity="center"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/visa" />
+
+                    <Button
+                        android:id="@+id/btnVisaMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MORE"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/something_like_gold"
+                        android:background="@drawable/backbtnmore"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linMasterCard"
+                    android:layout_width="160dp"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="35dp"
+                    android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btnMasterCard"
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/mastercard" />
+                    <Button
+                        android:id="@+id/btnMasterCardMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MORE"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/something_like_gold"
+                        android:background="@drawable/backbtnmore"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/linDiscover"
+                    android:layout_width="160dp"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="35dp"
+                    android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btnDiscover"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/discover" />
+                    <Button
+                        android:id="@+id/btnDiscoverMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MORE"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/something_like_gold"
+                        android:background="@drawable/backbtnmore"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linFatora"
+                    android:layout_width="160dp"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="35dp"
+                    android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btnFatora"
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/fatoracard" />
+                    <Button
+                        android:id="@+id/btnFatoraMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MORE"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/something_like_gold"
+                        android:background="@drawable/backbtnmore"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSelectedCard"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/recivebtnlight"
+                android:text="NEXT"
+                android:textColor="@android:color/white"
+                android:textSize="32sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

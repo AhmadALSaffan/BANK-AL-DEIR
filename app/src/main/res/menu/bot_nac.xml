@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/bot_home"
+    android:icon="@drawable/home24"
+    android:title="HOME"/>
+
+    <item android:id="@+id/bot_profile"
+    android:icon="@drawable/profile24"
+    android:title="PROFILE"/>
+
+    <item android:id="@+id/bot_cards"
+    android:icon="@drawable/creditcard24"
+    android:title="CARDS"/>
+
+    <item android:id="@+id/bot_more"
+    android:icon="@drawable/menu24"
+    android:title="MORE"/>
+</menu>

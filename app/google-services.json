@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "704603445233",
+    "project_id": "bank-al-deir",
+    "storage_bucket": "bank-al-deir.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704603445233:android:c32a708b3aae9c8357d650",
+        "android_client_info": {
+          "package_name": "bankal_deir.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1zy5VM1xgT4FWJt2gduvM2jCyIAtWc2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

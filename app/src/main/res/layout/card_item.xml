@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="320dp"
+    android:layout_margin="12dp"
+    android:elevation="8dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/visa" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="bottom|start">
+
+            <TextView
+                android:id="@+id/card_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="**** **** **** 1234"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/exp_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03/28"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/cvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="***"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/card_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AHMED ALSAFFAN"
+                android:textSize="10sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>
