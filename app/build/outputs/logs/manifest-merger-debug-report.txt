@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-83:12
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-90:12
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-90:12
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-90:12
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-90:12
 MERGED from [com.github.qamarelsafadi:CurvedBottomNavigation:0.1.3] C:\Users\ahmad\.gradle\caches\8.13\transforms\eef5986b6cc11a51cf05990e4bd87fae\transformed\CurvedBottomNavigation-0.1.3\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.databinding:databinding-adapters:8.12.3] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a87c9799369d4ce9a52ed84e9d1b2ff\transformed\databinding-adapters-8.12.3\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.12.3] C:\Users\ahmad\.gradle\caches\8.13\transforms\c14b64c0a8a5b50c1fa87ef496952ed7\transformed\databinding-ktx-8.12.3\AndroidManifest.xml:2:1-7:12
@@ -144,8 +144,8 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradl
 	android:name
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:10:22-62
 application
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:12:5-81:19
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:12:5-81:19
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:12:5-88:19
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:12:5-88:19
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\b92edcb071d8666624f557e2f34f86d8\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\b92edcb071d8666624f557e2f34f86d8\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\79704ffddb4257b1b0557eb09616132a\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -224,116 +224,130 @@ MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\ahmad\.gradle\c
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:20:9-48
 	android:dataExtractionRules
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:14:9-65
-activity#bankal_deir.com.CardVariant
+activity#bankal_deir.com.pinPage.createPinCode
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:21:9-23:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:23:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:22:13-40
-activity#bankal_deir.com.updateProfile.updateProfile
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:24:9-27:58
-	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:27:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:22:13-50
+activity#bankal_deir.com.pinPage.PinPage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:24:9-26:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:25:13-56
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:25:13-44
+activity#bankal_deir.com.CardVariant
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:27:9-29:40
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:28:13-40
+activity#bankal_deir.com.updateProfile.updateProfile
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:30:9-33:58
+	android:windowSoftInputMode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:33:13-55
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:31:13-56
 activity#bankal_deir.com.cardShowDetailsAfterCreate
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:28:9-30:40
-	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:30:13-37
-	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:29:13-55
-activity#bankal_deir.com.finalDetailsNewCard
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:31:9-33:40
-	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:33:13-37
-	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:32:13-48
-activity#bankal_deir.com.createNewCard
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:34:9-36:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:36:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:35:13-42
-activity#bankal_deir.com.cards
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:35:13-55
+activity#bankal_deir.com.finalDetailsNewCard
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:37:9-39:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:39:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:38:13-34
-activity#bankal_deir.com.profilePage
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:38:13-48
+activity#bankal_deir.com.createNewCard
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:40:9-42:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:42:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:41:13-40
-activity#bankal_deir.com.sendmoney.sendMoney
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:43:9-46:58
-	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:46:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:41:13-42
+activity#bankal_deir.com.cards
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:43:9-45:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:45:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:44:13-48
-activity#bankal_deir.com.recive.Recive
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:47:9-49:40
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:44:13-34
+activity#bankal_deir.com.profilePage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:46:9-48:40
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:49:13-37
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:48:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:48:13-42
-activity#bankal_deir.com.Signup.OTP_Page
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:50:9-52:40
-	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:52:13-37
-	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:51:13-44
-activity#bankal_deir.com.Signup.SignUp
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:53:9-56:58
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:47:13-40
+activity#bankal_deir.com.sendmoney.sendMoney
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:49:9-52:58
 	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:56:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:52:13-55
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:51:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:50:13-48
+activity#bankal_deir.com.recive.Recive
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:53:9-55:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:55:13-37
 	android:name
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:54:13-42
-activity#bankal_deir.com.MainPage
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:57:9-59:40
+activity#bankal_deir.com.Signup.OTP_Page
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:56:9-59:57
+	android:windowSoftInputMode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:59:13-55
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:59:13-37
-	android:name
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:58:13-37
-activity#bankal_deir.com.Login.LoginPage
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:57:13-44
+activity#bankal_deir.com.Signup.SignUp
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:60:9-63:58
 	android:windowSoftInputMode
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:63:13-55
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:62:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:61:13-44
-activity#bankal_deir.com.MainActivity
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:64:9-72:20
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:61:13-42
+activity#bankal_deir.com.MainPage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:64:9-66:40
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:66:13-36
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:66:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:65:13-41
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:65:13-37
+activity#bankal_deir.com.Login.LoginPage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:67:9-70:58
+	android:windowSoftInputMode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:70:13-55
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:69:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:68:13-44
+activity#bankal_deir.com.MainActivity
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:71:9-79:20
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:73:13-36
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:72:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:67:13-71:29
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:74:13-78:29
 action#android.intent.action.MAIN
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:68:17-69
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:75:17-69
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:68:25-66
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:75:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:70:17-77
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:77:17-77
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:70:27-74
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:77:27-74
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:73:9-76:57
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:80:9-83:57
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\5dfe5a6b579330502a820e8e271ad5b8\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\5dfe5a6b579330502a820e8e271ad5b8\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\5dfe5a6b579330502a820e8e271ad5b8\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:75:13-51
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:82:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\5dfe5a6b579330502a820e8e271ad5b8\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\5dfe5a6b579330502a820e8e271ad5b8\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:51:13-42
@@ -342,15 +356,15 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradl
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\5dfe5a6b579330502a820e8e271ad5b8\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:76:13-54
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:83:13-54
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:74:13-74
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:81:13-74
 meta-data#preloaded_fonts
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:78:9-80:57
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:85:9-87:57
 	android:resource
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:80:13-54
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:87:13-54
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:79:13-43
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:86:13-43
 uses-sdk
 INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml

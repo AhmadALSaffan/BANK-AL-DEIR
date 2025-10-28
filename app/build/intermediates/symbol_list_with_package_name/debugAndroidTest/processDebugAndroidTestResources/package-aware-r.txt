@@ -1,3 +1,0 @@
-bankal_deir.com.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

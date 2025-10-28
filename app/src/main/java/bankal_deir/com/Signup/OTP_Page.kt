@@ -17,6 +17,7 @@ import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.SendMail
 import bankal_deir.com.databinding.ActivityOtpPageBinding
+import bankal_deir.com.pinPage.createPinCode
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -41,9 +42,16 @@ class OTP_Page : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.setPadding(
+                systemBarsInsets.left,
+                systemBarsInsets.top,
+                systemBarsInsets.right,
+                imeInsets.bottom
+            )
             insets
         }
         email = intent.getStringExtra("email").toString()?:""
@@ -170,7 +178,7 @@ class OTP_Page : AppCompatActivity() {
                                     databaseReference.child("wallets").child(walletId).setValue(walletMap).addOnCompleteListener {
                                         Toast.makeText(this, "User registered successfully!", Toast.LENGTH_SHORT).show()
                                         progressDialog.dismiss()
-                                        val intent = Intent(this@OTP_Page, MainPage::class.java)
+                                        val intent = Intent(this@OTP_Page, createPinCode::class.java)
                                         startActivity(intent)
                                         finish()
                                     }.addOnFailureListener {

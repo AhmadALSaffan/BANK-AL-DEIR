@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -80,6 +81,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final ProgressBar progressBarProfileImage;
 
   @NonNull
+  public final ProgressBar progressBarTopRefresh;
+
+  @NonNull
   public final ProgressBar progressBartran;
 
   @NonNull
@@ -93,6 +97,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
 
   @NonNull
   public final CardView quickProfile;
+
+  @NonNull
+  public final NestedScrollView rootScrollView;
 
   @NonNull
   public final Space space;
@@ -114,10 +121,11 @@ public final class ActivityMainPageBinding implements ViewBinding {
       @NonNull CardView payWithFatora, @NonNull CardView payWithQrCode,
       @NonNull ShapeableImageView profileImageMain, @NonNull ProgressBar progressBarBalance,
       @NonNull ProgressBar progressBarName, @NonNull ProgressBar progressBarProfileImage,
-      @NonNull ProgressBar progressBartran, @NonNull CardView quickActionsCard,
-      @NonNull CardView quickHistory, @NonNull CardView quickMore, @NonNull CardView quickProfile,
-      @NonNull Space space, @NonNull TextView textView20, @NonNull CardView transferQuick,
-      @NonNull RecyclerView userList) {
+      @NonNull ProgressBar progressBarTopRefresh, @NonNull ProgressBar progressBartran,
+      @NonNull CardView quickActionsCard, @NonNull CardView quickHistory,
+      @NonNull CardView quickMore, @NonNull CardView quickProfile,
+      @NonNull NestedScrollView rootScrollView, @NonNull Space space, @NonNull TextView textView20,
+      @NonNull CardView transferQuick, @NonNull RecyclerView userList) {
     this.rootView = rootView;
     this.balance = balance;
     this.balanceCard = balanceCard;
@@ -136,11 +144,13 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.progressBarBalance = progressBarBalance;
     this.progressBarName = progressBarName;
     this.progressBarProfileImage = progressBarProfileImage;
+    this.progressBarTopRefresh = progressBarTopRefresh;
     this.progressBartran = progressBartran;
     this.quickActionsCard = quickActionsCard;
     this.quickHistory = quickHistory;
     this.quickMore = quickMore;
     this.quickProfile = quickProfile;
+    this.rootScrollView = rootScrollView;
     this.space = space;
     this.textView20 = textView20;
     this.transferQuick = transferQuick;
@@ -272,6 +282,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBarTopRefresh;
+      ProgressBar progressBarTopRefresh = ViewBindings.findChildViewById(rootView, id);
+      if (progressBarTopRefresh == null) {
+        break missingId;
+      }
+
       id = R.id.progressBartran;
       ProgressBar progressBartran = ViewBindings.findChildViewById(rootView, id);
       if (progressBartran == null) {
@@ -302,6 +318,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rootScrollView;
+      NestedScrollView rootScrollView = ViewBindings.findChildViewById(rootView, id);
+      if (rootScrollView == null) {
+        break missingId;
+      }
+
       id = R.id.space;
       Space space = ViewBindings.findChildViewById(rootView, id);
       if (space == null) {
@@ -329,8 +351,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
       return new ActivityMainPageBinding((CoordinatorLayout) rootView, balance, balanceCard,
           balanceContainer, btnRecive, btnSend, firstNamett, headerCard, historyLabel, imageView11,
           linearLayout, main, payWithFatora, payWithQrCode, profileImageMain, progressBarBalance,
-          progressBarName, progressBarProfileImage, progressBartran, quickActionsCard, quickHistory,
-          quickMore, quickProfile, space, textView20, transferQuick, userList);
+          progressBarName, progressBarProfileImage, progressBarTopRefresh, progressBartran,
+          quickActionsCard, quickHistory, quickMore, quickProfile, rootScrollView, space,
+          textView20, transferQuick, userList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

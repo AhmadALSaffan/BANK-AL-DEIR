@@ -28,8 +28,16 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_pin_page.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_pin_page.xml"
+    },
+    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\trasnaction_item.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\trasnaction_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_create_pin_code.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_create_pin_code.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\done.xml",
@@ -84,10 +92,6 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_sign_up.xml"
     },
     {
-        "merged": "bankal_deir.com.app-mergeDebugResources-72:/layout/activity_main_page.xml",
-        "source": "bankal_deir.com.app-main-75:/layout/activity_main_page.xml"
-    },
-    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_create_new_card.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_create_new_card.xml"
     },
@@ -118,5 +122,9 @@
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\mastercard_dialog.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\mastercard_dialog.xml"
+    },
+    {
+        "merged": "bankal_deir.com.app-mergeDebugResources-72:/layout/activity_pin_page.xml",
+        "source": "bankal_deir.com.app-main-75:/layout/activity_pin_page.xml"
     }
 ]

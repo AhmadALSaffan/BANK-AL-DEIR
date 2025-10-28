@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankALDeir">
         <activity
+            android:name=".pinPage.createPinCode"
+            android:exported="false" />
+        <activity
+            android:name=".pinPage.PinPage"
+            android:exported="false" />
+        <activity
             android:name=".CardVariant"
             android:exported="false" />
         <activity
@@ -49,7 +55,8 @@
             android:exported="false" />
         <activity
             android:name=".Signup.OTP_Page"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Signup.SignUp"
             android:exported="false"

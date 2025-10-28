@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.databinding.ActivityMainPageBinding
@@ -129,10 +130,18 @@ class MainPage : AppCompatActivity() {
                 Log.e("TransactionError", "Failed to read transactions: ${error.message}")
             }
         })
+
     }
 
 
-
+    private val handler = android.os.Handler()
+    private val refreshRunnable = object : Runnable {
+        override fun run() {
+            readDataUser()
+            getTranData()
+            handler.postDelayed(this, 1000)
+        }
+    }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
@@ -141,8 +150,17 @@ class MainPage : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        readDataUser()
-        getTranData()
+        handler.post(refreshRunnable)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacks(refreshRunnable)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(refreshRunnable)
     }
 
     fun readDataUser() {

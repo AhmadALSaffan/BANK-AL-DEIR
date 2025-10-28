@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backsy"
+    tools:context=".pinPage.PinPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CREATE PIN CODE"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pin_circles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/number_pad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp">
+
+
+        <EditText
+            android:id="@+id/pin_edit"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:inputType="numberPassword"
+            android:maxLength="4"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/transparent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/circle1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/pin_circle_empty" />
+
+            <View
+                android:id="@+id/circle2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/pin_circle_empty" />
+
+            <View
+                android:id="@+id/circle3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/pin_circle_empty" />
+
+            <View
+                android:id="@+id/circle4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/pin_circle_empty" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/number_pad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:paddingLeft="45dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/pin_circles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/KeypadButton"
+            android:text="1" />
+        <Button
+            android:id="@+id/btn2"
+            style="@style/KeypadButton"
+            android:text="2" />
+        <Button
+            android:id="@+id/btn3"
+            style="@style/KeypadButton"
+            android:text="3" />
+        <Button
+            android:id="@+id/btn4"
+            style="@style/KeypadButton"
+            android:text="4" />
+        <Button
+            android:id="@+id/btn5"
+            style="@style/KeypadButton"
+            android:text="5" />
+        <Button
+            android:id="@+id/btn6"
+            style="@style/KeypadButton"
+            android:text="6" />
+        <Button
+            android:id="@+id/btn7"
+            style="@style/KeypadButton"
+            android:text="7" />
+        <Button
+            android:id="@+id/btn8"
+            style="@style/KeypadButton"
+            android:text="8" />
+        <Button
+            android:id="@+id/btn9"
+            style="@style/KeypadButton"
+            android:text="9" />
+
+        <!-- Extra row: Delete, 0, OK -->
+        <Button
+            android:id="@+id/btn_delete"
+            style="@style/KeypadButton"
+            android:text="⌫" />
+        <Button
+            android:id="@+id/btn0"
+            style="@style/KeypadButton"
+            android:text="0" />
+        <Button
+            android:id="@+id/btn_ok"
+            style="@style/KeypadButton"
+            android:text="OK" />
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

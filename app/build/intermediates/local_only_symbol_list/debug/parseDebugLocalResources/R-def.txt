@@ -187,6 +187,8 @@ drawable passwordfoc
 drawable person
 drawable personfoc
 drawable pick_image_btn
+drawable pin_circle_empty
+drawable pin_circle_filled
 drawable profile
 drawable profile24
 drawable qrback
@@ -200,6 +202,7 @@ drawable recivedownload48
 drawable returnic
 drawable rightbtn
 drawable round
+drawable rounded_button
 drawable save
 drawable scan
 drawable scan64
@@ -244,6 +247,16 @@ id bot_cards
 id bot_home
 id bot_more
 id bot_profile
+id btn0
+id btn1
+id btn2
+id btn3
+id btn4
+id btn5
+id btn6
+id btn7
+id btn8
+id btn9
 id btnBack
 id btnCancel
 id btnCancelCreate
@@ -282,6 +295,8 @@ id btnSignUp
 id btnSignUpAfterOTP
 id btnVisa
 id btnVisaClose
+id btn_delete
+id btn_ok
 id btnmasterClose
 id cardVariantItem
 id card_holder
@@ -289,6 +304,10 @@ id card_number
 id cards_list
 id checkBox
 id checkBox2
+id circle1
+id circle2
+id circle3
+id circle4
 id cvv
 id dialog_frame
 id dialog_image
@@ -342,6 +361,7 @@ id nav_cards
 id nav_home
 id nav_more
 id nav_profile
+id number_pad
 id otp1
 id otp2
 id otp3
@@ -351,6 +371,8 @@ id otp6
 id overlaySelected
 id payWithFatora
 id payWithQrCode
+id pin_circles
+id pin_edit
 id profileImage
 id profileImageEdit
 id profileImageMain
@@ -358,6 +380,7 @@ id progressBar
 id progressBarBalance
 id progressBarName
 id progressBarProfileImage
+id progressBarTopRefresh
 id progressBartran
 id qr_codeImg
 id quickActionsCard
@@ -366,6 +389,7 @@ id quick_more
 id quick_profile
 id recyclerCardVariants
 id resendOTP
+id rootScrollView
 id seePassword
 id seePasswordSignUp
 id showEmail
@@ -452,11 +476,13 @@ layout activity_card_show_details_after_create
 layout activity_card_variant
 layout activity_cards
 layout activity_create_new_card
+layout activity_create_pin_code
 layout activity_final_details_new_card
 layout activity_login_page
 layout activity_main
 layout activity_main_page
 layout activity_otp_page
+layout activity_pin_page
 layout activity_profile_page
 layout activity_recive
 layout activity_send_money
@@ -494,6 +520,7 @@ string hello_blank_fragment
 string project_id
 string spinner_prompt
 style Base.Theme.BankALDeir
+style KeypadButton
 style RoundBack
 style RoundSqaure
 style Theme.App

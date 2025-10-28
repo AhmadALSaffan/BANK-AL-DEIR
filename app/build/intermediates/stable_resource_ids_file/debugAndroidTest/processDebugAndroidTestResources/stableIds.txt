@@ -1,2 +1,0 @@
-bankal_deir.com.test:style/WhiteBackgroundTheme = 0x7f010001
-bankal_deir.com.test:style/WhiteBackgroundDialogTheme = 0x7f010000

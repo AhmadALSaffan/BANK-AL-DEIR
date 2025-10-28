@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="33"
+        android:minSdkVersion="31"
         android:targetSdkVersion="36" />
 
     <uses-feature
@@ -54,6 +54,12 @@
         android:testOnly="true"
         android:theme="@style/Theme.BankALDeir" >
         <activity
+            android:name="bankal_deir.com.pinPage.createPinCode"
+            android:exported="false" />
+        <activity
+            android:name="bankal_deir.com.pinPage.PinPage"
+            android:exported="false" />
+        <activity
             android:name="bankal_deir.com.CardVariant"
             android:exported="false" />
         <activity
@@ -84,7 +90,8 @@
             android:exported="false" />
         <activity
             android:name="bankal_deir.com.Signup.OTP_Page"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="bankal_deir.com.Signup.SignUp"
             android:exported="false"

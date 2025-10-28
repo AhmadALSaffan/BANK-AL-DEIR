@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import bankal_deir.com.Login.repository.AuthRepository
+import bankal_deir.com.pinPage.PinPage
+import bankal_deir.com.pinPage.createPinCode
 
 class LoginPage : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
@@ -75,10 +77,24 @@ class LoginPage : AppCompatActivity() {
                 viewModel.login(email, password).observe(this) { result ->
                     dialog.dismiss()
                     result.onSuccess {
-                        val intent = Intent(this, MainPage::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-                        finish()
+                        val userId = FirebaseAuth.getInstance().currentUser?.uid
+                        if (userId != null) {
+                            FirebaseDatabase.getInstance().getReference("users")
+                                .child(userId).child("pin").get()
+                                .addOnSuccessListener { snapshot ->
+                                    if (snapshot.exists()) {
+                                        val intent = Intent(this, PinPage::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        val intent = Intent(this, createPinCode::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                }
+                        }
                     }
                     result.onFailure { e ->
                         Toast.makeText(this, e.message ?: "Login error", Toast.LENGTH_SHORT).show()

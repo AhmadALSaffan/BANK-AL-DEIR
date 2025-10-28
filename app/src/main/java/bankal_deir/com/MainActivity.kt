@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import bankal_deir.com.Login.LoginPage
 import bankal_deir.com.databinding.ActivityMainBinding
+import bankal_deir.com.pinPage.PinPage
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (mAuth?.currentUser != null){
-            val intentToMain = Intent(this, MainPage::class.java)
+            val intentToMain = Intent(this, PinPage::class.java)
             startActivity(intentToMain)
             finish()
         }

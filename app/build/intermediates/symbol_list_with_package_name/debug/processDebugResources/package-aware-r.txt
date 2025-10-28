@@ -4002,6 +4002,8 @@ drawable passwordfoc
 drawable person
 drawable personfoc
 drawable pick_image_btn
+drawable pin_circle_empty
+drawable pin_circle_filled
 drawable profile
 drawable profile24
 drawable pv_invisible_image
@@ -4016,6 +4018,7 @@ drawable recivedownload48
 drawable returnic
 drawable rightbtn
 drawable round
+drawable rounded_button
 drawable save
 drawable scan
 drawable scan64
@@ -4178,6 +4181,16 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btn0
+id btn1
+id btn2
+id btn3
+id btn4
+id btn5
+id btn6
+id btn7
+id btn8
+id btn9
 id btnBack
 id btnCancel
 id btnCancelCreate
@@ -4216,6 +4229,8 @@ id btnSignUp
 id btnSignUpAfterOTP
 id btnVisa
 id btnVisaClose
+id btn_delete
+id btn_ok
 id btnmasterClose
 id buttonPanel
 id cache_measures
@@ -4239,6 +4254,10 @@ id checkBox2
 id checkbox
 id checked
 id chronometer
+id circle1
+id circle2
+id circle3
+id circle4
 id circle_center
 id clear_text
 id clip_horizontal
@@ -4520,6 +4539,7 @@ id north
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id number_pad
 id off
 id on
 id onAttachStateChangeListener
@@ -4566,6 +4586,8 @@ id payWithQrCode
 id peekHeight
 id percent
 id pin
+id pin_circles
+id pin_edit
 id pooling_container_listener_holder_tag
 id position
 id postLayout
@@ -4577,6 +4599,7 @@ id progressBar
 id progressBarBalance
 id progressBarName
 id progressBarProfileImage
+id progressBarTopRefresh
 id progressBartran
 id progress_circular
 id progress_horizontal
@@ -4600,6 +4623,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id rootScrollView
 id rounded
 id row_index_key
 id rtl
@@ -4966,11 +4990,13 @@ layout activity_card_show_details_after_create
 layout activity_card_variant
 layout activity_cards
 layout activity_create_new_card
+layout activity_create_pin_code
 layout activity_final_details_new_card
 layout activity_login_page
 layout activity_main
 layout activity_main_page
 layout activity_otp_page
+layout activity_pin_page
 layout activity_profile_page
 layout activity_recive
 layout activity_send_money
@@ -5603,6 +5629,7 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style KeypadButton
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Animation
 style MaterialAlertDialog_Material3_Body_Text
