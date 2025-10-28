@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.StateFlow
 class ReciveViewModel : ViewModel() {
     private val repo = ReciveRepository()
 
-    // State for user data and QR bitmap
     val userData = MutableStateFlow<Map<String, Any?>?>(null)
     val qrBitmap = MutableStateFlow<Bitmap?>(null)
     val loading = MutableStateFlow(false)

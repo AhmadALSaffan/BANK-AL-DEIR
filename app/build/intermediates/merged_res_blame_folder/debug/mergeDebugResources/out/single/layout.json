@@ -1,0 +1,122 @@
+[
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\spinner_dropdown_layout.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\spinner_dropdown_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\card_type_item.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\card_type_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_otp_page.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_otp_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\card_variant_item.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\card_variant_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_cards.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_cards.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\custom_color_spinner.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\custom_color_spinner.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\trasnaction_item.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\trasnaction_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\done.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\done.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_send_money.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_send_money.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\card_item.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\card_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\suc.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\suc.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_main_page.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_main_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\visa_details.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\visa_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\discover_dialog.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\discover_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\progress.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\progress.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_card_variant.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_card_variant.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_recive.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_recive.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\forgetpassword.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\forgetpassword.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\fatora_dialog.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\fatora_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_sign_up.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_sign_up.xml"
+    },
+    {
+        "merged": "bankal_deir.com.app-mergeDebugResources-72:/layout/activity_main_page.xml",
+        "source": "bankal_deir.com.app-main-75:/layout/activity_main_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_create_new_card.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_create_new_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_update_profile.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_update_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_card_show_details_after_create.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_card_show_details_after_create.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_profile_page.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_profile_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\item_viewpager.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\item_viewpager.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_final_details_new_card.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_final_details_new_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\activity_login_page.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\activity_login_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-72:\\layout\\mastercard_dialog.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-75:\\layout\\mastercard_dialog.xml"
+    }
+]

@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankALDeir">
         <activity
+            android:name=".CardVariant"
+            android:exported="false" />
+        <activity
+            android:name=".updateProfile.updateProfile"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".cardShowDetailsAfterCreate"
             android:exported="false" />
         <activity
@@ -35,7 +42,8 @@
             android:exported="false" />
         <activity
             android:name=".sendmoney.sendMoney"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".recive.Recive"
             android:exported="false" />
@@ -44,13 +52,15 @@
             android:exported="false" />
         <activity
             android:name=".Signup.SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainPage"
             android:exported="false" />
         <activity
             android:name=".Login.LoginPage"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

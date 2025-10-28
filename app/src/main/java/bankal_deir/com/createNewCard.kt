@@ -34,19 +34,7 @@ class createNewCard : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.btnVisaMore.setOnClickListener {
-            showVisaDialog()
-        }
-        binding.btnFatoraMore.setOnClickListener {
-            showFatoraDialog()
-        }
 
-        binding.btnMasterCardMore.setOnClickListener {
-            showMasterDialog()
-        }
-        binding.btnDiscoverMore.setOnClickListener {
-            showDiscDialog()
-        }
 
         binding.btnVisa.setOnClickListener {
             if (selectedType==null) {
@@ -79,33 +67,33 @@ class createNewCard : AppCompatActivity() {
         binding.btnSelectedCard.setOnClickListener {
 
             if (selectedType=="visa"){
-                val cIntent = Intent(this, finalDetailsNewCard::class.java).apply {
+                val cIntent = Intent(this@createNewCard, CardVariant::class.java).apply {
                     putExtra("cardtype", selectedType)
-                    putExtra("fees",visaFees)
+
                 }
                 startActivity(cIntent)
             }
 
             if (selectedType=="mastercard"){
-                val cIntent = Intent(this, finalDetailsNewCard::class.java).apply {
+                val cIntent = Intent(this@createNewCard, CardVariant::class.java).apply {
                     putExtra("cardtype", selectedType)
-                    putExtra("fees",mastercardFees)
+
                 }
                 startActivity(cIntent)
             }
 
             if (selectedType=="discover"){
-                val cIntent = Intent(this, finalDetailsNewCard::class.java).apply {
+                val cIntent = Intent(this@createNewCard, CardVariant::class.java).apply {
                     putExtra("cardtype", selectedType)
-                    putExtra("fees",discoverFees)
+
                 }
                 startActivity(cIntent)
             }
 
             if (selectedType=="fatora"){
-                val cIntent = Intent(this, finalDetailsNewCard::class.java).apply {
+                val cIntent = Intent(this@createNewCard, CardVariant::class.java).apply {
                     putExtra("cardtype", selectedType)
-                    putExtra("fees",fatoraFees)
+
                 }
                 startActivity(cIntent)
             }

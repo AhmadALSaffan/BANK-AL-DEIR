@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_dark"
+    tools:context=".updateProfile.updateProfile">
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile"
+                app:shapeAppearanceOverlay="@style/circuler"
+                app:strokeColor="@color/Golden"
+                app:strokeWidth="2dp" />
+
+            <Button
+                android:id="@+id/btnPickImage"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/pick_image_btn"
+                android:drawableLeft="@drawable/camera"
+                android:drawableTint="@color/white"
+                android:paddingLeft="10dp"
+                android:text="Pick Image"
+                android:textColor="@color/Beige_Off_white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Name"
+                android:textColor="@color/Golden"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="450dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/up"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"
+                    android:text="EDIT INFORMATION"
+                    android:textColor="@color/Golden"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:src="@color/gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="First Name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edtFirstNameUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/edt_update"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:imeOptions="actionNext"
+                    android:text="Example"
+                    android:textColor="@color/Beige_Off_white" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Last Name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edtLastNameUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/edt_update"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:imeOptions="actionNext"
+                    android:text="Example"
+                    android:textColor="@color/Beige_Off_white" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="First Name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edtPhoneNumberUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/edt_update"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:text="Example"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/Beige_Off_white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnSaveUpdate"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/pick_image_btn"
+                        android:drawableLeft="@drawable/save"
+                        android:drawableTint="@color/white"
+                        android:paddingLeft="15dp"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/btnCancelUpdate"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/sendbuttonpagesend"
+                        android:drawableLeft="@drawable/returnic"
+                        android:drawableTint="@color/white"
+                        android:paddingLeft="15dp"
+                        android:text="Cancel"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

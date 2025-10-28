@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.databinding.ActivityMainPageBinding
 import bankal_deir.com.recive.Recive
 import bankal_deir.com.sendmoney.sendMoney
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -118,6 +119,8 @@ class MainPage : AppCompatActivity() {
                 if (recyclerView.adapter == null) {
                     recyclerView.adapter = MyAdapter(ArrayList(newestFive))
                 } else {
+                    binding.progressBartran.visibility = View.GONE
+                    binding.userList.visibility = View.VISIBLE
                     (recyclerView.adapter as MyAdapter).updateData(ArrayList(newestFive))
                 }
             }
@@ -149,10 +152,18 @@ class MainPage : AppCompatActivity() {
             val firstName = it.child("firstName").value
             val accountNumber = it.child("accountNumber").value
             val wallet = it.child("walletId").value
+            val profileImageUrl = it.child("profileImageUrl").value
             binding.progressBarName.visibility= View.GONE
             binding.firstNamett.visibility = View.VISIBLE
             binding.firstNamett.text = firstName?.toString() ?: ""
             readBalance(wallet?.toString() ?: "")
+            if (profileImageUrl != null) {
+                Glide.with(this)
+                    .load(profileImageUrl.toString())
+                    .into(binding.profileImageMain)
+                binding.progressBarProfileImage.visibility = View.GONE
+                binding.profileImageMain.visibility = View.VISIBLE
+            }
         }
     }
 

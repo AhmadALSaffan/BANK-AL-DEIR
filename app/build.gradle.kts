@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,5 +64,7 @@ dependencies {
     implementation("com.google.android.material:material:1.1.0-alpha08")
     implementation("com.google.android.material:material:1.6.0")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("com.google.firebase:firebase-storage:22.0.1")
+    implementation("com.github.bumptech.glide:glide:5.0.5")
 }
 apply(plugin = "com.google.gms.google-services")

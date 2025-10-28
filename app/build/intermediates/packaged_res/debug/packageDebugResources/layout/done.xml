@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="500dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/up"
+            app:shapeAppearanceOverlay="@style/RoundSqaure"
+            app:srcCompat="@drawable/up" />
+
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="145dp"
+            android:gravity="center"
+            android:hint="Date"
+            android:textColor="@color/damask_red"
+            android:textColorHint="@color/gray"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/finalAmount"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="110dp"
+            android:gravity="center"
+            android:hint="Amount"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="24sp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="270dp"
+            android:layout_height="270dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="115dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/checkmark" />
+
+        <TextView
+            android:id="@+id/transactionNumber"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="140dp"
+            android:layout_marginBottom="65dp"
+            android:gravity="center"
+            android:hint="TRANCATION NUMBER"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/sendbutton"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:textSize="32dp" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="Money sent successfully "
+            android:textColor="@color/Golden"
+            android:textSize="28sp" />
+
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array>
+    <string-array name="com_google_android_gms_fonts_certs_dev">
+        <item>
+            MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTAeFw0wODA0MTUyMzM2NTZaFw0zNTA5MDEyMzM2NTZaMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBANbOLggKv+IxTdGNs8/TGFy0PTP6DHThvbbR24kT9ixcOd9W+EaBPWW+wPPKQmsHxajtWjmQwWfna8mZuSeJS48LIgAZlKkpFeVyxW0qMBujb8X8ETrWy550NaFtI6t9+u7hZeTfHwqNvacKhp1RbE6dBRGWynwMVX8XW8N1+UjFaq6GCJukT4qmpN2afb8sCjUigq0GuMwYXrFVee74bQgLHWGJwPmvmLHC69EH6kWr22ijx4OKXlSIx2xT1AsSHee70w5iDBiK4aph27yH3TxkXy9V89TDdexAcKk/cVHYNnDBapcavl7y0RiQ4biu8ymM8Ga/nmzhRKya6G0cGw8CAQOjgfwwgfkwHQYDVR0OBBYEFI0cxb6VTEM8YYY6FbBMvAPyT+CyMIHJBgNVHSMEgcEwgb6AFI0cxb6VTEM8YYY6FbBMvAPyT+CyoYGapIGXMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbYIJANWFuGx90071MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEEBQADggEBABnTDPEF+3iSP0wNfdIjIz1AlnrPzgAIHVvXxunW7SBrDhEglQZBbKJEk5kT0mtKoOD1JMrSu1xuTKEBahWRbqHsXclaXjoBADb0kkjVEJu/Lh5hgYZnOjvlba8Ld7HCKePCVePoTJBdI4fvugnL8TsgK05aIskyY0hKI9L8KfqfGTl1lzOv2KoWD0KWwtAWPoGChZxmQ+nBli+gwYMzM1vAkP+aayLe0a1EQimlOalO762r0GXO0ks+UeXde2Z4e+8S/pf7pITEI/tP+MxJTALw9QUWEv9lKTk+jkbqxbsh8nfBUapfKqYn0eidpwq2AzVp3juYl7//fKnaPhJD9gs=
+        </item>
+    </string-array>
+    <string-array name="com_google_android_gms_fonts_certs_prod">
+        <item>
+            MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK
+        </item>
+    </string-array>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/poppins</item>
+        <item>@font/poppins_thin</item>
+        <item>@font/roboto</item>
+    </array>
+    <string-array name="spinner_Items">
+        <item>Personal expenses</item>
+        <item>Family and friends expenses</item>
+        <item>Tuition fees</item>
+        <item>individual</item>
+        <item>Other</item>
+    </string-array>
+    <color name="Almost_Black">#0B0F0E</color>
+    <color name="Beige_Off_white">#EDE9E4</color>
+    <color name="Bone">#E3DAC9</color>
+    <color name="Danger_Red">#D9534F</color>
+    <color name="Dark_Teal">#072a2a</color>
+    <color name="Emerald">#2E7D65</color>
+    <color name="Golden">#C79A3A</color>
+    <color name="LIGHT_GRAY">#F5F5F5</color>
+    <color name="Muted_Gray">#DCDCDC</color>
+    <color name="Success_Green">#28A745</color>
+    <color name="Teal_Darker">#124b4b</color>
+    <color name="backblack">#000000</color>
+    <color name="black">#FF000000</color>
+    <color name="damask_red">#6c1e2b</color>
+    <color name="dark_white">#E1D9D1</color>
+    <color name="darker">#161616</color>
+    <color name="darker_gold">#D4AF37</color>
+    <color name="deep_umper">#290a10</color>
+    <color name="forset">#002623</color>
+    <color name="golden_white">#b8a678</color>
+    <color name="gray">#474747</color>
+    <color name="gray_text">#A5BFBF</color>
+    <color name="green_dark">#003C3C</color>
+    <color name="green_mid">#015E5E</color>
+    <color name="ic_launcher_background">#072B2B</color>
+    <color name="ivor_mist">#eeeadf</color>
+    <color name="lable">#B0B0B0</color>
+    <color name="light_gray">#D3D3D3</color>
+    <color name="light_red">#A4193D</color>
+    <color name="light_red1">#FF6F61</color>
+    <color name="moutah_tail">#427f77</color>
+    <color name="orange">#FC642C</color>
+    <color name="rec_back">#014747</color>
+    <color name="rec_icon">#00FF99</color>
+    <color name="recive_btn">#009999</color>
+    <color name="some_green">#014747</color>
+    <color name="something_like_gold">#FFDFB9</color>
+    <color name="stone">#3c3a3b</color>
+    <color name="title">#00FF88</color>
+    <color name="transaction">#FFD700</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Bank AL-Deir</string>
+    <string name="gcm_defaultSenderId" translatable="false">704603445233</string>
+    <string name="google_api_key" translatable="false">AIzaSyD1zy5VM1xgT4FWJt2gduvM2jCyIAtWc2E</string>
+    <string name="google_app_id" translatable="false">1:704603445233:android:c32a708b3aae9c8357d650</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD1zy5VM1xgT4FWJt2gduvM2jCyIAtWc2E</string>
+    <string name="google_storage_bucket" translatable="false">bank-al-deir.firebasestorage.app</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="project_id" translatable="false">bank-al-deir</string>
+    <string name="spinner_prompt">Select reason</string>
+    <style name="Base.Theme.BankALDeir" parent="Theme.AppCompat.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="RoundBack">
+        <item name="cornerSize">5%</item>
+    </style>
+    <style name="RoundSqaure">
+        <item name="cornerSize">20%</item>
+    </style>
+    <style name="Theme.App" parent="Theme.Material3.DayNight">
+        <item name="bottomNavigationStyle">@style/Widget.Material3.BottomNavigationView</item>
+    </style>
+    <style name="Theme.BankALDeir" parent="Base.Theme.BankALDeir"/>
+    <style name="circuler">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

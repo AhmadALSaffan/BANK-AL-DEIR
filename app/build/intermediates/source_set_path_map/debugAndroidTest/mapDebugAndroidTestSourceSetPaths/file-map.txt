@@ -1,0 +1,6 @@
+bankal_deir.com.test.app-core-1.7.0-0 C:\Users\ahmad\.gradle\caches\8.13\transforms\2dce8d155ee98344dcec2e212e8e73de\transformed\core-1.7.0\res
+bankal_deir.com.test.app-tracing-1.2.0-1 C:\Users\ahmad\.gradle\caches\8.13\transforms\f99cdfb740b3a070d88fc1df0faa328b\transformed\tracing-1.2.0\res
+bankal_deir.com.test.app-androidTest-2 D:\BankALDeir\app\build\generated\res\resValues\androidTest\debug
+bankal_deir.com.test.app-mergeDebugAndroidTestResources-3 D:\BankALDeir\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+bankal_deir.com.test.app-mergeDebugAndroidTestResources-4 D:\BankALDeir\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+bankal_deir.com.test.app-debugAndroidTest-5 D:\BankALDeir\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

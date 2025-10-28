@@ -44,9 +44,16 @@ class LoginPage : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().reference
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.setPadding(
+                systemBarsInsets.left,
+                systemBarsInsets.top,
+                systemBarsInsets.right,
+                imeInsets.bottom
+            )
             insets
         }
 
@@ -68,7 +75,10 @@ class LoginPage : AppCompatActivity() {
                 viewModel.login(email, password).observe(this) { result ->
                     dialog.dismiss()
                     result.onSuccess {
-                        startActivity(Intent(this, MainPage::class.java))
+                        val intent = Intent(this, MainPage::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        finish()
                     }
                     result.onFailure { e ->
                         Toast.makeText(this, e.message ?: "Login error", Toast.LENGTH_SHORT).show()

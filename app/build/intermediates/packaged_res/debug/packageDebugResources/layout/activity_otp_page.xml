@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backblur"
+    tools:context=".Signup.OTP_Page">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/iconbank" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Verification"
+                android:textColor="@android:color/white"
+                android:textSize="48sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Please Enter The OTP That we Sent to"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/showEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp">
+
+                <EditText
+                    android:id="@+id/otp1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@color/backblack"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/otp2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@color/backblack"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/otp3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@color/backblack"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/otp4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@color/backblack"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/otp5"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@color/backblack"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/otp6"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@color/backblack"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/resendOTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Didn't Receive the OTP? Click Here"
+                android:textColor="@color/rec_icon" />
+
+            <Button
+                android:id="@+id/btnSignUpAfterOTP"
+                android:layout_width="270dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/recivebtnlight"
+                android:text="SIGN UP"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="260dp"
+                android:gravity="center"
+                android:text="This Application supported by : Ahmed ELiwi ALSaffan"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
