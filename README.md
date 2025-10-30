@@ -33,13 +33,12 @@ Download the latest APK here : https://www.mediafire.com/file/6xtw7yjidriz4mk/Ba
 - Disclaimer
 
 
-BANK-AL-DEIR is not a real banking application and does not provide actual banking services. It is a demo project created for learning, portfolio-building, and demonstrating Android development skills on GitHub.
+**BANK-AL-DEIR is not a real banking application and does not provide actual banking services. It is a demo project created for learning, portfolio-building, and demonstrating Android development skills on GitHub.**
 
-Contributing
+# Contributing
 Contributions are welcome! Feel free to submit pull requests, open issues, or suggest features to enhance the app’s functionality and security.
 
-License
-This project is currently not licensed. Please contact the repository owner for licensing details.
+
 
 Contact
 Repository Owner: AhmadALSaffan
