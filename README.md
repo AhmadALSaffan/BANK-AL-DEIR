@@ -17,7 +17,7 @@ BANK-AL-DEIR is an Android banking application developed by AhmadALSaffan, desig
 - Kotlin – the entire codebase is programmed in this modern, concise, and safe language for Android development
 - Firebase – Authentication, real-time database, and cloud functions
 # Getting Started
-To try BANK-AL-DEIR on your device:
+To try BANK-AL-DEIR on your device download the app from the link : https://www.mediafire.com/file/6xtw7yjidriz4mk/Bank+AL_Deir.apk/file
 
 # Download APK:
 Download the latest APK here : https://www.mediafire.com/file/6xtw7yjidriz4mk/Bank+AL_Deir.apk/file
