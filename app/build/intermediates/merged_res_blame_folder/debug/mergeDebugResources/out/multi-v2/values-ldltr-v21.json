@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "bankal_deir.com.app-mergeDebugResources-71:/values-ldltr-v21/values-ldltr-v21.xml",
+            "outputFile": "bankal_deir.com.app-mergeDebugResources-72:/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\4b7fe249d494ea1a16dd140be6ef73d6\\transformed\\appcompat-1.7.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\072b488783b6fa3055efac65736980be\\transformed\\appcompat-1.7.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

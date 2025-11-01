@@ -21,11 +21,6 @@ class MainActivity : AppCompatActivity() {
         R.drawable.card2,
         R.drawable.card3
     )
-    private val description = listOf(
-        "First Online Bank in Syria",
-        "Make Your Payment Easier",
-        "Be Special"
-    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

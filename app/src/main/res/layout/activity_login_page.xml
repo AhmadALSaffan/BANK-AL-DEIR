@@ -263,7 +263,8 @@
                     android:text="GitHub"
                     android:textColor="@color/white"
                     android:textIsSelectable="true"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:visibility="gone" />
 
 
             </LinearLayout>

@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import bankal_deir.com.Login.ViewModel.LoginViewModel
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
+import kotlinx.coroutines.tasks.await
 
 
 class AuthRepository {
@@ -28,4 +31,5 @@ class AuthRepository {
             }
         return result
     }
+
 }

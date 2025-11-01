@@ -91,9 +91,14 @@ animator nav_default_enter_anim
 animator nav_default_exit_anim
 animator nav_default_pop_enter_anim
 animator nav_default_pop_exit_anim
+array assume_strong_biometrics_models
 array com_google_android_gms_fonts_certs
 array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
+array crypto_fingerprint_fallback_prefixes
+array crypto_fingerprint_fallback_vendors
+array delay_showing_prompt_models
+array hide_fingerprint_instantly_prefixes
 array preloaded_fonts
 array spinner_Items
 attr SharedValue
@@ -1645,6 +1650,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color biometric_error_color
 color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
@@ -2761,6 +2767,7 @@ dimen disabled_alpha_material_light
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
+dimen fingerprint_icon_size
 dimen highlight_alpha_material_colored
 dimen highlight_alpha_material_dark
 dimen highlight_alpha_material_light
@@ -3858,6 +3865,8 @@ drawable fatoraclassic
 drawable fatoradigital
 drawable fatroa1
 drawable fatrora
+drawable fingerprint_dialog_error
+drawable fingerprint_dialog_fp_icon
 drawable github32
 drawable github48
 drawable githubloginbtn
@@ -4137,6 +4146,7 @@ id aligned
 id all
 id allStates
 id always
+id androidx_credential_pendingCredentialRequest
 id androidx_window_activity_scope
 id animateToEnd
 id animateToStart
@@ -4359,6 +4369,10 @@ id fill_horizontal
 id fill_vertical
 id filled
 id finalAmount
+id fingerprint_description
+id fingerprint_error
+id fingerprint_icon
+id fingerprint_subtitle
 id firstNamett
 id fitCenter
 id fitEnd
@@ -5028,6 +5042,7 @@ layout design_text_input_start_icon
 layout discover_dialog
 layout done
 layout fatora_dialog
+layout fingerprint_dialog_layout
 layout forgetpassword
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
@@ -5180,7 +5195,10 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string confirm_device_credential_password
 string copy_toast_msg
+string default_error_msg
+string default_web_client_id
 string define_zxingandroidembedded
 string error_a11y_label
 string error_icon_content_description
@@ -5190,7 +5208,18 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string fingerprint_dialog_touch_sensor
+string fingerprint_error_hw_not_available
+string fingerprint_error_hw_not_present
+string fingerprint_error_lockout
+string fingerprint_error_no_fingerprints
+string fingerprint_error_user_canceled
+string fingerprint_not_recognized
+string firebase_database_url
 string gcm_defaultSenderId
+string generic_error_no_device_credential
+string generic_error_no_keyguard
+string generic_error_user_canceled
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key

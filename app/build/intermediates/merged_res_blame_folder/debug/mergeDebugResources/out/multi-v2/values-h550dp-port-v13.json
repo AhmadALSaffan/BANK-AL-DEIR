@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "bankal_deir.com.app-mergeDebugResources-71:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "bankal_deir.com.app-mergeDebugResources-72:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\b92edcb071d8666624f557e2f34f86d8\\transformed\\material-1.13.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\6e92abe409ec8f03852651d868a959a6\\transformed\\material-1.13.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

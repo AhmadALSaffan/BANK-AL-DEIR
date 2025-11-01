@@ -185,7 +185,6 @@ class sendMoney : AppCompatActivity() {
             val intent = Intent(this, MainPage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            finish()
         }
     }
 
