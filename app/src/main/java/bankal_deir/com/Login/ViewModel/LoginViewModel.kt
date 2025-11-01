@@ -25,10 +25,16 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     fun login(email: String, password: String) = repository.login(email, password)
     fun resetPassword(email: String) = repository.resetPassword(email)
 
-    fun signInWithGoogle(credential: AuthCredential): LiveData<Result<Unit>> {
+    fun signInWithGoogle(activity: Activity,credential: AuthCredential): LiveData<Result<Unit>> {
         val liveData = MutableLiveData<Result<Unit>>()
         liveData.value = Result.failure(Exception("Loading"))
-
+        val dialog = Dialog(activity).apply {
+            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
+            setCancelable(false)
+            setContentView(R.layout.progress)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            show()
+        }
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -38,12 +44,15 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
                         createUserInDatabase(user).addOnCompleteListener { profileTask ->
                             if (profileTask.isSuccessful) {
                                 liveData.value = Result.success(Unit)
+                                dialog.dismiss()
                             } else {
                                 liveData.value = Result.failure(profileTask.exception ?: Exception("Create profile failed"))
+                                dialog.dismiss()
                             }
                         }
                     } else {
                         liveData.value = Result.success(Unit)
+                        dialog.dismiss()
                     }
                 } else {
                     val exception = task.exception
@@ -56,13 +65,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
 
     fun signInWithGitHub(activity: Activity): LiveData<Result<Unit>> {
         val liveData = MutableLiveData<Result<Unit>>()
-        val dialog = Dialog(activity).apply {
-            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-            setCancelable(false)
-            setContentView(R.layout.progress)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            show()
-        }
+        liveData.value = Result.failure(Exception("Loading"))
 
 
         val provider = OAuthProvider.newBuilder("github.com")
@@ -81,11 +84,9 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
             firebaseAuth.startActivityForSignInWithProvider(activity, provider.build())
                 .addOnSuccessListener { authResult ->
                     checkAndCreateUser(authResult, liveData)
-                    dialog.dismiss()
                 }
                 .addOnFailureListener { e ->
                     liveData.value = Result.failure(e)
-                    dialog.dismiss()
                 }
         }
         return liveData

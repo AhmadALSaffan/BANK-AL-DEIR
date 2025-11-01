@@ -242,7 +242,7 @@ class LoginPage : AppCompatActivity() {
                     show()
                 }
 
-                viewModel.signInWithGoogle(credential).observe(this) { result ->
+                viewModel.signInWithGoogle(this,credential).observe(this) { result ->
                     dialog.dismiss()
                     result.onSuccess {
                         val userId = FirebaseAuth.getInstance().currentUser?.uid
