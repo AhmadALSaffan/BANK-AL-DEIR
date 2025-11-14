@@ -75,6 +75,11 @@ class MainPage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.payWithFatora.setOnClickListener {
+            val intent = Intent(this@MainPage, FatoraMain::class.java)
+            startActivity(intent)
+        }
+
 
         recyclerView = binding.userList
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -179,6 +184,10 @@ class MainPage : AppCompatActivity() {
                 Glide.with(this)
                     .load(profileImageUrl.toString())
                     .into(binding.profileImageMain)
+                binding.progressBarProfileImage.visibility = View.GONE
+                binding.profileImageMain.visibility = View.VISIBLE
+            }
+            if (profileImageUrl==null){
                 binding.progressBarProfileImage.visibility = View.GONE
                 binding.profileImageMain.visibility = View.VISIBLE
             }

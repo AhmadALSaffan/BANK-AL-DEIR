@@ -44,6 +44,7 @@
     <color name="darker">#161616</color>
     <color name="darker_gold">#D4AF37</color>
     <color name="deep_umper">#290a10</color>
+    <color name="fatora">#00312E</color>
     <color name="forset">#002623</color>
     <color name="golden_white">#b8a678</color>
     <color name="gray">#474747</color>
@@ -53,6 +54,7 @@
     <color name="ic_launcher_background">#072B2B</color>
     <color name="ivor_mist">#eeeadf</color>
     <color name="lable">#B0B0B0</color>
+    <color name="light_blue">#24c6dc</color>
     <color name="light_gray">#D3D3D3</color>
     <color name="light_red">#A4193D</color>
     <color name="light_red1">#FF6F61</color>

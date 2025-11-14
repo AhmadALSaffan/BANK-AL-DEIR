@@ -56,6 +56,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.BankALDeir" >
         <activity
+            android:name="bankal_deir.com.FatoraMain"
+            android:exported="false" />
+        <activity
             android:name="bankal_deir.com.pinPage.createPinCode"
             android:exported="false" />
         <activity

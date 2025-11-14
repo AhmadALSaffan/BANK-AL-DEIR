@@ -20,22 +20,24 @@ import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityPinPageBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 class PinPage : AppCompatActivity() {
     private lateinit var binding: ActivityPinPageBinding
     private val viewModel: PinViewModel by viewModels()
-    private lateinit var userId : String
+    private lateinit var userId: String
     private lateinit var mAuth: FirebaseAuth
     private lateinit var pinEdit: EditText
     private lateinit var circles: List<View>
     private val pinBuilder = StringBuilder()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Thread.setDefaultUncaughtExceptionHandler { thread, exception ->
             android.util.Log.e("CRASH_HANDLER", "Uncaught Exception", exception)
             exception.printStackTrace()
         }
+
         enableEdgeToEdge()
         mAuth = FirebaseAuth.getInstance()
         binding = ActivityPinPageBinding.inflate(layoutInflater)
@@ -56,7 +58,6 @@ class PinPage : AppCompatActivity() {
         pinEdit = binding.pinEdit
 
         pinEdit.addTextChangedListener(object : TextWatcher {
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -74,13 +75,13 @@ class PinPage : AppCompatActivity() {
         progressDialog.setContentView(R.layout.progress)
         progressDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-
         circles = listOf(
             binding.circle1,
             binding.circle2,
             binding.circle3,
             binding.circle4
         )
+
         val buttons = listOf(
             binding.btn1,
             binding.btn2,
@@ -94,52 +95,58 @@ class PinPage : AppCompatActivity() {
             binding.btn0,
         )
 
-        buttons.forEach {button ->
+        buttons.forEach { button ->
             button.setOnClickListener {
-                if (pinBuilder.length < 4){
+                if (pinBuilder.length < 4) {
                     pinBuilder.append(button.text)
                     updateCircles()
                 }
-                if (pinBuilder.length == 4){
+
+                if (pinBuilder.length == 4) {
                     progressDialog.show()
-                    viewModel.verifyPin(userId,pinEdit.text.toString())
+                    viewModel.verifyPin(userId, pinBuilder.toString())
                 }
             }
         }
+
         binding.btnDelete.setOnClickListener {
-            if (pinBuilder.isNotEmpty()){
-                pinBuilder.deleteCharAt(pinBuilder.length-1)
+            if (pinBuilder.isNotEmpty()) {
+                pinBuilder.deleteCharAt(pinBuilder.length - 1)
                 updateCircles()
             }
         }
+
         binding.btnOk.setOnClickListener {
-            if (pinBuilder.length == 4){
-                viewModel.verifyPin(userId,pinEdit.text.toString())
-            }
-            if (pinBuilder.length != 4){
-                Toast.makeText(this@PinPage,"Please Enter The Pin Code !", Toast.LENGTH_SHORT).show()
+            if (pinBuilder.length == 4) {
+                progressDialog.show()
+                viewModel.verifyPin(userId, pinBuilder.toString())
+            } else {
+                Toast.makeText(this@PinPage, "Please Enter The Pin Code !", Toast.LENGTH_SHORT).show()
             }
         }
-        viewModel.pinStatus.observe(this){success ->
-            if (success){
+
+        viewModel.pinStatus.observe(this) { success ->
+            if (success) {
                 progressDialog.dismiss()
                 val intent = Intent(this@PinPage, MainPage::class.java)
                 startActivity(intent)
                 finish()
             }
         }
-        viewModel.errorMessage.observe(this){message ->
-            if (message.isNotEmpty()){
-                Toast.makeText(this@PinPage,message, Toast.LENGTH_SHORT).show()
+
+        viewModel.errorMessage.observe(this) { message ->
+            if (message.isNotEmpty()) {
+                Toast.makeText(this@PinPage, message, Toast.LENGTH_SHORT).show()
                 progressDialog.dismiss()
             }
         }
     }
-    private fun updateCircles(){
+
+    private fun updateCircles() {
         pinEdit.setText(pinBuilder)
-        for (i in circles.indices){
+        for (i in circles.indices) {
             circles[i].setBackgroundResource(
-                if(i < pinBuilder.length) R.drawable.pin_circle_filled
+                if (i < pinBuilder.length) R.drawable.pin_circle_filled
                 else R.drawable.pin_circle_empty
             )
         }

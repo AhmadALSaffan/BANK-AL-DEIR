@@ -23,6 +23,7 @@ color dark_white
 color darker
 color darker_gold
 color deep_umper
+color fatora
 color forset
 color golden_white
 color gray
@@ -32,6 +33,7 @@ color green_mid
 color ic_launcher_background
 color ivor_mist
 color lable
+color light_blue
 color light_gray
 color light_red
 color light_red1
@@ -49,6 +51,7 @@ color white
 drawable add_card48
 drawable amountsend
 drawable amountwhite
+drawable back
 drawable back_dark_white
 drawable back_green_dark
 drawable backblur
@@ -80,7 +83,10 @@ drawable btn1
 drawable btn2
 drawable btn3
 drawable btn_get_started
+drawable btncehck
 drawable btnedit
+drawable btnissue
+drawable btnpay
 drawable btnsprofile
 drawable button_close
 drawable camera
@@ -135,11 +141,16 @@ drawable edtsendtext
 drawable edtwhitewithred
 drawable emailorange
 drawable emailred
+drawable fatcheck
+drawable fatissue
 drawable fatora
+drawable fatoraback
+drawable fatorabanner
 drawable fatoracard
 drawable fatoracashback
 drawable fatoraclassic
 drawable fatoradigital
+drawable fatpay
 drawable fatroa1
 drawable fatrora
 drawable github32
@@ -239,10 +250,12 @@ font roboto
 id ScrollView
 id accountQr
 id aspinnerReason
+id backProfile
 id backgroundImage
 id balance
 id balanceCard
 id balanceContainer
+id bankIconImageView
 id bot_cards
 id bot_home
 id bot_more
@@ -262,6 +275,7 @@ id btnCancel
 id btnCancelCreate
 id btnCancelForget
 id btnCancelUpdate
+id btnCheck
 id btnClose
 id btnCopy1
 id btnCopy2
@@ -271,16 +285,16 @@ id btnCreateCard
 id btnDiscover
 id btnDiscoverClose
 id btnEdit
-id btnEmail
 id btnFatora
 id btnFatoraClose
 id btnForget
 id btnGetStarted
+id btnIssue
 id btnLogOut
 id btnLogin
 id btnMasterCard
 id btnOk
-id btnPhone
+id btnPay
 id btnPickImage
 id btnProceedToDetails
 id btnRecive
@@ -298,6 +312,8 @@ id btnVisaClose
 id btn_delete
 id btn_ok
 id btnmasterClose
+id buttonContainer
+id cardContainer
 id cardVariantItem
 id card_holder
 id card_number
@@ -328,6 +344,7 @@ id edtPhoneCode
 id edtPhoneNumber
 id edtPhoneNumberUpdate
 id exp_date
+id fatoraBannerImageView
 id finalAmount
 id firstNamett
 id frame
@@ -390,6 +407,7 @@ id quick_profile
 id recyclerCardVariants
 id resendOTP
 id rootScrollView
+id scrollView
 id seePassword
 id seePasswordSignUp
 id showEmail
@@ -418,9 +436,6 @@ id textView21
 id textView22
 id textView23
 id textView24
-id textView25
-id textView26
-id textView27
 id textView28
 id textView29
 id textView3
@@ -448,6 +463,8 @@ id tr_date
 id tr_number
 id transactionNumber
 id transfer_quick
+id tvInstruction
+id tvTitle
 id txtAccountNumber
 id txtBalance
 id txtCVV
@@ -477,6 +494,7 @@ layout activity_card_variant
 layout activity_cards
 layout activity_create_new_card
 layout activity_create_pin_code
+layout activity_fatora_main
 layout activity_final_details_new_card
 layout activity_login_page
 layout activity_main

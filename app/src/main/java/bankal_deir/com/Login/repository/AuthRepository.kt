@@ -1,35 +1,28 @@
 package bankal_deir.com.Login.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import com.google.firebase.auth.FirebaseAuth
-import bankal_deir.com.Login.ViewModel.LoginViewModel
-import com.google.firebase.auth.AuthCredential
-import com.google.firebase.auth.AuthResult
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 
-
 class AuthRepository {
+
     private val firebaseAuth = FirebaseAuth.getInstance()
-
-    fun login(email: String, password: String): LiveData<Result<Boolean>> {
-        val result = MutableLiveData<Result<Boolean>>()
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                if (it.isSuccessful) result.value = Result.success(true)
-                else result.value = Result.failure(it.exception ?: Exception("Login failed"))
-            }
-        return result
+    fun login(email: String, password: String) = liveData(Dispatchers.IO) {
+        try {
+            firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            emit(Result.success(true))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
     }
 
-    fun resetPassword(email: String): LiveData<Result<Boolean>> {
-        val result = MutableLiveData<Result<Boolean>>()
-        firebaseAuth.sendPasswordResetEmail(email)
-            .addOnCompleteListener {
-                if (it.isSuccessful) result.value = Result.success(true)
-                else result.value = Result.failure(it.exception ?: Exception("Reset failed"))
-            }
-        return result
+    fun resetPassword(email: String) = liveData(Dispatchers.IO) {
+        try {
+            firebaseAuth.sendPasswordResetEmail(email).await()
+            emit(Result.success(true))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
     }
-
 }

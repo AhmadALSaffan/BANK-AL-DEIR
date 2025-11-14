@@ -19,35 +19,35 @@ import androidx.core.view.WindowInsetsCompat
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityCreatePinCodeBinding
-import bankal_deir.com.databinding.ActivityPinPageBinding
 import com.google.firebase.auth.FirebaseAuth
-import kotlin.getValue
 
 class createPinCode : AppCompatActivity() {
     private lateinit var binding: ActivityCreatePinCodeBinding
     private val viewModel: PinViewModel by viewModels()
-    private lateinit var userId : String
+    private lateinit var userId: String
     private lateinit var mAuth: FirebaseAuth
     private lateinit var pinEdit: EditText
     private lateinit var circles: List<View>
     private val pinBuilder = StringBuilder()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityCreatePinCodeBinding.inflate(layoutInflater)
         mAuth = FirebaseAuth.getInstance()
         setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         userId = mAuth.currentUser?.uid ?: ""
 
         pinEdit = binding.pinEdit
 
         pinEdit.addTextChangedListener(object : TextWatcher {
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -71,6 +71,7 @@ class createPinCode : AppCompatActivity() {
             binding.circle3,
             binding.circle4
         )
+
         val buttons = listOf(
             binding.btn1,
             binding.btn2,
@@ -83,6 +84,7 @@ class createPinCode : AppCompatActivity() {
             binding.btn9,
             binding.btn0,
         )
+
         buttons.forEach { button ->
             button.setOnClickListener {
                 if (pinBuilder.length < 4) {
@@ -91,7 +93,7 @@ class createPinCode : AppCompatActivity() {
                 }
                 if (pinBuilder.length == 4) {
                     progressDialog.show()
-                    viewModel.savePin(userId, pinEdit.text.toString())
+                    viewModel.savePin(userId, pinBuilder.toString())
                 }
             }
         }
@@ -105,9 +107,9 @@ class createPinCode : AppCompatActivity() {
 
         binding.btnOk.setOnClickListener {
             if (pinBuilder.length == 4) {
-                viewModel.savePin(userId, pinEdit.text.toString())
-            }
-            if (pinBuilder.length != 4) {
+                progressDialog.show()
+                viewModel.savePin(userId, pinBuilder.toString())
+            } else {
                 Toast.makeText(
                     this@createPinCode,
                     "Please Enter The Pin Code !",
@@ -115,6 +117,7 @@ class createPinCode : AppCompatActivity() {
                 ).show()
             }
         }
+
         viewModel.pinStatus.observe(this) { success ->
             if (success) {
                 progressDialog.dismiss()
@@ -123,6 +126,7 @@ class createPinCode : AppCompatActivity() {
                 finish()
             }
         }
+
         viewModel.errorMessage.observe(this) { message ->
             if (!message.isNullOrEmpty()) {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -130,11 +134,12 @@ class createPinCode : AppCompatActivity() {
             }
         }
     }
-    private fun updateCircles(){
+
+    private fun updateCircles() {
         pinEdit.setText(pinBuilder)
-        for (i in circles.indices){
+        for (i in circles.indices) {
             circles[i].setBackgroundResource(
-                if(i < pinBuilder.length) R.drawable.pin_circle_filled
+                if (i < pinBuilder.length) R.drawable.pin_circle_filled
                 else R.drawable.pin_circle_empty
             )
         }

@@ -74,5 +74,10 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    implementation ("org.mindrot:jbcrypt:0.4")
+
+
 }
 apply(plugin = "com.google.gms.google-services")

@@ -47,18 +47,14 @@ class LoginPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = ActivityLoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
-
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
             v.setPadding(
                 systemBarsInsets.left,
                 systemBarsInsets.top,
@@ -76,6 +72,7 @@ class LoginPage : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
+
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.loginWithGoogle.setOnClickListener {
@@ -84,21 +81,15 @@ class LoginPage : AppCompatActivity() {
         }
 
         binding.loginWithGitHub.setOnClickListener {
-            val liveData = viewModel.signInWithGitHub(this)
             val dialog = Dialog(this).apply {
-                setContentView(R.layout.progress)
-                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                setCancelable(false)
                 requestWindowFeature(Window.FEATURE_NO_TITLE)
                 setCancelable(false)
                 setContentView(R.layout.progress)
                 window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                show()
             }
             dialog.show()
-            binding.root.postDelayed({
-                dialog.dismiss()
-            }, 3000)
+
+            val liveData = viewModel.signInWithGitHub(this)
             liveData.observe(this) { result ->
                 dialog.dismiss()
                 result.onSuccess {
@@ -122,155 +113,102 @@ class LoginPage : AppCompatActivity() {
                                 }
                             }
                     }
-                    result.onFailure { e ->
-                        Toast.makeText(
-                            this,
-                            "GitHub sign-in error: ${e.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
                 }
-            }
-                binding.btnLogin.setOnClickListener {
-                    val email = binding.edtEmail.text.toString()
-                    val password = binding.edtPassword.text.toString()
-                    if (email.isNotEmpty() && password.isNotEmpty()) {
-                        val dialog = Dialog(this).apply {
-                            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-                            setCancelable(false)
-                            setContentView(R.layout.progress)
-                            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                            show()
-                        }
-                        viewModel.login(email, password).observe(this) { result ->
-                            dialog.dismiss()
-                            result.onSuccess {
-                                val userId = FirebaseAuth.getInstance().currentUser?.uid
-                                if (userId != null) {
-                                    FirebaseDatabase.getInstance().getReference("users")
-                                        .child(userId).child("pin").get()
-                                        .addOnSuccessListener { snapshot ->
-                                            if (snapshot.exists()) {
-                                                val intent = Intent(this, PinPage::class.java)
-                                                intent.flags =
-                                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                startActivity(intent)
-                                                finish()
-                                            } else {
-                                                val intent = Intent(this, createPinCode::class.java)
-                                                intent.flags =
-                                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                startActivity(intent)
-                                                finish()
-                                            }
-                                        }
-                                }
-                            }
-                            result.onFailure { e ->
-                                Toast.makeText(this, e.message ?: "Login error", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                        }
-                    }
-                }
-
-
-                binding.btnCreateAccount.setOnClickListener {
-                    startActivity(Intent(this, SignUp::class.java))
-                }
-
-                binding.seePassword.setOnClickListener {
-                    binding.edtPassword.inputType = if (binding.seePassword.isChecked)
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                    else
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                }
-
-                binding.btnForget.setOnClickListener {
-                    val builder = AlertDialog.Builder(this)
-                    val forgetViewBinding =
-                        bankal_deir.com.databinding.ForgetpasswordBinding.inflate(layoutInflater)
-                    builder.setView(forgetViewBinding.root)
-                    val dialog = builder.create()
-
-                    forgetViewBinding.btnReset.setOnClickListener {
-                        val emailInput = forgetViewBinding.edtEmailForget.text.toString()
-                        if (emailInput.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput)
-                                .matches()
-                        ) {
-                            Toast.makeText(this, "Please enter a valid email!", Toast.LENGTH_SHORT)
-                                .show()
-                            return@setOnClickListener
-                        }
-                        val progress = Dialog(this).apply {
-                            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-                            setCancelable(false)
-                            setContentView(R.layout.progress)
-                            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                            show()
-                        }
-                        viewModel.resetPassword(emailInput).observe(this) { resetResult ->
-                            progress.dismiss()
-                            resetResult.onSuccess {
-                                Toast.makeText(this, "Check your email", Toast.LENGTH_SHORT).show()
-                            }
-                            resetResult.onFailure { e ->
-                                Toast.makeText(this, e.message ?: "Reset error", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                        }
-                        dialog.dismiss()
-                    }
-                    forgetViewBinding.btnCancelForget.setOnClickListener { dialog.dismiss() }
-                    dialog.show()
+                result.onFailure { e ->
+                    Toast.makeText(this, "GitHub sign-in error: ${e.message}", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
-         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)!!
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
 
-                val dialog = Dialog(this).apply {
-                    requestWindowFeature(Window.FEATURE_NO_TITLE)
+        binding.btnLogin.setOnClickListener {
+            val email = binding.edtEmail.text.toString().trim()
+            val password = binding.edtPassword.text.toString().trim()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val dialog = Dialog(this).apply {
+                requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
+                setCancelable(false)
+                setContentView(R.layout.progress)
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                show()
+            }
+
+            viewModel.login(email, password).observe(this) { result ->
+                dialog.dismiss()
+                result.onSuccess {
+                    val userId = FirebaseAuth.getInstance().currentUser?.uid
+                    if (userId != null) {
+                        FirebaseDatabase.getInstance().getReference("users")
+                            .child(userId).child("pin").get()
+                            .addOnSuccessListener { snapshot ->
+                                val target = if (snapshot.exists())
+                                    PinPage::class.java else createPinCode::class.java
+                                val intent = Intent(this, target)
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                startActivity(intent)
+                                finish()
+                            }
+                    }
+                }
+                result.onFailure { e ->
+                    Toast.makeText(this, e.message ?: "Login error", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        binding.btnCreateAccount.setOnClickListener {
+            startActivity(Intent(this, SignUp::class.java))
+        }
+
+        binding.seePassword.setOnClickListener {
+            binding.edtPassword.inputType = if (binding.seePassword.isChecked)
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            else
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+
+        binding.btnForget.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            val forgetViewBinding =
+                bankal_deir.com.databinding.ForgetpasswordBinding.inflate(layoutInflater)
+            builder.setView(forgetViewBinding.root)
+            val dialog = builder.create()
+
+            forgetViewBinding.btnReset.setOnClickListener {
+                val emailInput = forgetViewBinding.edtEmailForget.text.toString()
+                if (emailInput.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+                    Toast.makeText(this, "Please enter a valid email!", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                val progress = Dialog(this).apply {
+                    requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
                     setCancelable(false)
                     setContentView(R.layout.progress)
                     window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     show()
                 }
 
-                viewModel.signInWithGoogle(this,credential).observe(this) { result ->
-                    dialog.dismiss()
-                    result.onSuccess {
-                        val userId = FirebaseAuth.getInstance().currentUser?.uid
-                        if (userId != null) {
-                            FirebaseDatabase.getInstance().getReference("users")
-                                .child(userId).child("pin").get()
-                                .addOnSuccessListener { snapshot ->
-                                    if (snapshot.exists()) {
-                                        val intent = Intent(this, PinPage::class.java)
-                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                        startActivity(intent)
-                                        finish()
-                                    } else {
-                                        val intent = Intent(this, createPinCode::class.java)
-                                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                        startActivity(intent)
-                                        finish()
-                                    }
-                                }
-                        }
+                viewModel.resetPassword(emailInput).observe(this) { resetResult ->
+                    progress.dismiss()
+                    resetResult.onSuccess {
+                        Toast.makeText(this, "Check your email", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
                     }
-                    result.onFailure { e ->
-                        Toast.makeText(this, e.message ?: "Google sign-in error", Toast.LENGTH_SHORT).show()
+                    resetResult.onFailure { e ->
+                        Toast.makeText(this, e.message ?: "Reset error", Toast.LENGTH_SHORT).show()
                     }
                 }
-            } catch (e: ApiException) {
-                Toast.makeText(this, "Google Sign-in failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+
+            forgetViewBinding.btnCancelForget.setOnClickListener { dialog.dismiss() }
+            dialog.show()
         }
     }
 }

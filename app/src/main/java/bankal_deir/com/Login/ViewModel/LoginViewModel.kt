@@ -21,7 +21,6 @@ import com.google.firebase.auth.OAuthProvider
 
 class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
     fun login(email: String, password: String) = repository.login(email, password)
     fun resetPassword(email: String) = repository.resetPassword(email)
 

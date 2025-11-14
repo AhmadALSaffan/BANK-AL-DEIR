@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -21,6 +22,9 @@ import java.lang.String;
 public final class ActivityProfilePageBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
+
+  @NonNull
+  public final ImageView backProfile;
 
   @NonNull
   public final Button btnEdit;
@@ -73,15 +77,17 @@ public final class ActivityProfilePageBinding implements ViewBinding {
   @NonNull
   public final TextView txtPhoneNumber;
 
-  private ActivityProfilePageBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnEdit,
-      @NonNull LinearLayout btnLogOut, @NonNull LinearLayout btnSecurity,
-      @NonNull LinearLayout btnSettings, @NonNull ConstraintLayout main,
-      @NonNull ShapeableImageView profileImageEdit, @NonNull TextView textView24,
-      @NonNull TextView textView28, @NonNull TextView textView29, @NonNull TextView textView30,
-      @NonNull TextView textView31, @NonNull TextView txtAccountNumber, @NonNull TextView txtEmail,
+  private ActivityProfilePageBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ImageView backProfile, @NonNull Button btnEdit, @NonNull LinearLayout btnLogOut,
+      @NonNull LinearLayout btnSecurity, @NonNull LinearLayout btnSettings,
+      @NonNull ConstraintLayout main, @NonNull ShapeableImageView profileImageEdit,
+      @NonNull TextView textView24, @NonNull TextView textView28, @NonNull TextView textView29,
+      @NonNull TextView textView30, @NonNull TextView textView31,
+      @NonNull TextView txtAccountNumber, @NonNull TextView txtEmail,
       @NonNull TextView txtFirstName, @NonNull TextView txtFullName, @NonNull TextView txtLastName,
       @NonNull TextView txtPhoneNumber) {
     this.rootView = rootView;
+    this.backProfile = backProfile;
     this.btnEdit = btnEdit;
     this.btnLogOut = btnLogOut;
     this.btnSecurity = btnSecurity;
@@ -128,6 +134,12 @@ public final class ActivityProfilePageBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.backProfile;
+      ImageView backProfile = ViewBindings.findChildViewById(rootView, id);
+      if (backProfile == null) {
+        break missingId;
+      }
+
       id = R.id.btnEdit;
       Button btnEdit = ViewBindings.findChildViewById(rootView, id);
       if (btnEdit == null) {
@@ -226,9 +238,9 @@ public final class ActivityProfilePageBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityProfilePageBinding((ConstraintLayout) rootView, btnEdit, btnLogOut,
-          btnSecurity, btnSettings, main, profileImageEdit, textView24, textView28, textView29,
-          textView30, textView31, txtAccountNumber, txtEmail, txtFirstName, txtFullName,
+      return new ActivityProfilePageBinding((ConstraintLayout) rootView, backProfile, btnEdit,
+          btnLogOut, btnSecurity, btnSettings, main, profileImageEdit, textView24, textView28,
+          textView29, textView30, textView31, txtAccountNumber, txtEmail, txtFirstName, txtFullName,
           txtLastName, txtPhoneNumber);
     }
     String missingId = rootView.getResources().getResourceName(id);

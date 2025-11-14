@@ -48,6 +48,12 @@ class profilePage : AppCompatActivity() {
             val intent = Intent(this, updateProfile::class.java)
             startActivity(intent)
         }
+        binding.backProfile.setOnClickListener {
+            val intent = Intent(this@profilePage, MainPage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
     }
     fun readDataUser() {
         val progressDialog = Dialog(this)
