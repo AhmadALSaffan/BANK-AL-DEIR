@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -28,27 +30,32 @@ public final class ForgetpasswordBinding implements ViewBinding {
   public final Button btnReset;
 
   @NonNull
+  public final LinearLayout buttonContainer;
+
+  @NonNull
+  public final CardView cardContainer;
+
+  @NonNull
   public final EditText edtEmailForget;
 
   @NonNull
-  public final TextView textView25;
+  public final TextView tvInstruction;
 
   @NonNull
-  public final TextView textView26;
-
-  @NonNull
-  public final TextView textView27;
+  public final TextView tvTitle;
 
   private ForgetpasswordBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnCancelForget,
-      @NonNull Button btnReset, @NonNull EditText edtEmailForget, @NonNull TextView textView25,
-      @NonNull TextView textView26, @NonNull TextView textView27) {
+      @NonNull Button btnReset, @NonNull LinearLayout buttonContainer,
+      @NonNull CardView cardContainer, @NonNull EditText edtEmailForget,
+      @NonNull TextView tvInstruction, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnCancelForget = btnCancelForget;
     this.btnReset = btnReset;
+    this.buttonContainer = buttonContainer;
+    this.cardContainer = cardContainer;
     this.edtEmailForget = edtEmailForget;
-    this.textView25 = textView25;
-    this.textView26 = textView26;
-    this.textView27 = textView27;
+    this.tvInstruction = tvInstruction;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -90,32 +97,38 @@ public final class ForgetpasswordBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.buttonContainer;
+      LinearLayout buttonContainer = ViewBindings.findChildViewById(rootView, id);
+      if (buttonContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.cardContainer;
+      CardView cardContainer = ViewBindings.findChildViewById(rootView, id);
+      if (cardContainer == null) {
+        break missingId;
+      }
+
       id = R.id.edtEmailForget;
       EditText edtEmailForget = ViewBindings.findChildViewById(rootView, id);
       if (edtEmailForget == null) {
         break missingId;
       }
 
-      id = R.id.textView25;
-      TextView textView25 = ViewBindings.findChildViewById(rootView, id);
-      if (textView25 == null) {
+      id = R.id.tvInstruction;
+      TextView tvInstruction = ViewBindings.findChildViewById(rootView, id);
+      if (tvInstruction == null) {
         break missingId;
       }
 
-      id = R.id.textView26;
-      TextView textView26 = ViewBindings.findChildViewById(rootView, id);
-      if (textView26 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView27;
-      TextView textView27 = ViewBindings.findChildViewById(rootView, id);
-      if (textView27 == null) {
+      id = R.id.tvTitle;
+      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
         break missingId;
       }
 
       return new ForgetpasswordBinding((ConstraintLayout) rootView, btnCancelForget, btnReset,
-          edtEmailForget, textView25, textView26, textView27);
+          buttonContainer, cardContainer, edtEmailForget, tvInstruction, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

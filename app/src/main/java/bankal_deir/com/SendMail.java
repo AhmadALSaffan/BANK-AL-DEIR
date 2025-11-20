@@ -33,7 +33,7 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.socketFactory.port", "465");
             props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // ✅ هذا هو السطر المهم
+            props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
             Session session = Session.getInstance(props, new javax.mail.Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {

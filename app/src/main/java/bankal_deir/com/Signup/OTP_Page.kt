@@ -35,6 +35,7 @@ class OTP_Page : AppCompatActivity() {
     var lastName = ""
     var phoneNumber = ""
     var random : Int=0
+    var userToken = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -67,57 +68,37 @@ class OTP_Page : AppCompatActivity() {
             random()
         }
 
-        binding.otp1.doOnTextChanged { text, start, before, count ->
-            if (!binding.otp1.text.toString().isEmpty()){
-                binding.otp1.requestFocus()
-            }
-            if (!binding.otp2.text.toString().isEmpty()){
-                binding.otp2.requestFocus()
+        binding.otp1.doOnTextChanged { text, _, _, _ ->
+            if (text?.length == 1) binding.otp2.requestFocus()
+        }
+        binding.otp2.doOnTextChanged { text, _, before, _ ->
+            when {
+                text?.length == 1 -> binding.otp3.requestFocus()
+                text.isNullOrEmpty() && before == 1 -> binding.otp1.requestFocus()
             }
         }
-
-        binding.otp2.doOnTextChanged{text, start, before, count ->
-            if (!binding.otp2.text.toString().isEmpty()){
-                binding.otp3.requestFocus()
-            }else{
-                binding.otp1.requestFocus()
+        binding.otp3.doOnTextChanged { text, _, before, _ ->
+            when {
+                text?.length == 1 -> binding.otp4.requestFocus()
+                text.isNullOrEmpty() && before == 1 -> binding.otp2.requestFocus()
             }
-
+        }
+        binding.otp4.doOnTextChanged { text, _, before, _ ->
+            when {
+                text?.length == 1 -> binding.otp5.requestFocus()
+                text.isNullOrEmpty() && before == 1 -> binding.otp3.requestFocus()
+            }
+        }
+        binding.otp5.doOnTextChanged { text, _, before, _ ->
+            when {
+                text?.length == 1 -> binding.otp6.requestFocus()
+                text.isNullOrEmpty() && before == 1 -> binding.otp4.requestFocus()
+            }
+        }
+        binding.otp6.doOnTextChanged { text, _, before, _ ->
+            if (text.isNullOrEmpty() && before == 1) binding.otp5.requestFocus()
         }
 
-        binding.otp3.doOnTextChanged{text, start, before, count ->
-            if (!binding.otp3.text.toString().isEmpty()){
-                binding.otp4.requestFocus()
-            }else{
-                binding.otp2.requestFocus()
-            }
-
-        }
-
-        binding.otp4.doOnTextChanged{text, start, before, count ->
-            if (!binding.otp4.text.toString().isEmpty()){
-                binding.otp5.requestFocus()
-            }else{
-                binding.otp3.requestFocus()
-            }
-
-        }
-
-        binding.otp5.doOnTextChanged{text, start, before, count ->
-            if (!binding.otp5.text.toString().isEmpty()){
-                binding.otp6.requestFocus()
-            }else{
-                binding.otp4.requestFocus()
-            }
-
-        }
-
-        binding.otp6.doOnTextChanged{text, start, before, count ->
-            if (binding.otp6.text.toString().isEmpty()){
-                binding.otp5.requestFocus()
-            }
-
-        }
         binding.btnSignUpAfterOTP.setOnClickListener {
             var otp1 = binding.otp1.text.toString()
             var otp2 = binding.otp2.text.toString()
@@ -133,12 +114,13 @@ class OTP_Page : AppCompatActivity() {
                 binding.otp3.text.toString().isEmpty() ||
                 binding.otp4.text.toString().isEmpty() ||
                 binding.otp5.text.toString().isEmpty() ||
-                binding.otp6.text.toString().isEmpty()){
-                Toast.makeText(this,"Enter OTP", Toast.LENGTH_SHORT).show()
+                binding.otp6.text.toString().isEmpty()
+            ) {
+                Toast.makeText(this, "Enter OTP", Toast.LENGTH_SHORT).show()
             }
-            if (!otp.equals(random.toString())){
-                Toast.makeText(this,"Wrong OTP !!", Toast.LENGTH_SHORT).show()
-            }else{
+            if (!otp.equals(random.toString())) {
+                Toast.makeText(this, "Wrong OTP !!", Toast.LENGTH_SHORT).show()
+            } else {
                 val progressDialog = Dialog(this)
                 progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
                 progressDialog.setCancelable(false)
@@ -148,56 +130,84 @@ class OTP_Page : AppCompatActivity() {
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            val userId =
-                                firebaseAuth.currentUser?.uid
-                                    ?: return@addOnCompleteListener
-                            val iban = generateIBAN(userId)
-                            val accountNumber = generateAccountNumber()
-                            val walletId = generateWalletId()
-
-
-                            val userMap = mapOf(
-                                "userId" to userId,
-                                "iban" to iban,
-                                "accountNumber" to accountNumber,
-                                "firstName" to firstName,
-                                "lastName" to lastName,
-                                "phoneNumber" to phoneNumber,
-                                "email" to email,
-                                "walletId" to walletId
-                            )
-
-                            databaseReference.child("users").child(userId)
-                                .setValue(userMap)
-                                .addOnCompleteListener {
-                                    val walletMap = mapOf(
-                                        "userId" to userId,
-                                        "walletNumber" to walletId,
-                                        "Balance" to 0
-                                    )
-                                    databaseReference.child("wallets").child(walletId).setValue(walletMap).addOnCompleteListener {
-                                        Toast.makeText(this, "User registered successfully!", Toast.LENGTH_SHORT).show()
-                                        progressDialog.dismiss()
-                                        val intent = Intent(this@OTP_Page, createPinCode::class.java)
-                                        startActivity(intent)
-                                        finish()
-                                    }.addOnFailureListener {
-                                        Toast.makeText(this,it.message, Toast.LENGTH_SHORT).show()
+                            val user = firebaseAuth.currentUser ?: return@addOnCompleteListener
+                            val userId = user.uid
+                            user.getIdToken(true).addOnCompleteListener { tokenTask ->
+                                if (tokenTask.isSuccessful) {
+                                    val userToken = tokenTask.result?.token ?: ""
+                                    if (userToken == null){
+                                        Toast.makeText(this, "Token is empty or null", Toast.LENGTH_SHORT).show()
                                     }
-                                }.addOnFailureListener {
-                                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT)
-                                        .show()
-                                }
+                                    val iban = generateIBAN(userId)
+                                    val accountNumber = generateAccountNumber()
+                                    val walletId = generateWalletId()
 
+                                    val userMap = mapOf(
+                                        "userId" to userId,
+                                        "userToken" to userToken,
+                                        "iban" to iban,
+                                        "accountNumber" to accountNumber,
+                                        "firstName" to firstName,
+                                        "lastName" to lastName,
+                                        "phoneNumber" to phoneNumber,
+                                        "email" to email,
+                                        "walletId" to walletId
+                                    )
+
+                                    databaseReference.child("users").child(userId)
+                                        .setValue(userMap)
+                                        .addOnCompleteListener {
+                                            val walletMap = mapOf(
+                                                "userId" to userId,
+                                                "walletNumber" to walletId,
+                                                "Balance" to 0
+                                            )
+                                            databaseReference.child("wallets").child(walletId)
+                                                .setValue(walletMap)
+                                                .addOnCompleteListener {
+                                                    Toast.makeText(
+                                                        this,
+                                                        "User registered successfully!",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                    progressDialog.dismiss()
+                                                    val intent = Intent(
+                                                        this@OTP_Page,
+                                                        createPinCode::class.java
+                                                    )
+                                                    startActivity(intent)
+                                                    finish()
+                                                }
+                                                .addOnFailureListener {
+                                                    Toast.makeText(
+                                                        this,
+                                                        it.message,
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                        }
+                                        .addOnFailureListener {
+                                            Toast.makeText(this, it.message, Toast.LENGTH_SHORT)
+                                                .show()
+                                        }
+                                } else {
+                                    Toast.makeText(
+                                        this,
+                                        "Failed to get ID token: ${tokenTask.exception?.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
                         } else {
-                            Toast.makeText(this,"Signup failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this,
+                                "Signup failed: ${task.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                    }.addOnFailureListener {
-                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     }
             }
         }
-
     }
     fun random(){
         random= Random.Default.nextInt(100000..999999)

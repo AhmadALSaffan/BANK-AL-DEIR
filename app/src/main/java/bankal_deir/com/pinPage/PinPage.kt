@@ -16,23 +16,34 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import bankal_deir.com.MainActivity
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityPinPageBinding
 import com.google.firebase.auth.FirebaseAuth
+import android.content.Context
+import android.os.Handler
+import android.os.Looper
+import android.widget.Button
+
 
 class PinPage : AppCompatActivity() {
     private lateinit var binding: ActivityPinPageBinding
     private val viewModel: PinViewModel by viewModels()
+    private lateinit var buttons: List<Button>
     private lateinit var userId: String
     private lateinit var mAuth: FirebaseAuth
     private lateinit var pinEdit: EditText
     private lateinit var circles: List<View>
     private val pinBuilder = StringBuilder()
+    private val maxAttempts = 5
+    private val lockoutDurationMillis = 15 * 60 * 1000L
+    private val prefs by lazy { getSharedPreferences("PinPrefs", Context.MODE_PRIVATE) }
+    private var failedAttempts = 0
+    private var lockoutStartTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         Thread.setDefaultUncaughtExceptionHandler { thread, exception ->
             android.util.Log.e("CRASH_HANDLER", "Uncaught Exception", exception)
             exception.printStackTrace()
@@ -82,7 +93,7 @@ class PinPage : AppCompatActivity() {
             binding.circle4
         )
 
-        val buttons = listOf(
+         buttons = listOf(
             binding.btn1,
             binding.btn2,
             binding.btn3,
@@ -94,9 +105,17 @@ class PinPage : AppCompatActivity() {
             binding.btn9,
             binding.btn0,
         )
+        failedAttempts = prefs.getInt("failedAttempts", 0)
+        lockoutStartTime = prefs.getLong("lockoutStartTime", 0L)
+
+        checkLockout()
 
         buttons.forEach { button ->
             button.setOnClickListener {
+                if (isLockedOut()) {
+                    Toast.makeText(this, "Too many attempts. Please wait 15 minutes.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
                 if (pinBuilder.length < 4) {
                     pinBuilder.append(button.text)
                     updateCircles()
@@ -117,6 +136,10 @@ class PinPage : AppCompatActivity() {
         }
 
         binding.btnOk.setOnClickListener {
+            if (isLockedOut()) {
+                Toast.makeText(this, "Too many attempts. Please wait 15 minutes.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (pinBuilder.length == 4) {
                 progressDialog.show()
                 viewModel.verifyPin(userId, pinBuilder.toString())
@@ -127,12 +150,25 @@ class PinPage : AppCompatActivity() {
 
         viewModel.pinStatus.observe(this) { success ->
             if (success) {
+                resetLockout()
                 progressDialog.dismiss()
                 val intent = Intent(this@PinPage, MainPage::class.java)
                 startActivity(intent)
                 finish()
             }
+            if (!success){
+                failedAttempts++
+                saveFailedAttempts()
+                if (failedAttempts >= maxAttempts) {
+                    startLockout()
+                }
+                pinBuilder.clear()
+                updateCircles()
+                progressDialog.dismiss()
+                Toast.makeText(this@PinPage,"The PIN CODE is not correct please write it again !", Toast.LENGTH_SHORT).show()
+            }
         }
+
 
         viewModel.errorMessage.observe(this) { message ->
             if (message.isNotEmpty()) {
@@ -142,6 +178,31 @@ class PinPage : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        val user = mAuth.currentUser
+        if (user == null) {
+            redirectToLogin()
+        } else {
+            user.getIdToken(true).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    null
+                } else {
+                    redirectToLogin()
+                }
+            }
+        }
+    }
+
+    private fun redirectToLogin() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
+
+
     private fun updateCircles() {
         pinEdit.setText(pinBuilder)
         for (i in circles.indices) {
@@ -149,6 +210,68 @@ class PinPage : AppCompatActivity() {
                 if (i < pinBuilder.length) R.drawable.pin_circle_filled
                 else R.drawable.pin_circle_empty
             )
+        }
+    }
+    private fun isLockedOut(): Boolean {
+        if (lockoutStartTime == 0L) {
+            android.util.Log.d("PinPage", "No lockout set")
+            return false
+        }
+        val elapsed = System.currentTimeMillis() - lockoutStartTime
+        android.util.Log.d("PinPage", "Lockout elapsed time: $elapsed ms")
+
+        if (elapsed >= lockoutDurationMillis) {
+            android.util.Log.d("PinPage", "Lockout expired, resetting")
+            resetLockout()
+            return false
+        }
+        android.util.Log.d("PinPage", "Still locked out")
+        return true
+    }
+
+
+    private fun startLockout() {
+        lockoutStartTime = System.currentTimeMillis()
+        saveLockoutStartTime()
+        Toast.makeText(this, "Too many failed attempts. Locked for 15 minutes.", Toast.LENGTH_LONG).show()
+        disableInput()
+    }
+
+    private fun resetLockout() {
+        failedAttempts = 0
+        lockoutStartTime = 0L
+        saveFailedAttempts()
+        saveLockoutStartTime()
+        enableInput()
+    }
+
+    private fun disableInput() {
+        buttons.forEach { it.isEnabled = false }
+        binding.btnOk.isEnabled = false
+        val remaining = lockoutDurationMillis - (System.currentTimeMillis() - lockoutStartTime)
+        Handler(Looper.getMainLooper()).postDelayed({
+            resetLockout()
+        }, remaining)
+    }
+
+    private fun enableInput() {
+        buttons.forEach { it.isEnabled = true }
+        binding.btnOk.isEnabled = true
+    }
+
+    private fun saveFailedAttempts() {
+        prefs.edit().putInt("failedAttempts", failedAttempts).apply()
+    }
+
+    private fun saveLockoutStartTime() {
+        prefs.edit().putLong("lockoutStartTime", lockoutStartTime).apply()
+    }
+
+    private fun checkLockout() {
+        if (isLockedOut()) {
+            disableInput()
+        } else {
+            enableInput()
         }
     }
 }

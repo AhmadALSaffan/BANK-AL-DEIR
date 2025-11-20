@@ -126,7 +126,7 @@
                     android:layout_height="60dp"
                     android:backgroundTint="@color/black"
                     android:gravity="center"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:textColor="@color/backblack"
