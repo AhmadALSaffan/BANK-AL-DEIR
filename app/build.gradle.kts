@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "bankal_deir.com"
-        minSdk = 31
+        minSdk = 29
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -77,6 +77,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
     implementation ("org.mindrot:jbcrypt:0.4")
+    implementation("com.google.firebase:firebase-database:22.0.1")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
 
 
 }

@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -43,7 +44,9 @@ class LoginPage : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModels {
+        LoginViewModelFactory(AuthRepository())
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -66,7 +69,6 @@ class LoginPage : AppCompatActivity() {
 
         val repository = AuthRepository()
         val factory = LoginViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -79,7 +81,10 @@ class LoginPage : AppCompatActivity() {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
-
+        binding.loginWithPhoneNumber.setOnClickListener {
+            val intent = Intent(this@LoginPage, LoginWithPhoneNumber::class.java)
+            startActivity(intent)
+        }
         binding.loginWithGitHub.setOnClickListener {
             val dialog = Dialog(this).apply {
                 requestWindowFeature(Window.FEATURE_NO_TITLE)

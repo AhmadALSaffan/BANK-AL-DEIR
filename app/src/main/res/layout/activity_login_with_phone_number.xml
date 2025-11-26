@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backsy2"
+    tools:context=".Login.LoginWithPhoneNumber">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView55"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:paddingRight="20dp"
+                app:srcCompat="@drawable/iconbank" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="10dp"
+                android:text="BANK AL-DEIR"
+                android:textColor="@color/light_red"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="10dp"
+                android:text="MOBILE BANKING"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:src="@color/white"/>
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="10dp"
+                android:text="Login With Phone Number"
+                android:textColor="@color/white"
+                android:layout_marginTop="26dp"
+                android:textSize="26sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="10dp"
+                android:text="Phone Number"
+                android:textColor="@color/white"
+                android:layout_marginTop="36dp"
+                android:textSize="18sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editFirstText"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="0.25"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:paddingStart="15dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittextde"
+                android:inputType="text"
+                android:text="+375" />
+
+                <EditText
+                    android:id="@+id/editFullPhoneText"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:ems="10"
+                    android:layout_weight="0.75"
+                    android:layout_gravity="center"
+                    android:inputType="text"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:layout_marginStart="10dp"
+                    android:paddingStart="15dp"
+                    android:text=""
+                    android:background="@drawable/edittextde"
+                    android:hint="Phone Number"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="10dp"
+                android:text="or sign in with Email"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/emailSignInTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="click here"
+                    android:textColor="@color/Danger_Red"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/getOTPPhoneBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get OTP"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/sendbutton"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom"
+                android:text="This Programmed by : Ahmed ELiwi ALSaffan"
+                android:textColor="@color/white"
+                android:layout_marginTop="250dp"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

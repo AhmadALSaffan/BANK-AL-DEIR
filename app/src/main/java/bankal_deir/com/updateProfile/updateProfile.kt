@@ -68,7 +68,6 @@ class updateProfile : AppCompatActivity() {
         )[updateViewModel::class.java]
         readData()
 
-        // Set IME options for smooth "Next" navigation
         binding.edtFirstNameUpdate.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_NEXT) {
                 binding.edtLastNameUpdate.requestFocus()

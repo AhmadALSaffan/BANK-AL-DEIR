@@ -48,6 +48,9 @@ public final class ActivityLoginPageBinding implements ViewBinding {
   public final Button loginWithGoogle;
 
   @NonNull
+  public final Button loginWithPhoneNumber;
+
+  @NonNull
   public final ConstraintLayout main;
 
   @NonNull
@@ -75,9 +78,10 @@ public final class ActivityLoginPageBinding implements ViewBinding {
       @NonNull TextView btnCreateAccount, @NonNull TextView btnForget, @NonNull Button btnLogin,
       @NonNull EditText edtEmail, @NonNull EditText edtPassword, @NonNull ImageView imageView4,
       @NonNull Button loginWithGitHub, @NonNull Button loginWithGoogle,
-      @NonNull ConstraintLayout main, @NonNull CheckBox seePassword, @NonNull TextView textView,
-      @NonNull TextView textView2, @NonNull TextView textView3, @NonNull TextView textView4,
-      @NonNull TextView textView5, @NonNull TextView textView9) {
+      @NonNull Button loginWithPhoneNumber, @NonNull ConstraintLayout main,
+      @NonNull CheckBox seePassword, @NonNull TextView textView, @NonNull TextView textView2,
+      @NonNull TextView textView3, @NonNull TextView textView4, @NonNull TextView textView5,
+      @NonNull TextView textView9) {
     this.rootView = rootView;
     this.btnCreateAccount = btnCreateAccount;
     this.btnForget = btnForget;
@@ -87,6 +91,7 @@ public final class ActivityLoginPageBinding implements ViewBinding {
     this.imageView4 = imageView4;
     this.loginWithGitHub = loginWithGitHub;
     this.loginWithGoogle = loginWithGoogle;
+    this.loginWithPhoneNumber = loginWithPhoneNumber;
     this.main = main;
     this.seePassword = seePassword;
     this.textView = textView;
@@ -172,6 +177,12 @@ public final class ActivityLoginPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.loginWithPhoneNumber;
+      Button loginWithPhoneNumber = ViewBindings.findChildViewById(rootView, id);
+      if (loginWithPhoneNumber == null) {
+        break missingId;
+      }
+
       ConstraintLayout main = (ConstraintLayout) rootView;
 
       id = R.id.seePassword;
@@ -217,8 +228,9 @@ public final class ActivityLoginPageBinding implements ViewBinding {
       }
 
       return new ActivityLoginPageBinding((ConstraintLayout) rootView, btnCreateAccount, btnForget,
-          btnLogin, edtEmail, edtPassword, imageView4, loginWithGitHub, loginWithGoogle, main,
-          seePassword, textView, textView2, textView3, textView4, textView5, textView9);
+          btnLogin, edtEmail, edtPassword, imageView4, loginWithGitHub, loginWithGoogle,
+          loginWithPhoneNumber, main, seePassword, textView, textView2, textView3, textView4,
+          textView5, textView9);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

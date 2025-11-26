@@ -25,6 +25,7 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import bankal_deir.com.Login.LoginPage
 
 
 class PinPage : AppCompatActivity() {
@@ -64,6 +65,14 @@ class PinPage : AppCompatActivity() {
             Toast.makeText(this, "User not logged in. Please login again.", Toast.LENGTH_SHORT).show()
             finish()
             return
+        }
+        binding.btnSignOut.setOnClickListener {
+            val Auth = FirebaseAuth.getInstance()
+            Auth.signOut()
+            val intent = Intent(this, LoginPage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
 
         pinEdit = binding.pinEdit

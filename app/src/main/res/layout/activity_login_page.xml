@@ -206,13 +206,27 @@
                     android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.50"
                     android:background="@drawable/googlebtnback"
                     android:drawableLeft="@drawable/common_google_signin_btn_icon_light"
                     android:paddingLeft="10dp"
                     android:text="GOOGLE"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/loginWithPhoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="0.50"
+                    android:background="@drawable/googlebtnback"
+                    android:drawableLeft="@drawable/phone"
+                    android:text="Phone Number"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:paddingLeft="10dp"/>
 
                 <View
                     android:layout_width="20dp"
@@ -272,7 +286,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:text="This Application supported by : Ahmed ELiwi ALSaffan"
+                android:text="This Programmed by : Ahmed ELiwi ALSaffan"
                 android:textColor="@color/white"
                 android:textSize="10sp" />
 
