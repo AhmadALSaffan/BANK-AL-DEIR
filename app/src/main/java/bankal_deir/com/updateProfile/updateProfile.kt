@@ -97,6 +97,7 @@ class updateProfile : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, IMAGE_PICK_CODE)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
         binding.btnSaveUpdate.setOnClickListener {
@@ -118,6 +119,7 @@ class updateProfile : AppCompatActivity() {
                     progressDialog.dismiss()
                     val intent = Intent(this@updateProfile, MainPage::class.java)
                     startActivity(intent)
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                     finish()
                 }
                 result.onFailure {exception->
@@ -132,6 +134,7 @@ class updateProfile : AppCompatActivity() {
             val intent = Intent(this, profilePage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
         viewModel.uploadImageResult.observe(this) { result ->

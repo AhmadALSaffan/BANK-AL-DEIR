@@ -50,6 +50,7 @@ class CardVariant : AppCompatActivity() {
                 putExtra("fees", selectedVariant.fees)
             }
             startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 

@@ -59,8 +59,8 @@
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profileImageMain"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:padding="2dp"
                         android:scaleType="centerCrop"
                         android:visibility="invisible"
@@ -142,10 +142,9 @@
                         android:indeterminateTint="@color/damask_red"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.031"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -550,15 +549,47 @@
             <Space
                 android:id="@+id/space"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="10dp"
                 app:layout_constraintTop_toBottomOf="@id/quickActionsCard" />
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toTopOf="@+id/historyLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/space">
+
+                <ProgressBar
+                    android:id="@+id/progressBarBanner"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:indeterminateTint="@color/damask_red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/bannerImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/historyLabel"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:gravity="left"
                 android:paddingLeft="15dp"
                 android:text="HISTORY"
@@ -567,7 +598,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.268"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/quickActionsCard" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <ProgressBar
                 android:id="@+id/progressBartran"
@@ -598,6 +629,7 @@
                 android:clipToPadding="false">
 
             </androidx.recyclerview.widget.RecyclerView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

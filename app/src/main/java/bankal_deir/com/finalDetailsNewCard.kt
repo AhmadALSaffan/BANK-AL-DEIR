@@ -52,7 +52,6 @@ class finalDetailsNewCard : AppCompatActivity() {
             insets
         }
 
-        // Get card details from intent
         cardType = intent.getStringExtra("cardtype")
         variant = intent.getStringExtra("variant")
         fullCardName = intent.getStringExtra("fullcardname")
@@ -82,6 +81,7 @@ class finalDetailsNewCard : AppCompatActivity() {
         binding.btnCancelCreate.setOnClickListener {
             val intent = Intent(this, MainPage::class.java)
             startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
     }
@@ -260,6 +260,7 @@ class finalDetailsNewCard : AppCompatActivity() {
                                 putExtra("variant", variant)
                             }
                             startActivity(nextIntent)
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                             finish()
                         }
                     }

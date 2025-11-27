@@ -39,10 +39,16 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final ConstraintLayout balanceContainer;
 
   @NonNull
+  public final ImageView bannerImg;
+
+  @NonNull
   public final Button btnRecive;
 
   @NonNull
   public final Button btnSend;
+
+  @NonNull
+  public final ConstraintLayout constraintLayout2;
 
   @NonNull
   public final TextView firstNamett;
@@ -73,6 +79,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
 
   @NonNull
   public final ProgressBar progressBarBalance;
+
+  @NonNull
+  public final ProgressBar progressBarBanner;
 
   @NonNull
   public final ProgressBar progressBarName;
@@ -115,23 +124,26 @@ public final class ActivityMainPageBinding implements ViewBinding {
 
   private ActivityMainPageBinding(@NonNull CoordinatorLayout rootView, @NonNull TextView balance,
       @NonNull CardView balanceCard, @NonNull ConstraintLayout balanceContainer,
-      @NonNull Button btnRecive, @NonNull Button btnSend, @NonNull TextView firstNamett,
+      @NonNull ImageView bannerImg, @NonNull Button btnRecive, @NonNull Button btnSend,
+      @NonNull ConstraintLayout constraintLayout2, @NonNull TextView firstNamett,
       @NonNull CardView headerCard, @NonNull TextView historyLabel, @NonNull ImageView imageView11,
       @NonNull LinearLayout linearLayout, @NonNull CoordinatorLayout main,
       @NonNull CardView payWithFatora, @NonNull CardView payWithQrCode,
       @NonNull ShapeableImageView profileImageMain, @NonNull ProgressBar progressBarBalance,
-      @NonNull ProgressBar progressBarName, @NonNull ProgressBar progressBarProfileImage,
-      @NonNull ProgressBar progressBarTopRefresh, @NonNull ProgressBar progressBartran,
-      @NonNull CardView quickActionsCard, @NonNull CardView quickHistory,
-      @NonNull CardView quickMore, @NonNull CardView quickProfile,
+      @NonNull ProgressBar progressBarBanner, @NonNull ProgressBar progressBarName,
+      @NonNull ProgressBar progressBarProfileImage, @NonNull ProgressBar progressBarTopRefresh,
+      @NonNull ProgressBar progressBartran, @NonNull CardView quickActionsCard,
+      @NonNull CardView quickHistory, @NonNull CardView quickMore, @NonNull CardView quickProfile,
       @NonNull NestedScrollView rootScrollView, @NonNull Space space, @NonNull TextView textView20,
       @NonNull CardView transferQuick, @NonNull RecyclerView userList) {
     this.rootView = rootView;
     this.balance = balance;
     this.balanceCard = balanceCard;
     this.balanceContainer = balanceContainer;
+    this.bannerImg = bannerImg;
     this.btnRecive = btnRecive;
     this.btnSend = btnSend;
+    this.constraintLayout2 = constraintLayout2;
     this.firstNamett = firstNamett;
     this.headerCard = headerCard;
     this.historyLabel = historyLabel;
@@ -142,6 +154,7 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.payWithQrCode = payWithQrCode;
     this.profileImageMain = profileImageMain;
     this.progressBarBalance = progressBarBalance;
+    this.progressBarBanner = progressBarBanner;
     this.progressBarName = progressBarName;
     this.progressBarProfileImage = progressBarProfileImage;
     this.progressBarTopRefresh = progressBarTopRefresh;
@@ -202,6 +215,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.bannerImg;
+      ImageView bannerImg = ViewBindings.findChildViewById(rootView, id);
+      if (bannerImg == null) {
+        break missingId;
+      }
+
       id = R.id.btnRecive;
       Button btnRecive = ViewBindings.findChildViewById(rootView, id);
       if (btnRecive == null) {
@@ -211,6 +230,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
       id = R.id.btnSend;
       Button btnSend = ViewBindings.findChildViewById(rootView, id);
       if (btnSend == null) {
+        break missingId;
+      }
+
+      id = R.id.constraintLayout2;
+      ConstraintLayout constraintLayout2 = ViewBindings.findChildViewById(rootView, id);
+      if (constraintLayout2 == null) {
         break missingId;
       }
 
@@ -267,6 +292,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
       id = R.id.progressBarBalance;
       ProgressBar progressBarBalance = ViewBindings.findChildViewById(rootView, id);
       if (progressBarBalance == null) {
+        break missingId;
+      }
+
+      id = R.id.progressBarBanner;
+      ProgressBar progressBarBanner = ViewBindings.findChildViewById(rootView, id);
+      if (progressBarBanner == null) {
         break missingId;
       }
 
@@ -349,11 +380,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       return new ActivityMainPageBinding((CoordinatorLayout) rootView, balance, balanceCard,
-          balanceContainer, btnRecive, btnSend, firstNamett, headerCard, historyLabel, imageView11,
-          linearLayout, main, payWithFatora, payWithQrCode, profileImageMain, progressBarBalance,
-          progressBarName, progressBarProfileImage, progressBarTopRefresh, progressBartran,
-          quickActionsCard, quickHistory, quickMore, quickProfile, rootScrollView, space,
-          textView20, transferQuick, userList);
+          balanceContainer, bannerImg, btnRecive, btnSend, constraintLayout2, firstNamett,
+          headerCard, historyLabel, imageView11, linearLayout, main, payWithFatora, payWithQrCode,
+          profileImageMain, progressBarBalance, progressBarBanner, progressBarName,
+          progressBarProfileImage, progressBarTopRefresh, progressBartran, quickActionsCard,
+          quickHistory, quickMore, quickProfile, rootScrollView, space, textView20, transferQuick,
+          userList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

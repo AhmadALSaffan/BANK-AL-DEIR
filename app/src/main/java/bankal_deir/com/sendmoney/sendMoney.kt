@@ -167,6 +167,7 @@ class sendMoney : AppCompatActivity() {
                                 val intent = Intent(this, MainPage::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                                 startActivity(intent)
+                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                                 finish()
                             }
                         }
@@ -185,6 +186,7 @@ class sendMoney : AppCompatActivity() {
             val intent = Intent(this, MainPage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 

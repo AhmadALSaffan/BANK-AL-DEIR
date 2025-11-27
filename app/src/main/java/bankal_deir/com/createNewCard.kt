@@ -72,6 +72,7 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
             if (selectedType=="mastercard"){
@@ -80,6 +81,7 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
             if (selectedType=="discover"){
@@ -88,6 +90,7 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
             if (selectedType=="fatora"){
@@ -96,6 +99,7 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
 

@@ -35,11 +35,11 @@ class MainPage : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
     private lateinit var recyclerView: RecyclerView
-    private lateinit var tranArrayList : ArrayList<transactions>
+    private lateinit var tranArrayList: ArrayList<transactions>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        mAuth= FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         binding = ActivityMainPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -49,7 +49,7 @@ class MainPage : AppCompatActivity() {
             insets
         }
         readDataUser()
-
+        showBanner()
         binding.btnRecive.setOnClickListener {
             val intent = Intent(this, Recive::class.java)
             startActivity(intent)
@@ -88,13 +88,14 @@ class MainPage : AppCompatActivity() {
         tranArrayList = arrayListOf<transactions>()
         getTranData()
     }
-    var barcodeluncher = registerForActivityResult(ScanContract()){ result ->
-        if (result.contents != null){
-            if (result.contents.startsWith("ACC")){
+
+    var barcodeluncher = registerForActivityResult(ScanContract()) { result ->
+        if (result.contents != null) {
+            if (result.contents.startsWith("ACC")) {
                 val intent = Intent(this, sendMoney::class.java)
                 intent.putExtra("account_number", result.contents)
                 startActivity(intent)
-            }else{
+            } else {
 
             }
         }
@@ -176,7 +177,7 @@ class MainPage : AppCompatActivity() {
             val accountNumber = it.child("accountNumber").value
             val wallet = it.child("walletId").value
             val profileImageUrl = it.child("profileImageUrl").value
-            binding.progressBarName.visibility= View.GONE
+            binding.progressBarName.visibility = View.GONE
             binding.firstNamett.visibility = View.VISIBLE
             binding.firstNamett.text = firstName?.toString() ?: ""
             readBalance(wallet?.toString() ?: "")
@@ -187,7 +188,7 @@ class MainPage : AppCompatActivity() {
                 binding.progressBarProfileImage.visibility = View.GONE
                 binding.profileImageMain.visibility = View.VISIBLE
             }
-            if (profileImageUrl==null){
+            if (profileImageUrl == null) {
                 binding.progressBarProfileImage.visibility = View.GONE
                 binding.profileImageMain.visibility = View.VISIBLE
             }
@@ -206,4 +207,15 @@ class MainPage : AppCompatActivity() {
             binding.balance.text = "$formattedBalance$"
         }
     }
+
+    fun showBanner() {
+        val databaseRef = FirebaseDatabase.getInstance().getReference("banners")
+       databaseRef.child("bannersMain").child("banner1").get().addOnSuccessListener {
+           val bannerUrl = it.value
+           binding.progressBarBanner.visibility = View.GONE
+           Glide.with(this@MainPage).load(bannerUrl.toString()).into(binding.bannerImg)
+           binding.bannerImg.visibility = View.VISIBLE
+       }
+    }
+
 }

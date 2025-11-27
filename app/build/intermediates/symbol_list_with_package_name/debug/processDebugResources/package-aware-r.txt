@@ -4185,6 +4185,7 @@ id balance
 id balanceCard
 id balanceContainer
 id bankIconImageView
+id bannerImg
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -4300,6 +4301,7 @@ id collapseActionView
 id compress
 id confirm_button
 id constraint
+id constraintLayout2
 id container
 id content
 id contentPanel
@@ -4650,6 +4652,7 @@ id profileImageMain
 id progressBar
 id progressBar2
 id progressBarBalance
+id progressBarBanner
 id progressBarName
 id progressBarProfileImage
 id progressBarTopRefresh
