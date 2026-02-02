@@ -12,6 +12,7 @@ import android.widget.Space;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -42,6 +43,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final ImageView bannerImg;
 
   @NonNull
+  public final AppCompatButton btnPayPal;
+
+  @NonNull
   public final Button btnRecive;
 
   @NonNull
@@ -64,6 +68,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout linearLayout;
+
+  @NonNull
+  public final LinearLayout linearLayout2;
 
   @NonNull
   public final CoordinatorLayout main;
@@ -111,6 +118,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final NestedScrollView rootScrollView;
 
   @NonNull
+  public final ImageView shieldLogo;
+
+  @NonNull
+  public final LinearLayout shieldView;
+
+  @NonNull
   public final Space space;
 
   @NonNull
@@ -124,23 +137,26 @@ public final class ActivityMainPageBinding implements ViewBinding {
 
   private ActivityMainPageBinding(@NonNull CoordinatorLayout rootView, @NonNull TextView balance,
       @NonNull CardView balanceCard, @NonNull ConstraintLayout balanceContainer,
-      @NonNull ImageView bannerImg, @NonNull Button btnRecive, @NonNull Button btnSend,
-      @NonNull ConstraintLayout constraintLayout2, @NonNull TextView firstNamett,
-      @NonNull CardView headerCard, @NonNull TextView historyLabel, @NonNull ImageView imageView11,
-      @NonNull LinearLayout linearLayout, @NonNull CoordinatorLayout main,
+      @NonNull ImageView bannerImg, @NonNull AppCompatButton btnPayPal, @NonNull Button btnRecive,
+      @NonNull Button btnSend, @NonNull ConstraintLayout constraintLayout2,
+      @NonNull TextView firstNamett, @NonNull CardView headerCard, @NonNull TextView historyLabel,
+      @NonNull ImageView imageView11, @NonNull LinearLayout linearLayout,
+      @NonNull LinearLayout linearLayout2, @NonNull CoordinatorLayout main,
       @NonNull CardView payWithFatora, @NonNull CardView payWithQrCode,
       @NonNull ShapeableImageView profileImageMain, @NonNull ProgressBar progressBarBalance,
       @NonNull ProgressBar progressBarBanner, @NonNull ProgressBar progressBarName,
       @NonNull ProgressBar progressBarProfileImage, @NonNull ProgressBar progressBarTopRefresh,
       @NonNull ProgressBar progressBartran, @NonNull CardView quickActionsCard,
       @NonNull CardView quickHistory, @NonNull CardView quickMore, @NonNull CardView quickProfile,
-      @NonNull NestedScrollView rootScrollView, @NonNull Space space, @NonNull TextView textView20,
+      @NonNull NestedScrollView rootScrollView, @NonNull ImageView shieldLogo,
+      @NonNull LinearLayout shieldView, @NonNull Space space, @NonNull TextView textView20,
       @NonNull CardView transferQuick, @NonNull RecyclerView userList) {
     this.rootView = rootView;
     this.balance = balance;
     this.balanceCard = balanceCard;
     this.balanceContainer = balanceContainer;
     this.bannerImg = bannerImg;
+    this.btnPayPal = btnPayPal;
     this.btnRecive = btnRecive;
     this.btnSend = btnSend;
     this.constraintLayout2 = constraintLayout2;
@@ -149,6 +165,7 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.historyLabel = historyLabel;
     this.imageView11 = imageView11;
     this.linearLayout = linearLayout;
+    this.linearLayout2 = linearLayout2;
     this.main = main;
     this.payWithFatora = payWithFatora;
     this.payWithQrCode = payWithQrCode;
@@ -164,6 +181,8 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.quickMore = quickMore;
     this.quickProfile = quickProfile;
     this.rootScrollView = rootScrollView;
+    this.shieldLogo = shieldLogo;
+    this.shieldView = shieldView;
     this.space = space;
     this.textView20 = textView20;
     this.transferQuick = transferQuick;
@@ -221,6 +240,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnPayPal;
+      AppCompatButton btnPayPal = ViewBindings.findChildViewById(rootView, id);
+      if (btnPayPal == null) {
+        break missingId;
+      }
+
       id = R.id.btnRecive;
       Button btnRecive = ViewBindings.findChildViewById(rootView, id);
       if (btnRecive == null) {
@@ -266,6 +291,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
       id = R.id.linearLayout;
       LinearLayout linearLayout = ViewBindings.findChildViewById(rootView, id);
       if (linearLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.linearLayout2;
+      LinearLayout linearLayout2 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout2 == null) {
         break missingId;
       }
 
@@ -355,6 +386,18 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.shieldLogo;
+      ImageView shieldLogo = ViewBindings.findChildViewById(rootView, id);
+      if (shieldLogo == null) {
+        break missingId;
+      }
+
+      id = R.id.shieldView;
+      LinearLayout shieldView = ViewBindings.findChildViewById(rootView, id);
+      if (shieldView == null) {
+        break missingId;
+      }
+
       id = R.id.space;
       Space space = ViewBindings.findChildViewById(rootView, id);
       if (space == null) {
@@ -380,12 +423,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       return new ActivityMainPageBinding((CoordinatorLayout) rootView, balance, balanceCard,
-          balanceContainer, bannerImg, btnRecive, btnSend, constraintLayout2, firstNamett,
-          headerCard, historyLabel, imageView11, linearLayout, main, payWithFatora, payWithQrCode,
-          profileImageMain, progressBarBalance, progressBarBanner, progressBarName,
-          progressBarProfileImage, progressBarTopRefresh, progressBartran, quickActionsCard,
-          quickHistory, quickMore, quickProfile, rootScrollView, space, textView20, transferQuick,
-          userList);
+          balanceContainer, bannerImg, btnPayPal, btnRecive, btnSend, constraintLayout2,
+          firstNamett, headerCard, historyLabel, imageView11, linearLayout, linearLayout2, main,
+          payWithFatora, payWithQrCode, profileImageMain, progressBarBalance, progressBarBanner,
+          progressBarName, progressBarProfileImage, progressBarTopRefresh, progressBartran,
+          quickActionsCard, quickHistory, quickMore, quickProfile, rootScrollView, shieldLogo,
+          shieldView, space, textView20, transferQuick, userList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

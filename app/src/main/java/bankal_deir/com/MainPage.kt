@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import bankal_deir.com.AmountTopUp.AmountActivity
 import bankal_deir.com.databinding.ActivityMainPageBinding
 import bankal_deir.com.recive.Recive
 import bankal_deir.com.sendmoney.sendMoney
@@ -43,6 +45,10 @@ class MainPage : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().reference
         binding = ActivityMainPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -80,6 +86,11 @@ class MainPage : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        binding.btnPayPal.setOnClickListener {
+            val intent = Intent(this@MainPage, AmountActivity::class.java)
+            startActivity(intent)
+        }
 
         recyclerView = binding.userList
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -156,12 +167,16 @@ class MainPage : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        binding.shieldView.visibility = View.GONE
+        binding.main.visibility = View.VISIBLE
         handler.post(refreshRunnable)
     }
 
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(refreshRunnable)
+        binding.shieldView.visibility = View.VISIBLE
+        binding.main.visibility = View.INVISIBLE
     }
 
     override fun onDestroy() {

@@ -136,6 +136,7 @@ drawable drowp
 drawable edit34
 drawable edit40
 drawable edit48
+drawable edittext_background
 drawable edittextde
 drawable edt_update
 drawable edtsendtext
@@ -196,6 +197,9 @@ drawable noteswhite
 drawable notification
 drawable password
 drawable passwordfoc
+drawable payp
+drawable paypal
+drawable paypal_btn
 drawable person
 drawable personfoc
 drawable phone
@@ -299,6 +303,7 @@ id btnLoginAfterOTPPhone
 id btnMasterCard
 id btnOk
 id btnPay
+id btnPayPal
 id btnPickImage
 id btnProceedToDetails
 id btnRecive
@@ -357,6 +362,7 @@ id edtPhoneCode
 id edtPhoneNumber
 id edtPhoneNumberUpdate
 id emailSignInTxt
+id etAmount
 id exp_date
 id fatoraBannerImageView
 id finalAmount
@@ -386,6 +392,7 @@ id linFatora
 id linMasterCard
 id linVisa
 id linearLayout
+id linearLayout2
 id loginWithGitHub
 id loginWithGoogle
 id loginWithPhoneNumber
@@ -436,6 +443,8 @@ id scrollView
 id scrollView2
 id seePassword
 id seePasswordSignUp
+id shieldLogo
+id shieldView
 id showEmail
 id showPhone
 id space
@@ -493,6 +502,7 @@ id tr_date
 id tr_number
 id transactionNumber
 id transfer_quick
+id tvCurrentBalance
 id tvInstruction
 id tvTitle
 id txtAccountNumber
@@ -519,6 +529,7 @@ id txtVariantName
 id userList
 id viewPager2
 id viewSelectedOverlay
+layout activity_amount
 layout activity_card_show_details_after_create
 layout activity_card_variant
 layout activity_cards

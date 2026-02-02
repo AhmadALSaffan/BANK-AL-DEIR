@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "bankal_deir.com.app-mergeDebugResources-73:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "bankal_deir.com.app-mergeDebugResources-72:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\079d372dcb2d4cd337d17bab65d03e7f\\transformed\\appcompat-1.7.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\6ea18556926d01a8d61b4ed9f80cb7ec\\transformed\\appcompat-1.7.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\8ca2f03c80f2fcffc55e3a2e3f9a38c3\\transformed\\play-services-auth-21.3.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\ahmad\\.gradle\\caches\\8.13\\transforms\\cecc3c79c4ae260384736be6dadf43e8\\transformed\\play-services-auth-21.3.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

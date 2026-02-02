@@ -31,6 +31,9 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     fun login(email: String, password: String) = repository.login(email, password)
     fun resetPassword(email: String) = repository.resetPassword(email)
+
+
+
     fun checkUserExists(phoneNumber: String) = repository.checkUserExists(phoneNumber)
     fun verifyPhoneCode(credential: AuthCredential) =
         repository.verifyPhoneCode(credential as PhoneAuthCredential)
@@ -176,18 +179,15 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
 
     fun verifyCode(code: String) {
         val vid = verificationId
-
         if (vid == null) {
             _phoneAuthState.value =
                 PhoneAuthState.Error("No verification ID. Please request code again.")
             return
         }
-
         if (code.isEmpty() || code.length != 6) {
             _phoneAuthState.value = PhoneAuthState.Error("Please enter a valid 6-digit code")
             return
         }
-
         _phoneAuthState.value = PhoneAuthState.Loading
 
         try {
