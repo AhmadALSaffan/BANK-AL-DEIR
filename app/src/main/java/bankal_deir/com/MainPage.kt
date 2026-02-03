@@ -27,9 +27,11 @@ import com.google.firebase.database.ValueEventListener
 import com.journeyapps.barcodescanner.CaptureActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
+import java.util.Locale
 
 
 class MainPage : AppCompatActivity() {
@@ -117,29 +119,44 @@ class MainPage : AppCompatActivity() {
         val currentUserID = mAuth.currentUser?.uid ?: return
 
         databaseReference = FirebaseDatabase.getInstance().getReference("history")
+
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val allUserTrans = mutableListOf<Pair<String, transactions>>()
+                val allUserTrans = mutableListOf<transactions>()
 
+                // Get all transactions for current user
                 for (tranSnap in snapshot.children) {
                     val transaction = tranSnap.getValue(transactions::class.java)
-                    if (transaction?.senderUserId == currentUserID || transaction?.receiverWalletID == currentUserID) {
+
+                    // Check if transaction belongs to current user
+                    if (transaction?.senderUserId == currentUserID ||
+                        transaction?.receiverWalletID == currentUserID) {
                         transaction?.let {
-                            allUserTrans.add(Pair(tranSnap.key ?: "", it))
+                            allUserTrans.add(it)
                         }
                     }
                 }
 
-                val sortedByKey = allUserTrans.sortedByDescending { it.first }
+                // Sort by date (newest first)
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+                val sortedByDate = allUserTrans.sortedByDescending { transaction ->
+                    try {
+                        dateFormat.parse(transaction.date)?.time ?: 0L
+                    } catch (e: Exception) {
+                        0L
+                    }
+                }
 
-                val newestFive = sortedByKey.take(5).map { it.second }
+                // Take the last 10 transactions
+                val lastTenTransactions = sortedByDate.take(10)
 
+                // Update RecyclerView
                 if (recyclerView.adapter == null) {
-                    recyclerView.adapter = MyAdapter(ArrayList(newestFive))
+                    recyclerView.adapter = MyAdapter(ArrayList(lastTenTransactions))
                 } else {
                     binding.progressBartran.visibility = View.GONE
                     binding.userList.visibility = View.VISIBLE
-                    (recyclerView.adapter as MyAdapter).updateData(ArrayList(newestFive))
+                    (recyclerView.adapter as MyAdapter).updateData(ArrayList(lastTenTransactions))
                 }
             }
 
@@ -147,7 +164,6 @@ class MainPage : AppCompatActivity() {
                 Log.e("TransactionError", "Failed to read transactions: ${error.message}")
             }
         })
-
     }
 
 

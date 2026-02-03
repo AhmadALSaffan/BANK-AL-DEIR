@@ -19,6 +19,9 @@ import com.google.firebase.database.*
 import com.braintreepayments.api.*
 import java.util.concurrent.TimeUnit
 import bankal_deir.com.R
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AmountActivity : AppCompatActivity(), PayPalListener {
     private lateinit var binding: ActivityAmountBinding
@@ -29,6 +32,7 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
     private var pendingAmount: Double = 0.0
     private lateinit var progressDialog: Dialog
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,8 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
         setContentView(binding.root)
 
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+        mAuth = FirebaseAuth.getInstance()
 
         setupBraintree()
         setupProgressDialog()
@@ -128,6 +134,7 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
 
             getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE).edit().clear().apply()
             hideProgressDialog()
+            saveTopUpTransaction(pendingAmount)
             Toast.makeText(this, "Payment successful! Balance updating...", Toast.LENGTH_LONG).show()
             startActivity(Intent(this, MainPage::class.java))
             finish()
@@ -169,4 +176,33 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
             hideProgressDialog()
         }
     }
+
+
+    private fun saveTopUpTransaction(amount: Double) {
+        val currentUserId = mAuth.currentUser?.uid
+        if (currentUserId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val databaseRef = FirebaseDatabase.getInstance().reference
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+        val currentDate = dateFormat.format(Date())
+
+        val transaction = transactions.createTopUpTransaction(
+            userId = currentUserId,
+            amount = amount,
+            date = currentDate
+        )
+        databaseRef.child("history")
+            .child(transaction.transactionNumber)
+            .setValue(transaction)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Top-up successful!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "Failed to save transaction: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+
 }

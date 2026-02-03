@@ -290,15 +290,16 @@ class sendMoney : AppCompatActivity() {
     private fun saveTransactionHistory(senderWalletID: String, receiverWalletID: String, amount: Double): String {
         val historyRef = FirebaseDatabase.getInstance().getReference("history")
         val transactionNumber = "SYP" + System.currentTimeMillis() + (1000..9999).random()
-        val date = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-            .format(Date())
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+        val date = dateFormat.format(Date())
         val transactionData = mapOf(
             "transactionNumber" to transactionNumber,
             "senderWalletID" to senderWalletID,
             "receiverWalletID" to receiverWalletID,
             "amount" to amount,
             "date" to date,
-            "senderUserId" to mAuth.currentUser?.uid
+            "senderUserId" to mAuth.currentUser?.uid,
+            "transactionType" to "SYP"
         )
         historyRef.child(transactionNumber).setValue(transactionData)
         return transactionNumber

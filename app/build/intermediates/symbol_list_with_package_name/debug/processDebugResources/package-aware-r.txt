@@ -3501,6 +3501,7 @@ drawable recive40
 drawable recivebtnlight
 drawable recivebutton
 drawable recivedownload48
+drawable red_line_back
 drawable returnic
 drawable rightbtn
 drawable round
@@ -3521,6 +3522,7 @@ drawable spinner_drop
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable topup
 drawable transfermoney
 drawable tryback
 drawable up
@@ -4073,6 +4075,7 @@ id otp4
 id otp5
 id otp6
 id outline
+id outlineBox
 id outward
 id overlaySelected
 id overshoot
@@ -4301,6 +4304,7 @@ id toggle
 id top
 id topPanel
 id touch_outside
+id tr_Type
 id tr_amount
 id tr_date
 id tr_number
