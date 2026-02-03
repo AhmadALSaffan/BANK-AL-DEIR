@@ -3,7 +3,7 @@
 
 BANK-AL-DEIR is an Android banking application developed by AhmadALSaffan, designed to provide secure, modern banking features using a robust and scalable codebase in both Kotlin and Java. The project showcases skills in mobile banking solutions, including account management, transaction tracking, and integration with contemporary UI components.
 
-![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/c430f73c620a194c75e4820a704e5bd51fe20ef1/mockup1.png)
+![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/d1bcbfac181b24e594c43cac275487c658e43f12/mockup1.png)
 ![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/c430f73c620a194c75e4820a704e5bd51fe20ef1/mockup2.png)
 
 # Features
@@ -20,10 +20,10 @@ BANK-AL-DEIR is an Android banking application developed by AhmadALSaffan, desig
 - Kotlin – the entire codebase is programmed in this modern, concise, and safe language for Android development
 - Firebase – Authentication, real-time database, and cloud functions
 # Getting Started
-To try BANK-AL-DEIR on your device download the app from the link : [https://www.mediafire.com/file/xvjve0f1mdecr0q/Bank_AL_Deir.apk/file](https://www.mediafire.com/file/xvjve0f1mdecr0q/Bank_AL_Deir.apk/file)
+To try BANK-AL-DEIR on your device download the app from the link : [https://www.mediafire.com/file/5w54d712x6u7hxd/Bank_AL_Deir.apk/file](https://www.mediafire.com/file/5w54d712x6u7hxd/Bank_AL_Deir.apk/file)
 
 # Download APK:
-Download the latest APK here : [https://www.mediafire.com/file/xvjve0f1mdecr0q/Bank_AL_Deir.apk/file](https://www.mediafire.com/file/xvjve0f1mdecr0q/Bank_AL_Deir.apk/file)
+Download the latest APK here : [https://www.mediafire.com/file/5w54d712x6u7hxd/Bank_AL_Deir.apk/file](https://www.mediafire.com/file/5w54d712x6u7hxd/Bank_AL_Deir.apk/file)
 # Install on Android:
 
 - Open the APK file on your Android device and follow the installation instructions.
