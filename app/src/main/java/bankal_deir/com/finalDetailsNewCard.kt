@@ -170,16 +170,29 @@ class finalDetailsNewCard : AppCompatActivity() {
         progressDialog.show()
 
         val uId = mAuth.currentUser?.uid ?: return
+
+        // First, get the user's walletId from users node
         val userRef = FirebaseDatabase.getInstance().getReference("users").child(uId)
 
         userRef.get().addOnSuccessListener { userSnapshot ->
+            // Get user name
             val name = userSnapshot.child("firstName").value.toString() + " " +
                     userSnapshot.child("lastName").value.toString()
 
+            // Get the wallet ID from user data
+            val walletId = userSnapshot.child("walletId").value?.toString()
 
+            if (walletId.isNullOrEmpty()) {
+                progressDialog.dismiss()
+                Toast.makeText(this, "No wallet found for this user", Toast.LENGTH_SHORT).show()
+                Log.e("finalDetailsNewCard", "No walletId found in user data")
+                return@addOnSuccessListener
+            }
+
+            Log.d("finalDetailsNewCard", "Found wallet ID: $walletId")
+
+            // Generate card details
             val cardTypeForNumber = cardType?.lowercase() ?: "visa"
-
-
             val firstDigitCard = when (cardTypeForNumber) {
                 "visa" -> '4'
                 "mastercard" -> '5'
@@ -187,7 +200,6 @@ class finalDetailsNewCard : AppCompatActivity() {
                 "fatora" -> '9'
                 else -> '4'
             }
-
 
             val remaining = (1..15).map { ('0'..'9').random() }.joinToString("")
             val fullNumber = firstDigitCard + remaining
@@ -198,15 +210,11 @@ class finalDetailsNewCard : AppCompatActivity() {
                 fullNumber.substring(12, 16)
             ).joinToString(" ")
 
-
             val month = (1..12).random().toString().padStart(2, '0')
             val currentYear = Calendar.getInstance().get(Calendar.YEAR)
             val year = (currentYear + (1..5).random()).toString().takeLast(2)
             val expireDate = "$month/$year"
-
-
             val cvv = (100..999).random().toString()
-
 
             val newCard = mapOf(
                 "cardnumber" to grouped,
@@ -216,20 +224,25 @@ class finalDetailsNewCard : AppCompatActivity() {
                 "cardname" to (fullCardName ?: cardTypeForNumber),
                 "cardtype" to cardTypeForNumber,
                 "variant" to (variant ?: "Classic"),
-                "fees" to fees
+                "fees" to fees,
+                "Balnce" to 0.0
             )
 
             Log.d("finalDetailsNewCard", "Saving card: $newCard")
 
-            val cardsRef = userRef.child("cards")
+            // Now save the card in: wallets/{walletId}/cards
+            val walletCardsRef = FirebaseDatabase.getInstance()
+                .getReference("wallets")
+                .child(walletId)
+                .child("cards")
 
-            cardsRef.get().addOnSuccessListener { snapshot ->
-                val nextIndex = snapshot.childrenCount.toInt() + 1
+            walletCardsRef.get().addOnSuccessListener { cardsSnapshot ->
+                val nextIndex = cardsSnapshot.childrenCount.toInt() + 1
                 val cardKey = "card$nextIndex"
 
-                Log.d("finalDetailsNewCard", "Saving as: $cardKey")
+                Log.d("finalDetailsNewCard", "Saving as: $cardKey in path: wallets/$walletId/cards/$cardKey")
 
-                cardsRef.child(cardKey).setValue(newCard)
+                walletCardsRef.child(cardKey).setValue(newCard)
                     .addOnSuccessListener {
                         progressDialog.dismiss()
 
@@ -272,10 +285,13 @@ class finalDetailsNewCard : AppCompatActivity() {
             }.addOnFailureListener { error ->
                 progressDialog.dismiss()
                 Toast.makeText(this, "Error reading cards: ${error.message}", Toast.LENGTH_SHORT).show()
+                Log.e("finalDetailsNewCard", "Error reading cards: ${error.message}")
             }
+
         }.addOnFailureListener { error ->
             progressDialog.dismiss()
             Toast.makeText(this, "Error reading user: ${error.message}", Toast.LENGTH_SHORT).show()
+            Log.e("finalDetailsNewCard", "Error reading user: ${error.message}")
         }
     }
 

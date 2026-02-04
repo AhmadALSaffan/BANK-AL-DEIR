@@ -3355,6 +3355,7 @@ drawable gray_note48
 drawable gray_person24
 drawable gray_person48
 drawable green_line_back
+drawable hide
 drawable his
 drawable historyclock
 drawable home
@@ -3528,6 +3529,7 @@ drawable tryback
 drawable up
 drawable upfo
 drawable upper
+drawable view
 drawable visa
 drawable visaclassic
 drawable visagold
@@ -3733,8 +3735,10 @@ id callMeasure
 id cancel_button
 id cardContainer
 id cardVariantItem
+id card_blance
 id card_holder
 id card_number
+id card_view
 id cards_list
 id carryVelocity
 id center

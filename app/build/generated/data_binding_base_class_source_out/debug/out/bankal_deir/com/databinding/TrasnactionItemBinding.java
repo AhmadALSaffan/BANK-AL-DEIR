@@ -4,6 +4,7 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,9 @@ public final class TrasnactionItemBinding implements ViewBinding {
   private final CardView rootView;
 
   @NonNull
+  public final ImageView outlineBox;
+
+  @NonNull
   public final TextView trAmount;
 
   @NonNull
@@ -28,12 +32,18 @@ public final class TrasnactionItemBinding implements ViewBinding {
   @NonNull
   public final TextView trNumber;
 
-  private TrasnactionItemBinding(@NonNull CardView rootView, @NonNull TextView trAmount,
-      @NonNull TextView trDate, @NonNull TextView trNumber) {
+  @NonNull
+  public final TextView trType;
+
+  private TrasnactionItemBinding(@NonNull CardView rootView, @NonNull ImageView outlineBox,
+      @NonNull TextView trAmount, @NonNull TextView trDate, @NonNull TextView trNumber,
+      @NonNull TextView trType) {
     this.rootView = rootView;
+    this.outlineBox = outlineBox;
     this.trAmount = trAmount;
     this.trDate = trDate;
     this.trNumber = trNumber;
+    this.trType = trType;
   }
 
   @Override
@@ -63,6 +73,12 @@ public final class TrasnactionItemBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.outlineBox;
+      ImageView outlineBox = ViewBindings.findChildViewById(rootView, id);
+      if (outlineBox == null) {
+        break missingId;
+      }
+
       id = R.id.tr_amount;
       TextView trAmount = ViewBindings.findChildViewById(rootView, id);
       if (trAmount == null) {
@@ -81,7 +97,14 @@ public final class TrasnactionItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new TrasnactionItemBinding((CardView) rootView, trAmount, trDate, trNumber);
+      id = R.id.tr_Type;
+      TextView trType = ViewBindings.findChildViewById(rootView, id);
+      if (trType == null) {
+        break missingId;
+      }
+
+      return new TrasnactionItemBinding((CardView) rootView, outlineBox, trAmount, trDate, trNumber,
+          trType);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -12,10 +12,6 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\activity_verify_phone_number.xml"
     },
     {
-        "merged": "bankal_deir.com.app-mergeDebugResources-73:/layout/activity_main_page.xml",
-        "source": "bankal_deir.com.app-main-76:/layout/activity_main_page.xml"
-    },
-    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\trasnaction_item.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\trasnaction_item.xml"
     },
@@ -98,6 +94,10 @@
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\mastercard_dialog.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\mastercard_dialog.xml"
+    },
+    {
+        "merged": "bankal_deir.com.app-mergeDebugResources-73:/layout/card_item.xml",
+        "source": "bankal_deir.com.app-main-76:/layout/card_item.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\progress.xml",

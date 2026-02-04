@@ -1,6 +1,8 @@
 package bankal_deir.com
 
 import android.graphics.Color
+import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,18 +16,73 @@ import kotlinx.coroutines.NonDisposableHandle.parent
 class CardAdapter(private var cards: List<CardModel>) :
     RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
+    fun update(newCards: List<CardModel>) {
+        val currentStates = this.cards.associate { it.cardnumber to it.isVisible }
+
+        newCards.forEach { newCard ->
+            newCard.isVisible = currentStates[newCard.cardnumber] ?: false
+        }
+
+        this.cards = newCards
+        notifyDataSetChanged()
+    }
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val backgroundImage: ImageView = itemView.findViewById(R.id.backgroundImage)
         val cardNumber: TextView = itemView.findViewById(R.id.card_number)
         val expDate: TextView = itemView.findViewById(R.id.exp_date)
         val cvv: TextView = itemView.findViewById(R.id.cvv)
         val cardHolder: TextView = itemView.findViewById(R.id.card_holder)
+        val cardBalance: TextView = itemView.findViewById(R.id.card_blance)
+        val cardView: ImageView = itemView.findViewById(R.id.card_view)
+
+
+        fun bind(card: CardModel) {
+            // Set the UI state based on the data
+            applyState(card.isVisible)
+
+            // Set click listener once
+            cardView.setOnClickListener {
+                card.isVisible = !card.isVisible
+                applyState(card.isVisible)
+            }
+        }
+
+        private fun applyState(visible: Boolean) {
+            if (visible) {
+                setShownState()
+                cardView.setImageResource(R.drawable.hide)
+            } else {
+                setHiddenState()
+                cardView.setImageResource(R.drawable.view)
+            }
+        }
+
+        private fun setShownState() {
+            cardNumber.transformationMethod = null
+            expDate.transformationMethod = null
+            cvv.transformationMethod = null
+            cardBalance.transformationMethod = null
+        }
+
+        private fun setHiddenState() {
+            val passwordFilter = PasswordTransformationMethod.getInstance()
+            cardNumber.transformationMethod = passwordFilter
+            cvv.transformationMethod = passwordFilter
+
+            val starTransform = object : PasswordTransformationMethod() {
+                override fun getTransformation(source: CharSequence, view: View): CharSequence = "****"
+            }
+            expDate.transformationMethod = starTransform
+            cardBalance.transformationMethod = starTransform
+        }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_item, parent, false)
         return CardViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -34,7 +91,9 @@ class CardAdapter(private var cards: List<CardModel>) :
         holder.expDate.text = card.cardexp
         holder.cvv.text = card.cardcvv
         holder.cardHolder.text = card.cardholder
+        holder.cardBalance.text = "$ ${card.Balnce}"
 
+        holder.bind(card)
 
         fun getCardBackground(cardType: String): Int {
             return when {
@@ -54,7 +113,7 @@ class CardAdapter(private var cards: List<CardModel>) :
                 "discover regular" in cardType || "discover reguler" in cardType || "discoverregular" in cardType -> R.drawable.discoverregular
                 "discover" in cardType -> R.drawable.discoverregular
 
-                // Fatora variants
+
                 "fatora digital" in cardType || "fatoradigital" in cardType -> R.drawable.fatoradigital
                 "fatora cash back" in cardType || "fatoracashback" in cardType -> R.drawable.fatoracashback
                 "fatora classic" in cardType || "fatoraclassic" in cardType -> R.drawable.fatoraclassic
@@ -101,10 +160,6 @@ class CardAdapter(private var cards: List<CardModel>) :
 
     override fun getItemCount(): Int = cards.size
 
-    fun update(newCards: List<CardModel>) {
-        cards = newCards
-        notifyDataSetChanged()
-    }
 }
 
 

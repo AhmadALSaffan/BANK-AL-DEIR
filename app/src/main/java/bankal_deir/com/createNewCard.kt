@@ -19,10 +19,6 @@ import bankal_deir.com.databinding.VisaDetailsBinding
 
 class createNewCard : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNewCardBinding
-    val visaFees = 25
-    val mastercardFees = 25
-    val discoverFees = 15
-    val fatoraFees = 0
      var selectedType: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,56 +107,6 @@ class createNewCard : AppCompatActivity() {
 
         }
     }
-    fun showVisaDialog() {
-        val visaDet = Dialog(this).apply {
-            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-            setContentView(R.layout.visa_details)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
-        val btnClose = visaDet.findViewById<Button>(R.id.btnVisaClose)
-        btnClose.setOnClickListener {
-            visaDet.dismiss()
-        }
-        visaDet.show()
-    }
 
-    fun showMasterDialog() {
-        val masterDet = Dialog(this).apply {
-            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-            setContentView(R.layout.mastercard_dialog)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
-        val btnClose = masterDet.findViewById<Button>(R.id.btnmasterClose)
-        btnClose.setOnClickListener {
-            masterDet.dismiss()
-        }
-        masterDet.show()
-    }
-
-    fun showDiscDialog() {
-        val discDet = Dialog(this).apply {
-            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-            setContentView(R.layout.discover_dialog)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
-        val btnClose = discDet.findViewById<Button>(R.id.btnDiscoverClose)
-        btnClose.setOnClickListener {
-            discDet.dismiss()
-        }
-        discDet.show()
-    }
-
-    fun showFatoraDialog() {
-        val fatoraDet = Dialog(this).apply {
-            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
-            setContentView(R.layout.fatora_dialog)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
-        val btnClose = fatoraDet.findViewById<Button>(R.id.btnFatoraClose)
-        btnClose.setOnClickListener {
-            fatoraDet.dismiss()
-        }
-        fatoraDet.show()
-    }
 
 }

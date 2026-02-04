@@ -5,5 +5,7 @@ data class CardModel(
     val cardexp: String = "",
     val cardcvv: String = "",
     val cardholder: String = "",
-    val cardname: String = ""
+    val cardname: String = "",
+    val Balnce: Double=0.0,
+    var isVisible: Boolean = false
 )

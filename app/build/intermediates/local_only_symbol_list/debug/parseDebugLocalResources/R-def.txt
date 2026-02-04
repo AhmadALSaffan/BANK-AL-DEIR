@@ -165,6 +165,7 @@ drawable gray_note48
 drawable gray_person24
 drawable gray_person48
 drawable green_line_back
+drawable hide
 drawable his
 drawable historyclock
 drawable home
@@ -216,6 +217,7 @@ drawable recive40
 drawable recivebtnlight
 drawable recivebutton
 drawable recivedownload48
+drawable red_line_back
 drawable returnic
 drawable rightbtn
 drawable round
@@ -233,11 +235,13 @@ drawable sendbuttonpagesend
 drawable sendmoney64
 drawable settings
 drawable spinner_drop
+drawable topup
 drawable transfermoney
 drawable tryback
 drawable up
 drawable upfo
 drawable upper
+drawable view
 drawable visa
 drawable visaclassic
 drawable visagold
@@ -327,8 +331,10 @@ id btnmasterClose
 id buttonContainer
 id cardContainer
 id cardVariantItem
+id card_blance
 id card_holder
 id card_number
+id card_view
 id cards_list
 id checkBox
 id checkBox2
@@ -409,6 +415,7 @@ id otp3
 id otp4
 id otp5
 id otp6
+id outlineBox
 id overlaySelected
 id payWithFatora
 id payWithQrCode
@@ -497,6 +504,7 @@ id textView6
 id textView7
 id textView8
 id textView9
+id tr_Type
 id tr_amount
 id tr_date
 id tr_number

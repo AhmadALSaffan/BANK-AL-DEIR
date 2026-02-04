@@ -12,12 +12,16 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\customemail.xml"
     },
     {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\bottom_nav_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_github32.png.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\github32.png"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_bottom_nav_menu.xml.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\bottom_nav_menu.xml"
+        "merged": "bankal_deir.com.app-debug-74:/drawable_hide.png.flat",
+        "source": "bankal_deir.com.app-main-76:/drawable/hide.png"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_baseline_home_24.xml.flat",
@@ -36,20 +40,20 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\recitems.xml"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_walleticon.png.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\walleticon.png"
-    },
-    {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_cardsbackgreen.png.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\cardsbackgreen.png"
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_fatissue.png.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\fatissue.png"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_fatoraclassic.png.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\fatoraclassic.png"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_fatissue.png.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\fatissue.png"
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_cardsbackgreen.png.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\cardsbackgreen.png"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_walleticon.png.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\walleticon.png"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_leftbtn.xml.flat",
@@ -124,6 +128,10 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\tryback.png"
     },
     {
+        "merged": "bankal_deir.com.app-debug-74:/drawable_view.png.flat",
+        "source": "bankal_deir.com.app-main-76:/drawable/view.png"
+    },
+    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_ibanback.xml.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\ibanback.xml"
     },
@@ -152,16 +160,16 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\btnissue.xml"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_btn2.xml.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\btn2.xml"
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_spinner_drop.xml.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\spinner_drop.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_btncehck.xml.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\btncehck.xml"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_spinner_drop.xml.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\spinner_drop.xml"
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_btn2.xml.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\btn2.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_moneysend.png.flat",
@@ -234,6 +242,10 @@
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\layout_spinner_dropdown_layout.xml.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\spinner_dropdown_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_topup.png.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\topup.png"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_ic_launcher_background.xml.flat",
@@ -316,12 +328,20 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\fatrora.png"
     },
     {
+        "merged": "bankal_deir.com.app-debug-74:/layout_card_item.xml.flat",
+        "source": "bankal_deir.com.app-main-76:/layout/card_item.xml"
+    },
+    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_fatcheck.png.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\fatcheck.png"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_personfoc.xml.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\personfoc.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_red_line_back.xml.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\red_line_back.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_visasignaturesy.png.flat",
@@ -420,12 +440,12 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\returnic.png"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_crad1.png.flat",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\crad1.png"
-    },
-    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\layout_card_item.xml.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\card_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_crad1.png.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\crad1.png"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_mastercardclassic.png.flat",
@@ -892,14 +912,6 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\recivebutton.xml"
     },
     {
-        "merged": "bankal_deir.com.app-debug-74:/layout_activity_main_page.xml.flat",
-        "source": "bankal_deir.com.app-main-76:/layout/activity_main_page.xml"
-    },
-    {
-        "merged": "bankal_deir.com.app-debug-74:/drawable_payp.xml.flat",
-        "source": "bankal_deir.com.app-main-76:/drawable/payp.xml"
-    },
-    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_card48.xml.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\card48.xml"
     },
@@ -1038,6 +1050,10 @@
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_more.png.flat",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\more.png"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_payp.xml.flat",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\drawable\\payp.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-debug-74:\\drawable_backgreen.png.flat",

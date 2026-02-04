@@ -3354,6 +3354,7 @@ int drawable gray_note48 0x7f08010f
 int drawable gray_person24 0x7f080110
 int drawable gray_person48 0x7f080111
 int drawable green_line_back 0x7f080112
+int drawable hide 0x7f0801cc
 int drawable his 0x7f080113
 int drawable historyclock 0x7f080114
 int drawable home 0x7f080115
@@ -3527,6 +3528,7 @@ int drawable tryback 0x7f0801bc
 int drawable up 0x7f0801bd
 int drawable upfo 0x7f0801be
 int drawable upper 0x7f0801bf
+int drawable view 0x7f0801cd
 int drawable visa 0x7f0801c0
 int drawable visaclassic 0x7f0801c1
 int drawable visagold 0x7f0801c2
@@ -3732,8 +3734,10 @@ int id callMeasure 0x7f0a00ba
 int id cancel_button 0x7f0a00bb
 int id cardContainer 0x7f0a00bc
 int id cardVariantItem 0x7f0a00bd
+int id card_blance 0x7f0a034c
 int id card_holder 0x7f0a00be
 int id card_number 0x7f0a00bf
+int id card_view 0x7f0a034d
 int id cards_list 0x7f0a00c0
 int id carryVelocity 0x7f0a00c1
 int id center 0x7f0a00c2

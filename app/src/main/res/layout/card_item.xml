@@ -32,7 +32,6 @@
             android:padding="16dp"
             android:background="@color/white">
 
-            <!-- Card Number -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="Card Number"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="sans-serif-medium" />
 
@@ -54,6 +53,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:inputType="numberPassword"
                     android:text="•••• •••• •••• 1234"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
@@ -62,14 +62,13 @@
                     android:gravity="end" />
             </LinearLayout>
 
-            <!-- Expiry Date and CVV Row -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="12dp">
 
-                <!-- Expiry Date -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -82,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:text="Valid Thru"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:layout_marginEnd="8dp"
                         android:fontFamily="sans-serif-medium" />
 
@@ -90,6 +89,7 @@
                         android:id="@+id/exp_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:inputType="textPassword"
                         android:text="03/28"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
@@ -97,7 +97,7 @@
                         android:fontFamily="sans-serif-medium" />
                 </LinearLayout>
 
-                <!-- CVV -->
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:text="CVV"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:layout_marginEnd="8dp"
                         android:fontFamily="sans-serif-medium" />
 
@@ -119,6 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="•••"
+                        android:inputType="textPassword"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -137,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:text="Card Holder"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="sans-serif-medium" />
 
@@ -156,6 +157,43 @@
                     android:ellipsize="end" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balance"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="8dp"
+                   android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/card_blance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="$0.0"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <ImageView
+                    android:id="@+id/card_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.15"
+                    android:src="@drawable/view"/>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

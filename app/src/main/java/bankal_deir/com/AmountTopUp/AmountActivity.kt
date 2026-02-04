@@ -69,6 +69,7 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
                 startPayPalCheckout(amount)
             } else {
                 Toast.makeText(this, "Please enter a valid amount", Toast.LENGTH_SHORT).show()
+                hideProgressDialog()
             }
         }
     }

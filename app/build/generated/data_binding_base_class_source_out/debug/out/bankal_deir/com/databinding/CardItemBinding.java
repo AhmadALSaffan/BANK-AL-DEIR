@@ -24,10 +24,16 @@ public final class CardItemBinding implements ViewBinding {
   public final ImageView backgroundImage;
 
   @NonNull
+  public final TextView cardBlance;
+
+  @NonNull
   public final TextView cardHolder;
 
   @NonNull
   public final TextView cardNumber;
+
+  @NonNull
+  public final ImageView cardView;
 
   @NonNull
   public final TextView cvv;
@@ -36,12 +42,14 @@ public final class CardItemBinding implements ViewBinding {
   public final TextView expDate;
 
   private CardItemBinding(@NonNull CardView rootView, @NonNull ImageView backgroundImage,
-      @NonNull TextView cardHolder, @NonNull TextView cardNumber, @NonNull TextView cvv,
-      @NonNull TextView expDate) {
+      @NonNull TextView cardBlance, @NonNull TextView cardHolder, @NonNull TextView cardNumber,
+      @NonNull ImageView cardView, @NonNull TextView cvv, @NonNull TextView expDate) {
     this.rootView = rootView;
     this.backgroundImage = backgroundImage;
+    this.cardBlance = cardBlance;
     this.cardHolder = cardHolder;
     this.cardNumber = cardNumber;
+    this.cardView = cardView;
     this.cvv = cvv;
     this.expDate = expDate;
   }
@@ -79,6 +87,12 @@ public final class CardItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.card_blance;
+      TextView cardBlance = ViewBindings.findChildViewById(rootView, id);
+      if (cardBlance == null) {
+        break missingId;
+      }
+
       id = R.id.card_holder;
       TextView cardHolder = ViewBindings.findChildViewById(rootView, id);
       if (cardHolder == null) {
@@ -88,6 +102,12 @@ public final class CardItemBinding implements ViewBinding {
       id = R.id.card_number;
       TextView cardNumber = ViewBindings.findChildViewById(rootView, id);
       if (cardNumber == null) {
+        break missingId;
+      }
+
+      id = R.id.card_view;
+      ImageView cardView = ViewBindings.findChildViewById(rootView, id);
+      if (cardView == null) {
         break missingId;
       }
 
@@ -103,8 +123,8 @@ public final class CardItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new CardItemBinding((CardView) rootView, backgroundImage, cardHolder, cardNumber, cvv,
-          expDate);
+      return new CardItemBinding((CardView) rootView, backgroundImage, cardBlance, cardHolder,
+          cardNumber, cardView, cvv, expDate);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
