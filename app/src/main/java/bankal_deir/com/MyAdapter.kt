@@ -1,5 +1,7 @@
 package bankal_deir.com
 
+import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -10,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.RecyclerView
+import bankal_deir.com.ShowTransaction.ShowTransaction
 
 class MyAdapter(private var transList: ArrayList<transactions>)
     : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -27,7 +30,6 @@ class MyAdapter(private var transList: ArrayList<transactions>)
         val context = holder.itemView.context
         when {
             tx.transactionNumber.startsWith("PLP") -> {
-                // Top-up transaction - GREEN
                 holder.tr_number.setTextColor(Color.GREEN)
                 holder.tr_amount.text = "+${tx.amount}$"
                 holder.tr_amount.setTextColor(Color.GREEN)
@@ -42,7 +44,6 @@ class MyAdapter(private var transList: ArrayList<transactions>)
                 )
             }
             tx.transactionNumber.startsWith("SYP") -> {
-                // Send money transaction - RED
                 holder.tr_number.setTextColor(Color.RED)
                 holder.tr_amount.text = "-${tx.amount.toDouble()}$"
                 holder.tr_amount.setTextColor(Color.RED)
@@ -52,7 +53,7 @@ class MyAdapter(private var transList: ArrayList<transactions>)
                 holder.tr_Type.setTextColor(Color.RED)
                 ImageViewCompat.setImageTintList(
                     holder.outlineBox,
-                    ColorStateList.valueOf(ContextCompat.getColor(context, R.color.Danger_Red))
+                    ColorStateList.valueOf(ContextCompat.getColor(context, R.color.RED))
                 )
             }
             else -> {
@@ -60,6 +61,18 @@ class MyAdapter(private var transList: ArrayList<transactions>)
                 holder.outlineBox.setBackgroundResource(R.drawable.green_line_back)
                 holder.outlineBox.setImageResource(R.drawable.send64)
             }
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ShowTransaction::class.java).apply {
+                putExtra("transactionNumber", tx.transactionNumber)
+                putExtra("amount", tx.amount.toString())
+                putExtra("date", tx.date)
+
+                putExtra("senderWallet", tx.senderWalletID ?: "")
+                putExtra("receiverWallet", tx.receiverWalletID ?: "")
+            }
+            context.startActivity(intent)
         }
     }
 

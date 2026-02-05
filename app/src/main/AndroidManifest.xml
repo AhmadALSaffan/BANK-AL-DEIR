@@ -9,7 +9,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"
+    <uses-permission
+        android:name="android.permission.RECEIVE_SMS"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
 
     <application
@@ -21,20 +22,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BankALDeir">
-
-        <activity android:name=".AmountTopUp.AmountActivity"
-            android:launchMode="singleTop"
-            android:exported="true">
+        <activity
+            android:name=".History.HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowTransaction.ShowTransaction"
+            android:exported="false" />
+        <activity
+            android:name=".AmountTopUp.AmountActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="bankaldeir.braintree" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".Login.RegisterUserDetails"
             android:exported="false" />
@@ -108,10 +114,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

@@ -79,6 +79,12 @@
         android:testOnly="true"
         android:theme="@style/Theme.BankALDeir" >
         <activity
+            android:name="bankal_deir.com.History.HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name="bankal_deir.com.ShowTransaction.ShowTransaction"
+            android:exported="false" />
+        <activity
             android:name="bankal_deir.com.AmountTopUp.AmountActivity"
             android:exported="true"
             android:launchMode="singleTop" >

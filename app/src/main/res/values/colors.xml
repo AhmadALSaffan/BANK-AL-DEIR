@@ -42,4 +42,13 @@
     <color name="some_green">#014747</color>
     <color name="light_blue">#24c6dc</color>
     <color name="fatora">#00312E</color>
+    <color name="show_back">#1C2A3B</color>
+    <color name="check">#A4DEC6</color>
+    <color name="syp">#fee2e2</color>
+    <color name="RED">#FF0000</color>
+    <color name="dark_card_bg">#1E3A36</color>
+    <color name="light_gray1">#B0B0B0</color>
+    <color name="lighter_gray">#9AA5A3</color>
+    <color name="red_accent">#FF5252</color>
+    <color name="green_accent">#00E676</color>
 </resources>

@@ -14,6 +14,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.AmountTopUp.AmountActivity
+import bankal_deir.com.History.HistoryActivity
 import bankal_deir.com.databinding.ActivityMainPageBinding
 import bankal_deir.com.recive.Recive
 import bankal_deir.com.sendmoney.sendMoney
@@ -91,6 +92,11 @@ class MainPage : AppCompatActivity() {
 
         binding.btnPayPal.setOnClickListener {
             val intent = Intent(this@MainPage, AmountActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.quickHistory.setOnClickListener {
+            val intent = Intent(this@MainPage, HistoryActivity::class.java)
             startActivity(intent)
         }
 

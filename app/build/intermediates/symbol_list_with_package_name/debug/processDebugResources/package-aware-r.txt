@@ -1476,6 +1476,7 @@ color Emerald
 color Golden
 color LIGHT_GRAY
 color Muted_Gray
+color RED
 color Success_Green
 color Teal_Darker
 color abc_background_cache_hint_selector_material_dark
@@ -1532,6 +1533,7 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color check
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -1544,6 +1546,7 @@ color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
 color damask_red
+color dark_card_bg
 color dark_white
 color darker
 color darker_gold
@@ -1599,6 +1602,7 @@ color forset
 color golden_white
 color gray
 color gray_text
+color green_accent
 color green_dark
 color green_mid
 color highlighted_text_material_dark
@@ -1608,8 +1612,10 @@ color ivor_mist
 color lable
 color light_blue
 color light_gray
+color light_gray1
 color light_red
 color light_red1
+color lighter_gray
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -2279,12 +2285,14 @@ color primary_text_disabled_material_light
 color rec_back
 color rec_icon
 color recive_btn
+color red_accent
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color show_back
 color some_green
 color something_like_gold
 color stone
@@ -2294,6 +2302,7 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color syp
 color title
 color tooltip_background_dark
 color tooltip_background_light
@@ -3208,6 +3217,8 @@ drawable avd_show_password
 drawable back
 drawable back_dark_white
 drawable back_green_dark
+drawable back_plp
+drawable back_syp
 drawable backblur
 drawable backblure
 drawable backblure1
@@ -3261,7 +3272,9 @@ drawable card_more_back
 drawable cards1
 drawable cardsbackgreen
 drawable cardsbackgreenblur
+drawable check_show_back
 drawable checkmark
+drawable checkshow
 drawable coinmoney
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -3282,6 +3295,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable copy
 drawable copyback
 drawable copyicon
 drawable crad1
@@ -3507,6 +3521,7 @@ drawable returnic
 drawable rightbtn
 drawable round
 drawable rounded_button
+drawable rounded_icon_border
 drawable save
 drawable scan
 drawable scan64
@@ -3519,6 +3534,7 @@ drawable sendbutton
 drawable sendbuttonpagesend
 drawable sendmoney64
 drawable settings
+drawable show_back
 drawable spinner_drop
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -3549,7 +3565,10 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
+id CopyTransaction
+id DateShow
 id FUNCTION
+id FromShow
 id META
 id NO_DEBUG
 id SHIFT
@@ -3642,6 +3661,7 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id automatic
 id axisRelative
+id backHistory
 id backProfile
 id backgroundImage
 id badge_txt
@@ -3682,6 +3702,7 @@ id btn7
 id btn8
 id btn9
 id btnBack
+id btnBackShow
 id btnCancel
 id btnCancelCreate
 id btnCancelForget
@@ -3715,6 +3736,7 @@ id btnResendOtpPhone
 id btnReset
 id btnSaveDetails
 id btnSaveUpdate
+id btnSearch
 id btnSecurity
 id btnSelectedCard
 id btnSend
@@ -3885,7 +3907,9 @@ id forever
 id fragment_container_view_tag
 id frame
 id frame2
+id fromOrWalletTxt
 id frost
+id fullHistoryRec
 id fullscreen_header
 id getOTPPhoneBtn
 id ghost_view
@@ -3922,11 +3946,15 @@ id imageView11
 id imageView13
 id imageView14
 id imageView15
+id imageView2
 id imageView3
 id imageView4
+id imageView5
 id imageView55
 id imageView6
+id imageView7
 id imageView8
+id imageView9
 id imageViewPagerItem
 id imgCardType
 id imgCardVariant
@@ -4116,6 +4144,7 @@ id progressBar
 id progressBar2
 id progressBarBalance
 id progressBarBanner
+id progressBarHistoryFull
 id progressBarName
 id progressBarProfileImage
 id progressBarTopRefresh
@@ -4156,6 +4185,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollable
+id searchFullHistory
 id search_badge
 id search_bar
 id search_button
@@ -4235,6 +4265,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
 id text
+id text1111
 id text2
 id textAccountNumber
 id textEmail
@@ -4264,6 +4295,8 @@ id textView21
 id textView22
 id textView23
 id textView24
+id textView25
+id textView27
 id textView28
 id textView29
 id textView3
@@ -4281,6 +4314,7 @@ id textView41
 id textView42
 id textView43
 id textView44
+id textView46
 id textView5
 id textView50
 id textView51
@@ -4304,6 +4338,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id title_txt
+id toWalletShow
 id toggle
 id top
 id topPanel
@@ -4311,7 +4346,9 @@ id touch_outside
 id tr_Type
 id tr_amount
 id tr_date
+id tr_icon
 id tr_number
+id transactionNShow
 id transactionNumber
 id transfer_quick
 id transitionToEnd
@@ -4329,6 +4366,7 @@ id tvCurrentBalance
 id tvInstruction
 id tvTitle
 id txtAccountNumber
+id txtAmount
 id txtBalance
 id txtCVV
 id txtCardHolder
@@ -4349,6 +4387,7 @@ id txtTax
 id txtTotalPrice
 id txtVariantDescription
 id txtVariantName
+id typeTransactionTxt
 id unchecked
 id uniform
 id unlabeled
@@ -4515,6 +4554,7 @@ layout activity_create_new_card
 layout activity_create_pin_code
 layout activity_fatora_main
 layout activity_final_details_new_card
+layout activity_history
 layout activity_login_page
 layout activity_login_with_phone_number
 layout activity_main
@@ -4525,9 +4565,11 @@ layout activity_profile_page
 layout activity_recive
 layout activity_register_user_details
 layout activity_send_money
+layout activity_show_transaction
 layout activity_sign_up
 layout activity_update_profile
 layout activity_verify_phone_number
+layout all_tshow
 layout bottom_navigation_item
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
