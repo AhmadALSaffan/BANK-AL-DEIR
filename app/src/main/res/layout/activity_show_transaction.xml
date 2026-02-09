@@ -21,18 +21,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView2"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                app:srcCompat="@drawable/iconbank" />
+                app:srcCompat="@drawable/iconbank"
+                android:background="@color/white"
+                app:shapeAppearanceOverlay="@style/RoundSqaure"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/show_back"
@@ -63,7 +67,7 @@
 
                     <TextView
                         android:id="@+id/typeTransactionTxt"
-                        android:layout_width="200dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:gravity="center"
@@ -166,7 +170,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/toWallet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -188,6 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
                     <TextView

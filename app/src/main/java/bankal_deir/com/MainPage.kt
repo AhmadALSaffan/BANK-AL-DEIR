@@ -1,8 +1,8 @@
 package bankal_deir.com
 
-import android.app.ComponentCaller
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -10,10 +10,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.AmountTopUp.AmountActivity
+import bankal_deir.com.Fatora.Data.PaymentTransaction
+import bankal_deir.com.Fatora.UI.FatoraMain
 import bankal_deir.com.History.HistoryActivity
 import bankal_deir.com.databinding.ActivityMainPageBinding
 import bankal_deir.com.recive.Recive
@@ -29,11 +30,7 @@ import com.journeyapps.barcodescanner.CaptureActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 import java.util.Locale
-
 
 class MainPage : AppCompatActivity() {
     private lateinit var binding: ActivityMainPageBinding
@@ -128,13 +125,13 @@ class MainPage : AppCompatActivity() {
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val allUserTrans = mutableListOf<transactions>()
+                val allUserTrans = mutableListOf<PaymentTransaction>()
 
-                // Get all transactions for current user
+
                 for (tranSnap in snapshot.children) {
-                    val transaction = tranSnap.getValue(transactions::class.java)
+                    val transaction = tranSnap.getValue(PaymentTransaction::class.java)
 
-                    // Check if transaction belongs to current user
+
                     if (transaction?.senderUserId == currentUserID ||
                         transaction?.receiverWalletID == currentUserID) {
                         transaction?.let {
@@ -143,7 +140,7 @@ class MainPage : AppCompatActivity() {
                     }
                 }
 
-                // Sort by date (newest first)
+
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
                 val sortedByDate = allUserTrans.sortedByDescending { transaction ->
                     try {
@@ -153,10 +150,10 @@ class MainPage : AppCompatActivity() {
                     }
                 }
 
-                // Take the last 10 transactions
+
                 val lastTenTransactions = sortedByDate.take(10)
 
-                // Update RecyclerView
+
                 if (recyclerView.adapter == null) {
                     recyclerView.adapter = MyAdapter(ArrayList(lastTenTransactions))
                 } else {
@@ -173,7 +170,7 @@ class MainPage : AppCompatActivity() {
     }
 
 
-    private val handler = android.os.Handler()
+    private val handler = Handler()
     private val refreshRunnable = object : Runnable {
         override fun run() {
             readDataUser()

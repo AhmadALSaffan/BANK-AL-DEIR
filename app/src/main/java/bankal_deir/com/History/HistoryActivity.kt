@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import bankal_deir.com.Fatora.Data.PaymentTransaction
 import bankal_deir.com.MyAdapter
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityHistoryBinding
@@ -27,7 +28,7 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
     private lateinit var recyclerView: RecyclerView
-    private lateinit var tranArrayList: ArrayList<transactions>
+    private lateinit var tranArrayList: ArrayList<PaymentTransaction>
     private var isSearching = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,10 +73,10 @@ class HistoryActivity : AppCompatActivity() {
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val allUserTrans = mutableListOf<transactions>()
+                val allUserTrans = mutableListOf<PaymentTransaction>()
 
                 for (tranSnap in snapshot.children) {
-                    val transaction = tranSnap.getValue(transactions::class.java)
+                    val transaction = tranSnap.getValue(PaymentTransaction::class.java)
                     if (transaction?.senderUserId == currentUserID ||
                         transaction?.receiverWalletID == currentUserID
                     ) {
@@ -93,6 +94,7 @@ class HistoryActivity : AppCompatActivity() {
                 }
 
                 tranArrayList = ArrayList(sortedByDate)
+                updateRecyclerView(tranArrayList)
 
                 binding.progressBarHistoryFull.visibility = View.GONE
                 binding.fullHistoryRec.visibility = View.VISIBLE
@@ -124,7 +126,7 @@ class HistoryActivity : AppCompatActivity() {
         updateRecyclerView(ArrayList(filteredList))
     }
 
-    private fun updateRecyclerView(data: ArrayList<transactions>) {
+    private fun updateRecyclerView(data: ArrayList<PaymentTransaction>) {
         if (data.isEmpty()) {
             binding.progressBarHistoryFull.visibility = View.GONE
             binding.fullHistoryRec.visibility = View.GONE

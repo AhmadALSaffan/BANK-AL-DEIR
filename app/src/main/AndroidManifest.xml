@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankALDeir">
         <activity
+            android:name=".Fatora.UI.FatoraPayActivity"
+            android:exported="false" />
+        <activity
             android:name=".History.HistoryActivity"
             android:exported="false" />
         <activity
@@ -53,7 +56,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FatoraMain"
+            android:name=".Fatora.UI.FatoraMain"
             android:exported="false" />
         <activity
             android:name=".pinPage.createPinCode"

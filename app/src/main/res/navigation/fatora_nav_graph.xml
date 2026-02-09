@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fatora_nav_graph"
+    app:startDestination="@id/fatoraMainMenuFragment">
+
+    <!-- ========================= MAIN MENU ========================= -->
+    <fragment
+        android:id="@+id/fatoraMainMenuFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.main.FatoraMainMenuFragment"
+        android:label="Fatora Payments"
+        tools:layout="@layout/fragment_fatora_main_menu">
+
+        <action
+            android:id="@+id/action_main_to_government"
+            app:destination="@id/governmentMenuFragment" />
+
+        <action
+            android:id="@+id/action_main_to_mobile"
+            app:destination="@id/mobileMenuFragment" />
+
+        <action
+            android:id="@+id/action_main_to_electricity"
+            app:destination="@id/electricityPaymentFragment" />
+
+        <action
+            android:id="@+id/action_main_to_university"
+            app:destination="@id/universityMenuFragment" />
+    </fragment>
+
+    <!-- ========================= GOVERNMENT PAYMENTS ========================= -->
+    <fragment
+        android:id="@+id/governmentMenuFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.government.GovernmentMenuFragment"
+        android:label="Government Payments"
+        tools:layout="@layout/fragment_government_menu">
+
+        <action
+            android:id="@+id/action_government_to_passport"
+            app:destination="@id/passportPaymentFragment" />
+
+        <action
+            android:id="@+id/action_government_to_immigration"
+            app:destination="@id/immigrationFineFragment" />
+
+        <action
+            android:id="@+id/action_government_to_newId"
+            app:destination="@id/newIdFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/passportPaymentFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.government.PassportPaymentFragment"
+        android:label="Passport Payment"
+        tools:layout="@layout/fragment_passport_payment" />
+
+    <fragment
+        android:id="@+id/immigrationFineFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.government.ImmigrationFineFragment"
+        android:label="Immigration Fine"
+        tools:layout="@layout/fragment_immigration_fine" />
+
+    <fragment
+        android:id="@+id/newIdFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.government.NewIdFragment"
+        android:label="New ID"
+        tools:layout="@layout/fragment_new_id" />
+
+    <!-- ========================= MOBILE PAYMENTS ========================= -->
+    <fragment
+        android:id="@+id/mobileMenuFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.mobile.MobileMenuFragment"
+        android:label="Mobile Payments"
+        tools:layout="@layout/fragment_mobile_menu">
+
+        <action
+            android:id="@+id/action_mobile_to_payBill"
+            app:destination="@id/payBillFragment" />
+
+        <action
+            android:id="@+id/action_mobile_to_refill"
+            app:destination="@id/refillBalanceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/payBillFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.mobile.PayBillFragment"
+        android:label="Pay Mobile Bill"
+        tools:layout="@layout/fragment_pay_bill" />
+
+    <fragment
+        android:id="@+id/refillBalanceFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.mobile.RefillBalanceFragment"
+        android:label="Refill Balance"
+        tools:layout="@layout/fragment_refill_balance" />
+
+    <!-- ========================= ELECTRICITY PAYMENTS ========================= -->
+    <fragment
+        android:id="@+id/electricityPaymentFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.electricity.ElectricityPaymentFragment"
+        android:label="Electricity Payment"
+        tools:layout="@layout/fragment_electricity_payment" />
+
+    <!-- ========================= UNIVERSITY PAYMENTS ========================= -->
+    <fragment
+        android:id="@+id/universityMenuFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.university.UniversityMenuFragment"
+        android:label="University Payments"
+        tools:layout="@layout/fragment_university_menu">
+
+        <action
+            android:id="@+id/action_university_to_universitySelection"
+            app:destination="@id/universitySelectionFragment" />
+    </fragment>
+
+    <!-- ========================= UNIVERSITY SELECTION (SHARED) ========================= -->
+    <fragment
+        android:id="@+id/universitySelectionFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.university.UniversitySelectionFragment"
+        android:label="Select University"
+        tools:layout="@layout/fragment_university_selection">
+
+        <argument
+            android:name="payment_type"
+            app:argType="string"
+            app:nullable="true" />
+
+        <!-- Actions from University Selection to Payment Fragments -->
+        <action
+            android:id="@+id/action_universitySelection_to_tuitionPayment"
+            app:destination="@id/tuitionPaymentFragment"
+            app:popUpTo="@id/universityMenuFragment"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/action_universitySelection_to_finesPayment"
+            app:destination="@id/finesPaymentFragment"
+            app:popUpTo="@id/universityMenuFragment"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/action_universitySelection_to_hostelPayment"
+            app:destination="@id/hostelPaymentFragment"
+            app:popUpTo="@id/universityMenuFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ========================= UNIVERSITY PAYMENT FRAGMENTS ========================= -->
+    <!-- Tuition Payment -->
+    <fragment
+        android:id="@+id/tuitionPaymentFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.university.TuitionPaymentFragment"
+        android:label="Pay Tuition Fees"
+        tools:layout="@layout/fragment_tuition_payment">
+
+        <argument
+            android:name="university_name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <!-- Fines Payment -->
+    <fragment
+        android:id="@+id/finesPaymentFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.university.FinesPaymentFragment"
+        android:label="Pay Fines"
+        tools:layout="@layout/fragment_fines_payment">
+
+        <argument
+            android:name="university_name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <!-- Hostel Payment -->
+    <fragment
+        android:id="@+id/hostelPaymentFragment"
+        android:name="bankal_deir.com.Fatora.UI.fragments.university.HostelPaymentFragment"
+        android:label="Pay Hostel"
+        tools:layout="@layout/fragment_hostel_payment">
+
+        <argument
+            android:name="university_name"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

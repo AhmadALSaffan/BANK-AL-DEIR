@@ -32,6 +32,19 @@ class ShowTransaction : AppCompatActivity() {
         val date = intent.getStringExtra("date") ?: ""
         val senderWallet = intent.getStringExtra("senderWallet") ?: ""
         val receiverWallet = intent.getStringExtra("receiverWallet") ?: ""
+        val university = intent.getStringExtra("university") ?: ""
+        val studentNumber = intent.getStringExtra("studentNumber") ?: ""
+        val userId = intent.getStringExtra("userId") ?: ""
+        val referenceNumber = intent.getStringExtra("refrenceNumber") ?: ""
+        val passportType = intent.getStringExtra("passportType") ?: ""
+        val orderNumber = intent.getStringExtra("orderNumber") ?: ""
+        val idNumber = intent.getStringExtra("idNumber") ?: ""
+        val mobileNumber = intent.getStringExtra("mobileNumber")
+        val provider = intent.getStringExtra("provider")
+        val company = intent.getStringExtra("company")
+        val billNumber = intent.getStringExtra("billNumber")
+
+
 
         val formattedTransactionNumber = formatTransactionNumber(transactionNumber)
 
@@ -67,6 +80,137 @@ class ShowTransaction : AppCompatActivity() {
 
                 binding.toWalletShow.text = receiverWallet
             }
+            transactionNumber.startsWith("SUN")->{
+                binding.typeTransactionTxt.text = "University Tuition Payment"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "To"
+                binding.FromShow.text = "($university)\n to the student number ($studentNumber)"
+                binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
+
+            }
+
+            transactionNumber.startsWith("SUF")->{
+                binding.typeTransactionTxt.text = "University Fines Payment"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "To"
+                binding.FromShow.text = "($university)\n with refrence number ($referenceNumber)"
+                binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
+
+            }
+            transactionNumber.startsWith("SUH")->{
+                binding.typeTransactionTxt.text = "University Hostel Payment"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "To"
+                binding.FromShow.text = "($university)\n with refrence number ($referenceNumber)"
+                binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
+            }
+
+            transactionNumber.startsWith("SGI")-> {
+                binding.typeTransactionTxt.text = "New Passport"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "Type"
+                binding.FromShow.text = "($passportType)\n id number ($idNumber) \n order number ($orderNumber)"
+                binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
+            }
+
+            transactionNumber.startsWith("SGF")-> {
+                binding.typeTransactionTxt.text = "Immigration Fines Payment"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "Info"
+                binding.FromShow.text = "id number ($idNumber) \nreference number ($referenceNumber)"
+                binding.FromShow.textSize = 20f
+            }
+
+            transactionNumber.startsWith("SGD")->{
+                binding.typeTransactionTxt.text = "Issue a new ID card"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "Info"
+                binding.FromShow.text = "id number ($idNumber) \norder number ($orderNumber)"
+                binding.FromShow.textSize = 20f
+            }
+
+            transactionNumber.startsWith("SMP")->{
+                binding.typeTransactionTxt.text = "Pay Mobile Bill"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "Info"
+                binding.FromShow.text = "mobile number ($mobileNumber) \nprovider $provider \norder number ($orderNumber)"
+                binding.FromShow.textSize = 20f
+            }
+
+            transactionNumber.startsWith("SMR")->{
+                binding.typeTransactionTxt.text = "Refill Balance"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "Info"
+                binding.FromShow.text = "mobile number ($mobileNumber) \nprovider $provider \norder number ($orderNumber)"
+                binding.FromShow.textSize = 20f
+            }
+
+            transactionNumber.startsWith("SEL")->{
+                binding.typeTransactionTxt.text = "Electricity Payment"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_syp)
+                binding.typeTransactionTxt.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.txtAmount.text = "-$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Danger_Red))
+
+                binding.fromOrWalletTxt.text = "Info"
+                binding.FromShow.text = "bill number ($billNumber) \nprovider($company) \nreference number ($referenceNumber)"
+                binding.FromShow.textSize = 20f
+            }
+
+
         }
 
         binding.CopyTransaction.setOnClickListener {

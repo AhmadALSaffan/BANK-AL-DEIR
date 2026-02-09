@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-123:12
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-123:12
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-123:12
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-123:12
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-126:12
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-126:12
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-126:12
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:2:1-126:12
 MERGED from [com.github.qamarelsafadi:CurvedBottomNavigation:0.1.3] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a37eacb05da59964b0cd548000726ce\transformed\CurvedBottomNavigation-0.1.3\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.databinding:databinding-adapters:8.13.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\6b222a8818ace8db429305d70e65f234\transformed\databinding-adapters-8.13.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.13.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\918dc687d75eea0f3493d2a54818f7b0\transformed\databinding-ktx-8.13.0\AndroidManifest.xml:2:1-7:12
@@ -14,8 +14,14 @@ MERGED from [com.braintreepayments.api:card:4.36.0] C:\Users\ahmad\.gradle\cache
 MERGED from [com.braintreepayments.api:paypal-data-collector:4.36.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\4667154df85c0ad6be40dd39ec1131d6\transformed\paypal-data-collector-4.36.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.braintreepayments.api:braintree-core:4.36.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\6cfd5c178872b0fda92f1c434ead855d\transformed\braintree-core-4.36.0\AndroidManifest.xml:2:1-34:12
 MERGED from [com.github.1902shubh:SendMail:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\f7674ce5e1ba4c478d4d7aebff850273\transformed\SendMail-1.0.0\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.navigation:navigation-ui-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\586dd223f2335290d8b3cae7c1efd686\transformed\navigation-ui-ktx-2.4.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-ui:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\41d5f33e85251965735bfa323e194ec5\transformed\navigation-ui-2.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-common:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\6b25cc197a3c8e18d64e01360f28062b\transformed\navigation-common-2.7.6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\76ec9c9f3762fe0390376da4f92b9302\transformed\navigation-common-ktx-2.7.6\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\02940c1f75fdf17f3e329c23262df1f4\transformed\navigation-runtime-2.7.6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\92ef538698862891661091d8ea868a70\transformed\navigation-runtime-ktx-2.7.6\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-fragment:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\4f0f78b893a0731f894aca9685e944a7\transformed\navigation-fragment-2.7.6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\1280425ba1472815e463a63ca00e8a9f\transformed\navigation-fragment-ktx-2.7.6\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-ui-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\5d87fd679ecf881b85984e70a36a9f9d\transformed\navigation-ui-ktx-2.7.6\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-ui:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\5f06ded545ffc139f0bc24bab5d5d9e2\transformed\navigation-ui-2.7.6\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\4a618c22b41a3b53a2bc516fec4941fa\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\98d50d55f48c815788d6ca47c9cbb838\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [io.github.chaosleung:pinview:1.4.4] C:\Users\ahmad\.gradle\caches\8.13\transforms\863af17f72b0501207b121922ddad8a4\transformed\pinview-1.4.4\AndroidManifest.xml:17:1-24:12
@@ -58,8 +64,6 @@ MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\ahmad\.gradle\c
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\3e506215df8a847a26cc1d51bd0ba476\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\07ac3243f52bd98846d5a87ac8ac9fed\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\d4d17054193862386037d406a94d4f77\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-fragment-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\716587c6e24ca2c3e016907dfb0a7b0a\transformed\navigation-fragment-ktx-2.4.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-fragment:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a2ab918ab3320ab1ef308ad34ab5ee9\transformed\navigation-fragment-2.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\0d3d151d90ddd7698dc6b9dfa55143e1\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.transition:transition:1.5.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\deb56a1fa05314c27f0f8a84a844755a\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\bcc5fc47ffc550217d715fbf78e9c270\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -73,12 +77,8 @@ MERGED from [androidx.customview:customview:1.1.0] C:\Users\ahmad\.gradle\caches
 MERGED from [androidx.work:work-runtime:2.9.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\80f2ac3e1a30c467ba00e021493fffcc\transformed\work-runtime-2.9.1\AndroidManifest.xml:17:1-145:12
 MERGED from [androidx.window:window:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\549eb4fda4784405e1a4abf01a750f6b\transformed\window-1.0.0\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.core:core:1.17.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\470ed750d6868f5142daed3eee9c0b7e\transformed\core-1.17.0\AndroidManifest.xml:17:1-30:12
-MERGED from [androidx.fragment:fragment-ktx:1.6.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\896af1676c43e87e1e40976d20137df7\transformed\fragment-ktx-1.6.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\ab1270c0157cfac80ee6091ea4574382\transformed\navigation-runtime-ktx-2.4.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-runtime:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\58a1e0403c6b1483eb57fe56ee22bddb\transformed\navigation-runtime-2.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\ahmad\.gradle\caches\8.13\transforms\a9180e4893745dbce65360e359a7252b\transformed\fragment-ktx-1.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity-ktx:1.10.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\b27ae0c33e30768d2df2ffb05bba2ff6\transformed\activity-ktx-1.10.1\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.navigation:navigation-common-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\d44046a73dbdcd07cb0a9835edfbf2cf\transformed\navigation-common-ktx-2.4.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-common:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\6760b107319baab387f618b5bba95dc8\transformed\navigation-common-2.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\748806cdaf18e37f4c3cf1f8f0a4be46\transformed\lifecycle-viewmodel-savedstate\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.10.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\7b6899f95fe873c2e73cff201d6b6e0d\transformed\lifecycle-viewmodel-2.10.0\AndroidManifest.xml:2:1-5:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.10.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\e27d9b854eb15a9c7a9b203f47e086e3\transformed\lifecycle-viewmodel\AndroidManifest.xml:17:1-22:12
@@ -96,7 +96,7 @@ MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.10.0] C:\Users\ahmad
 MERGED from [androidx.room:room-ktx:2.5.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\3fd146310d0396c4ede467b37178c74c\transformed\room-ktx-2.5.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\044183d3e25416b7e91f1771e63bccc9\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:2:1-5:12
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\da2cd031d97e09c73b4581d537851ba3\transformed\play-services-basement-18.4.0\AndroidManifest.xml:2:1-9:12
-MERGED from [androidx.fragment:fragment:1.6.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\8af775b70f40df713aa49d70e9c977f7\transformed\fragment-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\ahmad\.gradle\caches\8.13\transforms\b8611b91604c1b7c7f1843da4155e3d5\transformed\fragment-1.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.10.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\ec9ab97e24596858aceeb6aab57ca64f\transformed\activity-1.10.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a957f0a83838f4feba51eae37733b9d\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.core:core-ktx:1.17.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\fdfd54a4a84b46c1d4c852eb98bc6a1e\transformed\core-ktx-1.17.0\AndroidManifest.xml:2:1-7:12
@@ -186,8 +186,8 @@ ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:12:5-14:71
 	android:name
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:13:9-54
 application
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:16:5-121:19
-INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:16:5-121:19
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:16:5-124:19
+INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml:16:5-124:19
 MERGED from [com.braintreepayments.api:braintree-core:4.36.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\6cfd5c178872b0fda92f1c434ead855d\transformed\braintree-core-4.36.0\AndroidManifest.xml:18:5-32:19
 MERGED from [com.braintreepayments.api:braintree-core:4.36.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\6cfd5c178872b0fda92f1c434ead855d\transformed\braintree-core-4.36.0\AndroidManifest.xml:18:5-32:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\4a618c22b41a3b53a2bc516fec4941fa\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
@@ -282,194 +282,200 @@ MERGED from [com.google.android.play:core-common:2.0.4] C:\Users\ahmad\.gradle\c
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:24:9-48
 	android:dataExtractionRules
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:18:9-65
-activity#bankal_deir.com.History.HistoryActivity
+activity#bankal_deir.com.Fatora.UI.FatoraPayActivity
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:25:9-27:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:27:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:26:13-52
-activity#bankal_deir.com.ShowTransaction.ShowTransaction
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:26:13-56
+activity#bankal_deir.com.History.HistoryActivity
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:28:9-30:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:30:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:29:13-60
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:29:13-52
+activity#bankal_deir.com.ShowTransaction.ShowTransaction
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:31:9-33:40
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:33:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:32:13-60
 activity#bankal_deir.com.AmountTopUp.AmountActivity
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:31:9-43:20
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:34:9-46:20
 	android:launchMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:34:13-43
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:37:13-43
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:33:13-36
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:32:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:35:13-55
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:bankaldeir.braintree
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:35:13-42:29
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:38:13-45:29
 action#android.intent.action.VIEW
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:36:17-69
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:39:17-69
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:36:25-66
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:39:25-66
 category#android.intent.category.DEFAULT
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:38:17-76
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:41:17-76
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:38:27-73
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:41:27-73
 category#android.intent.category.BROWSABLE
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:39:17-78
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:42:17-78
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:39:27-75
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:42:27-75
 data
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:41:17-63
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:44:17-63
 	android:scheme
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:41:23-60
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:44:23-60
 activity#bankal_deir.com.Login.RegisterUserDetails
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:44:9-46:40
-	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:46:13-37
-	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:45:13-54
-activity#bankal_deir.com.Login.LoginWithPhoneNumber
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:47:9-50:52
-	android:screenOrientation
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:50:13-49
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:47:9-49:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:48:13-55
-activity#bankal_deir.com.Login.VerifyPhoneNumber
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:51:9-54:52
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:48:13-54
+activity#bankal_deir.com.Login.LoginWithPhoneNumber
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:50:9-53:52
 	android:screenOrientation
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:54:13-49
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:53:13-49
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:53:13-37
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:52:13-52
-activity#bankal_deir.com.FatoraMain
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:55:9-57:40
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:51:13-55
+activity#bankal_deir.com.Login.VerifyPhoneNumber
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:54:9-57:52
+	android:screenOrientation
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:57:13-49
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:57:13-37
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:56:13-39
-activity#bankal_deir.com.pinPage.createPinCode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:55:13-52
+activity#bankal_deir.com.Fatora.UI.FatoraMain
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:58:9-60:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:60:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:59:13-50
-activity#bankal_deir.com.pinPage.PinPage
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:59:13-49
+activity#bankal_deir.com.pinPage.createPinCode
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:61:9-63:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:63:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:62:13-44
-activity#bankal_deir.com.CardVariant
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:62:13-50
+activity#bankal_deir.com.pinPage.PinPage
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:64:9-66:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:66:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:65:13-40
-activity#bankal_deir.com.updateProfile.updateProfile
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:67:9-70:58
-	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:70:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:65:13-44
+activity#bankal_deir.com.CardVariant
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:67:9-69:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:69:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:68:13-56
-activity#bankal_deir.com.cardShowDetailsAfterCreate
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:71:9-73:40
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:68:13-40
+activity#bankal_deir.com.updateProfile.updateProfile
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:70:9-73:58
+	android:windowSoftInputMode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:73:13-55
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:73:13-37
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:72:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:72:13-55
-activity#bankal_deir.com.finalDetailsNewCard
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:71:13-56
+activity#bankal_deir.com.cardShowDetailsAfterCreate
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:74:9-76:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:76:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:75:13-48
-activity#bankal_deir.com.createNewCard
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:75:13-55
+activity#bankal_deir.com.finalDetailsNewCard
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:77:9-79:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:79:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:78:13-42
-activity#bankal_deir.com.cards
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:78:13-48
+activity#bankal_deir.com.createNewCard
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:80:9-82:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:82:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:81:13-34
-activity#bankal_deir.com.profilePage
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:81:13-42
+activity#bankal_deir.com.cards
 ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:83:9-85:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:85:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:84:13-40
-activity#bankal_deir.com.sendmoney.sendMoney
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:86:9-89:58
-	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:89:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:84:13-34
+activity#bankal_deir.com.profilePage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:86:9-88:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:88:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:87:13-48
-activity#bankal_deir.com.recive.Recive
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:90:9-92:40
-	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:92:13-37
-	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:91:13-42
-activity#bankal_deir.com.Signup.OTP_Page
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:93:9-96:58
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:87:13-40
+activity#bankal_deir.com.sendmoney.sendMoney
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:89:9-92:58
 	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:96:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:92:13-55
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:91:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:90:13-48
+activity#bankal_deir.com.recive.Recive
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:93:9-95:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:95:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:94:13-44
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:94:13-42
+activity#bankal_deir.com.Signup.OTP_Page
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:96:9-99:58
+	android:windowSoftInputMode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:99:13-55
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:98:13-37
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:97:13-44
 activity#bankal_deir.com.Signup.SignUp
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:97:9-100:58
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:100:9-103:58
 	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:100:13-55
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:103:13-55
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:99:13-37
-	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:98:13-42
-activity#bankal_deir.com.MainPage
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:101:9-103:40
-	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:103:13-37
-	android:name
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:102:13-37
-activity#bankal_deir.com.Login.LoginPage
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:104:9-107:58
-	android:windowSoftInputMode
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:107:13-55
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:101:13-42
+activity#bankal_deir.com.MainPage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:104:9-106:40
 	android:exported
 		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:106:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:105:13-44
-activity#bankal_deir.com.MainActivity
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:108:9-116:20
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:105:13-37
+activity#bankal_deir.com.Login.LoginPage
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:107:9-110:58
+	android:windowSoftInputMode
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:110:13-55
 	android:exported
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:110:13-36
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:109:13-37
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:109:13-41
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:108:13-44
+activity#bankal_deir.com.MainActivity
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:111:9-119:20
+	android:exported
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:113:13-36
+	android:name
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:112:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:111:13-115:29
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:114:13-118:29
 action#android.intent.action.MAIN
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:112:17-69
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:115:17-69
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:112:25-66
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:115:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:114:17-77
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:117:17-77
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:114:27-74
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:117:27-74
 meta-data#preloaded_fonts
-ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:118:9-120:57
+ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:121:9-123:57
 	android:resource
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:120:13-54
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:123:13-54
 	android:name
-		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:119:13-43
+		ADDED from D:\BankALDeir\app\src\main\AndroidManifest.xml:122:13-43
 uses-sdk
 INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\BankALDeir\app\src\main\AndroidManifest.xml
@@ -494,10 +500,22 @@ MERGED from [com.braintreepayments.api:braintree-core:4.36.0] C:\Users\ahmad\.gr
 MERGED from [com.braintreepayments.api:braintree-core:4.36.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\6cfd5c178872b0fda92f1c434ead855d\transformed\braintree-core-4.36.0\AndroidManifest.xml:6:5-8:74
 MERGED from [com.github.1902shubh:SendMail:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\f7674ce5e1ba4c478d4d7aebff850273\transformed\SendMail-1.0.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.1902shubh:SendMail:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\f7674ce5e1ba4c478d4d7aebff850273\transformed\SendMail-1.0.0\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.navigation:navigation-ui-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\586dd223f2335290d8b3cae7c1efd686\transformed\navigation-ui-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\586dd223f2335290d8b3cae7c1efd686\transformed\navigation-ui-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\41d5f33e85251965735bfa323e194ec5\transformed\navigation-ui-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\41d5f33e85251965735bfa323e194ec5\transformed\navigation-ui-2.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\6b25cc197a3c8e18d64e01360f28062b\transformed\navigation-common-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\6b25cc197a3c8e18d64e01360f28062b\transformed\navigation-common-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\76ec9c9f3762fe0390376da4f92b9302\transformed\navigation-common-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\76ec9c9f3762fe0390376da4f92b9302\transformed\navigation-common-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\02940c1f75fdf17f3e329c23262df1f4\transformed\navigation-runtime-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\02940c1f75fdf17f3e329c23262df1f4\transformed\navigation-runtime-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\92ef538698862891661091d8ea868a70\transformed\navigation-runtime-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\92ef538698862891661091d8ea868a70\transformed\navigation-runtime-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\4f0f78b893a0731f894aca9685e944a7\transformed\navigation-fragment-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\4f0f78b893a0731f894aca9685e944a7\transformed\navigation-fragment-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\1280425ba1472815e463a63ca00e8a9f\transformed\navigation-fragment-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\1280425ba1472815e463a63ca00e8a9f\transformed\navigation-fragment-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\5d87fd679ecf881b85984e70a36a9f9d\transformed\navigation-ui-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui-ktx:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\5d87fd679ecf881b85984e70a36a9f9d\transformed\navigation-ui-ktx-2.7.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\5f06ded545ffc139f0bc24bab5d5d9e2\transformed\navigation-ui-2.7.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.7.6] C:\Users\ahmad\.gradle\caches\8.13\transforms\5f06ded545ffc139f0bc24bab5d5d9e2\transformed\navigation-ui-2.7.6\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\4a618c22b41a3b53a2bc516fec4941fa\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\4a618c22b41a3b53a2bc516fec4941fa\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\98d50d55f48c815788d6ca47c9cbb838\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
@@ -582,10 +600,6 @@ MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ahmad\.gradle\ca
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\07ac3243f52bd98846d5a87ac8ac9fed\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\d4d17054193862386037d406a94d4f77\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\d4d17054193862386037d406a94d4f77\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\716587c6e24ca2c3e016907dfb0a7b0a\transformed\navigation-fragment-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\716587c6e24ca2c3e016907dfb0a7b0a\transformed\navigation-fragment-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a2ab918ab3320ab1ef308ad34ab5ee9\transformed\navigation-fragment-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a2ab918ab3320ab1ef308ad34ab5ee9\transformed\navigation-fragment-2.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\0d3d151d90ddd7698dc6b9dfa55143e1\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\0d3d151d90ddd7698dc6b9dfa55143e1\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.transition:transition:1.5.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\deb56a1fa05314c27f0f8a84a844755a\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
@@ -612,18 +626,10 @@ MERGED from [androidx.window:window:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\tr
 MERGED from [androidx.window:window:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\549eb4fda4784405e1a4abf01a750f6b\transformed\window-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.17.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\470ed750d6868f5142daed3eee9c0b7e\transformed\core-1.17.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.17.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\470ed750d6868f5142daed3eee9c0b7e\transformed\core-1.17.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment-ktx:1.6.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\896af1676c43e87e1e40976d20137df7\transformed\fragment-ktx-1.6.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment-ktx:1.6.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\896af1676c43e87e1e40976d20137df7\transformed\fragment-ktx-1.6.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\ab1270c0157cfac80ee6091ea4574382\transformed\navigation-runtime-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\ab1270c0157cfac80ee6091ea4574382\transformed\navigation-runtime-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\58a1e0403c6b1483eb57fe56ee22bddb\transformed\navigation-runtime-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\58a1e0403c6b1483eb57fe56ee22bddb\transformed\navigation-runtime-2.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\ahmad\.gradle\caches\8.13\transforms\a9180e4893745dbce65360e359a7252b\transformed\fragment-ktx-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\ahmad\.gradle\caches\8.13\transforms\a9180e4893745dbce65360e359a7252b\transformed\fragment-ktx-1.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity-ktx:1.10.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\b27ae0c33e30768d2df2ffb05bba2ff6\transformed\activity-ktx-1.10.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-ktx:1.10.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\b27ae0c33e30768d2df2ffb05bba2ff6\transformed\activity-ktx-1.10.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.navigation:navigation-common-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\d44046a73dbdcd07cb0a9835edfbf2cf\transformed\navigation-common-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-common-ktx:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\d44046a73dbdcd07cb0a9835edfbf2cf\transformed\navigation-common-ktx-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-common:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\6760b107319baab387f618b5bba95dc8\transformed\navigation-common-2.4.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-common:2.4.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\6760b107319baab387f618b5bba95dc8\transformed\navigation-common-2.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\748806cdaf18e37f4c3cf1f8f0a4be46\transformed\lifecycle-viewmodel-savedstate\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\748806cdaf18e37f4c3cf1f8f0a4be46\transformed\lifecycle-viewmodel-savedstate\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.10.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\7b6899f95fe873c2e73cff201d6b6e0d\transformed\lifecycle-viewmodel-2.10.0\AndroidManifest.xml:4:5-43
@@ -658,8 +664,8 @@ MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\ahmad\.
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\044183d3e25416b7e91f1771e63bccc9\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:3:5-44
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\da2cd031d97e09c73b4581d537851ba3\transformed\play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\da2cd031d97e09c73b4581d537851ba3\transformed\play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
-MERGED from [androidx.fragment:fragment:1.6.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\8af775b70f40df713aa49d70e9c977f7\transformed\fragment-1.6.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.6.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\8af775b70f40df713aa49d70e9c977f7\transformed\fragment-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\ahmad\.gradle\caches\8.13\transforms\b8611b91604c1b7c7f1843da4155e3d5\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\ahmad\.gradle\caches\8.13\transforms\b8611b91604c1b7c7f1843da4155e3d5\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.10.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\ec9ab97e24596858aceeb6aab57ca64f\transformed\activity-1.10.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.10.1] C:\Users\ahmad\.gradle\caches\8.13\transforms\ec9ab97e24596858aceeb6aab57ca64f\transformed\activity-1.10.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\ahmad\.gradle\caches\8.13\transforms\2a957f0a83838f4feba51eae37733b9d\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38

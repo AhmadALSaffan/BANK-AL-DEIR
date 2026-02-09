@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import bankal_deir.com.MainPage
 import bankal_deir.com.Login.LoginPage
 import bankal_deir.com.databinding.ActivityMainPageBinding
 import bankal_deir.com.databinding.ActivityProfilePageBinding

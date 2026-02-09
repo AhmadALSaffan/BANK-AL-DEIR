@@ -79,6 +79,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.BankALDeir" >
         <activity
+            android:name="bankal_deir.com.Fatora.UI.FatoraPayActivity"
+            android:exported="false" />
+        <activity
             android:name="bankal_deir.com.History.HistoryActivity"
             android:exported="false" />
         <activity
@@ -109,7 +112,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="bankal_deir.com.FatoraMain"
+            android:name="bankal_deir.com.Fatora.UI.FatoraMain"
             android:exported="false" />
         <activity
             android:name="bankal_deir.com.pinPage.createPinCode"
