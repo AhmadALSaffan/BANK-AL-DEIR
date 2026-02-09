@@ -5,6 +5,9 @@ BANK-AL-DEIR is an Android banking application developed by AhmadALSaffan, desig
 
 ![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/d1bcbfac181b24e594c43cac275487c658e43f12/mockup1.png)
 ![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/c430f73c620a194c75e4820a704e5bd51fe20ef1/mockup2.png)
+![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/9f41fd90e652fafcb68e5fa9cac986694a835c5d/mockup3.png)
+![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/9f41fd90e652fafcb68e5fa9cac986694a835c5d/mockup4.png)
+![image alt](https://github.com/AhmadALSaffan/BANK-AL-DEIR/blob/9f41fd90e652fafcb68e5fa9cac986694a835c5d/mockup5.png)
 
 # Features
 - User authentication and registration
