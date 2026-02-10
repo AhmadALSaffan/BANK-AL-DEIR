@@ -1,5 +1,6 @@
 package bankal_deir.com.Fatora.UI.fragments.electricity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import bankal_deir.com.Fatora.Data.PaymentUtils.generateReferenceNumber
 import bankal_deir.com.Fatora.Data.PaymentUtils.generateTransactionNumber
 import bankal_deir.com.Fatora.Data.PaymentUtils.getCurrentDate
 import bankal_deir.com.Fatora.Data.PaymentUtils.isBillValid
+import bankal_deir.com.MainPage
 import bankal_deir.com.databinding.FragmentElectricityPaymentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -192,7 +194,10 @@ class ElectricityPaymentFragment : Fragment() {
                             Toast.LENGTH_LONG
                         ).show()
 
-                        findNavController().popBackStack(R.id.fatoraMainMenuFragment, false)
+                        val intent = Intent(requireContext(), MainPage::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                        startActivity(intent)
+                        requireActivity().finish()
                     }
                     .addOnFailureListener { exception ->
                         walletRef.setValue(newBalance + amount)

@@ -156,6 +156,9 @@ class ShowTransaction : AppCompatActivity() {
                 binding.fromOrWalletTxt.text = "Info"
                 binding.FromShow.text = "id number ($idNumber) \nreference number ($referenceNumber)"
                 binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
             }
 
             transactionNumber.startsWith("SGD")->{
@@ -169,6 +172,9 @@ class ShowTransaction : AppCompatActivity() {
                 binding.fromOrWalletTxt.text = "Info"
                 binding.FromShow.text = "id number ($idNumber) \norder number ($orderNumber)"
                 binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
             }
 
             transactionNumber.startsWith("SMP")->{
@@ -182,6 +188,9 @@ class ShowTransaction : AppCompatActivity() {
                 binding.fromOrWalletTxt.text = "Info"
                 binding.FromShow.text = "mobile number ($mobileNumber) \nprovider $provider \norder number ($orderNumber)"
                 binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
             }
 
             transactionNumber.startsWith("SMR")->{
@@ -195,6 +204,9 @@ class ShowTransaction : AppCompatActivity() {
                 binding.fromOrWalletTxt.text = "Info"
                 binding.FromShow.text = "mobile number ($mobileNumber) \nprovider $provider \norder number ($orderNumber)"
                 binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
             }
 
             transactionNumber.startsWith("SEL")->{
@@ -208,6 +220,9 @@ class ShowTransaction : AppCompatActivity() {
                 binding.fromOrWalletTxt.text = "Info"
                 binding.FromShow.text = "bill number ($billNumber) \nprovider($company) \nreference number ($referenceNumber)"
                 binding.FromShow.textSize = 20f
+
+                binding.toWallet.text = "From"
+                binding.toWalletShow.text = userId
             }
 
 

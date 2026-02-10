@@ -47,6 +47,10 @@ anim nav_default_enter_anim
 anim nav_default_exit_anim
 anim nav_default_pop_enter_anim
 anim nav_default_pop_exit_anim
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -3443,6 +3447,8 @@ drawable ic_university
 drawable iconbank
 drawable income
 drawable indeterminate_static
+drawable indicator_active
+drawable indicator_inactive
 drawable leftbtn
 drawable logo_green_energy
 drawable logout
@@ -3583,6 +3589,8 @@ drawable show_back
 drawable spinner_drop
 drawable syrian_telecom
 drawable syriatel
+drawable tab_selector
+drawable tab_selector_large
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -4061,6 +4069,7 @@ id inward
 id is_pooling_container_tag
 id italic
 id item_touch_helper_previous_elevation
+id ivOnboarding
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -4473,9 +4482,12 @@ id transition_transform
 id triangle
 id tuitionPaymentFragment
 id tvCurrentBalance
+id tvDescription
+id tvFooter
 id tvHeaderSubtitle
 id tvHeaderTitle
 id tvInstruction
+id tvSkip
 id tvTitle
 id txtAccountNumber
 id txtAmount
@@ -4732,6 +4744,7 @@ layout fragment_university_menu
 layout fragment_university_selection
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_onboarding
 layout item_university
 layout item_viewpager
 layout m3_alert_dialog
@@ -6368,6 +6381,9 @@ styleable include constraintSet
 styleable zxing_camera_preview zxing_framing_rect_height zxing_framing_rect_width zxing_preview_scaling_strategy zxing_use_texture_view
 styleable zxing_finder zxing_possible_result_points zxing_result_view zxing_viewfinder_laser zxing_viewfinder_laser_visibility zxing_viewfinder_mask
 styleable zxing_view zxing_scanner_layout
+transition fade
+transition slide_left
+transition slide_right
 xml backup_rules
 xml data_extraction_rules
 xml image_share_filepaths

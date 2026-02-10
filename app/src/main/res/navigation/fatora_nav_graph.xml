@@ -5,7 +5,6 @@
     android:id="@+id/fatora_nav_graph"
     app:startDestination="@id/fatoraMainMenuFragment">
 
-    <!-- ========================= MAIN MENU ========================= -->
     <fragment
         android:id="@+id/fatoraMainMenuFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.main.FatoraMainMenuFragment"
@@ -14,22 +13,37 @@
 
         <action
             android:id="@+id/action_main_to_government"
-            app:destination="@id/governmentMenuFragment" />
+            app:destination="@id/governmentMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_main_to_mobile"
-            app:destination="@id/mobileMenuFragment" />
+            app:destination="@id/mobileMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_main_to_electricity"
-            app:destination="@id/electricityPaymentFragment" />
+            app:destination="@id/electricityPaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_main_to_university"
-            app:destination="@id/universityMenuFragment" />
+            app:destination="@id/universityMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
-    <!-- ========================= GOVERNMENT PAYMENTS ========================= -->
     <fragment
         android:id="@+id/governmentMenuFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.government.GovernmentMenuFragment"
@@ -38,15 +52,27 @@
 
         <action
             android:id="@+id/action_government_to_passport"
-            app:destination="@id/passportPaymentFragment" />
+            app:destination="@id/passportPaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_government_to_immigration"
-            app:destination="@id/immigrationFineFragment" />
+            app:destination="@id/immigrationFineFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_government_to_newId"
-            app:destination="@id/newIdFragment" />
+            app:destination="@id/newIdFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -67,7 +93,7 @@
         android:label="New ID"
         tools:layout="@layout/fragment_new_id" />
 
-    <!-- ========================= MOBILE PAYMENTS ========================= -->
+
     <fragment
         android:id="@+id/mobileMenuFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.mobile.MobileMenuFragment"
@@ -76,11 +102,19 @@
 
         <action
             android:id="@+id/action_mobile_to_payBill"
-            app:destination="@id/payBillFragment" />
+            app:destination="@id/payBillFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_mobile_to_refill"
-            app:destination="@id/refillBalanceFragment" />
+            app:destination="@id/refillBalanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -95,14 +129,13 @@
         android:label="Refill Balance"
         tools:layout="@layout/fragment_refill_balance" />
 
-    <!-- ========================= ELECTRICITY PAYMENTS ========================= -->
     <fragment
         android:id="@+id/electricityPaymentFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.electricity.ElectricityPaymentFragment"
         android:label="Electricity Payment"
         tools:layout="@layout/fragment_electricity_payment" />
 
-    <!-- ========================= UNIVERSITY PAYMENTS ========================= -->
+
     <fragment
         android:id="@+id/universityMenuFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.university.UniversityMenuFragment"
@@ -111,10 +144,14 @@
 
         <action
             android:id="@+id/action_university_to_universitySelection"
-            app:destination="@id/universitySelectionFragment" />
+            app:destination="@id/universitySelectionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
-    <!-- ========================= UNIVERSITY SELECTION (SHARED) ========================= -->
+
     <fragment
         android:id="@+id/universitySelectionFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.university.UniversitySelectionFragment"
@@ -126,28 +163,37 @@
             app:argType="string"
             app:nullable="true" />
 
-        <!-- Actions from University Selection to Payment Fragments -->
         <action
             android:id="@+id/action_universitySelection_to_tuitionPayment"
             app:destination="@id/tuitionPaymentFragment"
             app:popUpTo="@id/universityMenuFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_universitySelection_to_finesPayment"
             app:destination="@id/finesPaymentFragment"
             app:popUpTo="@id/universityMenuFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
         <action
             android:id="@+id/action_universitySelection_to_hostelPayment"
             app:destination="@id/hostelPaymentFragment"
             app:popUpTo="@id/universityMenuFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
-    <!-- ========================= UNIVERSITY PAYMENT FRAGMENTS ========================= -->
-    <!-- Tuition Payment -->
     <fragment
         android:id="@+id/tuitionPaymentFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.university.TuitionPaymentFragment"
@@ -160,7 +206,6 @@
             app:nullable="true" />
     </fragment>
 
-    <!-- Fines Payment -->
     <fragment
         android:id="@+id/finesPaymentFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.university.FinesPaymentFragment"
@@ -173,7 +218,7 @@
             app:nullable="true" />
     </fragment>
 
-    <!-- Hostel Payment -->
+
     <fragment
         android:id="@+id/hostelPaymentFragment"
         android:name="bankal_deir.com.Fatora.UI.fragments.university.HostelPaymentFragment"

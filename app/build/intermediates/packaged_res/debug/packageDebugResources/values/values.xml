@@ -97,8 +97,8 @@
     <string name="project_id" translatable="false">bank-al-deir</string>
     <string name="spinner_prompt">Select reason</string>
     <style name="Base.Theme.BankALDeir" parent="Theme.AppCompat.DayNight.NoActionBar">
-        
-        
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
     <style name="KeypadButton">
         <item name="android:layout_width">90dp</item>

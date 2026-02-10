@@ -4,10 +4,11 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -23,7 +24,7 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnGetStarted;
+  public final AppCompatButton btnGetStarted;
 
   @NonNull
   public final ImageView imageView3;
@@ -35,16 +36,25 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TabLayout tabLayout;
 
   @NonNull
+  public final TextView tvFooter;
+
+  @NonNull
+  public final TextView tvSkip;
+
+  @NonNull
   public final ViewPager2 viewPager2;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnGetStarted,
-      @NonNull ImageView imageView3, @NonNull ConstraintLayout main, @NonNull TabLayout tabLayout,
-      @NonNull ViewPager2 viewPager2) {
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
+      @NonNull AppCompatButton btnGetStarted, @NonNull ImageView imageView3,
+      @NonNull ConstraintLayout main, @NonNull TabLayout tabLayout, @NonNull TextView tvFooter,
+      @NonNull TextView tvSkip, @NonNull ViewPager2 viewPager2) {
     this.rootView = rootView;
     this.btnGetStarted = btnGetStarted;
     this.imageView3 = imageView3;
     this.main = main;
     this.tabLayout = tabLayout;
+    this.tvFooter = tvFooter;
+    this.tvSkip = tvSkip;
     this.viewPager2 = viewPager2;
   }
 
@@ -76,7 +86,7 @@ public final class ActivityMainBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnGetStarted;
-      Button btnGetStarted = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton btnGetStarted = ViewBindings.findChildViewById(rootView, id);
       if (btnGetStarted == null) {
         break missingId;
       }
@@ -95,6 +105,18 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvFooter;
+      TextView tvFooter = ViewBindings.findChildViewById(rootView, id);
+      if (tvFooter == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSkip;
+      TextView tvSkip = ViewBindings.findChildViewById(rootView, id);
+      if (tvSkip == null) {
+        break missingId;
+      }
+
       id = R.id.viewPager2;
       ViewPager2 viewPager2 = ViewBindings.findChildViewById(rootView, id);
       if (viewPager2 == null) {
@@ -102,7 +124,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, btnGetStarted, imageView3, main,
-          tabLayout, viewPager2);
+          tabLayout, tvFooter, tvSkip, viewPager2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -116,7 +116,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnPay"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/rounded_button_gold"
                     android:text="Pay Now"

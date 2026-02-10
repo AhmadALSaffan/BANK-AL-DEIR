@@ -1,5 +1,9 @@
 R_DEF: Internal format may change without notice
 local
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
 array com_google_android_gms_fonts_certs
 array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
@@ -231,6 +235,8 @@ drawable ic_tuition
 drawable ic_university
 drawable iconbank
 drawable income
+drawable indicator_active
+drawable indicator_inactive
 drawable leftbtn
 drawable logo_green_energy
 drawable logout
@@ -298,6 +304,8 @@ drawable show_back
 drawable spinner_drop
 drawable syrian_telecom
 drawable syriatel
+drawable tab_selector
+drawable tab_selector_large
 drawable topup
 drawable transfermoney
 drawable tryback
@@ -514,6 +522,7 @@ id imgCardType
 id imgCardVariant
 id imgCheckmark
 id immigrationFineFragment
+id ivOnboarding
 id linDiscover
 id linFatora
 id linMasterCard
@@ -657,9 +666,12 @@ id transactionNumber
 id transfer_quick
 id tuitionPaymentFragment
 id tvCurrentBalance
+id tvDescription
+id tvFooter
 id tvHeaderSubtitle
 id tvHeaderTitle
 id tvInstruction
+id tvSkip
 id tvTitle
 id txtAccountNumber
 id txtAmount
@@ -739,6 +751,7 @@ layout fragment_refill_balance
 layout fragment_tuition_payment
 layout fragment_university_menu
 layout fragment_university_selection
+layout item_onboarding
 layout item_university
 layout item_viewpager
 layout mastercard_dialog
@@ -773,5 +786,8 @@ style RoundSqaure
 style Theme.App
 style Theme.BankALDeir
 style circuler
+transition fade
+transition slide_left
+transition slide_right
 xml backup_rules
 xml data_extraction_rules

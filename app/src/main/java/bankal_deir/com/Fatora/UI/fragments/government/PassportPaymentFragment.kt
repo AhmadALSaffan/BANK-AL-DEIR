@@ -13,6 +13,7 @@ import bankal_deir.com.Fatora.Data.PaymentUtils.isValidIdNumber
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.FragmentPassportPaymentBinding
+import com.google.android.material.transition.MaterialContainerTransform
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,13 +37,11 @@ class PassportPaymentFragment : Fragment() {
     private var selectedPassportType: String = ""
     private var selectedAmount: Double = 0.0
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         _binding = FragmentPassportPaymentBinding.inflate(inflater, container, false)
         return binding.root
+
+        sharedElementEnterTransition = MaterialContainerTransform(requireContext(), true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

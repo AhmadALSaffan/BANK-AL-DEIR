@@ -16,10 +16,6 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\fragment_tuition_payment.xml"
     },
     {
-        "merged": "bankal_deir.com.app-mergeDebugResources-73:/layout/fragment_electricity_payment.xml",
-        "source": "bankal_deir.com.app-main-76:/layout/fragment_electricity_payment.xml"
-    },
-    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\trasnaction_item.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\trasnaction_item.xml"
     },
@@ -68,12 +64,12 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\fragment_fines_payment.xml"
     },
     {
-        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\activity_show_transaction.xml",
-        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\activity_show_transaction.xml"
-    },
-    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\fragment_government_menu.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\fragment_government_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\activity_show_transaction.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\activity_show_transaction.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\fragment_refill_balance.xml",
@@ -168,6 +164,10 @@
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\fragment_pay_bill.xml"
     },
     {
+        "merged": "bankal_deir.com.app-mergeDebugResources-73:/layout/item_onboarding.xml",
+        "source": "bankal_deir.com.app-main-76:/layout/item_onboarding.xml"
+    },
+    {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\activity_main_page.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\activity_main_page.xml"
     },
@@ -198,6 +198,10 @@
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\activity_otp_page.xml",
         "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\activity_otp_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\item_onboarding.xml",
+        "source": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-main-76:\\layout\\item_onboarding.xml"
     },
     {
         "merged": "C:\\Users\\ahmad\\.gradle\\daemon\\8.13\\bankal_deir.com.app-mergeDebugResources-73:\\layout\\fragment_hostel_payment.xml",

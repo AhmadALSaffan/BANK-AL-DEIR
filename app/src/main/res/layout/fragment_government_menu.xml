@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backsy"
+    android:transitionName="shared_container"
     tools:context=".Fatora.UI.fragments.government.GovernmentMenuFragment">
 
-    <!-- Header Card -->
+
     <androidx.cardview.widget.CardView
         android:id="@+id/headerCard"
         android:layout_width="0dp"
