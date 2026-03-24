@@ -31,6 +31,7 @@
     <color name="Beige_Off_white">#EDE9E4</color>
     <color name="Bone">#E3DAC9</color>
     <color name="Danger_Red">#D9534F</color>
+    <color name="Dark_Blue">#00368b</color>
     <color name="Dark_Teal">#072a2a</color>
     <color name="Emerald">#2E7D65</color>
     <color name="Golden">#C79A3A</color>
@@ -62,6 +63,7 @@
     <color name="ivor_mist">#eeeadf</color>
     <color name="lable">#B0B0B0</color>
     <color name="light_blue">#24c6dc</color>
+    <color name="light_blue1">#0067b2</color>
     <color name="light_gray">#D3D3D3</color>
     <color name="light_gray1">#B0B0B0</color>
     <color name="light_red">#A4193D</color>

@@ -58,5 +58,7 @@
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
     <color name="Beige">#F5F5DC</color>
+    <color name="light_blue1">#0067b2</color>
+    <color name="Dark_Blue">#00368b</color>
 
 </resources>

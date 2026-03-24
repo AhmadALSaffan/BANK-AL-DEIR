@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.imageview.ShapeableImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -43,6 +44,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final ImageView bannerImg;
 
   @NonNull
+  public final BottomNavigationView bottomNavigation;
+
+  @NonNull
   public final AppCompatButton btnPayPal;
 
   @NonNull
@@ -52,13 +56,16 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final Button btnSend;
 
   @NonNull
+  public final CardView btnViewDetails;
+
+  @NonNull
   public final ConstraintLayout constraintLayout2;
 
   @NonNull
   public final TextView firstNamett;
 
   @NonNull
-  public final CardView headerCard;
+  public final ConstraintLayout headerCard;
 
   @NonNull
   public final TextView historyLabel;
@@ -76,10 +83,16 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final CoordinatorLayout main;
 
   @NonNull
-  public final CardView payWithFatora;
+  public final LinearLayout myCards;
 
   @NonNull
-  public final CardView payWithQrCode;
+  public final CardView notifCard;
+
+  @NonNull
+  public final LinearLayout payWithFatora;
+
+  @NonNull
+  public final LinearLayout payWithQrCode;
 
   @NonNull
   public final ShapeableImageView profileImageMain;
@@ -106,13 +119,13 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final CardView quickActionsCard;
 
   @NonNull
-  public final CardView quickHistory;
+  public final LinearLayout quickHistory;
 
   @NonNull
-  public final CardView quickMore;
+  public final LinearLayout quickMore;
 
   @NonNull
-  public final CardView quickProfile;
+  public final LinearLayout quickProfile;
 
   @NonNull
   public final NestedScrollView rootScrollView;
@@ -130,35 +143,36 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final TextView textView20;
 
   @NonNull
-  public final CardView transferQuick;
-
-  @NonNull
   public final RecyclerView userList;
 
   private ActivityMainPageBinding(@NonNull CoordinatorLayout rootView, @NonNull TextView balance,
       @NonNull CardView balanceCard, @NonNull ConstraintLayout balanceContainer,
-      @NonNull ImageView bannerImg, @NonNull AppCompatButton btnPayPal, @NonNull Button btnRecive,
-      @NonNull Button btnSend, @NonNull ConstraintLayout constraintLayout2,
-      @NonNull TextView firstNamett, @NonNull CardView headerCard, @NonNull TextView historyLabel,
-      @NonNull ImageView imageView11, @NonNull LinearLayout linearLayout,
-      @NonNull LinearLayout linearLayout2, @NonNull CoordinatorLayout main,
-      @NonNull CardView payWithFatora, @NonNull CardView payWithQrCode,
+      @NonNull ImageView bannerImg, @NonNull BottomNavigationView bottomNavigation,
+      @NonNull AppCompatButton btnPayPal, @NonNull Button btnRecive, @NonNull Button btnSend,
+      @NonNull CardView btnViewDetails, @NonNull ConstraintLayout constraintLayout2,
+      @NonNull TextView firstNamett, @NonNull ConstraintLayout headerCard,
+      @NonNull TextView historyLabel, @NonNull ImageView imageView11,
+      @NonNull LinearLayout linearLayout, @NonNull LinearLayout linearLayout2,
+      @NonNull CoordinatorLayout main, @NonNull LinearLayout myCards, @NonNull CardView notifCard,
+      @NonNull LinearLayout payWithFatora, @NonNull LinearLayout payWithQrCode,
       @NonNull ShapeableImageView profileImageMain, @NonNull ProgressBar progressBarBalance,
       @NonNull ProgressBar progressBarBanner, @NonNull ProgressBar progressBarName,
       @NonNull ProgressBar progressBarProfileImage, @NonNull ProgressBar progressBarTopRefresh,
       @NonNull ProgressBar progressBartran, @NonNull CardView quickActionsCard,
-      @NonNull CardView quickHistory, @NonNull CardView quickMore, @NonNull CardView quickProfile,
-      @NonNull NestedScrollView rootScrollView, @NonNull ImageView shieldLogo,
-      @NonNull LinearLayout shieldView, @NonNull Space space, @NonNull TextView textView20,
-      @NonNull CardView transferQuick, @NonNull RecyclerView userList) {
+      @NonNull LinearLayout quickHistory, @NonNull LinearLayout quickMore,
+      @NonNull LinearLayout quickProfile, @NonNull NestedScrollView rootScrollView,
+      @NonNull ImageView shieldLogo, @NonNull LinearLayout shieldView, @NonNull Space space,
+      @NonNull TextView textView20, @NonNull RecyclerView userList) {
     this.rootView = rootView;
     this.balance = balance;
     this.balanceCard = balanceCard;
     this.balanceContainer = balanceContainer;
     this.bannerImg = bannerImg;
+    this.bottomNavigation = bottomNavigation;
     this.btnPayPal = btnPayPal;
     this.btnRecive = btnRecive;
     this.btnSend = btnSend;
+    this.btnViewDetails = btnViewDetails;
     this.constraintLayout2 = constraintLayout2;
     this.firstNamett = firstNamett;
     this.headerCard = headerCard;
@@ -167,6 +181,8 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.linearLayout = linearLayout;
     this.linearLayout2 = linearLayout2;
     this.main = main;
+    this.myCards = myCards;
+    this.notifCard = notifCard;
     this.payWithFatora = payWithFatora;
     this.payWithQrCode = payWithQrCode;
     this.profileImageMain = profileImageMain;
@@ -185,7 +201,6 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.shieldView = shieldView;
     this.space = space;
     this.textView20 = textView20;
-    this.transferQuick = transferQuick;
     this.userList = userList;
   }
 
@@ -240,6 +255,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.bottomNavigation;
+      BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNavigation == null) {
+        break missingId;
+      }
+
       id = R.id.btnPayPal;
       AppCompatButton btnPayPal = ViewBindings.findChildViewById(rootView, id);
       if (btnPayPal == null) {
@@ -258,6 +279,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnViewDetails;
+      CardView btnViewDetails = ViewBindings.findChildViewById(rootView, id);
+      if (btnViewDetails == null) {
+        break missingId;
+      }
+
       id = R.id.constraintLayout2;
       ConstraintLayout constraintLayout2 = ViewBindings.findChildViewById(rootView, id);
       if (constraintLayout2 == null) {
@@ -271,7 +298,7 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       id = R.id.headerCard;
-      CardView headerCard = ViewBindings.findChildViewById(rootView, id);
+      ConstraintLayout headerCard = ViewBindings.findChildViewById(rootView, id);
       if (headerCard == null) {
         break missingId;
       }
@@ -302,14 +329,26 @@ public final class ActivityMainPageBinding implements ViewBinding {
 
       CoordinatorLayout main = (CoordinatorLayout) rootView;
 
+      id = R.id.myCards;
+      LinearLayout myCards = ViewBindings.findChildViewById(rootView, id);
+      if (myCards == null) {
+        break missingId;
+      }
+
+      id = R.id.notifCard;
+      CardView notifCard = ViewBindings.findChildViewById(rootView, id);
+      if (notifCard == null) {
+        break missingId;
+      }
+
       id = R.id.payWithFatora;
-      CardView payWithFatora = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout payWithFatora = ViewBindings.findChildViewById(rootView, id);
       if (payWithFatora == null) {
         break missingId;
       }
 
       id = R.id.payWithQrCode;
-      CardView payWithQrCode = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout payWithQrCode = ViewBindings.findChildViewById(rootView, id);
       if (payWithQrCode == null) {
         break missingId;
       }
@@ -363,19 +402,19 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       id = R.id.quick_history;
-      CardView quickHistory = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout quickHistory = ViewBindings.findChildViewById(rootView, id);
       if (quickHistory == null) {
         break missingId;
       }
 
       id = R.id.quick_more;
-      CardView quickMore = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout quickMore = ViewBindings.findChildViewById(rootView, id);
       if (quickMore == null) {
         break missingId;
       }
 
       id = R.id.quick_profile;
-      CardView quickProfile = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout quickProfile = ViewBindings.findChildViewById(rootView, id);
       if (quickProfile == null) {
         break missingId;
       }
@@ -410,12 +449,6 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.transfer_quick;
-      CardView transferQuick = ViewBindings.findChildViewById(rootView, id);
-      if (transferQuick == null) {
-        break missingId;
-      }
-
       id = R.id.userList;
       RecyclerView userList = ViewBindings.findChildViewById(rootView, id);
       if (userList == null) {
@@ -423,12 +456,13 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       return new ActivityMainPageBinding((CoordinatorLayout) rootView, balance, balanceCard,
-          balanceContainer, bannerImg, btnPayPal, btnRecive, btnSend, constraintLayout2,
-          firstNamett, headerCard, historyLabel, imageView11, linearLayout, linearLayout2, main,
-          payWithFatora, payWithQrCode, profileImageMain, progressBarBalance, progressBarBanner,
-          progressBarName, progressBarProfileImage, progressBarTopRefresh, progressBartran,
-          quickActionsCard, quickHistory, quickMore, quickProfile, rootScrollView, shieldLogo,
-          shieldView, space, textView20, transferQuick, userList);
+          balanceContainer, bannerImg, bottomNavigation, btnPayPal, btnRecive, btnSend,
+          btnViewDetails, constraintLayout2, firstNamett, headerCard, historyLabel, imageView11,
+          linearLayout, linearLayout2, main, myCards, notifCard, payWithFatora, payWithQrCode,
+          profileImageMain, progressBarBalance, progressBarBanner, progressBarName,
+          progressBarProfileImage, progressBarTopRefresh, progressBartran, quickActionsCard,
+          quickHistory, quickMore, quickProfile, rootScrollView, shieldLogo, shieldView, space,
+          textView20, userList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

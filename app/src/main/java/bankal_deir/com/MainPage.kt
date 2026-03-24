@@ -76,7 +76,7 @@ class MainPage : AppCompatActivity() {
             val intent = Intent(this, profilePage::class.java)
             startActivity(intent)
         }
-        binding.transferQuick.setOnClickListener {
+        binding.myCards.setOnClickListener {
             val intent = Intent(this, cards::class.java)
             startActivity(intent)
         }

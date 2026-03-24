@@ -100,6 +100,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+
+    implementation("com.github.LottieFiles:dotlottie-android:0.5.0")
 }
 
 apply(plugin = "com.google.gms.google-services")
