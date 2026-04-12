@@ -19,5 +19,7 @@ data class PaymentTransaction(
     var company: String = "",  // "Green Energy" or "Ministry of Electricity"
     var billNumber: String = "",  // For electricity
     var university: String = "",  // University name
-    var studentNumber: String = ""  // For university payments
+    var studentNumber: String = "",  // For university payments
+    var reason: String = "",   // Transfer reason (send money)
+    var notes: String = ""     // Optional note (send money)
 )

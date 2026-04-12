@@ -29,22 +29,16 @@ public final class ActivityReciveBinding implements ViewBinding {
   public final Button btnBack;
 
   @NonNull
-  public final ImageView btnCopy1;
+  public final TextView btnCopy1;
 
   @NonNull
-  public final ImageView btnCopy2;
+  public final TextView btnCopy2;
 
   @NonNull
-  public final FrameLayout frame;
+  public final ImageView frame;
 
   @NonNull
   public final FrameLayout frame2;
-
-  @NonNull
-  public final ImageView imageView10;
-
-  @NonNull
-  public final ImageView imageView8;
 
   @NonNull
   public final ConstraintLayout main;
@@ -89,14 +83,13 @@ public final class ActivityReciveBinding implements ViewBinding {
   public final TextView textView8;
 
   private ActivityReciveBinding(@NonNull ConstraintLayout rootView, @NonNull TextView accountQr,
-      @NonNull Button btnBack, @NonNull ImageView btnCopy1, @NonNull ImageView btnCopy2,
-      @NonNull FrameLayout frame, @NonNull FrameLayout frame2, @NonNull ImageView imageView10,
-      @NonNull ImageView imageView8, @NonNull ConstraintLayout main, @NonNull ImageView qrCodeImg,
-      @NonNull TextView textAccountNumber, @NonNull TextView textEmail,
-      @NonNull TextView textFirstName, @NonNull TextView textIBAN, @NonNull TextView textLastName,
-      @NonNull TextView textPhoneNumber, @NonNull TextView textView14, @NonNull TextView textView15,
-      @NonNull TextView textView16, @NonNull TextView textView17, @NonNull TextView textView18,
-      @NonNull TextView textView8) {
+      @NonNull Button btnBack, @NonNull TextView btnCopy1, @NonNull TextView btnCopy2,
+      @NonNull ImageView frame, @NonNull FrameLayout frame2, @NonNull ConstraintLayout main,
+      @NonNull ImageView qrCodeImg, @NonNull TextView textAccountNumber,
+      @NonNull TextView textEmail, @NonNull TextView textFirstName, @NonNull TextView textIBAN,
+      @NonNull TextView textLastName, @NonNull TextView textPhoneNumber,
+      @NonNull TextView textView14, @NonNull TextView textView15, @NonNull TextView textView16,
+      @NonNull TextView textView17, @NonNull TextView textView18, @NonNull TextView textView8) {
     this.rootView = rootView;
     this.accountQr = accountQr;
     this.btnBack = btnBack;
@@ -104,8 +97,6 @@ public final class ActivityReciveBinding implements ViewBinding {
     this.btnCopy2 = btnCopy2;
     this.frame = frame;
     this.frame2 = frame2;
-    this.imageView10 = imageView10;
-    this.imageView8 = imageView8;
     this.main = main;
     this.qrCodeImg = qrCodeImg;
     this.textAccountNumber = textAccountNumber;
@@ -162,19 +153,19 @@ public final class ActivityReciveBinding implements ViewBinding {
       }
 
       id = R.id.btnCopy1;
-      ImageView btnCopy1 = ViewBindings.findChildViewById(rootView, id);
+      TextView btnCopy1 = ViewBindings.findChildViewById(rootView, id);
       if (btnCopy1 == null) {
         break missingId;
       }
 
       id = R.id.btnCopy2;
-      ImageView btnCopy2 = ViewBindings.findChildViewById(rootView, id);
+      TextView btnCopy2 = ViewBindings.findChildViewById(rootView, id);
       if (btnCopy2 == null) {
         break missingId;
       }
 
       id = R.id.frame;
-      FrameLayout frame = ViewBindings.findChildViewById(rootView, id);
+      ImageView frame = ViewBindings.findChildViewById(rootView, id);
       if (frame == null) {
         break missingId;
       }
@@ -182,18 +173,6 @@ public final class ActivityReciveBinding implements ViewBinding {
       id = R.id.frame2;
       FrameLayout frame2 = ViewBindings.findChildViewById(rootView, id);
       if (frame2 == null) {
-        break missingId;
-      }
-
-      id = R.id.imageView10;
-      ImageView imageView10 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView10 == null) {
-        break missingId;
-      }
-
-      id = R.id.imageView8;
-      ImageView imageView8 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView8 == null) {
         break missingId;
       }
 
@@ -278,9 +257,9 @@ public final class ActivityReciveBinding implements ViewBinding {
       }
 
       return new ActivityReciveBinding((ConstraintLayout) rootView, accountQr, btnBack, btnCopy1,
-          btnCopy2, frame, frame2, imageView10, imageView8, main, qrCodeImg, textAccountNumber,
-          textEmail, textFirstName, textIBAN, textLastName, textPhoneNumber, textView14, textView15,
-          textView16, textView17, textView18, textView8);
+          btnCopy2, frame, frame2, main, qrCodeImg, textAccountNumber, textEmail, textFirstName,
+          textIBAN, textLastName, textPhoneNumber, textView14, textView15, textView16, textView17,
+          textView18, textView8);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

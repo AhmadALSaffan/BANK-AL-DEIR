@@ -17,95 +17,119 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/backHistory"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginStart="16dp"
-            app:srcCompat="@drawable/back"
-            android:scaleType="fitCenter"
-            android:padding="5dp"
-            app:tint="@color/white"/>
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            app:srcCompat="@drawable/iconbank" />
-
+        <!-- ── Header ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:id="@+id/backHistory"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_bg_income"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/back"
+                app:tint="#4edea3" />
+
+            <TextView
+                android:id="@+id/imageView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="14dp"
+                android:text="Transaction History"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- ── Search bar ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="6dp">
 
             <EditText
                 android:id="@+id/searchFullHistory"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.50"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="5dp"
-                android:hint="Search..."
-                android:textColorHint="@color/gray_text"
-                android:background="@drawable/edittext_background"
-                android:ems="10"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:paddingEnd="5dp"
-                android:text=""
-                android:textColor="@color/black"/>
-
-            <Button
-                android:id="@+id/btnSearch"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
                 android:layout_marginEnd="10dp"
-                android:layout_weight="0.15"
-                android:background="@drawable/back_plp"
+                android:background="@drawable/send_field_card"
+                android:hint="Search by number or date…"
+                android:textColorHint="#7a9e8e"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:paddingHorizontal="14dp"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="@drawable/emerald_card_gradient"
                 android:text="Search"
-                android:textColor="@color/Almost_Black"
-                android:textSize="16sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="18dp"
+                android:gravity="center" />
+
         </LinearLayout>
 
+        <!-- ── Hint label ── -->
         <TextView
             android:id="@+id/textView25"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/gray_text"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:text="The search is eather by \n 1-Transaction Number  2-Date" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp"
+            android:text="Search by transaction number or date (dd/MM/yyyy)"
+            android:textColor="#4a6e5c"
+            android:textSize="11sp" />
 
+        <!-- ── List / Loader ── -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fullHistoryRec"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
             <ProgressBar
                 android:id="@+id/progressBarHistoryFull"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:indeterminateTint="#4edea3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:indeterminateTint="@color/damask_red"
-                style="?android:attr/progressBarStyle"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

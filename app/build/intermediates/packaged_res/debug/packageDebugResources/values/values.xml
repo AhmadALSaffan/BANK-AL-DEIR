@@ -14,6 +14,50 @@
             MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK
         </item>
     </string-array>
+    <string-array name="phone_codes">
+        <item>🇸🇾 +963</item>
+        <item>🇸🇦 +966</item>
+        <item>🇦🇪 +971</item>
+        <item>🇯🇴 +962</item>
+        <item>🇱🇧 +961</item>
+        <item>🇮🇶 +964</item>
+        <item>🇹🇷 +90</item>
+        <item>🇺🇸 +1</item>
+        <item>🇬🇧 +44</item>
+        <item>🇩🇪 +49</item>
+    </string-array>
+    <string-array name="phone_codes_login">
+        <item>🇸🇾 +963</item>
+        <item>🇦🇹 +43</item>
+        <item>🇧🇾 +375</item>
+        <item>🇧🇪 +32</item>
+        <item>🇧🇬 +359</item>
+        <item>🇭🇷 +385</item>
+        <item>🇨🇾 +357</item>
+        <item>🇨🇿 +420</item>
+        <item>🇩🇰 +45</item>
+        <item>🇪🇪 +372</item>
+        <item>🇫🇮 +358</item>
+        <item>🇫🇷 +33</item>
+        <item>🇩🇪 +49</item>
+        <item>🇬🇷 +30</item>
+        <item>🇭🇺 +36</item>
+        <item>🇮🇪 +353</item>
+        <item>🇮🇹 +39</item>
+        <item>🇱🇻 +371</item>
+        <item>🇱🇹 +370</item>
+        <item>🇱🇺 +352</item>
+        <item>🇲🇹 +356</item>
+        <item>🇳🇱 +31</item>
+        <item>🇵🇱 +48</item>
+        <item>🇵🇹 +351</item>
+        <item>🇷🇴 +40</item>
+        <item>🇸🇰 +421</item>
+        <item>🇸🇮 +386</item>
+        <item>🇪🇸 +34</item>
+        <item>🇸🇪 +46</item>
+        <item>🇹🇷 +90</item>
+    </string-array>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/poppins</item>
         <item>@font/poppins_thin</item>
@@ -98,9 +142,16 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="project_id" translatable="false">bank-al-deir</string>
     <string name="spinner_prompt">Select reason</string>
+    <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
     <style name="Base.Theme.BankALDeir" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
     <style name="KeypadButton">
         <item name="android:layout_width">90dp</item>
@@ -116,6 +167,9 @@
     </style>
     <style name="RoundSqaure">
         <item name="cornerSize">20%</item>
+    </style>
+    <style name="Roundcard">
+        <item name="cornerSize">5%</item>
     </style>
     <style name="Theme.App" parent="Theme.Material3.DayNight">
         <item name="bottomNavigationStyle">@style/Widget.Material3.BottomNavigationView</item>

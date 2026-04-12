@@ -6,6 +6,9 @@
     <style name="RoundSqaure">
         <item name="cornerSize">20%</item>
     </style>
+    <style name="Roundcard">
+        <item name="cornerSize">5%</item>
+    </style>
     <style name="RoundBack">
         <item name="cornerSize">5%</item>
     </style>

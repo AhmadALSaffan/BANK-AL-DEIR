@@ -13,7 +13,9 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import bankal_deir.com.MainPage
 import bankal_deir.com.databinding.ActivityFinalDetailsNewCardBinding
@@ -45,6 +47,7 @@ class finalDetailsNewCard : AppCompatActivity() {
         enableEdgeToEdge()
         mAuth = FirebaseAuth.getInstance()
         binding = ActivityFinalDetailsNewCardBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -82,7 +85,6 @@ class finalDetailsNewCard : AppCompatActivity() {
         binding.btnCancelCreate.setOnClickListener {
             val intent = Intent(this, MainPage::class.java)
             startActivity(intent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
     }
@@ -274,7 +276,6 @@ class finalDetailsNewCard : AppCompatActivity() {
                                 putExtra("variant", variant)
                             }
                             startActivity(nextIntent)
-                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                             finish()
                         }
                     }
@@ -293,6 +294,14 @@ class finalDetailsNewCard : AppCompatActivity() {
             progressDialog.dismiss()
             Toast.makeText(this, "Error reading user: ${error.message}", Toast.LENGTH_SHORT).show()
             Log.e("finalDetailsNewCard", "Error reading user: ${error.message}")
+        }
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 

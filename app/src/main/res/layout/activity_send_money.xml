@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -10,201 +11,298 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp">
 
-            <FrameLayout
+            <!-- Header: back arrow + title -->
+            <LinearLayout
                 android:id="@+id/frame"
-                android:layout_width="350dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp">
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/backwhite"
-                    app:shapeAppearanceOverlay="@style/RoundSqaure"
-                    android:scaleType="centerCrop"/>
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="25dp"
-                    app:srcCompat="@drawable/iconbank"
-                    />
-            </FrameLayout>
-
-            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="620dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="28dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/returnic"
+                    android:padding="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:tint="#4edea3"
+                    android:id="@+id/imageView8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Bank AL Deir"
+                    android:textColor="#4edea3"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- "Send Money" title -->
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Money"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Available Balance card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:cardBackgroundColor="#002018"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/btnCancel"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/recivebutton"
-                        android:text="CANCEL"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.93" />
-
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageView13"
-                        android:layout_width="350dp"
-                        android:layout_height="490dp"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.491"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.154"
-                        app:shapeAppearanceOverlay="@style/RoundBack"
-                        app:srcCompat="@drawable/up" />
-
-                    <EditText
-                        android:id="@+id/edtNotes"
-                        android:layout_width="320dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/edtwhitewithred"
-                        android:drawableLeft="@drawable/customedtnote"
-                        android:drawablePadding="5dp"
-                        android:ems="10"
-                        android:hint="Notes"
-                        android:inputType="text"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/light_gray"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.505"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.65" />
-
-                    <EditText
-                        android:id="@+id/edtAmount"
-                        android:layout_width="320dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/edtwhitewithred"
-                        android:drawableLeft="@drawable/customedtmoney"
-                        android:drawablePadding="5dp"
-                        android:ems="10"
-                        android:hint="Amount"
-                        android:inputType="text"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/light_gray"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.507"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.35000002" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="20dp">
 
                     <TextView
-                        android:id="@+id/txtBalance"
-                        android:layout_width="200dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/amountsend"
-                        android:drawableLeft="@drawable/amountwhite"
-                        android:gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text="******"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.203"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.78" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AVAILABLE BALANCE"
+                        android:textColor="#aacfbb"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.18"
+                        android:layout_marginBottom="8dp" />
 
-                    <TextView
-                        android:id="@+id/textView21"
-                        android:layout_width="320dp"
-                        android:layout_height="60dp"
-                        android:gravity="center"
-                        android:text="Send Money"
-                        android:textColor="@color/white"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.494"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.055" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:id="@+id/txtBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="******"
+                            android:textColor="#4edea3"
+                            android:textSize="44sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Form fields ── -->
+
+            <!-- Recipient Account -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RECIPIENT ACCOUNT"
+                    android:textColor="#aacfbb"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.16"
+                    android:layout_marginBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <EditText
                         android:id="@+id/edtAcountNumberWallet"
-                        android:layout_width="320dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/edtwhitewithred"
-                        android:drawableLeft="@drawable/customedtperson"
-                        android:drawablePadding="5dp"
-                        android:ems="10"
-                        android:hint="ACC**********"
+                        android:layout_width="0dp"
+                        android:layout_height="52dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/input_bottom_line"
+                        android:hint="Enter account number"
                         android:inputType="text"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/light_gray"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.492"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.18" />
+                        android:paddingStart="0dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#7a9e8e"
+                        android:textSize="16sp" />
 
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/profile"
+                        app:tint="#4edea3"
+                        android:alpha="0.8" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Amount to Send -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AMOUNT TO SEND"
+                    android:textColor="#aacfbb"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.16"
+                    android:layout_marginBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/input_bottom_line">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$"
+                        android:textColor="#7a9e8e"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:paddingEnd="8dp" />
+
+                    <EditText
+                        android:id="@+id/edtAmount"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:drawableTint="@color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Reason for Transfer (Spinner) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REASON FOR TRANSFER"
+                    android:textColor="#aacfbb"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.16"
+                    android:layout_marginBottom="10dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/send_field_card">
 
                     <Spinner
                         android:id="@+id/aspinnerReason"
-                        android:layout_width="320dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/edtwhitewithred"
-                        android:prompt="@string/spinner_prompt"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:paddingHorizontal="16dp"
+                        android:prompt="@string/spinner_prompt" />
 
-                    <Button
-                        android:id="@+id/btnSendMoney"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/sendbutton"
-                        android:drawableLeft="@drawable/send40"
-                        android:drawableTint="@color/black"
-                        android:paddingEnd="30dp"
-                        android:paddingLeft="10dp"
-                        android:text="SEND"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.93" />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/drowp"
+                        app:tint="#4edea3"
+                        android:clickable="false"
+                        android:focusable="false" />
+                </FrameLayout>
+            </LinearLayout>
 
+            <!-- Optional Notes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="32dp">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OPTIONAL NOTES"
+                    android:textColor="#aacfbb"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.16"
+                    android:layout_marginBottom="10dp" />
+
+                <EditText
+                    android:id="@+id/edtNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/send_field_card"
+                    android:gravity="top|start"
+                    android:hint="Add a reference message..."
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:maxLines="4"
+                    android:padding="16dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#7a9e8e"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Send Funds button -->
+            <Button
+                android:id="@+id/btnSendMoney"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/emerald_card_gradient"
+                android:foreground="@drawable/custom_ripple"
+                android:text="SEND FUNDS"
+                android:textColor="#003824"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.06" />
+
+            <!-- Cancel button -->
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/send_field_card"
+                android:foreground="@drawable/custom_ripple"
+                android:text="CANCEL"
+                android:textColor="#aacfbb"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08" />
+
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy2"
+    android:background="@drawable/backsy"
     tools:context=".Login.RegisterUserDetails">
 
     <ScrollView
@@ -15,137 +15,261 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:paddingRight="20dp"
-                app:srcCompat="@drawable/iconbank" />
-
-            <TextView
-                android:id="@+id/textView4"
+            <!-- ── Header ── -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="10dp"
-                android:text="BANK AL-DEIR"
-                android:textColor="@color/light_red"
-                android:textSize="34sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="36dp">
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="10dp"
-                android:text="MOBILE BANKING"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/ic_bg_income"
+                    android:layout_marginEnd="12dp">
 
-            <ImageView
-                android:layout_width="300dp"
-                android:layout_height="2dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="20dp"
-                android:src="@color/white" />
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/iconbank" />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bank Al-Deir"
+                        android:textColor="#4edea3"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MOBILE BANKING"
+                        android:textColor="#7a9e8e"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.1" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── Success icon ── -->
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:src="@drawable/checkmark" />
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/check_show_back">
 
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_check_circle"
+                    app:tint="#4edea3" />
+
+            </FrameLayout>
+
+            <!-- ── Hero text ── -->
             <TextView
                 android:id="@+id/textView51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="10dp"
-                android:text="Please Enter Your Details"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:gravity="center"
+                android:text="Almost There!"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp" />
 
-            <EditText
-                android:id="@+id/edtEmailPhone"
-                android:layout_width="370dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/edittextde"
-                android:drawableLeft="@drawable/customemail"
-                android:drawablePadding="5dp"
-                android:ems="10"
-                android:hint="Your Email"
-                android:inputType="text"
-                android:paddingLeft="10dp"
-                android:textColor="@color/backblack"
-                android:textColorHint="@color/gray" />
-
-            <EditText
-                android:id="@+id/edtFirstNamePhone"
-                android:layout_width="370dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittextde"
-                android:drawableLeft="@drawable/customperson"
-                android:drawablePadding="5dp"
-                android:ems="10"
-                android:hint="Your First Name"
-                android:inputType="text"
-                android:paddingLeft="10dp"
-                android:textColor="@color/backblack"
-                android:textColorHint="@color/gray" />
-
-            <EditText
-                android:id="@+id/edtLastNamePhone"
-                android:layout_width="370dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittextde"
-                android:drawableLeft="@drawable/customperson"
-                android:drawablePadding="5dp"
-                android:ems="10"
-                android:hint="Your Last Name"
-                android:inputType="text"
-                android:paddingLeft="10dp"
-                android:textColor="@color/backblack"
-                android:textColorHint="@color/gray" />
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="300dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="25dp"
-                android:buttonTint="@color/white"
-                android:text="I Agree with the Terms and Conditions"
-                android:textColor="@color/white"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Complete your profile to activate your account."
+                android:textColor="#7a9e8e"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.252"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                android:lineSpacingExtra="3dp"
+                android:layout_marginBottom="28dp" />
 
+            <!-- ── Form card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_type_bg"
+                android:padding="20dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- Email -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMAIL ADDRESS"
+                    android:textColor="#4a7a6a"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.12"
+                    android:layout_marginBottom="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/edt_emerald"
+                    android:paddingHorizontal="14dp"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/customemail"
+                        app:tint="#4edea3" />
+
+                    <EditText
+                        android:id="@+id/edtEmailPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="your@email.com"
+                        android:inputType="textEmailAddress"
+                        android:imeOptions="actionNext"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#3f5a50"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#1a3d2e"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- First Name + Last Name row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FIRST NAME"
+                            android:textColor="#4a7a6a"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.12"
+                            android:layout_marginBottom="6dp" />
+
+                        <EditText
+                            android:id="@+id/edtFirstNamePhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:background="@drawable/edt_emerald"
+                            android:paddingHorizontal="12dp"
+                            android:hint="First name"
+                            android:inputType="textPersonName"
+                            android:imeOptions="actionNext"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#3f5a50"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LAST NAME"
+                            android:textColor="#4a7a6a"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.12"
+                            android:layout_marginBottom="6dp" />
+
+                        <EditText
+                            android:id="@+id/edtLastNamePhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:background="@drawable/edt_emerald"
+                            android:paddingHorizontal="12dp"
+                            android:hint="Last name"
+                            android:inputType="textPersonName"
+                            android:imeOptions="actionDone"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#3f5a50"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Terms checkbox -->
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#4edea3"
+                    android:text="I Agree with the Terms and Conditions and Privacy Policy of Bank Al-Deir."
+                    android:textColor="#7a9e8e"
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="2dp" />
+
+            </LinearLayout>
+
+            <!-- ── Save button ── -->
             <Button
                 android:id="@+id/btnSaveDetails"
-                android:layout_width="270dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/recivebtnlight"
-                android:text="SAVE"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/btnedit"
+                android:text="SAVE &amp; CONTINUE"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="32dp" />
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,9 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivitySendMoneyBinding
@@ -41,6 +43,7 @@ class sendMoney : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         binding = ActivitySendMoneyBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
         val items = listOf("Select reason", "Personal expenses", "Family and friends expenses", "Tuition fees","individual","Other")
         val spinnerAdapter = ArrayAdapter(this, R.layout.custom_color_spinner, items)
@@ -130,13 +133,19 @@ class sendMoney : AppCompatActivity() {
                             Toast.makeText(this, " You cannot send money to yourself", Toast.LENGTH_SHORT).show()
                             return@findReceiverByAccountNumber
                         }
-                        transferMoney(senderWID, receiverWID, amount,progressDialog) { transactionNumberStr ->
+                        val reason = binding.aspinnerReason.selectedItem?.toString() ?: ""
+                        val notes = binding.edtNotes.text.toString().trim()
+                        transferMoney(senderWID, receiverWID, amount, reason, notes, progressDialog) { transactionNumberStr ->
                             progressDialog.dismiss()
                             val dialog = Dialog(this)
                             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
                             dialog.setCancelable(false)
                             dialog.setContentView(R.layout.done)
                             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            dialog.window?.setLayout(
+                                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                                android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
                             dialog.show()
 
                             val transactionNumber = dialog.findViewById<TextView>(R.id.transactionNumber)
@@ -167,7 +176,6 @@ class sendMoney : AppCompatActivity() {
                                 val intent = Intent(this, MainPage::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                                 startActivity(intent)
-                                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                                 finish()
                             }
                         }
@@ -182,12 +190,13 @@ class sendMoney : AppCompatActivity() {
             }
         }
 
-        binding.btnCancel.setOnClickListener {
+        val goBack = {
             val intent = Intent(this, MainPage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
+        binding.btnCancel.setOnClickListener { goBack() }
+        binding.imageView8.setOnClickListener { goBack() }
     }
 
     private fun findReceiverByAccountNumber(accountNumber: String, callback: (String) -> Unit) {
@@ -256,7 +265,7 @@ class sendMoney : AppCompatActivity() {
         }
     }
 
-    fun transferMoney(senderWalletID: String, receiverWalletID: String, amount: Double, progressDialog: Dialog, onSuccess: (String) -> Unit) {
+    fun transferMoney(senderWalletID: String, receiverWalletID: String, amount: Double, reason: String, notes: String, progressDialog: Dialog, onSuccess: (String) -> Unit) {
         databaseReference = FirebaseDatabase.getInstance().getReference("wallets")
         databaseReference.child(senderWalletID).get().addOnSuccessListener { senderSnapshot ->
             val senderBalance = senderSnapshot.child("Balance").getValue(Double::class.java) ?: 0.0
@@ -274,7 +283,7 @@ class sendMoney : AppCompatActivity() {
                 databaseReference.updateChildren(updateBalances).addOnSuccessListener {
                     Toast.makeText(this, " Transfer of $amount successful!", Toast.LENGTH_SHORT).show()
                     readDataUser()
-                    val transactionNumber = saveTransactionHistory(senderWalletID, receiverWalletID, amount)
+                    val transactionNumber = saveTransactionHistory(senderWalletID, receiverWalletID, amount, reason, notes)
                     onSuccess(transactionNumber)
                 }.addOnFailureListener {
                     Toast.makeText(this, " Transfer failed: ${it.message}", Toast.LENGTH_SHORT).show()
@@ -287,7 +296,7 @@ class sendMoney : AppCompatActivity() {
         }
     }
 
-    private fun saveTransactionHistory(senderWalletID: String, receiverWalletID: String, amount: Double): String {
+    private fun saveTransactionHistory(senderWalletID: String, receiverWalletID: String, amount: Double, reason: String = "", notes: String = ""): String {
         val historyRef = FirebaseDatabase.getInstance().getReference("history")
         val transactionNumber = "SYP" + System.currentTimeMillis() + (1000..9999).random()
         val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
@@ -299,7 +308,9 @@ class sendMoney : AppCompatActivity() {
             "amount" to amount,
             "date" to date,
             "senderUserId" to mAuth.currentUser?.uid,
-            "transactionType" to "SYP"
+            "transactionType" to "SYP",
+            "reason" to reason,
+            "notes" to notes
         )
         historyRef.child(transactionNumber).setValue(transactionData)
         return transactionNumber
@@ -310,6 +321,14 @@ class sendMoney : AppCompatActivity() {
         val editText = binding.edtAcountNumberWallet
         if (accountNumber != null) {
             editText.setText(accountNumber)
+        }
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

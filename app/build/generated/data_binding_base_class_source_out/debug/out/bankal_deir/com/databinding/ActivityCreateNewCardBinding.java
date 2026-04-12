@@ -27,16 +27,16 @@ public final class ActivityCreateNewCardBinding implements ViewBinding {
   public final ImageView btnDiscover;
 
   @NonNull
-  public final ImageView btnFatora;
+  public final ShapeableImageView btnFatora;
 
   @NonNull
-  public final ImageView btnMasterCard;
+  public final ShapeableImageView btnMasterCard;
 
   @NonNull
   public final Button btnSelectedCard;
 
   @NonNull
-  public final ImageView btnVisa;
+  public final ShapeableImageView btnVisa;
 
   @NonNull
   public final ShapeableImageView imageView14;
@@ -60,11 +60,12 @@ public final class ActivityCreateNewCardBinding implements ViewBinding {
   public final TextView textView23;
 
   private ActivityCreateNewCardBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView btnDiscover, @NonNull ImageView btnFatora,
-      @NonNull ImageView btnMasterCard, @NonNull Button btnSelectedCard, @NonNull ImageView btnVisa,
-      @NonNull ShapeableImageView imageView14, @NonNull LinearLayout linDiscover,
-      @NonNull LinearLayout linFatora, @NonNull LinearLayout linMasterCard,
-      @NonNull LinearLayout linVisa, @NonNull ConstraintLayout main, @NonNull TextView textView23) {
+      @NonNull ImageView btnDiscover, @NonNull ShapeableImageView btnFatora,
+      @NonNull ShapeableImageView btnMasterCard, @NonNull Button btnSelectedCard,
+      @NonNull ShapeableImageView btnVisa, @NonNull ShapeableImageView imageView14,
+      @NonNull LinearLayout linDiscover, @NonNull LinearLayout linFatora,
+      @NonNull LinearLayout linMasterCard, @NonNull LinearLayout linVisa,
+      @NonNull ConstraintLayout main, @NonNull TextView textView23) {
     this.rootView = rootView;
     this.btnDiscover = btnDiscover;
     this.btnFatora = btnFatora;
@@ -114,13 +115,13 @@ public final class ActivityCreateNewCardBinding implements ViewBinding {
       }
 
       id = R.id.btnFatora;
-      ImageView btnFatora = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView btnFatora = ViewBindings.findChildViewById(rootView, id);
       if (btnFatora == null) {
         break missingId;
       }
 
       id = R.id.btnMasterCard;
-      ImageView btnMasterCard = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView btnMasterCard = ViewBindings.findChildViewById(rootView, id);
       if (btnMasterCard == null) {
         break missingId;
       }
@@ -132,7 +133,7 @@ public final class ActivityCreateNewCardBinding implements ViewBinding {
       }
 
       id = R.id.btnVisa;
-      ImageView btnVisa = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView btnVisa = ViewBindings.findChildViewById(rootView, id);
       if (btnVisa == null) {
         break missingId;
       }

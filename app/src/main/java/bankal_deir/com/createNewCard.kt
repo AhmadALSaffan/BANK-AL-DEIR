@@ -11,7 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import bankal_deir.com.databinding.ActivityCreateNewCardBinding
 import bankal_deir.com.databinding.VisaDetailsBinding
@@ -24,6 +26,7 @@ class createNewCard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding  = ActivityCreateNewCardBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -68,7 +71,6 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
             if (selectedType=="mastercard"){
@@ -77,7 +79,6 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
             if (selectedType=="discover"){
@@ -86,7 +87,6 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
             if (selectedType=="fatora"){
@@ -95,7 +95,6 @@ class createNewCard : AppCompatActivity() {
 
                 }
                 startActivity(cIntent)
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
 
@@ -107,6 +106,13 @@ class createNewCard : AppCompatActivity() {
 
         }
     }
-
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
 
 }

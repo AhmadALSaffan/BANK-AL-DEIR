@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,7 +46,7 @@ public final class ActivitySignUpBinding implements ViewBinding {
   public final EditText edtPasswordsign;
 
   @NonNull
-  public final EditText edtPhoneCode;
+  public final Spinner edtPhoneCode;
 
   @NonNull
   public final EditText edtPhoneNumber;
@@ -71,7 +72,7 @@ public final class ActivitySignUpBinding implements ViewBinding {
   private ActivitySignUpBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnSignUp,
       @NonNull CheckBox checkBox, @NonNull EditText edtEmailsign, @NonNull EditText edtFirstName,
       @NonNull EditText edtLastName, @NonNull EditText edtPasswordCheck,
-      @NonNull EditText edtPasswordsign, @NonNull EditText edtPhoneCode,
+      @NonNull EditText edtPasswordsign, @NonNull Spinner edtPhoneCode,
       @NonNull EditText edtPhoneNumber, @NonNull ImageView imageView,
       @NonNull ConstraintLayout main, @NonNull CheckBox seePasswordSignUp,
       @NonNull TextView textView10, @NonNull TextView textView6, @NonNull TextView textView7) {
@@ -163,7 +164,7 @@ public final class ActivitySignUpBinding implements ViewBinding {
       }
 
       id = R.id.edtPhoneCode;
-      EditText edtPhoneCode = ViewBindings.findChildViewById(rootView, id);
+      Spinner edtPhoneCode = ViewBindings.findChildViewById(rootView, id);
       if (edtPhoneCode == null) {
         break missingId;
       }

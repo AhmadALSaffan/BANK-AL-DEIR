@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backblur"
+    android:background="@drawable/backsy"
     tools:context=".createNewCard">
 
     <ScrollView
@@ -15,131 +15,373 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="350dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center">
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/backwhite"
-                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
+            <!-- ── Header ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="4dp"
+                android:layout_marginTop="46dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageView14"
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/iconbank" />
-            </FrameLayout>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_bg_income"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/iconbank"
+                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
 
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:text="Choose Card Type"
-                android:textColor="@color/white"
-                android:textSize="32sp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
 
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choose Card Type"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select your preferred payment network"
+                        android:textColor="#7a9e8e"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── Card Type Tiles ── -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="24dp">
 
+                <!-- Visa tile -->
                 <LinearLayout
                     android:id="@+id/linVisa"
-                    android:layout_width="160dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="35dp"
-                    android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/btnVisa"
-                    android:layout_width="120dp"
-                    android:layout_gravity="center"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/visa" />
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/card_type_bg">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
+                        <FrameLayout
+                            android:layout_width="58dp"
+                            android:layout_height="58dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/btnVisa"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="3dp"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/visa"
+                                app:shapeAppearanceOverlay="@style/RoundSqaure"/>
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_radio_unchecked"
+                            app:tint="#3f5a50" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visa Signature"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GLOBAL ACCEPTANCE"
+                        android:textColor="#7a9e8e"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.08" />
 
                 </LinearLayout>
+
+                <!-- Mastercard tile -->
                 <LinearLayout
                     android:id="@+id/linMasterCard"
-                    android:layout_width="160dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="35dp"
-                    android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/btnMasterCard"
-                    android:layout_width="120dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="0dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/mastercard" />
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/card_type_bg">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <FrameLayout
+                            android:layout_width="58dp"
+                            android:layout_height="58dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/btnMasterCard"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="3dp"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/mastercard"
+                                app:shapeAppearanceOverlay="@style/RoundSqaure"/>
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_radio_unchecked"
+                            app:tint="#3f5a50" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mastercard World"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PREMIUM REWARDS"
+                        android:textColor="#7a9e8e"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.08" />
 
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal">
+                <!-- Discover tile -->
                 <LinearLayout
                     android:id="@+id/linDiscover"
-                    android:layout_width="160dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="35dp"
-                    android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/btnDiscover"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/discover" />
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/card_type_bg">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <FrameLayout
+                            android:layout_width="58dp"
+                            android:layout_height="58dp">
+
+                            <ImageView
+                                android:id="@+id/btnDiscover"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/discover" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_radio_unchecked"
+                            app:tint="#3f5a50" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Discover Pro"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CASHBACK ELITE"
+                        android:textColor="#7a9e8e"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.08" />
 
                 </LinearLayout>
 
+                <!-- Fatora tile -->
                 <LinearLayout
                     android:id="@+id/linFatora"
-                    android:layout_width="160dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="35dp"
-                    android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/btnFatora"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="0dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/fatroa1" />
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/card_type_bg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <FrameLayout
+                            android:layout_width="58dp"
+                            android:layout_height="58dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/btnFatora"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="3dp"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/fatroa1"
+                                app:shapeAppearanceOverlay="@style/RoundSqaure"/>
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="EXCLUSIVE"
+                                android:textColor="#f49d0a"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.05"
+                                android:background="@drawable/tertiary_badge_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="3dp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_radio_unchecked"
+                            app:tint="#3f5a50" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fatora Private"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LOCAL LUXURY"
+                        android:textColor="#7a9e8e"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.08" />
 
                 </LinearLayout>
+
             </LinearLayout>
 
+            <!-- ── Continue button ── -->
             <Button
                 android:id="@+id/btnSelectedCard"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/recivebtnlight"
-                android:text="NEXT"
-                android:textColor="@android:color/white"
-                android:textSize="32sp" />
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btnedit"
+                android:text="Continue to Personalize"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="40dp"
+                android:text="Terms and conditions apply to each card issuer."
+                android:textColor="#4a6e5c"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
         </LinearLayout>
     </ScrollView>

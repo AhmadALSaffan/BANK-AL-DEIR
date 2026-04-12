@@ -45,7 +45,7 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
             message.setFrom(new InternetAddress(email));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(subject);
-            message.setText(body);
+            message.setContent(body, "text/html; charset=utf-8");
 
             Transport.send(message);
         } catch (Exception e) {

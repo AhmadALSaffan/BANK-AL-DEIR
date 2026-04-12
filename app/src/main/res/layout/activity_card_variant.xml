@@ -5,75 +5,111 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy2"
+    android:background="@drawable/backsy"
     tools:context=".CardVariant">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="350dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center">
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/backwhite"
-                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
+            <!-- ── Header ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="4dp"
+                android:layout_marginTop="46dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageView14"
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/iconbank" />
-            </FrameLayout>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_bg_income"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/iconbank"
+                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
 
-            <TextView
-                android:id="@+id/textView23"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choose Card Variant"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select a variant that fits your needs"
+                        android:textColor="#7a9e8e"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── Divider ── -->
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:text="Choose Card Variant"
-                android:textColor="@color/white"
-                android:textSize="32sp" />
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1a3d2e" />
 
+            <!-- ── Card variant grid ── -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerCardVariants"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:nestedScrollingEnabled="false"
                 android:clipToPadding="false"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/card_variant_item" />
 
+            <!-- ── Proceed button ── -->
             <Button
                 android:id="@+id/btnProceedToDetails"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/btnedit"
-                android:padding="16dp"
                 android:text="Proceed to Details"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="40dp"
+                android:text="Terms and conditions apply to each card variant."
+                android:textColor="#4a6e5c"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,65 +8,108 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@android:color/transparent"
-    app:cardCornerRadius="12dp"
+    app:cardBackgroundColor="#0f2820"
+    app:cardCornerRadius="20dp"
     app:cardElevation="4dp">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
 
-        <ImageView
-            android:id="@+id/imgCardVariant"
+        <!-- ── Card artwork with selection overlay ── -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/visaclassic" />
+            android:layout_height="250dp">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgCardVariant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/visaclassic"
+                app:shapeAppearanceOverlay="@style/Roundcard" />
+
+            <!-- Dark overlay when selected -->
+            <View
+                android:id="@+id/overlaySelected"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#99001711"
+                android:visibility="gone" />
+
+            <!-- Checkmark when selected -->
+            <ImageView
+                android:id="@+id/imgCheckmark"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_check_circle"
+                android:visibility="gone"
+                app:tint="#4edea3" />
+
+        </FrameLayout>
+
+        <!-- ── Divider ── -->
         <View
-            android:id="@+id/overlaySelected"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="#80000000"
-            android:visibility="gone" />
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="12dp"
+            android:background="#1a3d2e" />
 
-        <ImageView
-            android:id="@+id/imgCheckmark"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_check_circle"
-            android:visibility="gone"
-            app:tint="@color/white" />
+        <!-- ── Card name ── -->
+        <TextView
+            android:id="@+id/txtVariantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visa Classic"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <!-- Card Variant Name -->
+        <!-- ── Description ── -->
+        <TextView
+            android:id="@+id/txtVariantDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Standard benefits"
+            android:textColor="#7a9e8e"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- ── Bottom row: arrow button ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="#CC000000"
-            android:orientation="vertical"
-            android:padding="12dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="14dp">
 
-            <TextView
-                android:id="@+id/txtVariantName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Visa Classic"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/txtVariantDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Standard benefits"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_bg_income">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_forward"
+                    app:tint="#4edea3" />
+
+            </FrameLayout>
+
         </LinearLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

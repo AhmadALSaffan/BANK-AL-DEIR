@@ -11,24 +11,30 @@ import android.view.View
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.work.*
 import bankal_deir.com.MainPage
 import bankal_deir.com.databinding.ActivityAmountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.braintreepayments.api.*
+import com.google.android.gms.wallet.TransactionInfo
+import com.google.android.gms.wallet.WalletConstants
 import java.util.concurrent.TimeUnit
 import bankal_deir.com.R
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class AmountActivity : AppCompatActivity(), PayPalListener {
+class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
     private lateinit var binding: ActivityAmountBinding
     private var userId: String = ""
     private var walletId: String = ""
     private lateinit var braintreeClient: BraintreeClient
     private lateinit var payPalClient: PayPalClient
+    private lateinit var googlePayClient: GooglePayClient
     private var pendingAmount: Double = 0.0
     private lateinit var progressDialog: Dialog
     private lateinit var databaseReference: DatabaseReference
@@ -37,14 +43,46 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAmountBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
 
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
         mAuth = FirebaseAuth.getInstance()
 
-        setupBraintree()
+        val rawToken = intent.getStringExtra("braintree_token")
+            ?: "sandbox_qzp3nw4q_mshysrbxdfskrz9v"
+
+        // Strip explicit :443 port from all URLs inside the client token.
+        // We do this via raw string replace (not JSONObject) to avoid JSONObject.toString()
+        // escaping '/' as '\/' and corrupting the JWT authorizationFingerprint.
+        val braintreeToken = if (!rawToken.startsWith("sandbox_")) {
+            try {
+                val decoded = String(android.util.Base64.decode(rawToken, android.util.Base64.DEFAULT))
+                if (decoded.contains(":443")) {
+                    val fixed = android.util.Base64.encodeToString(
+                        decoded.replace(":443", "").toByteArray(Charsets.UTF_8),
+                        android.util.Base64.NO_WRAP
+                    )
+                    Log.d("BraintreeSetup", "Stripped :443 from token (raw)")
+                    fixed
+                } else {
+                    Log.d("BraintreeSetup", "No :443 found in token")
+                    rawToken
+                }
+            } catch (e: Exception) {
+                Log.e("BraintreeSetup", "Token patch failed: ${e.message}")
+                rawToken
+            }
+        } else {
+            rawToken
+        }
+
+        // Config is pre-cached by MainPage before this Activity starts.
+        // Call setupBraintree synchronously here (onCreate = pre-RESUMED) so that
+        // PayPalClient/GooglePayClient can safely register their ActivityResult launchers.
         setupProgressDialog()
+        setupBraintree(braintreeToken)
 
         val prefs = getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE)
         pendingAmount = prefs.getFloat("pending_amount", 0f).toDouble()
@@ -72,6 +110,18 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
                 hideProgressDialog()
             }
         }
+
+        binding.btnGooglePay.setOnClickListener {
+            val amountText = binding.etAmount.text.toString()
+            val amount = amountText.toDoubleOrNull()
+            if (amount != null && amount > 0) {
+                pendingAmount = amount
+                showProgressDialog()
+                startGooglePayCheckout(amount)
+            } else {
+                Toast.makeText(this, "Please enter a valid amount", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
     private fun showProgressDialog() {
         if (!progressDialog.isShowing) {
@@ -91,10 +141,12 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
         progressDialog.setContentView(R.layout.progress)
         progressDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
-    private fun setupBraintree() {
-        braintreeClient = BraintreeClient(this, "sandbox_qzp3nw4q_mshysrbxdfskrz9v", "bankaldeir.braintree")
+    private fun setupBraintree(authorization: String) {
+        braintreeClient = BraintreeClient(applicationContext, authorization)
         payPalClient = PayPalClient(this, braintreeClient)
         payPalClient.setListener(this)
+        googlePayClient = GooglePayClient(this, braintreeClient)
+        googlePayClient.setListener(this)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -166,7 +218,6 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
     }
 
     fun readBalance(walletId: String) {
-        showProgressDialog()
         if (walletId.isEmpty()) return
         databaseReference = FirebaseDatabase.getInstance().getReference("wallets")
         databaseReference.child(walletId).get().addOnSuccessListener {
@@ -178,6 +229,52 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
         }
     }
 
+
+    private fun startGooglePayCheckout(amount: Double) {
+        val request = GooglePayRequest().apply {
+            transactionInfo = TransactionInfo.newBuilder()
+                .setTotalPrice(String.format(Locale.US, "%.2f", amount))
+                .setTotalPriceStatus(WalletConstants.TOTAL_PRICE_STATUS_FINAL)
+                .setCurrencyCode("USD")
+                .build()
+            isBillingAddressRequired = true
+            googleMerchantName = "BANK AL DEIR"
+            environment = "TEST"
+        }
+        googlePayClient.requestPayment(this, request)
+    }
+
+    override fun onGooglePaySuccess(paymentMethodNonce: PaymentMethodNonce) {
+        if (walletId.isEmpty()) {
+            val prefs = getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE)
+            walletId = prefs.getString("wallet_id", "") ?: ""
+        }
+        if (pendingAmount > 0 && walletId.isNotEmpty()) {
+            val data = Data.Builder()
+                .putDouble("amount", pendingAmount)
+                .putString("walletId", walletId)
+                .build()
+            val workRequest = OneTimeWorkRequestBuilder<UpdateWalletWorker>()
+                .setInputData(data)
+                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
+                .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.SECONDS)
+                .build()
+            WorkManager.getInstance(applicationContext).enqueue(workRequest)
+            hideProgressDialog()
+            saveTopUpTransaction(pendingAmount)
+            Toast.makeText(this, "Google Pay successful! Balance updating…", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, MainPage::class.java))
+            finish()
+        }
+    }
+
+    override fun onGooglePayFailure(error: Exception) {
+        hideProgressDialog()
+        Log.e("GooglePay", "Error type: ${error.javaClass.simpleName}")
+        Log.e("GooglePay", "Error message: ${error.message}")
+        Log.e("GooglePay", "Stack trace: ", error)
+        Toast.makeText(this, "Google Pay failed: ${error.javaClass.simpleName}: ${error.message}", Toast.LENGTH_LONG).show()
+    }
 
     private fun saveTopUpTransaction(amount: Double) {
         val currentUserId = mAuth.currentUser?.uid
@@ -204,6 +301,13 @@ class AmountActivity : AppCompatActivity(), PayPalListener {
                 Toast.makeText(this, "Failed to save transaction: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
 
 }

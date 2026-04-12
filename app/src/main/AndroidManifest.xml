@@ -14,6 +14,7 @@
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,7 +22,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BankALDeir">
+        android:theme="@style/Theme.BankALDeir"
+        android:networkSecurityConfig="@xml/network_security_config">
         <activity
             android:name=".Splash.SplashActivity"
             android:exported="true"
@@ -51,7 +53,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="bankaldeir.braintree" />
+                <data android:scheme="bankal_deir.com.braintree" />
             </intent-filter>
         </activity>
         <activity
@@ -123,6 +125,13 @@
             android:exported="true">
 
         </activity>
+
+        <activity
+            android:name=".CustomCaptureActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -16,7 +16,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import bankal_deir.com.Login.ViewModel.LoginViewModel
 import bankal_deir.com.Login.ViewModel.LoginViewModelFactory
@@ -54,7 +56,7 @@ class LoginPage : AppCompatActivity() {
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
-
+        hideSystemBars()
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -214,6 +216,14 @@ class LoginPage : AppCompatActivity() {
 
             forgetViewBinding.btnCancelForget.setOnClickListener { dialog.dismiss() }
             dialog.show()
+        }
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

@@ -15,7 +15,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityCreatePinCodeBinding
@@ -34,6 +36,7 @@ class createPinCode : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityCreatePinCodeBinding.inflate(layoutInflater)
+        hideSystemBars()
         mAuth = FirebaseAuth.getInstance()
         setContentView(binding.root)
 
@@ -142,6 +145,14 @@ class createPinCode : AppCompatActivity() {
                 if (i < pinBuilder.length) R.drawable.pin_circle_filled
                 else R.drawable.pin_circle_empty
             )
+        }
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

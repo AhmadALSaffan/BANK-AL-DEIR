@@ -4,6 +4,7 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -41,9 +42,16 @@ public final class CardItemBinding implements ViewBinding {
   @NonNull
   public final TextView expDate;
 
+  @NonNull
+  public final ImageView imgLockBadge;
+
+  @NonNull
+  public final FrameLayout lockOverlay;
+
   private CardItemBinding(@NonNull CardView rootView, @NonNull ImageView backgroundImage,
       @NonNull TextView cardBlance, @NonNull TextView cardHolder, @NonNull TextView cardNumber,
-      @NonNull ImageView cardView, @NonNull TextView cvv, @NonNull TextView expDate) {
+      @NonNull ImageView cardView, @NonNull TextView cvv, @NonNull TextView expDate,
+      @NonNull ImageView imgLockBadge, @NonNull FrameLayout lockOverlay) {
     this.rootView = rootView;
     this.backgroundImage = backgroundImage;
     this.cardBlance = cardBlance;
@@ -52,6 +60,8 @@ public final class CardItemBinding implements ViewBinding {
     this.cardView = cardView;
     this.cvv = cvv;
     this.expDate = expDate;
+    this.imgLockBadge = imgLockBadge;
+    this.lockOverlay = lockOverlay;
   }
 
   @Override
@@ -123,8 +133,20 @@ public final class CardItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imgLockBadge;
+      ImageView imgLockBadge = ViewBindings.findChildViewById(rootView, id);
+      if (imgLockBadge == null) {
+        break missingId;
+      }
+
+      id = R.id.lockOverlay;
+      FrameLayout lockOverlay = ViewBindings.findChildViewById(rootView, id);
+      if (lockOverlay == null) {
+        break missingId;
+      }
+
       return new CardItemBinding((CardView) rootView, backgroundImage, cardBlance, cardHolder,
-          cardNumber, cardView, cvv, expDate);
+          cardNumber, cardView, cvv, expDate, imgLockBadge, lockOverlay);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

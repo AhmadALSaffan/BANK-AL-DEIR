@@ -21,6 +21,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 
     buildTypes {
@@ -49,17 +50,22 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
+    debugImplementation("com.google.firebase:firebase-appcheck-debug")
 
-    // Braintree PayPal SDK - Correct dependencies
-    implementation("com.braintreepayments.api:braintree-core:4.36.0") {
+    // Braintree PayPal SDK
+    implementation("com.braintreepayments.api:braintree-core:4.41.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
-    implementation("com.braintreepayments.api:paypal:4.36.0") {
+    implementation("com.braintreepayments.api:paypal:4.41.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
-    implementation("com.braintreepayments.api:card:4.36.0") {
+    implementation("com.braintreepayments.api:card:4.41.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
+    implementation("com.braintreepayments.api:google-pay:4.41.0") {
+        exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
+    }
+    implementation("com.google.android.gms:play-services-wallet:19.4.0")
 
     // AndroidX Core
     implementation(libs.androidx.core.ktx)

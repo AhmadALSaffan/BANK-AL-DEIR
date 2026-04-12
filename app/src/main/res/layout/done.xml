@@ -1,89 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_dark_bg"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="24dp">
 
-    <FrameLayout
+    <!-- Lottie checkmark animation -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/checkmark" />
+
+    <!-- "Transfer Successful" heading -->
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Transfer Successful!"
+        android:textColor="#4edea3"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Your funds have been sent"
+        android:textColor="#7a9e8e"
+        android:textSize="13sp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Divider -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_gravity="center">
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="500dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/up"
-            app:shapeAppearanceOverlay="@style/RoundSqaure"
-            app:srcCompat="@drawable/up" />
+        android:layout_height="1dp"
+        android:background="#0d2b20"
+        android:layout_marginBottom="20dp" />
 
+    <!-- Amount row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="14dp">
 
         <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="145dp"
-            android:gravity="center"
-            android:hint="Date"
-            android:textColor="@color/damask_red"
-            android:textColorHint="@color/gray"
-            android:textSize="24sp" />
+            android:layout_weight="1"
+            android:text="AMOUNT"
+            android:textColor="#7a9e8e"
+            android:textSize="11sp"
+            android:letterSpacing="0.14" />
 
         <TextView
             android:id="@+id/finalAmount"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="110dp"
-            android:gravity="center"
-            android:hint="Amount"
-            android:textColor="@color/white"
-            android:textColorHint="@color/gray"
-            android:textSize="24sp" />
+            android:text="--"
+            android:textColor="#4edea3"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="270dp"
-            android:layout_height="270dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="115dp"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/checkmark" />
+    <!-- Transaction Number row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/send_field_card"
+        android:padding="14dp"
+        android:layout_marginBottom="14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRANSACTION NUMBER"
+            android:textColor="#7a9e8e"
+            android:textSize="10sp"
+            android:letterSpacing="0.14"
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:id="@+id/transactionNumber"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="140dp"
-            android:layout_marginBottom="65dp"
-            android:gravity="center"
-            android:hint="TRANCATION NUMBER"
-            android:textColor="@color/white"
-            android:textColorHint="@color/gray"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/btnOk"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/sendbutton"
-            android:text="OK"
-            android:textColor="@color/white"
-            android:textSize="32dp" />
-
-        <TextView
-            android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:text="Money sent successfully "
-            android:textColor="@color/Golden"
-            android:textSize="28sp" />
+            android:text="--"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            android:fontFamily="monospace" />
+    </LinearLayout>
 
-    </FrameLayout>
+    <!-- Date row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="28dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DATE"
+            android:textColor="#7a9e8e"
+            android:textSize="11sp"
+            android:letterSpacing="0.14" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="#aacfbb"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- OK / Done button -->
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/emerald_card_gradient"
+        android:foreground="@drawable/custom_ripple"
+        android:text="Done"
+        android:textColor="#003824"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.06" />
+
 </LinearLayout>

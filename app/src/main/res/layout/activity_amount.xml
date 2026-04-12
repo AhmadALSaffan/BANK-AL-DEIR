@@ -1,80 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="10dp"  android:background="@drawable/backsy">
-    <ImageView
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:src="@drawable/iconbank"
-        android:layout_gravity="center"
-        android:layout_marginTop="26dp"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backsy">
 
+    <!-- ── Header ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="46dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_bg_income"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_topup"
+            app:tint="#4edea3" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:text="Wallet Top-up"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- ── Balance card ── -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#00000000"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/emerald_card_gradient"
+            android:padding="24dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available Balance"
+                android:textColor="#AAFFD6"
+                android:textSize="13sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvCurrentBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Balance: $0.00"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add funds to your BANK-AL-DEIR wallet"
+                android:textColor="#AAFFD6"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ── Amount input ── -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wallet Topup"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Add funds to your BANK-AL-DEIR wallet"
-        android:textSize="16sp"
-        android:textColor="#6B7280"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
-        android:id="@+id/tvCurrentBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Current Balance: $0.00"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#10B981"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="8dp"
+        android:text="Amount (USD)"
+        android:textColor="#7a9e8e"
+        android:textSize="13sp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etAmount"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Amount in USD (e.g. 10.00)"
-        android:inputType="numberDecimal|numberSigned"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/send_field_card"
+        android:hint="e.g. 10.00"
+        android:textColorHint="#7a9e8e"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:padding="16dp"
-        android:layout_gravity="center"/>
+        android:paddingHorizontal="16dp"
+        android:inputType="numberDecimal"
+        android:singleLine="true" />
 
+    <!-- ── PayPal button ── -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPayPal"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@drawable/paypal_btn"
         android:drawableStart="@drawable/paypal"
         android:drawablePadding="-55dp"
         android:paddingStart="55dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginEnd="26dp"
         android:text="Topup with PayPal"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
         android:text="Secure payment via PayPal"
-        android:textSize="14sp"
-        android:textColor="#6B7280"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center"/>
+        android:textSize="13sp"
+        android:textColor="#4a6e5c" />
+
+    <!-- ── Divider ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#1a3d2e" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:text="or"
+            android:textColor="#4a6e5c"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#1a3d2e" />
+
+    </LinearLayout>
+
+    <!-- ── Google Pay button ── -->
+    <Button
+        android:id="@+id/btnGooglePay"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/google_pay_btn"
+        android:text="  Pay"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_google_pay_logo"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="16dp"
+        android:text="Fast &amp; secure with Google Pay"
+        android:textSize="13sp"
+        android:textColor="#4a6e5c"
+        android:id="@+id/tvGooglePayNote"
+        android:visibility="visible" />
+
 </LinearLayout>

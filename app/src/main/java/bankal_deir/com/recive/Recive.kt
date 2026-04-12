@@ -15,7 +15,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
@@ -35,6 +37,7 @@ class Recive : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityReciveBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -46,12 +49,13 @@ class Recive : AppCompatActivity() {
         observeViewModel()
         viewModel.loadUserData()
 
-        binding.btnBack.setOnClickListener {
+        val goBack = {
             val intent = Intent(this, MainPage::class.java)
             startActivity(intent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
+        binding.btnBack.setOnClickListener { goBack() }
+        binding.frame.setOnClickListener { goBack() }
         binding.btnCopy1.setOnClickListener {
             val IbanNumber = binding.textIBAN.text.toString()
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -109,5 +113,13 @@ class Recive : AppCompatActivity() {
     private fun hideProgressDialog() {
         progressDialog?.dismiss()
         progressDialog = null
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }

@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
@@ -18,7 +18,7 @@ import java.lang.String;
 
 public final class TrasnactionItemBinding implements ViewBinding {
   @NonNull
-  private final CardView rootView;
+  private final LinearLayout rootView;
 
   @NonNull
   public final ImageView outlineBox;
@@ -35,7 +35,7 @@ public final class TrasnactionItemBinding implements ViewBinding {
   @NonNull
   public final TextView trType;
 
-  private TrasnactionItemBinding(@NonNull CardView rootView, @NonNull ImageView outlineBox,
+  private TrasnactionItemBinding(@NonNull LinearLayout rootView, @NonNull ImageView outlineBox,
       @NonNull TextView trAmount, @NonNull TextView trDate, @NonNull TextView trNumber,
       @NonNull TextView trType) {
     this.rootView = rootView;
@@ -48,7 +48,7 @@ public final class TrasnactionItemBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public CardView getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -103,8 +103,8 @@ public final class TrasnactionItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new TrasnactionItemBinding((CardView) rootView, outlineBox, trAmount, trDate, trNumber,
-          trType);
+      return new TrasnactionItemBinding((LinearLayout) rootView, outlineBox, trAmount, trDate,
+          trNumber, trType);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

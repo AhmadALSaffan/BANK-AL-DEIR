@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Phone country codes for sign-up Spinner -->
+    <string-array name="phone_codes">
+        <item>🇸🇾 +963</item>
+        <item>🇸🇦 +966</item>
+        <item>🇦🇪 +971</item>
+        <item>🇯🇴 +962</item>
+        <item>🇱🇧 +961</item>
+        <item>🇮🇶 +964</item>
+        <item>🇹🇷 +90</item>
+        <item>🇺🇸 +1</item>
+        <item>🇬🇧 +44</item>
+        <item>🇩🇪 +49</item>
+    </string-array>
+
+    <!-- Phone country codes for login Spinner (Syria + EU + Belarus + Turkey) -->
+    <string-array name="phone_codes_login">
+        <item>🇸🇾 +963</item>
+        <item>🇦🇹 +43</item>
+        <item>🇧🇾 +375</item>
+        <item>🇧🇪 +32</item>
+        <item>🇧🇬 +359</item>
+        <item>🇭🇷 +385</item>
+        <item>🇨🇾 +357</item>
+        <item>🇨🇿 +420</item>
+        <item>🇩🇰 +45</item>
+        <item>🇪🇪 +372</item>
+        <item>🇫🇮 +358</item>
+        <item>🇫🇷 +33</item>
+        <item>🇩🇪 +49</item>
+        <item>🇬🇷 +30</item>
+        <item>🇭🇺 +36</item>
+        <item>🇮🇪 +353</item>
+        <item>🇮🇹 +39</item>
+        <item>🇱🇻 +371</item>
+        <item>🇱🇹 +370</item>
+        <item>🇱🇺 +352</item>
+        <item>🇲🇹 +356</item>
+        <item>🇳🇱 +31</item>
+        <item>🇵🇱 +48</item>
+        <item>🇵🇹 +351</item>
+        <item>🇷🇴 +40</item>
+        <item>🇸🇰 +421</item>
+        <item>🇸🇮 +386</item>
+        <item>🇪🇸 +34</item>
+        <item>🇸🇪 +46</item>
+        <item>🇹🇷 +90</item>
+    </string-array>
+
+</resources>

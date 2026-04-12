@@ -64,7 +64,7 @@ class LoginWithPhoneNumber : AppCompatActivity() {
 
             showLoading(false)
 
-            val countryCode = binding.editFirstText.text.toString().trim()
+            val countryCode = binding.editFirstText.selectedItem?.toString()?.split(" ")?.last() ?: "+963"
             val phoneNumber = binding.editFullPhoneText.text.toString().trim()
             val fullPhoneNumber = countryCode + phoneNumber
 
@@ -77,15 +77,9 @@ class LoginWithPhoneNumber : AppCompatActivity() {
 
         binding.getOTPPhoneBtn.setOnClickListener {
 
-            val countryCode = binding.editFirstText.text.toString().trim()
+            val countryCode = binding.editFirstText.selectedItem?.toString()?.split(" ")?.last() ?: "+963"
             val phoneNumber = binding.editFullPhoneText.text.toString().trim()
             val fullPhoneNumber = countryCode + phoneNumber
-
-
-            if (countryCode.isEmpty()) {
-                Toast.makeText(this@LoginWithPhoneNumber, "Please enter country code", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
 
             if (phoneNumber.isEmpty()) {
                 Toast.makeText(this@LoginWithPhoneNumber, "Please enter a phone number", Toast.LENGTH_SHORT).show()
@@ -135,7 +129,6 @@ class LoginWithPhoneNumber : AppCompatActivity() {
         val intent = Intent(this, VerifyPhoneNumber::class.java)
         intent.putExtra("phoneNumber", phoneNumber)
         startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun checkPhoneAndGetUserId(phoneNumber: String) {

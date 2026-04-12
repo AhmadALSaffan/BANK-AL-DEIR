@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_dark"
+    android:background="@drawable/backsy"
     tools:context=".updateProfile.updateProfile">
 
     <ScrollView
@@ -18,186 +18,314 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profileImage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:padding="5dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/profile"
-                app:shapeAppearanceOverlay="@style/circuler"
-                app:strokeColor="@color/Golden"
-                app:strokeWidth="2dp" />
-
-            <Button
-                android:id="@+id/btnPickImage"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/pick_image_btn"
-                android:drawableLeft="@drawable/camera"
-                android:drawableTint="@color/white"
-                android:paddingLeft="10dp"
-                android:text="Pick Image"
-                android:textColor="@color/Beige_Off_white"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Name"
-                android:textColor="@color/Golden"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/txtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Email"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
+            <!-- ── Header ── -->
             <LinearLayout
-                android:layout_width="330dp"
-                android:layout_height="450dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/up"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="4dp"
+                android:layout_marginTop="46dp">
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_bg_income"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/iconbank"
+                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit Information"
+                        android:textColor="#4edea3"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update your personal details"
+                        android:textColor="#7a9e8e"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── Profile Image Section ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp">
+
+                <!-- Avatar with camera button overlay -->
+                <FrameLayout
+                    android:layout_width="132dp"
+                    android:layout_height="132dp"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile"
+                        app:shapeAppearanceOverlay="@style/circuler"
+                        app:strokeColor="#4edea3"
+                        app:strokeWidth="3dp" />
+
+                    <!-- Camera FAB overlay -->
+                    <FrameLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/btnedit">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/camera"
+                            app:tint="#FFFFFF" />
+
+                    </FrameLayout>
+
+                </FrameLayout>
+
+                <!-- Current name display -->
                 <TextView
+                    android:id="@+id/txtName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="25dp"
-                    android:text="EDIT INFORMATION"
-                    android:textColor="@color/Golden"
-                    android:textSize="16sp" />
+                    android:gravity="center"
+                    android:text="Name"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="2dp" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="5dp"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
-                    android:src="@color/gray" />
-
+                <!-- Current email display -->
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="First Name"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:gravity="center"
+                    android:text="Email"
+                    android:textColor="#7a9e8e"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="16dp" />
 
-                <EditText
-                    android:id="@+id/edtFirstNameUpdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/edt_update"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:paddingLeft="10dp"
-                    android:imeOptions="actionNext"
-                    android:text="Example"
-                    android:textColor="@color/Beige_Off_white" />
+                <!-- Pick image text button -->
+                <Button
+                    android:id="@+id/btnPickImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/card_type_bg"
+                    android:drawableStart="@drawable/camera"
+                    android:drawableTint="#4edea3"
+                    android:drawablePadding="8dp"
+                    android:paddingHorizontal="20dp"
+                    android:text="PICK IMAGE"
+                    android:textColor="#4edea3"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1" />
 
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Last Name"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/edtLastNameUpdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/edt_update"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:paddingLeft="10dp"
-                    android:imeOptions="actionNext"
-                    android:text="Example"
-                    android:textColor="@color/Beige_Off_white" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="First Name"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/edtPhoneNumberUpdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/edt_update"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:paddingLeft="10dp"
-                    android:text="Example"
-                    android:imeOptions="actionDone"
-                    android:textColor="@color/Beige_Off_white" />
+            <!-- ── Form Card ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#00000000"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:background="@drawable/card_type_bg"
+                    android:padding="20dp">
 
-                    <Button
-                        android:id="@+id/btnSaveUpdate"
-                        android:layout_width="130dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/pick_image_btn"
-                        android:drawableLeft="@drawable/save"
-                        android:drawableTint="@color/white"
-                        android:paddingLeft="15dp"
-                        android:text="Save"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
+                    <!-- First Name -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FIRST NAME"
+                        android:textColor="#4a7a6a"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12"
+                        android:layout_marginBottom="8dp" />
 
-                    <Button
-                        android:id="@+id/btnCancelUpdate"
-                        android:layout_width="130dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/sendbuttonpagesend"
-                        android:drawableLeft="@drawable/returnic"
-                        android:drawableTint="@color/white"
-                        android:paddingLeft="15dp"
-                        android:text="Cancel"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
+                    <EditText
+                        android:id="@+id/edtFirstNameUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/edt_emerald"
+                        android:paddingHorizontal="16dp"
+                        android:inputType="textPersonName"
+                        android:imeOptions="actionNext"
+                        android:text="Example"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:hint="Enter first name"
+                        android:textColorHint="#3f5a50"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#1a3d2e"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Last Name -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LAST NAME"
+                        android:textColor="#4a7a6a"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/edtLastNameUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/edt_emerald"
+                        android:paddingHorizontal="16dp"
+                        android:inputType="textPersonName"
+                        android:imeOptions="actionNext"
+                        android:text="Example"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:hint="Enter last name"
+                        android:textColorHint="#3f5a50"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#1a3d2e"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Phone Number -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PHONE NUMBER"
+                        android:textColor="#4a7a6a"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12"
+                        android:layout_marginBottom="8dp" />
+
+                    <EditText
+                        android:id="@+id/edtPhoneNumberUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/edt_emerald"
+                        android:paddingHorizontal="16dp"
+                        android:inputType="phone"
+                        android:imeOptions="actionDone"
+                        android:text="Example"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:hint="+1 (555) 000-0000"
+                        android:textColorHint="#3f5a50" />
+
                 </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Info Note ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/tertiary_badge_bg"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="#ffb95f" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Changing your primary phone number requires a quick identity verification for security."
+                    android:textColor="#c2935a"
+                    android:textSize="12sp"
+                    android:lineSpacingExtra="3dp" />
+
+            </LinearLayout>
+
+            <!-- ── Action Buttons ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="40dp">
+
+                <Button
+                    android:id="@+id/btnCancelUpdate"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/send_field_card"
+                    android:text="Cancel"
+                    android:textColor="#7a9e8e"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnSaveUpdate"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btnedit"
+                    android:text="Save Changes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,9 @@ import android.view.Window
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import bankal_deir.com.MainPage
 import bankal_deir.com.Login.LoginPage
 import bankal_deir.com.databinding.ActivityMainPageBinding
@@ -32,6 +34,7 @@ class profilePage : AppCompatActivity() {
         mAuth= FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         setContentView(binding.root)
+        hideSystemBars()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -85,6 +88,14 @@ class profilePage : AppCompatActivity() {
                     .into(binding.profileImageEdit)
             }
             progressDialog.dismiss()
+        }
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

@@ -7,7 +7,9 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewpager2.widget.ViewPager2
 import bankal_deir.com.Login.LoginPage
 import bankal_deir.com.databinding.ActivityMainBinding
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
         setupOnboarding()
         setupClickListeners()
+        hideSystemBars()
 
     }
 
@@ -132,5 +135,13 @@ class MainActivity : AppCompatActivity() {
         val intentToLogin = Intent(this, LoginPage::class.java)
         startActivity(intentToLogin)
         finish()
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }

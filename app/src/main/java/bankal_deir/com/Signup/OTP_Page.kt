@@ -11,7 +11,9 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.widget.doOnTextChanged
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
@@ -43,6 +45,7 @@ class OTP_Page : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         setContentView(binding.root)
+        hideSystemBars()
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -212,12 +215,122 @@ class OTP_Page : AppCompatActivity() {
     fun random(){
         random= Random.Default.nextInt(100000..999999)
         try {
+            val otpHtml = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bank Al-Deir OTP</title>
+</head>
+<body style="margin:0;padding:0;background-color:#001711;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#001711;padding:40px 0;">
+    <tr>
+      <td align="center">
+        <table width="520" cellpadding="0" cellspacing="0" style="background-color:#0f2820;border-radius:24px;border:1px solid #1a3d2e;overflow:hidden;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="padding:32px 40px 24px;border-bottom:1px solid #1a3d2e;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="background-color:#0a2218;border-radius:12px;padding:10px 14px;vertical-align:middle;">
+                    <span style="font-size:22px;font-weight:900;color:#4edea3;letter-spacing:-0.5px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">Bank Al-Deir</span>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:12px 0 0;font-size:11px;color:#3f5a50;letter-spacing:2px;font-weight:700;text-transform:uppercase;">SECURE VERIFICATION</p>
+            </td>
+          </tr>
+
+          <!-- Icon + Title -->
+          <tr>
+            <td align="center" style="padding:36px 40px 0;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="width:72px;height:72px;background-color:#0a2218;border-radius:50%;border:1.5px solid #1a3d2e;">
+                    <span style="font-size:32px;line-height:72px;">🔐</span>
+                  </td>
+                </tr>
+              </table>
+              <h1 style="margin:20px 0 6px;font-size:28px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">Verification Code</h1>
+              <p style="margin:0;font-size:14px;color:#7a9e8e;line-height:1.6;">
+                We received a request to verify your identity.<br/>
+                Use the code below to complete sign-up.
+              </p>
+            </td>
+          </tr>
+
+          <!-- OTP Box -->
+          <tr>
+            <td align="center" style="padding:32px 40px;">
+              <table cellpadding="0" cellspacing="0" style="background-color:#001711;border-radius:16px;border:1.5px solid #1a3d2e;">
+                <tr>
+                  <td align="center" style="padding:28px 48px;">
+                    <p style="margin:0 0 6px;font-size:10px;font-weight:700;color:#3f5a50;letter-spacing:3px;text-transform:uppercase;">YOUR OTP CODE</p>
+                    <p style="margin:0;font-size:48px;font-weight:900;color:#4edea3;letter-spacing:12px;font-family:'Courier New',Courier,monospace;">$random</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:16px 0 0;font-size:13px;color:#4a7a6a;">
+                This code expires in <strong style="color:#ffb95f;">10 minutes</strong>.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Warning -->
+          <tr>
+            <td style="padding:0 40px 32px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#2a1400;border-radius:12px;border:1px solid #3d2000;">
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <table cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="font-size:18px;vertical-align:top;padding-right:12px;">⚠️</td>
+                        <td style="font-size:13px;color:#c2935a;line-height:1.6;">
+                          <strong style="color:#ffb95f;">Security Notice:</strong> Never share this code with anyone, including Bank Al-Deir support staff. We will never ask for your OTP.
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding:0 40px;">
+              <div style="height:1px;background-color:#1a3d2e;"></div>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding:24px 40px 32px;">
+              <p style="margin:0 0 4px;font-size:12px;color:#3f5a50;">
+                If you didn't request this, you can safely ignore this email.
+              </p>
+              <p style="margin:0;font-size:11px;color:#2a4a3a;">
+                © 2025 Bank Al-Deir · Deir Ez-Zor, Syria · All rights reserved
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+            """.trimIndent()
+
             val mail = SendMail(
                 "bank.al.deir.sup@gmail.com",
                 "pgeh xdyv cycc boyg",
                 email,
-                "BANK AL-DEIR's OTP",
-                "Please Don't Share this OTP with anyone \n Your OTP is -> $random"
+                "Your Bank Al-Deir Verification Code",
+                otpHtml
             )
             mail.execute()
             Toast.makeText(this, "OTP sent to $email", Toast.LENGTH_SHORT).show()
@@ -234,5 +347,13 @@ class OTP_Page : AppCompatActivity() {
     }
     private fun generateWalletId(): String {
         return "WAL" + UUID.randomUUID().toString().replace("-", "").take(12)
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }

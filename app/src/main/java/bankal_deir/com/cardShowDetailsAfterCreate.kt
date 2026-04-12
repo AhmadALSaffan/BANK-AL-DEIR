@@ -25,7 +25,6 @@ class cardShowDetailsAfterCreate : AppCompatActivity() {
         binding.btnClose.setOnClickListener {
             val intent = Intent(this, MainPage::class.java)
             startActivity(intent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
     }

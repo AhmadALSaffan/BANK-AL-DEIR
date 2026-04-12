@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,34 +23,78 @@ public final class ActivityCardsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button btnCardPreferences;
+
+  @NonNull
   public final Button btnCreateCard;
 
   @NonNull
   public final RecyclerView cardsList;
 
   @NonNull
+  public final View dot1;
+
+  @NonNull
+  public final View dot2;
+
+  @NonNull
+  public final View dot3;
+
+  @NonNull
   public final ShapeableImageView imageView14;
 
   @NonNull
-  public final ImageView imageView15;
+  public final View imageView15;
 
   @NonNull
   public final ConstraintLayout main;
 
   @NonNull
+  public final RecyclerView recentUsageList;
+
+  @NonNull
   public final TextView textView22;
 
-  private ActivityCardsBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnCreateCard,
-      @NonNull RecyclerView cardsList, @NonNull ShapeableImageView imageView14,
-      @NonNull ImageView imageView15, @NonNull ConstraintLayout main,
-      @NonNull TextView textView22) {
+  @NonNull
+  public final TextView tvAvailableCredit;
+
+  @NonNull
+  public final TextView tvCreditChange;
+
+  @NonNull
+  public final TextView tvSecurityStatus;
+
+  @NonNull
+  public final TextView tvTotalCards;
+
+  @NonNull
+  public final TextView tvViewAll;
+
+  private ActivityCardsBinding(@NonNull ConstraintLayout rootView,
+      @NonNull Button btnCardPreferences, @NonNull Button btnCreateCard,
+      @NonNull RecyclerView cardsList, @NonNull View dot1, @NonNull View dot2, @NonNull View dot3,
+      @NonNull ShapeableImageView imageView14, @NonNull View imageView15,
+      @NonNull ConstraintLayout main, @NonNull RecyclerView recentUsageList,
+      @NonNull TextView textView22, @NonNull TextView tvAvailableCredit,
+      @NonNull TextView tvCreditChange, @NonNull TextView tvSecurityStatus,
+      @NonNull TextView tvTotalCards, @NonNull TextView tvViewAll) {
     this.rootView = rootView;
+    this.btnCardPreferences = btnCardPreferences;
     this.btnCreateCard = btnCreateCard;
     this.cardsList = cardsList;
+    this.dot1 = dot1;
+    this.dot2 = dot2;
+    this.dot3 = dot3;
     this.imageView14 = imageView14;
     this.imageView15 = imageView15;
     this.main = main;
+    this.recentUsageList = recentUsageList;
     this.textView22 = textView22;
+    this.tvAvailableCredit = tvAvailableCredit;
+    this.tvCreditChange = tvCreditChange;
+    this.tvSecurityStatus = tvSecurityStatus;
+    this.tvTotalCards = tvTotalCards;
+    this.tvViewAll = tvViewAll;
   }
 
   @Override
@@ -81,6 +124,12 @@ public final class ActivityCardsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnCardPreferences;
+      Button btnCardPreferences = ViewBindings.findChildViewById(rootView, id);
+      if (btnCardPreferences == null) {
+        break missingId;
+      }
+
       id = R.id.btnCreateCard;
       Button btnCreateCard = ViewBindings.findChildViewById(rootView, id);
       if (btnCreateCard == null) {
@@ -93,6 +142,24 @@ public final class ActivityCardsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.dot1;
+      View dot1 = ViewBindings.findChildViewById(rootView, id);
+      if (dot1 == null) {
+        break missingId;
+      }
+
+      id = R.id.dot2;
+      View dot2 = ViewBindings.findChildViewById(rootView, id);
+      if (dot2 == null) {
+        break missingId;
+      }
+
+      id = R.id.dot3;
+      View dot3 = ViewBindings.findChildViewById(rootView, id);
+      if (dot3 == null) {
+        break missingId;
+      }
+
       id = R.id.imageView14;
       ShapeableImageView imageView14 = ViewBindings.findChildViewById(rootView, id);
       if (imageView14 == null) {
@@ -100,12 +167,18 @@ public final class ActivityCardsBinding implements ViewBinding {
       }
 
       id = R.id.imageView15;
-      ImageView imageView15 = ViewBindings.findChildViewById(rootView, id);
+      View imageView15 = ViewBindings.findChildViewById(rootView, id);
       if (imageView15 == null) {
         break missingId;
       }
 
       ConstraintLayout main = (ConstraintLayout) rootView;
+
+      id = R.id.recentUsageList;
+      RecyclerView recentUsageList = ViewBindings.findChildViewById(rootView, id);
+      if (recentUsageList == null) {
+        break missingId;
+      }
 
       id = R.id.textView22;
       TextView textView22 = ViewBindings.findChildViewById(rootView, id);
@@ -113,8 +186,40 @@ public final class ActivityCardsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityCardsBinding((ConstraintLayout) rootView, btnCreateCard, cardsList,
-          imageView14, imageView15, main, textView22);
+      id = R.id.tvAvailableCredit;
+      TextView tvAvailableCredit = ViewBindings.findChildViewById(rootView, id);
+      if (tvAvailableCredit == null) {
+        break missingId;
+      }
+
+      id = R.id.tvCreditChange;
+      TextView tvCreditChange = ViewBindings.findChildViewById(rootView, id);
+      if (tvCreditChange == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSecurityStatus;
+      TextView tvSecurityStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvSecurityStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTotalCards;
+      TextView tvTotalCards = ViewBindings.findChildViewById(rootView, id);
+      if (tvTotalCards == null) {
+        break missingId;
+      }
+
+      id = R.id.tvViewAll;
+      TextView tvViewAll = ViewBindings.findChildViewById(rootView, id);
+      if (tvViewAll == null) {
+        break missingId;
+      }
+
+      return new ActivityCardsBinding((ConstraintLayout) rootView, btnCardPreferences,
+          btnCreateCard, cardsList, dot1, dot2, dot3, imageView14, imageView15, main,
+          recentUsageList, textView22, tvAvailableCredit, tvCreditChange, tvSecurityStatus,
+          tvTotalCards, tvViewAll);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

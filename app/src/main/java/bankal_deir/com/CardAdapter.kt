@@ -1,20 +1,22 @@
 package bankal_deir.com
 
 import android.graphics.Color
-import android.text.InputType
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
+import android.content.res.ColorStateList
 import androidx.recyclerview.widget.RecyclerView
-import bankal_deir.com.databinding.CardItemBinding
-import kotlinx.coroutines.NonDisposableHandle.parent
 
-class CardAdapter(private var cards: List<CardModel>) :
-    RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class CardAdapter(
+    private var cards: List<CardModel>,
+    private val onCardClick: (CardModel) -> Unit = {}
+) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     fun update(newCards: List<CardModel>) {
         val currentStates = this.cards.associate { it.cardnumber to it.isVisible }
@@ -26,8 +28,10 @@ class CardAdapter(private var cards: List<CardModel>) :
         this.cards = newCards
         notifyDataSetChanged()
     }
+
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val backgroundImage: ImageView = itemView.findViewById(R.id.backgroundImage)
+        val lockOverlay: FrameLayout = itemView.findViewById(R.id.lockOverlay)
         val cardNumber: TextView = itemView.findViewById(R.id.card_number)
         val expDate: TextView = itemView.findViewById(R.id.exp_date)
         val cvv: TextView = itemView.findViewById(R.id.cvv)
@@ -35,15 +39,17 @@ class CardAdapter(private var cards: List<CardModel>) :
         val cardBalance: TextView = itemView.findViewById(R.id.card_blance)
         val cardView: ImageView = itemView.findViewById(R.id.card_view)
 
-
         fun bind(card: CardModel) {
-            // Set the UI state based on the data
             applyState(card.isVisible)
+            applyLockedState(card.locked)
 
-            // Set click listener once
             cardView.setOnClickListener {
                 card.isVisible = !card.isVisible
                 applyState(card.isVisible)
+            }
+
+            itemView.setOnClickListener {
+                onCardClick(card)
             }
         }
 
@@ -51,10 +57,17 @@ class CardAdapter(private var cards: List<CardModel>) :
             if (visible) {
                 setShownState()
                 cardView.setImageResource(R.drawable.hide)
+                ImageViewCompat.setImageTintList(cardView, ColorStateList.valueOf(0xFF4edea3.toInt()))
             } else {
                 setHiddenState()
                 cardView.setImageResource(R.drawable.view)
+                ImageViewCompat.setImageTintList(cardView, ColorStateList.valueOf(0xFF4a7a6a.toInt()))
             }
+        }
+
+        fun applyLockedState(locked: Boolean) {
+            lockOverlay.visibility = if (locked) View.VISIBLE else View.GONE
+            itemView.alpha = if (locked) 0.7f else 1.0f
         }
 
         private fun setShownState() {
@@ -77,12 +90,10 @@ class CardAdapter(private var cards: List<CardModel>) :
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_item, parent, false)
         return CardViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -97,7 +108,6 @@ class CardAdapter(private var cards: List<CardModel>) :
 
         fun getCardBackground(cardType: String): Int {
             return when {
-
                 "visa classic" in cardType || "visaclassic" in cardType -> R.drawable.visaclassic
                 "visa gold" in cardType || "visagold" in cardType -> R.drawable.visagold
                 "visa signature sy" in cardType || "visasignaturesy" in cardType -> R.drawable.visasignaturesy
@@ -113,7 +123,6 @@ class CardAdapter(private var cards: List<CardModel>) :
                 "discover regular" in cardType || "discover reguler" in cardType || "discoverregular" in cardType -> R.drawable.discoverregular
                 "discover" in cardType -> R.drawable.discoverregular
 
-
                 "fatora digital" in cardType || "fatoradigital" in cardType -> R.drawable.fatoradigital
                 "fatora cash back" in cardType || "fatoracashback" in cardType -> R.drawable.fatoracashback
                 "fatora classic" in cardType || "fatoraclassic" in cardType -> R.drawable.fatoraclassic
@@ -122,6 +131,7 @@ class CardAdapter(private var cards: List<CardModel>) :
                 else -> R.drawable.fatoraclassic
             }
         }
+
         val cardType = card.cardname?.trim()?.lowercase() ?: ""
         val bgRes = getCardBackground(cardType)
         holder.backgroundImage.setImageResource(bgRes)
@@ -130,36 +140,29 @@ class CardAdapter(private var cards: List<CardModel>) :
         holder.expDate.setTextColor(textColor)
         holder.cvv.setTextColor(textColor)
         holder.cardHolder.setTextColor(textColor)
-}
+    }
 
     private fun getCardTextColor(cardType: String, context: android.content.Context): Int {
         return when {
-
-            "visaclassic" in cardType -> Color.BLACK
-            "visagold" in cardType -> Color.BLACK
-            "visasignature" in cardType && "sy" !in cardType -> Color.BLACK
+            "visaclassic" in cardType -> Color.WHITE
+            "visagold" in cardType -> Color.WHITE
+            "visasignature" in cardType && "sy" !in cardType -> Color.WHITE
             "visasignaturesy" in cardType -> ContextCompat.getColor(context, R.color.Golden)
-            "visatravel" in cardType -> Color.BLACK
+            "visatravel" in cardType -> Color.WHITE
 
+            "mastercardclassic" in cardType -> Color.WHITE
+            "mastercardplatinum" in cardType -> Color.WHITE
 
-            "mastercardclassic" in cardType -> Color.BLACK
-            "mastercardplatinum" in cardType -> Color.BLACK
+            "discoverregular" in cardType -> Color.WHITE
+            "discoversecured" in cardType -> Color.WHITE
 
+            "fatoradigital" in cardType -> Color.WHITE
+            "fatoraclassic" in cardType -> Color.WHITE
+            "fatoracashback" in cardType -> Color.WHITE
 
-            "discoverregular" in cardType -> Color.BLACK
-            "discoversecured" in cardType -> Color.BLACK
-
-
-            "fatoradigital" in cardType -> Color.BLACK
-            "fatoraclassic" in cardType -> Color.BLACK
-            "fatoracashback" in cardType -> Color.BLACK
-
-            else -> Color.BLACK
+            else -> Color.WHITE
         }
     }
 
     override fun getItemCount(): Int = cards.size
-
 }
-
-

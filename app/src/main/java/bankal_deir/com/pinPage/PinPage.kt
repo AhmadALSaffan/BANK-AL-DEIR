@@ -25,6 +25,8 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import bankal_deir.com.Login.LoginPage
 
 
@@ -53,6 +55,7 @@ class PinPage : AppCompatActivity() {
         enableEdgeToEdge()
         mAuth = FirebaseAuth.getInstance()
         binding = ActivityPinPageBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
@@ -283,4 +286,13 @@ class PinPage : AppCompatActivity() {
             enableInput()
         }
     }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+
 }

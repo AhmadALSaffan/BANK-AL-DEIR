@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy2"
+    android:background="@drawable/backsy"
     tools:context=".cards">
 
     <ScrollView
@@ -15,79 +15,335 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- ── Header ── -->
             <LinearLayout
-                android:layout_width="380dp"
-                android:layout_height="820dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/up"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="46dp">
 
-                <FrameLayout
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/ic_bg_income"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/iconbank"
+                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/backwhite"
-                        app:shapeAppearanceOverlay="@style/RoundSqaure" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="300dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        app:srcCompat="@drawable/iconbank" />
-                </FrameLayout>
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your Wallet"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView22"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manage your cards and access"
+                        android:textColor="#7a9e8e"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── Card Carousel ── -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cards_list"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                tools:listitem="@layout/card_item" />
+
+            <!-- ── Carousel Indicators ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
+
+                <View
+                    android:id="@+id/dot1"
+                    android:layout_width="20dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:background="#4edea3"
+                    android:backgroundTint="#4edea3" />
+
+                <View
+                    android:id="@+id/dot2"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:background="#143b30" />
+
+                <View
+                    android:id="@+id/dot3"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:background="#143b30" />
+
+            </LinearLayout>
+
+            <!-- ── Bento: Available Balance (full row) ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#002018"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="10dp"
-                    android:text="My Cards"
-                    android:textColor="@color/white"
-                    android:textSize="34sp" />
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                <ImageView
-                    android:id="@+id/imageView15"
-                    android:layout_width="370dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    app:srcCompat="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AVAILABLE BALANCE"
+                        android:textColor="#7a9e8e"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="6dp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/cards_list"
-                    android:layout_width="350dp"
-                    android:layout_height="400dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:scrollbars="horizontal"
-                    tools:listitem="@layout/card_item" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
-                <Button
-                    android:id="@+id/btnCreateCard"
-                    android:layout_width="300dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btnedit"
-                    android:drawableLeft="@drawable/add_card48"
-                    android:paddingLeft="25dp"
-                    android:text="ADD NEW CARD"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/tvAvailableCredit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="$0.00"
+                            android:textColor="#FFFFFF"
+                            android:textSize="32sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCreditChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active"
+                            android:textColor="#4edea3"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:background="@drawable/ic_bg_income"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Bento: 2-column row ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="20dp">
+
+                <!-- Security card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardBackgroundColor="#073026"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginBottom="10dp"
+                            android:src="@drawable/ic_check_circle"
+                            app:tint="#4edea3" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SECURITY"
+                            android:textColor="#7a9e8e"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.1"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:id="@+id/tvSecurityStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Protected"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Total Cards card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardBackgroundColor="#073026"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginBottom="10dp"
+                            android:src="@drawable/ic_stats"
+                            app:tint="#4edea3" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TOTAL CARDS"
+                            android:textColor="#7a9e8e"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.1"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:id="@+id/tvTotalCards"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 Cards"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+
+            <!-- ── Divider ── -->
+            <View
+                android:id="@+id/imageView15"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="20dp"
+                android:background="#1a3d2e" />
+
+            <!-- ── ADD NEW CARD button ── -->
+            <Button
+                android:id="@+id/btnCreateCard"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/btnedit"
+                android:text="ADD NEW CARD"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <!-- ── CARD PREFERENCES button ── -->
+            <Button
+                android:id="@+id/btnCardPreferences"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/send_field_card"
+                android:text="CARD PREFERENCES"
+                android:textColor="#AAFFD6"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <!-- ── Recent Usage header ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent Usage"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    android:textColor="#4edea3"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:padding="4dp" />
+
+            </LinearLayout>
+
+            <!-- ── Recent Usage list ── -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recentUsageList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/trasnaction_item" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
 
         </LinearLayout>
     </ScrollView>

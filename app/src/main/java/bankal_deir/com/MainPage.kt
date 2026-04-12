@@ -9,7 +9,9 @@ import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.AmountTopUp.AmountActivity
@@ -38,12 +40,14 @@ class MainPage : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var recyclerView: RecyclerView
     private lateinit var tranArrayList: ArrayList<transactions>
+    private var currentUserWalletId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         mAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         binding = ActivityMainPageBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_SECURE,
@@ -69,7 +73,7 @@ class MainPage : AppCompatActivity() {
             options.setPrompt("Scan QR-Code")
             options.setOrientationLocked(true)
             options.setBeepEnabled(false)
-            options.setCaptureActivity(CaptureActivity::class.java)
+            options.setCaptureActivity(CustomCaptureActivity::class.java)
             barcodeluncher.launch(options)
         }
         binding.quickProfile.setOnClickListener {
@@ -88,8 +92,63 @@ class MainPage : AppCompatActivity() {
 
 
         binding.btnPayPal.setOnClickListener {
-            val intent = Intent(this@MainPage, AmountActivity::class.java)
-            startActivity(intent)
+            binding.progressBarBalance.visibility = android.view.View.VISIBLE
+            Thread {
+                // Step 1: fetch client token from Cloud Function
+                val token = try {
+                    val url = java.net.URL("https://us-central1-bank-al-deir.cloudfunctions.net/getBraintreeToken")
+                    val conn = url.openConnection() as javax.net.ssl.HttpsURLConnection
+                    conn.connectTimeout = 10_000
+                    conn.readTimeout = 10_000
+                    org.json.JSONObject(conn.inputStream.bufferedReader().readText()).getString("token")
+                } catch (e: Exception) {
+                    android.util.Log.e("Braintree", "Token fetch failed: ${e.message}")
+                    "sandbox_qzp3nw4q_mshysrbxdfskrz9v"
+                }
+
+                // Step 2: pre-populate Braintree's config cache so AmountActivity's SDK
+                // call finds an immediate cache hit instead of failing its network requests.
+                if (!token.startsWith("sandbox_")) {
+                    try {
+                        val decoded = String(android.util.Base64.decode(token, android.util.Base64.DEFAULT))
+                        val configUrl = org.json.JSONObject(decoded)
+                            .getString("configUrl").replace(":443", "")
+                        val fingerprint = org.json.JSONObject(decoded)
+                            .getString("authorizationFingerprint")
+
+                        val fullUrl = android.net.Uri.parse(configUrl)
+                            .buildUpon().appendQueryParameter("configVersion", "3")
+                            .build().toString()
+
+                        val conn = java.net.URL(fullUrl).openConnection() as javax.net.ssl.HttpsURLConnection
+                        conn.connectTimeout = 15_000
+                        conn.readTimeout = 15_000
+                        conn.setRequestProperty("Authorization", "Bearer $fingerprint")
+
+                        if (conn.responseCode == 200) {
+                            val configJson = conn.inputStream.bufferedReader().readText()
+                            val cacheKey = android.util.Base64.encodeToString(
+                                fullUrl.toByteArray(Charsets.UTF_8),
+                                android.util.Base64.DEFAULT
+                            )
+                            applicationContext
+                                .getSharedPreferences("BraintreeApi", android.content.Context.MODE_PRIVATE)
+                                .edit().putString(cacheKey, configJson).commit()
+                            android.util.Log.d("Braintree", "Config pre-cached in MainPage")
+                        }
+                    } catch (e: Exception) {
+                        android.util.Log.e("Braintree", "Config pre-cache failed: ${e.message}")
+                    }
+                }
+
+                // Step 3: launch AmountActivity — cache is ready
+                runOnUiThread {
+                    binding.progressBarBalance.visibility = android.view.View.GONE
+                    val intent = Intent(this@MainPage, AmountActivity::class.java)
+                    intent.putExtra("braintree_token", token)
+                    startActivity(intent)
+                }
+            }.start()
         }
 
         binding.quickHistory.setOnClickListener {
@@ -141,6 +200,19 @@ class MainPage : AppCompatActivity() {
                 }
 
 
+                // Compute Wealth Analytics from all user transactions
+                var totalIncome = 0.0
+                var totalExpenses = 0.0
+                for (t in allUserTrans) {
+                    val isTopUp = t.transactionType == "PLP"
+                    if (t.senderUserId == currentUserID && !isTopUp) {
+                        totalExpenses += t.amount
+                    } else {
+                        totalIncome += t.amount
+                    }
+                }
+                updateAnalytics(totalIncome, totalExpenses, allUserTrans.size)
+
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
                 val sortedByDate = allUserTrans.sortedByDescending { transaction ->
                     try {
@@ -154,11 +226,11 @@ class MainPage : AppCompatActivity() {
                 val lastTenTransactions = sortedByDate.take(10)
 
 
+                binding.progressBartran.visibility = View.GONE
+                binding.userList.visibility = View.VISIBLE
                 if (recyclerView.adapter == null) {
                     recyclerView.adapter = MyAdapter(ArrayList(lastTenTransactions))
                 } else {
-                    binding.progressBartran.visibility = View.GONE
-                    binding.userList.visibility = View.VISIBLE
                     (recyclerView.adapter as MyAdapter).updateData(ArrayList(lastTenTransactions))
                 }
             }
@@ -211,10 +283,11 @@ class MainPage : AppCompatActivity() {
             val accountNumber = it.child("accountNumber").value
             val wallet = it.child("walletId").value
             val profileImageUrl = it.child("profileImageUrl").value
+            currentUserWalletId = wallet?.toString() ?: ""
             binding.progressBarName.visibility = View.GONE
             binding.firstNamett.visibility = View.VISIBLE
             binding.firstNamett.text = firstName?.toString() ?: ""
-            readBalance(wallet?.toString() ?: "")
+            readBalance(currentUserWalletId)
             if (profileImageUrl != null) {
                 Glide.with(this)
                     .load(profileImageUrl.toString())
@@ -244,12 +317,42 @@ class MainPage : AppCompatActivity() {
 
     fun showBanner() {
         val databaseRef = FirebaseDatabase.getInstance().getReference("banners")
-       databaseRef.child("bannersMain").child("banner1").get().addOnSuccessListener {
-           val bannerUrl = it.value
-           binding.progressBarBanner.visibility = View.GONE
-           Glide.with(this@MainPage).load(bannerUrl.toString()).into(binding.bannerImg)
-           binding.bannerImg.visibility = View.VISIBLE
-       }
+        databaseRef.child("bannersMain").child("banner1").get().addOnSuccessListener {
+            val bannerUrl = it.value?.toString()
+            binding.progressBarBanner.visibility = View.GONE
+            if (!bannerUrl.isNullOrEmpty()) {
+                Glide.with(this@MainPage).load(bannerUrl).into(binding.bannerImg)
+                binding.bannerImg.visibility = View.VISIBLE
+            }
+        }.addOnFailureListener {
+            binding.progressBarBanner.visibility = View.GONE
+        }
+    }
+
+    private fun updateAnalytics(income: Double, expenses: Double, count: Int) {
+        binding.analyticsProgressBar.visibility = View.GONE
+        binding.tvIncome.text = "$%.2f".format(income)
+        binding.tvExpenses.text = "$%.2f".format(expenses)
+
+        val max = maxOf(income, expenses)
+        if (max > 0) {
+            binding.incomeProgressBar.progress = ((income / max) * 100).toInt()
+            binding.expenseProgressBar.progress = ((expenses / max) * 100).toInt()
+        } else {
+            binding.incomeProgressBar.progress = 0
+            binding.expenseProgressBar.progress = 0
+        }
+
+        binding.tvTotalTransactions.text = "$count total transactions"
+    }
+
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 
 }

@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -16,7 +16,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
-import com.google.android.material.imageview.ShapeableImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -44,10 +43,7 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
   public final EditText edtNotes;
 
   @NonNull
-  public final FrameLayout frame;
-
-  @NonNull
-  public final ShapeableImageView imageView13;
+  public final LinearLayout frame;
 
   @NonNull
   public final ImageView imageView8;
@@ -64,8 +60,7 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
   private ActivitySendMoneyBinding(@NonNull ConstraintLayout rootView,
       @NonNull Spinner aspinnerReason, @NonNull Button btnCancel, @NonNull Button btnSendMoney,
       @NonNull EditText edtAcountNumberWallet, @NonNull EditText edtAmount,
-      @NonNull EditText edtNotes, @NonNull FrameLayout frame,
-      @NonNull ShapeableImageView imageView13, @NonNull ImageView imageView8,
+      @NonNull EditText edtNotes, @NonNull LinearLayout frame, @NonNull ImageView imageView8,
       @NonNull ConstraintLayout main, @NonNull TextView textView21, @NonNull TextView txtBalance) {
     this.rootView = rootView;
     this.aspinnerReason = aspinnerReason;
@@ -75,7 +70,6 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
     this.edtAmount = edtAmount;
     this.edtNotes = edtNotes;
     this.frame = frame;
-    this.imageView13 = imageView13;
     this.imageView8 = imageView8;
     this.main = main;
     this.textView21 = textView21;
@@ -146,14 +140,8 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
       }
 
       id = R.id.frame;
-      FrameLayout frame = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout frame = ViewBindings.findChildViewById(rootView, id);
       if (frame == null) {
-        break missingId;
-      }
-
-      id = R.id.imageView13;
-      ShapeableImageView imageView13 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView13 == null) {
         break missingId;
       }
 
@@ -178,8 +166,8 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
       }
 
       return new ActivitySendMoneyBinding((ConstraintLayout) rootView, aspinnerReason, btnCancel,
-          btnSendMoney, edtAcountNumberWallet, edtAmount, edtNotes, frame, imageView13, imageView8,
-          main, textView21, txtBalance);
+          btnSendMoney, edtAcountNumberWallet, edtAmount, edtNotes, frame, imageView8, main,
+          textView21, txtBalance);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

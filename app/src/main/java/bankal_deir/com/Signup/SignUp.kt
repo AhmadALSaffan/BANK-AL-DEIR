@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import bankal_deir.com.Signup.OTP_Page
@@ -35,6 +37,7 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivitySignUpBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
@@ -55,7 +58,7 @@ class SignUp : AppCompatActivity() {
             val email = binding.edtEmailsign.text.toString().trim()
             val firstName = binding.edtFirstName.text.toString().trim()
             val lastName = binding.edtLastName.text.toString().trim()
-            val phoneNumber = binding.edtPhoneCode.text.toString() + binding.edtPhoneNumber.text.toString()
+            val phoneNumber = binding.edtPhoneCode.selectedItem?.toString()?.split(" ")?.last() ?: "+963" + binding.edtPhoneNumber.text.toString()
             val password = binding.edtPasswordsign.text.toString()
             val confirmPassword = binding.edtPasswordCheck.text.toString()
 
@@ -88,7 +91,7 @@ class SignUp : AppCompatActivity() {
         viewModel.signUpState.onEach { result ->
             when (result) {
                 is Resource.Success<*> -> {
-                    val fullPhone = binding.edtPhoneCode.text.toString() + binding.edtPhoneNumber.text.toString()
+                    val fullPhone = binding.edtPhoneCode.selectedItem?.toString()?.split(" ")?.last() ?: "+963" + binding.edtPhoneNumber.text.toString()
                     val intent = Intent(this, OTP_Page::class.java).apply {
                         putExtra("email", binding.edtEmailsign.text.toString())
                         putExtra("password", binding.edtPasswordsign.text.toString())
@@ -114,6 +117,14 @@ class SignUp : AppCompatActivity() {
             }
             binding.edtPasswordsign.inputType = inputType
             binding.edtPasswordCheck.inputType = inputType
+        }
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

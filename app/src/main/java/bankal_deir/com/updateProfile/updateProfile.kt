@@ -28,6 +28,8 @@ import com.google.firebase.database.FirebaseDatabase
 import android.view.inputmethod.InputMethodManager
 import android.content.Context
 import android.view.View
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 
 class updateProfile : AppCompatActivity() {
@@ -40,6 +42,7 @@ class updateProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityUpdateProfileBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
@@ -97,7 +100,6 @@ class updateProfile : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, IMAGE_PICK_CODE)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
         binding.btnSaveUpdate.setOnClickListener {
@@ -119,7 +121,6 @@ class updateProfile : AppCompatActivity() {
                     progressDialog.dismiss()
                     val intent = Intent(this@updateProfile, MainPage::class.java)
                     startActivity(intent)
-                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                     finish()
                 }
                 result.onFailure {exception->
@@ -134,7 +135,6 @@ class updateProfile : AppCompatActivity() {
             val intent = Intent(this, profilePage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
         viewModel.uploadImageResult.observe(this) { result ->
@@ -202,6 +202,14 @@ class updateProfile : AppCompatActivity() {
     }
     companion object {
         private const val IMAGE_PICK_CODE = 101
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 
 }

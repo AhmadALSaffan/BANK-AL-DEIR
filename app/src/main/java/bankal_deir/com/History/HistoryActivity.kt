@@ -1,12 +1,16 @@
 package bankal_deir.com.History
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.Fatora.Data.PaymentTransaction
@@ -34,6 +38,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityHistoryBinding.inflate(layoutInflater)
+        hideSystemBars()
         setContentView(binding.root)
 
         recyclerView = binding.fullHistoryRec
@@ -53,6 +58,23 @@ class HistoryActivity : AppCompatActivity() {
             finish()
         }
 
+        // Live search as user types
+        binding.searchFullHistory.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                val query = s?.toString()?.trim() ?: ""
+                if (query.isEmpty()) {
+                    isSearching = false
+                    if (::tranArrayList.isInitialized) updateRecyclerView(tranArrayList)
+                } else {
+                    isSearching = true
+                    searchTransactions(query)
+                }
+            }
+        })
+
+        // Keep button working as well
         binding.btnSearch.setOnClickListener {
             val query = binding.searchFullHistory.text.toString().trim()
             if (query.isEmpty()) {
@@ -161,5 +183,13 @@ class HistoryActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(refreshRunnable)
+    }
+    private fun hideSystemBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.apply {
+            hide(WindowInsetsCompat.Type.navigationBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }
