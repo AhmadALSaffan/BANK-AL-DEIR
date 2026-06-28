@@ -12,6 +12,20 @@
 [![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=flat-square)](#)
 
 </div>
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" style="background:#1a1a1a; border-radius:24px; padding:12px; border: 2px solid #333;">
+        <img
+          src="https://github.com/user-attachments/assets/29ac5832-04a8-4ed6-9fda-d11433f60021"
+          alt="Yalla Khedma app demo"
+          width="360"
+          style="border-radius:16px; display:block;"
+        />
+      </td>
+    </tr>
+  </table>
+</div> 
 
 ---
 
@@ -22,7 +36,6 @@
 > ⚠️ **Disclaimer:** BANK-AL-DEIR is **not** a real banking application and does not provide actual banking services. It is a demo project created for learning, portfolio-building, and demonstrating Android development skills on GitHub.
 
 ---
-<img width="100%" height="600" alt="video-erasio (2)" src="https://github.com/user-attachments/assets/29ac5832-04a8-4ed6-9fda-d11433f60021" />
 
 ## Screenshots
 
