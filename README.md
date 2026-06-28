@@ -22,8 +22,7 @@
 > ⚠️ **Disclaimer:** BANK-AL-DEIR is **not** a real banking application and does not provide actual banking services. It is a demo project created for learning, portfolio-building, and demonstrating Android development skills on GitHub.
 
 ---
-
-<img width="100%" height="600" alt="animate_my_logo_and_write_on_t" src="https://github.com/user-attachments/assets/d37592f7-264c-4ae1-8d1e-ea167bb0f457" />
+<img width="100%" height="600" alt="video-erasio (2)" src="https://github.com/user-attachments/assets/29ac5832-04a8-4ed6-9fda-d11433f60021" />
 
 ## Screenshots
 
