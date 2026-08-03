@@ -34,6 +34,7 @@ class profilePage : AppCompatActivity() {
         mAuth= FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
         setContentView(binding.root)
+        NavHelper.setup(this, "profile")
         hideSystemBars()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

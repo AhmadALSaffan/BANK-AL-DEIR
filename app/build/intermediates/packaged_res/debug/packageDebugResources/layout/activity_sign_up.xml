@@ -5,419 +5,271 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".Signup.SignUp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ── Brand Header ── -->
+            <!-- Oxblood header panel -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/enamel_header_panel"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:paddingTop="40dp"
-                android:paddingBottom="8dp"
-                android:layout_marginTop="20dp">
+                android:paddingHorizontal="24dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="34dp">
 
-                <!-- Logo -->
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="14dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/iconbank" />
-
-                <!-- Brand name row -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="4dp">
+                    android:background="@drawable/porcelain_plate"
+                    android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bank Al-Deir"
-                        android:textColor="#4edea3"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="150dp"
+                        android:layout_height="46dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/iconbank" />
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MOBILE BANKING"
-                    android:textColor="#7a9e8e"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.1"
-                    android:layout_marginBottom="24dp" />
+                    android:layout_marginTop="22dp"
+                    android:letterSpacing="0.16"
+                    android:text="GET STARTED"
+                    android:textColor="@color/enamel_brass_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Create your account"
+                    android:textColor="@color/porcelain_bright"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="It only takes a minute to get started."
+                    android:textColor="#D9F1E7D2"
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- ── Hero text ── -->
+            <!-- Form -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="24dp">
+                android:paddingHorizontal="24dp"
+                android:paddingTop="24dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Wealth Starts Here"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="6dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Join an elite circle of private wealth management."
-                    android:textColor="#7a9e8e"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="3dp" />
-
-            </LinearLayout>
-
-            <!-- ── Form Card ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <!-- First Name + Last Name row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:baselineAligned="false"
                     android:orientation="horizontal">
 
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:hint="First name">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:letterSpacing="0.12"
-                            android:text="FIRST NAME"
-                            android:textColor="#4a7a6a"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtFirstName"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/edt_emerald"
-                            android:hint="First name"
+                            android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            android:inputType="textPersonName"
-                            android:paddingHorizontal="12dp"
-                            android:textColor="#FFFFFF"
-                            android:textColorHint="#3f5a50"
-                            android:textSize="14sp" />
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:hint="Last name">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:letterSpacing="0.12"
-                            android:text="LAST NAME"
-                            android:textColor="#4a7a6a"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <EditText
+                        <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtLastName"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/edt_emerald"
-                            android:hint="Last name"
+                            android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            android:inputType="textPersonName"
-                            android:paddingHorizontal="12dp"
-                            android:textColor="#FFFFFF"
-                            android:textColorHint="#3f5a50"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-                <!-- Email -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
-                    android:letterSpacing="0.12"
-                    android:text="EMAIL ADDRESS"
-                    android:textColor="#4a7a6a"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/edt_emerald"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="12dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Email address"
+                    app:startIconDrawable="@drawable/customemail"
+                    app:startIconTint="?attr/colorPrimary">
 
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_marginEnd="8dp"
-                        android:src="@drawable/customemail"
-                        app:tint="#4edea3" />
-
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtEmailsign"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="your@email.com"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
-                        android:inputType="textEmailAddress"
-                        android:textColor="#FFFFFF"
-                        android:textColorHint="#3f5a50"
-                        android:textSize="14sp" />
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
-
-                <!-- Phone Number -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
-                    android:letterSpacing="0.12"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.14"
                     android:text="PHONE NUMBER"
-                    android:textColor="#4a7a6a"
-                    android:textSize="10sp"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:baselineAligned="false"
                     android:orientation="horizontal">
 
-                    <!-- Country code Spinner -->
                     <Spinner
                         android:id="@+id/edtPhoneCode"
-                        android:layout_width="120dp"
-                        android:layout_height="60dp"
+                        android:layout_width="112dp"
+                        android:layout_height="56dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/edt_emerald"
                         android:entries="@array/phone_codes"
                         android:paddingHorizontal="10dp"
-                        android:popupBackground="#002018"
+                        android:popupBackground="@color/md_theme_surfaceContainerHigh"
                         android:spinnerMode="dropdown"
                         android:textAlignment="center" />
 
-                    <!-- Phone number input -->
-                    <EditText
-                        android:id="@+id/edtPhoneNumber"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/edt_emerald"
-                        android:hint="555 0123"
-                        android:imeOptions="actionNext"
-                        android:inputType="phone"
-                        android:paddingHorizontal="12dp"
-                        android:textColor="#FFFFFF"
-                        android:textColorHint="#3f5a50"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <!-- Divider -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="#1a3d2e" />
-
-                <!-- Password + Confirm Password row -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:hint="555 0123">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:letterSpacing="0.12"
-                            android:text="PASSWORD"
-                            android:textColor="#4a7a6a"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/edtPasswordsign"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtPhoneNumber"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/edt_emerald"
-                            android:hint="••••••••"
+                            android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            android:inputType="textPassword"
-                            android:paddingHorizontal="12dp"
-                            android:textColor="#FFFFFF"
-                            android:textColorHint="#3f5a50"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
-                            android:letterSpacing="0.12"
-                            android:text="CONFIRM"
-                            android:textColor="#4a7a6a"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/edtPasswordCheck"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/edt_emerald"
-                            android:hint="••••••••"
-                            android:imeOptions="actionDone"
-                            android:inputType="textPassword"
-                            android:paddingHorizontal="12dp"
-                            android:textColor="#FFFFFF"
-                            android:textColorHint="#3f5a50"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
+                            android:inputType="phone" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-                <!-- Checkboxes -->
-                <CheckBox
-                    android:id="@+id/seePasswordSignUp"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:buttonTint="#4edea3"
-                    android:text="Show password characters"
-                    android:textColor="#7a9e8e"
-                    android:textSize="13sp" />
+                    android:layout_marginTop="16dp"
+                    android:hint="Password"
+                    app:endIconMode="password_toggle"
+                    app:startIconDrawable="@drawable/custompassword"
+                    app:startIconTint="?attr/colorPrimary">
 
-                <CheckBox
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPasswordsign"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Confirm password"
+                    app:endIconMode="password_toggle"
+                    app:startIconDrawable="@drawable/custompassword"
+                    app:startIconTint="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPasswordCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/checkBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:buttonTint="#4edea3"
+                    android:layout_marginTop="8dp"
                     android:lineSpacingExtra="2dp"
-                    android:text="I Agree with the Terms and Conditions and Privacy Policy of Bank Al-Deir."
-                    android:textColor="#7a9e8e"
-                    android:textSize="13sp" />
+                    android:text="I agree to the Terms &amp; Conditions and Privacy Policy."
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
 
-            </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSignUp"
+                    style="@style/Widget.BankALDeir.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Create account"
+                    android:textSize="17sp"
+                    app:cornerRadius="14dp" />
 
-            <!-- ── Sign Up button ── -->
-            <Button
-                android:id="@+id/btnSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/btnedit"
-                android:text="SIGN UP"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.08"
-                android:layout_marginBottom="20dp"
-                android:layout_margin="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <!-- ── Already a member row ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Already have an account? "
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/btnGoLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:text="Log in"
+                        android:textAppearance="?attr/textAppearanceLabelLarge"
+                        android:textColor="?attr/colorPrimary" />
+                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Already a member? "
-                    android:textColor="#7a9e8e"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Log In to Bank AL Deir"
-                    android:textColor="#ffb95f"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="28dp"
+                    android:alpha="0.6"
+                    android:gravity="center"
+                    android:text="Developed by Ahmed ELiwi ALSaffan"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
             </LinearLayout>
-
-            <!-- ── Footer ── -->
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:gravity="center"
-                android:text="This Application supported by : Ahmed ELiwi ALSaffan"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-
         </LinearLayout>
     </ScrollView>
 

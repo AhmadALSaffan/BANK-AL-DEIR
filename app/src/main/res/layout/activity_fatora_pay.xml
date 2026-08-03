@@ -5,8 +5,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".Fatora.UI.FatoraPayActivity">
+
+    <!-- Top bar: back button + Fatora logo -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="46dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back"
+        app:tint="?attr/colorOnSurface" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/fatoraLogo"
+        android:layout_width="86dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="Fatora"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:shapeAppearanceOverlay="@style/RoundSqaure"
+        app:srcCompat="@drawable/fatora" />
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -17,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
         app:navGraph="@navigation/fatora_nav_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,7 @@ class sendMoney : AppCompatActivity() {
     private lateinit var binding: ActivitySendMoneyBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+    private var selectedReason = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,32 +46,11 @@ class sendMoney : AppCompatActivity() {
         binding = ActivitySendMoneyBinding.inflate(layoutInflater)
         hideSystemBars()
         setContentView(binding.root)
-        val items = listOf("Select reason", "Personal expenses", "Family and friends expenses", "Tuition fees","individual","Other")
-        val spinnerAdapter = ArrayAdapter(this, R.layout.custom_color_spinner, items)
-        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_layout)
-
-        binding.aspinnerReason.adapter = spinnerAdapter
-        binding.aspinnerReason.setSelection(0)
-
-        binding.aspinnerReason.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val selected = items[position]
-                if (position == 0) {
-
-                } else {
-                    val selectedItem = items[position]
-                    Toast.makeText(this@sendMoney, "Selected: $selected", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
+        val reasons = listOf(
+            "Personal expenses", "Family and friends expenses",
+            "Tuition fees", "Individual", "Other"
+        )
+        binding.reasonSelector.setOnClickListener { showReasonSheet(reasons) }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
@@ -133,7 +113,7 @@ class sendMoney : AppCompatActivity() {
                             Toast.makeText(this, " You cannot send money to yourself", Toast.LENGTH_SHORT).show()
                             return@findReceiverByAccountNumber
                         }
-                        val reason = binding.aspinnerReason.selectedItem?.toString() ?: ""
+                        val reason = selectedReason
                         val notes = binding.edtNotes.text.toString().trim()
                         transferMoney(senderWID, receiverWID, amount, reason, notes, progressDialog) { transactionNumberStr ->
                             progressDialog.dismiss()
@@ -263,6 +243,37 @@ class sendMoney : AppCompatActivity() {
             val formattedBalance = "%.2f".format(balanceDouble)
             binding.txtBalance.text = "$formattedBalance$"
         }
+    }
+
+    private fun showReasonSheet(reasons: List<String>) {
+        val sheet = com.google.android.material.bottomsheet.BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.sheet_reason, null)
+        val container = view.findViewById<android.widget.LinearLayout>(R.id.reasonContainer)
+
+        reasons.forEach { reason ->
+            val row = layoutInflater.inflate(R.layout.item_reason_row, container, false)
+            row.findViewById<TextView>(R.id.reasonText).text = reason
+            row.findViewById<View>(R.id.reasonCheck).visibility =
+                if (reason == selectedReason) View.VISIBLE else View.GONE
+            row.setOnClickListener {
+                selectedReason = reason
+                binding.txtReason.text = reason
+                binding.txtReason.setTextColor(
+                    androidx.core.content.ContextCompat.getColor(this, R.color.md_theme_onSurface)
+                )
+                sheet.dismiss()
+            }
+            container.addView(row)
+        }
+
+        // Chevron points up while the sheet is open, back down when it closes.
+        binding.chevronReason.animate().rotation(180f).setDuration(220).start()
+        sheet.setOnDismissListener {
+            binding.chevronReason.animate().rotation(0f).setDuration(220).start()
+        }
+
+        sheet.setContentView(view)
+        sheet.show()
     }
 
     fun transferMoney(senderWalletID: String, receiverWalletID: String, amount: Double, reason: String, notes: String, progressDialog: Dialog, onSuccess: (String) -> Unit) {

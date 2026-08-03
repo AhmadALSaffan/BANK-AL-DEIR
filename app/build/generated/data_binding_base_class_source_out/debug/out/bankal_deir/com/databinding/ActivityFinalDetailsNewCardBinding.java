@@ -4,8 +4,8 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
-import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,28 +23,22 @@ public final class ActivityFinalDetailsNewCardBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnCancelCreate;
+  public final ImageView btnBack;
 
   @NonNull
-  public final Button btnCreate;
+  public final MaterialButton btnCancelCreate;
+
+  @NonNull
+  public final MaterialButton btnCreate;
 
   @NonNull
   public final CheckBox checkBox2;
 
   @NonNull
-  public final ShapeableImageView imageView14;
-
-  @NonNull
   public final ConstraintLayout main;
 
   @NonNull
-  public final TextView textView33;
-
-  @NonNull
-  public final TextView textView34;
-
-  @NonNull
-  public final TextView textView35;
+  public final TextView screenTitle;
 
   @NonNull
   public final TextView textView42;
@@ -74,22 +68,19 @@ public final class ActivityFinalDetailsNewCardBinding implements ViewBinding {
   public final TextView txtTotalPrice;
 
   private ActivityFinalDetailsNewCardBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnCancelCreate, @NonNull Button btnCreate, @NonNull CheckBox checkBox2,
-      @NonNull ShapeableImageView imageView14, @NonNull ConstraintLayout main,
-      @NonNull TextView textView33, @NonNull TextView textView34, @NonNull TextView textView35,
-      @NonNull TextView textView42, @NonNull TextView textView43, @NonNull TextView textView44,
-      @NonNull TextView txtCardName, @NonNull TextView txtCardType,
-      @NonNull TextView txtCardVariant, @NonNull TextView txtFirstPrice, @NonNull TextView txtTax,
-      @NonNull TextView txtTotalPrice) {
+      @NonNull ImageView btnBack, @NonNull MaterialButton btnCancelCreate,
+      @NonNull MaterialButton btnCreate, @NonNull CheckBox checkBox2,
+      @NonNull ConstraintLayout main, @NonNull TextView screenTitle, @NonNull TextView textView42,
+      @NonNull TextView textView43, @NonNull TextView textView44, @NonNull TextView txtCardName,
+      @NonNull TextView txtCardType, @NonNull TextView txtCardVariant,
+      @NonNull TextView txtFirstPrice, @NonNull TextView txtTax, @NonNull TextView txtTotalPrice) {
     this.rootView = rootView;
+    this.btnBack = btnBack;
     this.btnCancelCreate = btnCancelCreate;
     this.btnCreate = btnCreate;
     this.checkBox2 = checkBox2;
-    this.imageView14 = imageView14;
     this.main = main;
-    this.textView33 = textView33;
-    this.textView34 = textView34;
-    this.textView35 = textView35;
+    this.screenTitle = screenTitle;
     this.textView42 = textView42;
     this.textView43 = textView43;
     this.textView44 = textView44;
@@ -128,14 +119,20 @@ public final class ActivityFinalDetailsNewCardBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnBack;
+      ImageView btnBack = ViewBindings.findChildViewById(rootView, id);
+      if (btnBack == null) {
+        break missingId;
+      }
+
       id = R.id.btnCancelCreate;
-      Button btnCancelCreate = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnCancelCreate = ViewBindings.findChildViewById(rootView, id);
       if (btnCancelCreate == null) {
         break missingId;
       }
 
       id = R.id.btnCreate;
-      Button btnCreate = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnCreate = ViewBindings.findChildViewById(rootView, id);
       if (btnCreate == null) {
         break missingId;
       }
@@ -146,29 +143,11 @@ public final class ActivityFinalDetailsNewCardBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageView14;
-      ShapeableImageView imageView14 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView14 == null) {
-        break missingId;
-      }
-
       ConstraintLayout main = (ConstraintLayout) rootView;
 
-      id = R.id.textView33;
-      TextView textView33 = ViewBindings.findChildViewById(rootView, id);
-      if (textView33 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView34;
-      TextView textView34 = ViewBindings.findChildViewById(rootView, id);
-      if (textView34 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView35;
-      TextView textView35 = ViewBindings.findChildViewById(rootView, id);
-      if (textView35 == null) {
+      id = R.id.screenTitle;
+      TextView screenTitle = ViewBindings.findChildViewById(rootView, id);
+      if (screenTitle == null) {
         break missingId;
       }
 
@@ -226,9 +205,9 @@ public final class ActivityFinalDetailsNewCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityFinalDetailsNewCardBinding((ConstraintLayout) rootView, btnCancelCreate,
-          btnCreate, checkBox2, imageView14, main, textView33, textView34, textView35, textView42,
-          textView43, textView44, txtCardName, txtCardType, txtCardVariant, txtFirstPrice, txtTax,
+      return new ActivityFinalDetailsNewCardBinding((ConstraintLayout) rootView, btnBack,
+          btnCancelCreate, btnCreate, checkBox2, main, screenTitle, textView42, textView43,
+          textView44, txtCardName, txtCardType, txtCardVariant, txtFirstPrice, txtTax,
           txtTotalPrice);
     }
     String missingId = rootView.getResources().getResourceName(id);

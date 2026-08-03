@@ -14,7 +14,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-        manifestPlaceholders["braintreeReturnUrlScheme"] = "bankal_deir.com.braintree"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,18 +52,19 @@ dependencies {
     debugImplementation("com.google.firebase:firebase-appcheck-debug")
 
     // Braintree PayPal SDK
-    implementation("com.braintreepayments.api:braintree-core:4.41.0") {
+    implementation("com.braintreepayments.api:braintree-core:4.51.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
-    implementation("com.braintreepayments.api:paypal:4.41.0") {
+    implementation("com.braintreepayments.api:paypal:4.51.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
-    implementation("com.braintreepayments.api:card:4.41.0") {
+    implementation("com.braintreepayments.api:card:4.51.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
-    implementation("com.braintreepayments.api:google-pay:4.41.0") {
+    implementation("com.braintreepayments.api:google-pay:4.51.0") {
         exclude(group = "org.jfrog.cardinalcommerce.gradle", module = "cardinalmobilesdk")
     }
+    // Also provides the official Google Pay button (com.google.android.gms.wallet.button)
     implementation("com.google.android.gms:play-services-wallet:19.4.0")
 
     // AndroidX Core

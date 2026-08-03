@@ -20,6 +20,8 @@ import bankal_deir.com.databinding.ActivityAmountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.braintreepayments.api.*
+import com.google.android.gms.wallet.button.ButtonConstants
+import com.google.android.gms.wallet.button.ButtonOptions
 import com.google.android.gms.wallet.TransactionInfo
 import com.google.android.gms.wallet.WalletConstants
 import java.util.concurrent.TimeUnit
@@ -28,12 +30,11 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
+class AmountActivity : AppCompatActivity(), GooglePayListener {
     private lateinit var binding: ActivityAmountBinding
     private var userId: String = ""
     private var walletId: String = ""
     private lateinit var braintreeClient: BraintreeClient
-    private lateinit var payPalClient: PayPalClient
     private lateinit var googlePayClient: GooglePayClient
     private var pendingAmount: Double = 0.0
     private lateinit var progressDialog: Dialog
@@ -90,12 +91,25 @@ class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
 
         if (walletId.isEmpty()) loadUserWallet()
 
-        binding.btnPayPal.setOnClickListener {
-            val amountText = binding.etAmount.text.toString()
-            val amount = amountText.toDoubleOrNull()
-            showProgressDialog()
+        setupGooglePayButton()
+
+        binding.btnBack.setOnClickListener { finish() }
+
+        mapOf(
+            binding.chip10 to "10",
+            binding.chip25 to "25",
+            binding.chip50 to "50",
+            binding.chip100 to "100"
+        ).forEach { (chip, value) ->
+            chip.setOnClickListener {
+                binding.etAmount.setText(value)
+                binding.etAmount.setSelection(value.length)
+            }
+        }
+
+        binding.btnGooglePay.setOnClickListener {
+            val amount = binding.etAmount.text.toString().toDoubleOrNull()
             if (amount != null && amount > 0) {
-                binding.btnPayPal.isEnabled = false
                 pendingAmount = amount
 
                 getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE).edit().apply {
@@ -104,24 +118,39 @@ class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
                     apply()
                 }
 
-                startPayPalCheckout(amount)
-            } else {
-                Toast.makeText(this, "Please enter a valid amount", Toast.LENGTH_SHORT).show()
-                hideProgressDialog()
-            }
-        }
-
-        binding.btnGooglePay.setOnClickListener {
-            val amountText = binding.etAmount.text.toString()
-            val amount = amountText.toDoubleOrNull()
-            if (amount != null && amount > 0) {
-                pendingAmount = amount
+                binding.btnGooglePay.isEnabled = false
                 showProgressDialog()
                 startGooglePayCheckout(amount)
             } else {
                 Toast.makeText(this, "Please enter a valid amount", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    // Renders the official Google Pay mark. The allowed payment methods only drive
+    // the button's appearance; the real request is built in startGooglePayCheckout.
+    private fun setupGooglePayButton() {
+        val allowedPaymentMethods = org.json.JSONArray().put(
+            org.json.JSONObject()
+                .put("type", "CARD")
+                .put(
+                    "parameters", org.json.JSONObject()
+                        .put("allowedAuthMethods", org.json.JSONArray(listOf("PAN_ONLY", "CRYPTOGRAM_3DS")))
+                        .put(
+                            "allowedCardNetworks",
+                            org.json.JSONArray(listOf("VISA", "MASTERCARD", "AMEX", "DISCOVER"))
+                        )
+                )
+        ).toString()
+
+        binding.btnGooglePay.initialize(
+            ButtonOptions.newBuilder()
+                .setButtonTheme(ButtonConstants.ButtonTheme.LIGHT)
+                .setButtonType(ButtonConstants.ButtonType.PAY)
+                .setCornerRadius((18 * resources.displayMetrics.density).toInt())
+                .setAllowedPaymentMethods(allowedPaymentMethods)
+                .build()
+        )
     }
     private fun showProgressDialog() {
         if (!progressDialog.isShowing) {
@@ -143,8 +172,6 @@ class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
     }
     private fun setupBraintree(authorization: String) {
         braintreeClient = BraintreeClient(applicationContext, authorization)
-        payPalClient = PayPalClient(this, braintreeClient)
-        payPalClient.setListener(this)
         googlePayClient = GooglePayClient(this, braintreeClient)
         googlePayClient.setListener(this)
     }
@@ -154,56 +181,71 @@ class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
         setIntent(intent)
     }
 
-    private fun startPayPalCheckout(amount: Double) {
-        val request = PayPalCheckoutRequest(String.format("%.2f", amount)).apply {
-            currencyCode = "USD"
-            userAction = PayPalCheckoutRequest.USER_ACTION_COMMIT
-        }
-        payPalClient.tokenizePayPalAccount(this, request)
+    // Sends the tokenized payment method to the backend, which creates the actual
+    // Braintree transaction. The wallet is only credited if the charge succeeds.
+    private fun chargeNonce(nonce: String, amount: Double) {
+        showProgressDialog()
+        Thread {
+            val error: String? = try {
+                val url = java.net.URL("https://us-central1-bank-al-deir.cloudfunctions.net/processPayment")
+                val conn = url.openConnection() as javax.net.ssl.HttpsURLConnection
+                conn.requestMethod = "POST"
+                conn.doOutput = true
+                conn.connectTimeout = 15_000
+                conn.readTimeout = 15_000
+                conn.setRequestProperty("Content-Type", "application/json")
+                val body = org.json.JSONObject()
+                    .put("nonce", nonce)
+                    .put("amount", String.format(Locale.US, "%.2f", amount))
+                    .toString()
+                conn.outputStream.use { it.write(body.toByteArray(Charsets.UTF_8)) }
+                if (conn.responseCode == 200) {
+                    null
+                } else {
+                    val stream = conn.errorStream ?: conn.inputStream
+                    try {
+                        org.json.JSONObject(stream.bufferedReader().readText())
+                            .optString("error", "charge declined")
+                    } catch (e: Exception) {
+                        "charge declined (HTTP ${conn.responseCode})"
+                    }
+                }
+            } catch (e: Exception) {
+                e.message ?: "network error"
+            }
+            runOnUiThread {
+                if (error == null) {
+                    creditWallet(amount)
+                } else {
+                    hideProgressDialog()
+                    binding.btnGooglePay.isEnabled = true
+                    Log.e("GooglePay", "Charge failed: $error")
+                    Toast.makeText(this, "Payment failed: $error", Toast.LENGTH_LONG).show()
+                }
+            }
+        }.start()
     }
 
-    override fun onPayPalSuccess(payPalAccountNonce: PayPalAccountNonce) {
-        Log.d("PayPal_Debug", "PayPal Success Callback")
+    private fun creditWallet(amount: Double) {
+        val data = Data.Builder()
+            .putDouble("amount", amount)
+            .putString("walletId", walletId)
+            .build()
 
-        if (pendingAmount <= 0 || walletId.isEmpty()) {
-            val prefs = getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE)
-            pendingAmount = prefs.getFloat("pending_amount", 0f).toDouble()
-            walletId = prefs.getString("wallet_id", "") ?: ""
-        }
+        val workRequest = OneTimeWorkRequestBuilder<UpdateWalletWorker>()
+            .setInputData(data)
+            .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
+            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.SECONDS)
+            .build()
 
-        if (pendingAmount > 0 && walletId.isNotEmpty()) {
-            val data = Data.Builder()
-                .putDouble("amount", pendingAmount)
-                .putString("walletId", walletId)
-                .build()
+        WorkManager.getInstance(applicationContext).enqueue(workRequest)
 
-            val workRequest = OneTimeWorkRequestBuilder<UpdateWalletWorker>()
-                .setInputData(data)
-                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
-                .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.SECONDS)
-                .build()
-
-            WorkManager.getInstance(applicationContext).enqueue(workRequest)
-
-            getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE).edit().clear().apply()
-            hideProgressDialog()
-            saveTopUpTransaction(pendingAmount)
-            Toast.makeText(this, "Payment successful! Balance updating...", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, MainPage::class.java))
-            finish()
-        }
-    }
-
-    override fun onPayPalFailure(error: Exception) {
+        getSharedPreferences("PaymentPrefs", Context.MODE_PRIVATE).edit().clear().apply()
         hideProgressDialog()
-        binding.btnPayPal.isEnabled = true
-        if (error is UserCanceledException) {
-            Log.d("PayPal_Debug", "User cancelled or browser session lost")
-
-        } else {
-            Log.e("PayPal_Debug", "Error: ${error.message}")
-            Toast.makeText(this, "Payment failed: ${error.message}", Toast.LENGTH_SHORT).show()
-        }
+        saveTopUpTransaction(amount)
+        Toast.makeText(this, "Payment successful! Balance updating...", Toast.LENGTH_LONG).show()
+        startActivity(Intent(this, MainPage::class.java))
+        finish()
     }
 
     private fun loadUserWallet() {
@@ -223,8 +265,7 @@ class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
         databaseReference.child(walletId).get().addOnSuccessListener {
             val balance = it.child("Balance").value
             val balanceDouble = balance?.toString()?.toDoubleOrNull() ?: 0.0
-            val formattedBalance = "%.2f".format(balanceDouble)
-            binding.tvCurrentBalance.text = "Current Balance: $${formattedBalance}"
+            binding.tvCurrentBalance.text = "$%,.2f".format(balanceDouble)
             hideProgressDialog()
         }
     }
@@ -250,26 +291,16 @@ class AmountActivity : AppCompatActivity(), PayPalListener, GooglePayListener {
             walletId = prefs.getString("wallet_id", "") ?: ""
         }
         if (pendingAmount > 0 && walletId.isNotEmpty()) {
-            val data = Data.Builder()
-                .putDouble("amount", pendingAmount)
-                .putString("walletId", walletId)
-                .build()
-            val workRequest = OneTimeWorkRequestBuilder<UpdateWalletWorker>()
-                .setInputData(data)
-                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
-                .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.SECONDS)
-                .build()
-            WorkManager.getInstance(applicationContext).enqueue(workRequest)
+            chargeNonce(paymentMethodNonce.string, pendingAmount)
+        } else {
             hideProgressDialog()
-            saveTopUpTransaction(pendingAmount)
-            Toast.makeText(this, "Google Pay successful! Balance updating…", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, MainPage::class.java))
-            finish()
+            Toast.makeText(this, "Payment session lost, please try again", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onGooglePayFailure(error: Exception) {
         hideProgressDialog()
+        binding.btnGooglePay.isEnabled = true
         Log.e("GooglePay", "Error type: ${error.javaClass.simpleName}")
         Log.e("GooglePay", "Error message: ${error.message}")
         Log.e("GooglePay", "Stack trace: ", error)

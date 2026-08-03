@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".cards">
 
     <ScrollView
@@ -18,321 +18,171 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ── Header ── -->
+            <!-- Top bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="46dp"
                 android:gravity="center_vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="12dp"
-                android:layout_marginTop="46dp">
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageView14"
+                <ImageView
+                    android:id="@+id/btnBack"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
-                    android:background="@drawable/ic_bg_income"
-                    android:padding="8dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/iconbank"
-                    app:shapeAppearanceOverlay="@style/RoundSqaure" />
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Back"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/back"
+                    app:tint="?attr/colorOnSurface" />
 
-                <LinearLayout
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="14dp">
-
-                    <TextView
-                        android:id="@+id/textView22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Your Wallet"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Manage your cards and access"
-                        android:textColor="#7a9e8e"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
-
+                    android:text="Cards"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface" />
             </LinearLayout>
 
-            <!-- ── Card Carousel ── -->
+            <!-- Card carousel -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cards_list"
                 android:layout_width="match_parent"
-                android:layout_height="550dp"
-                android:layout_marginTop="4dp"
+                android:layout_height="548dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 android:scrollbars="none"
                 tools:listitem="@layout/card_item" />
 
-            <!-- ── Carousel Indicators ── -->
+            <!-- Page indicators -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="14dp"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp">
+                android:orientation="horizontal">
 
                 <View
                     android:id="@+id/dot1"
                     android:layout_width="20dp"
                     android:layout_height="4dp"
                     android:layout_marginHorizontal="3dp"
-                    android:background="#4edea3"
-                    android:backgroundTint="#4edea3" />
+                    android:background="@drawable/onboarding_dot_active" />
 
                 <View
                     android:id="@+id/dot2"
                     android:layout_width="8dp"
                     android:layout_height="4dp"
                     android:layout_marginHorizontal="3dp"
-                    android:background="#143b30" />
+                    android:background="@drawable/onboarding_dot" />
 
                 <View
                     android:id="@+id/dot3"
                     android:layout_width="8dp"
                     android:layout_height="4dp"
                     android:layout_marginHorizontal="3dp"
-                    android:background="#143b30" />
-
+                    android:background="@drawable/onboarding_dot" />
             </LinearLayout>
 
-            <!-- ── Bento: Available Balance (full row) ── -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="4dp">
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp" />
+
+            <!-- Balance + card count, stated flatly -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AVAILABLE BALANCE"
-                        android:textColor="#7a9e8e"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.1"
-                        android:layout_marginBottom="6dp" />
+                        android:text="Available balance"
+                        android:textAppearance="?attr/textAppearanceLabelMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tvAvailableCredit"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:id="@+id/tvAvailableCredit"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="$0.00"
-                            android:textColor="#FFFFFF"
-                            android:textSize="32sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvCreditChange"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Active"
-                            android:textColor="#4edea3"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:background="@drawable/ic_bg_income"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="4dp" />
-
-                    </LinearLayout>
-
+                        android:layout_marginTop="4dp"
+                        android:text="$0.00"
+                        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                        android:textColor="?attr/colorOnSurface" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <!-- ── Bento: 2-column row ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="20dp">
-
-                <!-- Security card -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tvTotalCards"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    app:cardBackgroundColor="#073026"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginBottom="10dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4edea3" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SECURITY"
-                            android:textColor="#7a9e8e"
-                            android:textSize="10sp"
-                            android:letterSpacing="0.1"
-                            android:layout_marginBottom="4dp" />
-
-                        <TextView
-                            android:id="@+id/tvSecurityStatus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Protected"
-                            android:textColor="#FFFFFF"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Total Cards card -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    app:cardBackgroundColor="#073026"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginBottom="10dp"
-                            android:src="@drawable/ic_stats"
-                            app:tint="#4edea3" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TOTAL CARDS"
-                            android:textColor="#7a9e8e"
-                            android:textSize="10sp"
-                            android:letterSpacing="0.1"
-                            android:layout_marginBottom="4dp" />
-
-                        <TextView
-                            android:id="@+id/tvTotalCards"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0 Cards"
-                            android:textColor="#FFFFFF"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
+                    android:text="0 Cards"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
             </LinearLayout>
 
-            <!-- ── Divider ── -->
-            <View
-                android:id="@+id/imageView15"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="20dp"
-                android:background="#1a3d2e" />
-
-            <!-- ── ADD NEW CARD button ── -->
-            <Button
+            <!-- Add card -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCreateCard"
+                style="@style/Widget.BankALDeir.Button"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/btnedit"
-                android:text="ADD NEW CARD"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.1" />
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp"
+                android:text="Add card"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/add_card48"
+                app:iconGravity="textStart" />
 
-            <!-- ── CARD PREFERENCES button ── -->
-            <Button
-                android:id="@+id/btnCardPreferences"
+            <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="28dp"
-                android:background="@drawable/send_field_card"
-                android:text="CARD PREFERENCES"
-                android:textColor="#AAFFD6"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.1" />
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp" />
 
-            <!-- ── Recent Usage header ── -->
+            <!-- Recent usage -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
                 android:gravity="center_vertical"
-                android:paddingHorizontal="16dp"
-                android:layout_marginBottom="12dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Recent Usage"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="Recent usage"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="?attr/colorOnSurface" />
 
                 <TextView
                     android:id="@+id/tvViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:textColor="#4edea3"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:padding="4dp" />
-
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="6dp"
+                    android:text="View all"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="?attr/colorPrimary" />
             </LinearLayout>
 
-            <!-- ── Recent Usage list ── -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recentUsageList"
                 android:layout_width="match_parent"
@@ -343,9 +193,20 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="110dp" />
 
         </LinearLayout>
     </ScrollView>
+
+    <!-- Floating bottom nav (shared) -->
+    <include
+        layout="@layout/floating_nav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

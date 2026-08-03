@@ -6,301 +6,240 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".sendmoney.sendMoney">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="100dp"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:paddingBottom="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingTop="24dp">
+            android:paddingTop="46dp">
 
-            <!-- Header: back arrow + title -->
+            <!-- Top bar -->
             <LinearLayout
                 android:id="@+id/frame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="28dp">
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
 
                 <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/returnic"
-                    android:padding="4dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
+                    android:contentDescription="Back"
                     android:focusable="true"
-                    app:tint="#4edea3"
-                    android:id="@+id/imageView8" />
+                    android:padding="10dp"
+                    android:src="@drawable/back"
+                    app:tint="?attr/colorOnSurface" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Bank AL Deir"
-                    android:textColor="#4edea3"
-                    android:textSize="20sp"
+                    android:layout_marginStart="6dp"
+                    android:text="Send money"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface" />
+            </LinearLayout>
+
+            <!-- Available balance: oxblood plaque -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/enamel_plaque_oxblood"
+                android:orientation="vertical"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.14"
+                    android:text="AVAILABLE BALANCE"
+                    android:textColor="@color/enamel_brass_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="******"
+                    android:textColor="@color/porcelain_bright"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- "Send Money" title -->
+            <!-- Amount to send: the hero field -->
             <TextView
-                android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send Money"
-                android:textColor="#ffffff"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.15"
+                android:text="AMOUNT TO SEND"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
-            <!-- Available Balance card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="24dp"
-                    android:paddingVertical="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="AVAILABLE BALANCE"
-                        android:textColor="#aacfbb"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.18"
-                        android:layout_marginBottom="8dp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="bottom">
-
-                        <TextView
-                            android:id="@+id/txtBalance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="******"
-                            android:textColor="#4edea3"
-                            android:textSize="44sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- ── Form fields ── -->
-
-            <!-- Recipient Account -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="28dp">
+                android:background="@drawable/card_type_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="6dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RECIPIENT ACCOUNT"
-                    android:textColor="#aacfbb"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.16"
-                    android:layout_marginBottom="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <EditText
-                        android:id="@+id/edtAcountNumberWallet"
-                        android:layout_width="0dp"
-                        android:layout_height="52dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/input_bottom_line"
-                        android:hint="Enter account number"
-                        android:inputType="text"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="8dp"
-                        android:textColor="#ffffff"
-                        android:textColorHint="#7a9e8e"
-                        android:textSize="16sp" />
-
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/profile"
-                        app:tint="#4edea3"
-                        android:alpha="0.8" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Amount to Send -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="28dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AMOUNT TO SEND"
-                    android:textColor="#aacfbb"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.16"
-                    android:layout_marginBottom="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/input_bottom_line">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$"
-                        android:textColor="#7a9e8e"
-                        android:textSize="32sp"
-                        android:textStyle="bold"
-                        android:paddingEnd="8dp" />
-
-                    <EditText
-                        android:id="@+id/edtAmount"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="0.00"
-                        android:inputType="numberDecimal"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        android:textSize="36sp"
-                        android:textStyle="bold"
-                        android:drawableTint="@color/white"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Reason for Transfer (Spinner) -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="28dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="REASON FOR TRANSFER"
-                    android:textColor="#aacfbb"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.16"
-                    android:layout_marginBottom="10dp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:background="@drawable/send_field_card">
-
-                    <Spinner
-                        android:id="@+id/aspinnerReason"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@null"
-                        android:paddingHorizontal="16dp"
-                        android:prompt="@string/spinner_prompt" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/drowp"
-                        app:tint="#4edea3"
-                        android:clickable="false"
-                        android:focusable="false" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <!-- Optional Notes -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="32dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="OPTIONAL NOTES"
-                    android:textColor="#aacfbb"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.16"
-                    android:layout_marginBottom="10dp" />
+                    android:paddingEnd="10dp"
+                    android:text="$"
+                    android:textColor="@color/enamel_brass_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/edtNotes"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@drawable/send_field_card"
-                    android:gravity="top|start"
-                    android:hint="Add a reference message..."
-                    android:inputType="textMultiLine"
-                    android:minLines="3"
-                    android:maxLines="4"
-                    android:padding="16dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#7a9e8e"
-                    android:textSize="14sp" />
+                    android:id="@+id/edtAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="64dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textColorHint="?attr/colorOnSurfaceVariant"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Send Funds button -->
-            <Button
-                android:id="@+id/btnSendMoney"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/emerald_card_gradient"
-                android:foreground="@drawable/custom_ripple"
-                android:text="SEND FUNDS"
-                android:textColor="#003824"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.06" />
+            <!-- Recipient account -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.15"
+                android:text="RECIPIENT ACCOUNT"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
-            <!-- Cancel button -->
-            <Button
-                android:id="@+id/btnCancel"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:background="@drawable/send_field_card"
-                android:foreground="@drawable/custom_ripple"
-                android:text="CANCEL"
-                android:textColor="#aacfbb"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.08" />
+                android:layout_height="wrap_content"
+                android:hint="Account number"
+                app:startIconDrawable="@drawable/person"
+                app:startIconTint="?attr/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAcountNumberWallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Reason -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.15"
+                android:text="REASON FOR TRANSFER"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/reasonSelector"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="@drawable/card_type_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp">
+
+                <TextView
+                    android:id="@+id/txtReason"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Select reason"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/chevronReason"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/drowp"
+                    app:tint="?attr/colorPrimary" />
+            </LinearLayout>
+
+            <!-- Optional note -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.15"
+                android:text="NOTE (OPTIONAL)"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Add a reference message">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:minLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Actions -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendMoney"
+                style="@style/Widget.BankALDeir.Button"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="12dp"
+                android:text="Send funds"
+                android:textSize="17sp"
+                app:icon="@drawable/ic_send_transfer"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                style="@style/Widget.BankALDeir.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Cancel"
+                android:textColor="?attr/colorOnSurfaceVariant" />
 
         </LinearLayout>
     </ScrollView>

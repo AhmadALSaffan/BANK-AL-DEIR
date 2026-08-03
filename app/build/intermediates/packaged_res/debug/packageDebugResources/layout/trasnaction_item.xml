@@ -3,87 +3,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingHorizontal="12dp"
-    android:paddingVertical="10dp"
-    android:gravity="center_vertical"
-    android:background="@drawable/transaction_item_bg"
-    android:layout_marginHorizontal="4dp"
-    android:layout_marginVertical="3dp"
-    android:foreground="@drawable/custom_ripple"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="14dp">
 
-    <!-- Icon — must stay ImageView so MyAdapter.MyViewHolder works -->
+    <!-- Plain tinted glyph, no badge. Kept as ImageView for MyAdapter. -->
     <ImageView
         android:id="@+id/outlineBox"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/ic_bg_expense"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_send_transfer"
-        android:padding="12dp"
-        android:scaleType="fitCenter" />
+        app:tint="?attr/colorOnSurface" />
 
-    <!-- Name + transaction number -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="8dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tr_Type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TYPE"
-            android:textSize="15sp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
+            android:ellipsize="end"
             android:maxLines="1"
-            android:ellipsize="end" />
-
-        <TextView
-            android:id="@+id/tr_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Transaction Number"
-            android:textSize="11sp"
-            android:textColor="#7a9e8e"
-            android:layout_marginTop="3dp"
-            android:fontFamily="monospace"
-            android:maxLines="1"
-            android:ellipsize="end" />
-
-    </LinearLayout>
-
-    <!-- Amount + date -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="end">
-
-        <TextView
-            android:id="@+id/tr_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$$$$$$"
-            android:textSize="15sp"
-            android:textColor="#FF6F61"
-            android:textStyle="bold" />
+            android:text="Transaction"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tr_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DATE"
-            android:textSize="11sp"
-            android:textColor="#7a9e8e"
-            android:layout_marginTop="3dp" />
+            android:layout_marginTop="3dp"
+            android:text="Date"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="12sp" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tr_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tr_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:text="•••• 0000"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="11sp" />
     </LinearLayout>
 
 </LinearLayout>

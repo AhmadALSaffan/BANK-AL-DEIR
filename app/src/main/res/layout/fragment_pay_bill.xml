@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical">
 
     <ScrollView
@@ -14,268 +14,160 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutAnimation="@anim/fatora_layout_anim"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="24dp"
             android:paddingTop="28dp"
             android:paddingBottom="16dp">
 
-            <!-- Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay mobile bill"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="24dp"
+                android:text="Choose your provider and enter the details."
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <TextView style="@style/FatoraFieldLabel" android:text="Provider" />
+
             <LinearLayout
-                android:id="@+id/headerCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="24dp">
-
-                <FrameLayout
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/ic_bg_income"
-                    android:layout_marginEnd="14dp">
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_bill"
-                        app:tint="#4edea3" />
-                </FrameLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:id="@+id/cardMTN"
+                    style="@style/FatoraSelectCard"
+                    android:layout_height="130dp"
+                    android:layout_marginEnd="5dp">
+
+                    <ImageView
+                        android:id="@+id/mtnCheckIcon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="invisible"
+                        app:tint="?attr/colorPrimary" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mtn"
+                        app:shapeAppearanceOverlay="@style/RoundSqaure" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pay Mobile Bill"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Select your provider"
-                        android:textColor="#7a9e8e"
+                        android:layout_marginTop="8dp"
+                        android:text="MTN"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="12sp" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <!-- Form Card -->
-            <LinearLayout
-                android:id="@+id/formCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/card_type_bg"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Select Provider"
-                    android:textColor="#7a9e8e"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/cardSyriatel"
+                    style="@style/FatoraSelectCard"
                     android:layout_height="130dp"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:layout_marginHorizontal="5dp">
 
-                    <!-- MTN -->
-                    <LinearLayout
-                        android:id="@+id/cardMTN"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="5dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/card_type_bg"
-                        android:gravity="center"
-                        android:clickable="true"
-                        android:focusable="true">
+                    <ImageView
+                        android:id="@+id/syriatelCheckIcon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="invisible"
+                        app:tint="?attr/colorPrimary" />
 
-                        <ImageView
-                            android:id="@+id/mtnCheckIcon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4edea3"
-                            android:visibility="invisible"
-                            android:layout_marginBottom="3dp"/>
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/syriatel" />
 
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="76dp"
-                            android:layout_height="76dp"
-                            android:src="@drawable/mtn"
-                            android:scaleType="fitCenter"
-                            app:shapeAppearanceOverlay="@style/RoundSqaure"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="MTN"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <!-- Syriatel -->
-                    <LinearLayout
-                        android:id="@+id/cardSyriatel"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginHorizontal="5dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/card_type_bg"
-                        android:gravity="center"
-                        android:clickable="true"
-                        android:focusable="true">
-
-                        <ImageView
-                            android:id="@+id/syriatelCheckIcon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4edea3"
-                            android:visibility="invisible"
-                            android:layout_marginBottom="3dp"/>
-
-                        <ImageView
-                            android:layout_width="76dp"
-                            android:layout_height="76dp"
-                            android:src="@drawable/syriatel"
-                            android:scaleType="fitCenter" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Syriatel"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <!-- Syrian Telecom -->
-                    <LinearLayout
-                        android:id="@+id/cardSyrianTelecom"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/card_type_bg"
-                        android:gravity="center"
-                        android:clickable="true"
-                        android:focusable="true">
-
-                        <ImageView
-                            android:id="@+id/syrianTelecomCheckIcon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4edea3"
-                            android:visibility="invisible"
-                            android:layout_marginBottom="3dp"/>
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="76dp"
-                            android:layout_height="76dp"
-                            android:src="@drawable/syrian_telecom"
-                            android:scaleType="fitCenter"
-                            app:shapeAppearanceOverlay="@style/RoundSqaure"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Syrian Telecom"
-                            android:textColor="#FFFFFF"
-                            android:textSize="11sp"
-                            android:textStyle="bold"
-                            android:gravity="center" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Syriatel"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Mobile Number"
-                    android:textColor="#7a9e8e"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/cardSyrianTelecom"
+                    style="@style/FatoraSelectCard"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="5dp">
 
-                <EditText
-                    android:id="@+id/mobileNumberEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edt_emerald"
-                    android:hint="Enter mobile number"
-                    android:textColorHint="#7a9e8e"
-                    android:textColor="#FFFFFF"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingHorizontal="14dp"
-                    android:drawableStart="@drawable/ic_phone"
-                    android:drawableTint="#4edea3"
-                    android:drawablePadding="10dp" />
+                    <ImageView
+                        android:id="@+id/syrianTelecomCheckIcon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="invisible"
+                        app:tint="?attr/colorPrimary" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Bill Amount"
-                    android:textColor="#7a9e8e"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/syrian_telecom"
+                        app:shapeAppearanceOverlay="@style/RoundSqaure" />
 
-                <EditText
-                    android:id="@+id/amountEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edt_emerald"
-                    android:hint="Enter bill amount"
-                    android:textColorHint="#7a9e8e"
-                    android:textColor="#FFFFFF"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:paddingHorizontal="14dp"
-                    android:drawableStart="@drawable/ic_money"
-                    android:drawableTint="#4edea3"
-                    android:drawablePadding="10dp" />
-
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Syrian Telecom"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
+
+            <TextView style="@style/FatoraFieldLabel" android:text="Mobile number" />
+
+            <EditText
+                android:id="@+id/mobileNumberEditText"
+                style="@style/FatoraInput"
+                android:drawableStart="@drawable/ic_phone"
+                android:hint="Enter mobile number"
+                android:inputType="phone" />
+
+            <TextView style="@style/FatoraFieldLabel" android:text="Amount" />
+
+            <EditText
+                android:id="@+id/amountEditText"
+                style="@style/FatoraInput"
+                android:drawableStart="@drawable/ic_money"
+                android:hint="Bill amount"
+                android:inputType="numberDecimal" />
+
         </LinearLayout>
     </ScrollView>
 
-    <!-- Continue Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/continueButton"
+        style="@style/Widget.BankALDeir.Button"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="58dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="12dp"
-        android:text="Continue to Payment"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#0a1f17"
-        android:background="@drawable/btnedit" />
+        android:layout_marginBottom="20dp"
+        android:text="Continue to payment"
+        app:cornerRadius="14dp" />
 
 </LinearLayout>

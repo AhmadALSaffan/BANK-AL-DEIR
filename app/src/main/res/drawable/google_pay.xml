@@ -3,9 +3,7 @@
     android:height="512dp"
     android:viewportWidth="512"
     android:viewportHeight="512">
-    <path
-        android:pathData="m0,0H512V512H0"
-        android:fillColor="#fff"/>
+    <!-- White background removed: the ghost logo now sits on transparent. -->
     <path
         android:pathData="M407.2,160c-36,-20.8 -83.2,-8.8 -104,28L250.4,279.2c-15.2,26.4 4.8,36 26.4,48.8l51.2,29.6c17.6,9.6 39.2,4 49.6,-12.8L432,250.4c18.4,-32 7.2,-72 -24,-90.4z"
         android:fillColor="#e64a19"/>

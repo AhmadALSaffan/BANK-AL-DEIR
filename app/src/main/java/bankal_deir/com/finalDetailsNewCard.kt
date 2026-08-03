@@ -87,6 +87,8 @@ class finalDetailsNewCard : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.btnBack.setOnClickListener { finish() }
     }
 
     fun calculateTax() {

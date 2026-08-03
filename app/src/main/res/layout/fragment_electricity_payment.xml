@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical">
 
     <ScrollView
@@ -14,257 +14,138 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutAnimation="@anim/fatora_layout_anim"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="24dp"
             android:paddingTop="28dp"
             android:paddingBottom="16dp">
 
-            <!-- Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Electricity"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="24dp"
+                android:text="Select your provider, then enter the bill."
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <TextView style="@style/FatoraFieldLabel" android:text="Provider" />
+
             <LinearLayout
-                android:id="@+id/headerCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="24dp">
-
-                <FrameLayout
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/ic_bg_income"
-                    android:layout_marginEnd="14dp">
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_electricity"
-                        app:tint="#ffb95f" />
-                </FrameLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:id="@+id/cardGreenEnergy"
+                    style="@style/FatoraSelectCard"
+                    android:layout_marginEnd="6dp">
+
+                    <ImageView
+                        android:id="@+id/greenEnergyCheckIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="invisible"
+                        app:tint="?attr/colorPrimary" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/green_energy"
+                        app:shapeAppearanceOverlay="@style/RoundSqaure" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Electricity Payment"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Green Energy"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardMinistryElectricity"
+                    style="@style/FatoraSelectCard"
+                    android:layout_marginStart="6dp">
+
+                    <ImageView
+                        android:id="@+id/ministryCheckIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_check_circle"
+                        android:visibility="invisible"
+                        app:tint="?attr/colorPrimary" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ministry_of_electricity"
+                        app:shapeAppearanceOverlay="@style/RoundSqaure" />
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select your electricity company"
-                        android:textColor="#7a9e8e"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Ministry of Electricity"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Form Card -->
-            <LinearLayout
-                android:id="@+id/formCard"
+            <TextView style="@style/FatoraFieldLabel" android:text="Bill number" />
+
+            <EditText
+                android:id="@+id/billNumberEditText"
+                style="@style/FatoraInput"
+                android:drawableStart="@drawable/ic_receipt"
+                android:hint="9-digit bill number"
+                android:inputType="number"
+                android:maxLength="9" />
+
+            <TextView style="@style/FatoraFieldLabel" android:text="Amount" />
+
+            <EditText
+                android:id="@+id/amountEditText"
+                style="@style/FatoraInput"
+                android:drawableStart="@drawable/ic_money"
+                android:hint="Bill amount"
+                android:inputType="numberDecimal" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/card_type_bg"
-                android:padding="20dp">
+                android:layout_marginTop="14dp"
+                android:text="The bill number is the 9-digit code printed on your electricity bill."
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Select Company"
-                    android:textColor="#7a9e8e"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <!-- Green Energy -->
-                    <LinearLayout
-                        android:id="@+id/cardGreenEnergy"
-                        android:layout_width="0dp"
-                        android:layout_height="180dp"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="6dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/card_type_bg"
-                        android:gravity="center"
-                        android:padding="12dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_margin="5dp">
-
-                        <ImageView
-                            android:id="@+id/greenEnergyCheckIcon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="end"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4edea3"
-                            android:visibility="invisible" />
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="86dp"
-                            android:layout_height="86dp"
-                            android:layout_marginTop="4dp"
-                            android:src="@drawable/green_energy"
-                            android:scaleType="fitCenter"
-                            app:shapeAppearanceOverlay="@style/RoundSqaure"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Green Energy"
-                            android:textColor="#FFFFFF"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:gravity="center" />
-                    </LinearLayout>
-
-                    <!-- Ministry of Electricity -->
-                    <LinearLayout
-                        android:id="@+id/cardMinistryElectricity"
-                        android:layout_width="0dp"
-                        android:layout_height="180dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="6dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/card_type_bg"
-                        android:gravity="center"
-                        android:padding="12dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_margin="5dp">
-
-                        <ImageView
-                            android:id="@+id/ministryCheckIcon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="end"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4edea3"
-                            android:visibility="invisible" />
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="86dp"
-                            android:layout_height="86dp"
-                            android:layout_marginTop="4dp"
-                            android:src="@drawable/ministry_of_electricity"
-                            android:scaleType="fitCenter"
-                            app:shapeAppearanceOverlay="@style/RoundSqaure"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Ministry of Electricity"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:gravity="center" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Bill Number (9 digits)"
-                    android:textColor="#7a9e8e"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/billNumberEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edt_emerald"
-                    android:hint="Enter 9-digit bill number"
-                    android:textColorHint="#7a9e8e"
-                    android:textColor="#FFFFFF"
-                    android:inputType="number"
-                    android:maxLength="9"
-                    android:maxLines="1"
-                    android:paddingHorizontal="14dp"
-                    android:drawableStart="@drawable/ic_receipt"
-                    android:drawableTint="#4edea3"
-                    android:drawablePadding="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Bill Amount"
-                    android:textColor="#7a9e8e"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/amountEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/edt_emerald"
-                    android:hint="Enter bill amount"
-                    android:textColorHint="#7a9e8e"
-                    android:textColor="#FFFFFF"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:paddingHorizontal="14dp"
-                    android:drawableStart="@drawable/ic_money"
-                    android:drawableTint="#4edea3"
-                    android:drawablePadding="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/ic_bg_income"
-                    android:padding="12dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_info"
-                        app:tint="#4edea3" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="10dp"
-                        android:text="Please ensure bill number is exactly 9 digits as shown on your electricity bill"
-                        android:textColor="#7a9e8e"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <!-- Continue Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/continueButton"
+        style="@style/Widget.BankALDeir.Button"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="58dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="12dp"
-        android:text="Continue to Payment"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#0a1f17"
-        android:background="@drawable/btnedit" />
+        android:layout_marginBottom="20dp"
+        android:text="Continue to payment"
+        app:cornerRadius="14dp" />
 
 </LinearLayout>

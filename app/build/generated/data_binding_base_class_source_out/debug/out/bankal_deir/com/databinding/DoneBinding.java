@@ -4,7 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -12,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,7 +21,7 @@ public final class DoneBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final Button btnOk;
+  public final MaterialButton btnOk;
 
   @NonNull
   public final TextView finalAmount;
@@ -35,7 +35,7 @@ public final class DoneBinding implements ViewBinding {
   @NonNull
   public final TextView txtDate;
 
-  private DoneBinding(@NonNull LinearLayout rootView, @NonNull Button btnOk,
+  private DoneBinding(@NonNull LinearLayout rootView, @NonNull MaterialButton btnOk,
       @NonNull TextView finalAmount, @NonNull TextView textView19,
       @NonNull TextView transactionNumber, @NonNull TextView txtDate) {
     this.rootView = rootView;
@@ -74,7 +74,7 @@ public final class DoneBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnOk;
-      Button btnOk = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnOk = ViewBindings.findChildViewById(rootView, id);
       if (btnOk == null) {
         break missingId;
       }

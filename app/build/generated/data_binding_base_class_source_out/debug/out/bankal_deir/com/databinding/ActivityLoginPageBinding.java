@@ -4,9 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -15,6 +12,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -30,57 +29,38 @@ public final class ActivityLoginPageBinding implements ViewBinding {
   public final TextView btnForget;
 
   @NonNull
-  public final Button btnLogin;
+  public final MaterialButton btnLogin;
 
   @NonNull
-  public final EditText edtEmail;
+  public final TextInputEditText edtEmail;
 
   @NonNull
-  public final EditText edtPassword;
+  public final TextInputEditText edtPassword;
 
   @NonNull
   public final ImageView imageView4;
 
   @NonNull
-  public final Button loginWithGitHub;
+  public final MaterialButton loginWithGitHub;
 
   @NonNull
-  public final Button loginWithGoogle;
+  public final MaterialButton loginWithGoogle;
 
   @NonNull
-  public final Button loginWithPhoneNumber;
+  public final MaterialButton loginWithPhoneNumber;
 
   @NonNull
   public final ConstraintLayout main;
 
   @NonNull
-  public final CheckBox seePassword;
-
-  @NonNull
-  public final TextView textView;
-
-  @NonNull
-  public final TextView textView2;
-
-  @NonNull
-  public final TextView textView3;
-
-  @NonNull
-  public final TextView textView4;
-
-  @NonNull
-  public final TextView textView5;
-
-  @NonNull
   public final TextView textView9;
 
   private ActivityLoginPageBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView btnCreateAccount, @NonNull TextView btnForget, @NonNull Button btnLogin,
-      @NonNull EditText edtEmail, @NonNull EditText edtPassword, @NonNull ImageView imageView4,
-      @NonNull Button loginWithGitHub, @NonNull Button loginWithGoogle,
-      @NonNull Button loginWithPhoneNumber, @NonNull ConstraintLayout main,
-      @NonNull CheckBox seePassword, @NonNull TextView textView, @NonNull TextView textView2,
-      @NonNull TextView textView3, @NonNull TextView textView4, @NonNull TextView textView5,
+      @NonNull TextView btnCreateAccount, @NonNull TextView btnForget,
+      @NonNull MaterialButton btnLogin, @NonNull TextInputEditText edtEmail,
+      @NonNull TextInputEditText edtPassword, @NonNull ImageView imageView4,
+      @NonNull MaterialButton loginWithGitHub, @NonNull MaterialButton loginWithGoogle,
+      @NonNull MaterialButton loginWithPhoneNumber, @NonNull ConstraintLayout main,
       @NonNull TextView textView9) {
     this.rootView = rootView;
     this.btnCreateAccount = btnCreateAccount;
@@ -93,12 +73,6 @@ public final class ActivityLoginPageBinding implements ViewBinding {
     this.loginWithGoogle = loginWithGoogle;
     this.loginWithPhoneNumber = loginWithPhoneNumber;
     this.main = main;
-    this.seePassword = seePassword;
-    this.textView = textView;
-    this.textView2 = textView2;
-    this.textView3 = textView3;
-    this.textView4 = textView4;
-    this.textView5 = textView5;
     this.textView9 = textView9;
   }
 
@@ -142,19 +116,19 @@ public final class ActivityLoginPageBinding implements ViewBinding {
       }
 
       id = R.id.btnLogin;
-      Button btnLogin = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnLogin = ViewBindings.findChildViewById(rootView, id);
       if (btnLogin == null) {
         break missingId;
       }
 
       id = R.id.edtEmail;
-      EditText edtEmail = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtEmail = ViewBindings.findChildViewById(rootView, id);
       if (edtEmail == null) {
         break missingId;
       }
 
       id = R.id.edtPassword;
-      EditText edtPassword = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtPassword = ViewBindings.findChildViewById(rootView, id);
       if (edtPassword == null) {
         break missingId;
       }
@@ -166,60 +140,24 @@ public final class ActivityLoginPageBinding implements ViewBinding {
       }
 
       id = R.id.loginWithGitHub;
-      Button loginWithGitHub = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton loginWithGitHub = ViewBindings.findChildViewById(rootView, id);
       if (loginWithGitHub == null) {
         break missingId;
       }
 
       id = R.id.loginWithGoogle;
-      Button loginWithGoogle = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton loginWithGoogle = ViewBindings.findChildViewById(rootView, id);
       if (loginWithGoogle == null) {
         break missingId;
       }
 
       id = R.id.loginWithPhoneNumber;
-      Button loginWithPhoneNumber = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton loginWithPhoneNumber = ViewBindings.findChildViewById(rootView, id);
       if (loginWithPhoneNumber == null) {
         break missingId;
       }
 
       ConstraintLayout main = (ConstraintLayout) rootView;
-
-      id = R.id.seePassword;
-      CheckBox seePassword = ViewBindings.findChildViewById(rootView, id);
-      if (seePassword == null) {
-        break missingId;
-      }
-
-      id = R.id.textView;
-      TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
-        break missingId;
-      }
-
-      id = R.id.textView2;
-      TextView textView2 = ViewBindings.findChildViewById(rootView, id);
-      if (textView2 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView3;
-      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
-      if (textView3 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView4;
-      TextView textView4 = ViewBindings.findChildViewById(rootView, id);
-      if (textView4 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView5;
-      TextView textView5 = ViewBindings.findChildViewById(rootView, id);
-      if (textView5 == null) {
-        break missingId;
-      }
 
       id = R.id.textView9;
       TextView textView9 = ViewBindings.findChildViewById(rootView, id);
@@ -229,8 +167,7 @@ public final class ActivityLoginPageBinding implements ViewBinding {
 
       return new ActivityLoginPageBinding((ConstraintLayout) rootView, btnCreateAccount, btnForget,
           btnLogin, edtEmail, edtPassword, imageView4, loginWithGitHub, loginWithGoogle,
-          loginWithPhoneNumber, main, seePassword, textView, textView2, textView3, textView4,
-          textView5, textView9);
+          loginWithPhoneNumber, main, textView9);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

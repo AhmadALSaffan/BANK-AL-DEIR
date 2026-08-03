@@ -54,6 +54,8 @@ class SignUp : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
+        binding.btnGoLogin.setOnClickListener { finish() }
+
         binding.btnSignUp.setOnClickListener {
             val email = binding.edtEmailsign.text.toString().trim()
             val firstName = binding.edtFirstName.text.toString().trim()
@@ -69,7 +71,7 @@ class SignUp : AppCompatActivity() {
                 password != confirmPassword -> {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 }
-                binding.edtPhoneNumber.text.length != 9 -> {
+                binding.edtPhoneNumber.text.toString().length != 9 -> {
                     Toast.makeText(this, "The Phone Number Should be 9 Digits", Toast.LENGTH_SHORT).show()
                 }
                 !binding.checkBox.isChecked -> {
@@ -108,16 +110,6 @@ class SignUp : AppCompatActivity() {
                 Resource.Loading -> {}
             }
         }.launchIn(lifecycleScope)
-
-        binding.seePasswordSignUp.setOnCheckedChangeListener { _, isChecked ->
-            val inputType = if (isChecked) {
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            } else {
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            }
-            binding.edtPasswordsign.inputType = inputType
-            binding.edtPasswordCheck.inputType = inputType
-        }
     }
     private fun hideSystemBars() {
         WindowCompat.setDecorFitsSystemWindows(window, false)

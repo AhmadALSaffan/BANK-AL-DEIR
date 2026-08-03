@@ -5,16 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import androidx.viewpager2.widget.ViewPager2;
 import bankal_deir.com.R;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,7 +24,10 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final AppCompatButton btnGetStarted;
+  public final MaterialButton btnGetStarted;
+
+  @NonNull
+  public final LinearLayout dotsContainer;
 
   @NonNull
   public final ImageView imageView3;
@@ -33,7 +36,7 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ConstraintLayout main;
 
   @NonNull
-  public final TabLayout tabLayout;
+  public final TextView tvBrand;
 
   @NonNull
   public final TextView tvFooter;
@@ -45,14 +48,15 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ViewPager2 viewPager2;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatButton btnGetStarted, @NonNull ImageView imageView3,
-      @NonNull ConstraintLayout main, @NonNull TabLayout tabLayout, @NonNull TextView tvFooter,
-      @NonNull TextView tvSkip, @NonNull ViewPager2 viewPager2) {
+      @NonNull MaterialButton btnGetStarted, @NonNull LinearLayout dotsContainer,
+      @NonNull ImageView imageView3, @NonNull ConstraintLayout main, @NonNull TextView tvBrand,
+      @NonNull TextView tvFooter, @NonNull TextView tvSkip, @NonNull ViewPager2 viewPager2) {
     this.rootView = rootView;
     this.btnGetStarted = btnGetStarted;
+    this.dotsContainer = dotsContainer;
     this.imageView3 = imageView3;
     this.main = main;
-    this.tabLayout = tabLayout;
+    this.tvBrand = tvBrand;
     this.tvFooter = tvFooter;
     this.tvSkip = tvSkip;
     this.viewPager2 = viewPager2;
@@ -86,8 +90,14 @@ public final class ActivityMainBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnGetStarted;
-      AppCompatButton btnGetStarted = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnGetStarted = ViewBindings.findChildViewById(rootView, id);
       if (btnGetStarted == null) {
+        break missingId;
+      }
+
+      id = R.id.dotsContainer;
+      LinearLayout dotsContainer = ViewBindings.findChildViewById(rootView, id);
+      if (dotsContainer == null) {
         break missingId;
       }
 
@@ -99,9 +109,9 @@ public final class ActivityMainBinding implements ViewBinding {
 
       ConstraintLayout main = (ConstraintLayout) rootView;
 
-      id = R.id.tabLayout;
-      TabLayout tabLayout = ViewBindings.findChildViewById(rootView, id);
-      if (tabLayout == null) {
+      id = R.id.tvBrand;
+      TextView tvBrand = ViewBindings.findChildViewById(rootView, id);
+      if (tvBrand == null) {
         break missingId;
       }
 
@@ -123,8 +133,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, btnGetStarted, imageView3, main,
-          tabLayout, tvFooter, tvSkip, viewPager2);
+      return new ActivityMainBinding((ConstraintLayout) rootView, btnGetStarted, dotsContainer,
+          imageView3, main, tvBrand, tvFooter, tvSkip, viewPager2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

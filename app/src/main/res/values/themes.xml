@@ -1,4 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ============================================================================
+         DIRECTION CONTRACT · seed e7b54839 · FORM: grounded #4 of 7 (Enamel)
+         THESIS: A bank that looks like the vitreous-enamel signage of a Levantine
+           banking hall — deep color plaques, brass numerals, bilingual sign
+           lettering — refusing dark-glass fintech with a neon accent.
+         OWN-WORLD: porcelain ground; oxblood + petrol enamel plaques each bounded
+           by a dark keyline; brass reserved for money numerals + primary action;
+           signal green/orange only for received/spent; condensed signage caps.
+         STORY: open to a nameplate that says this is your bank; read the balance
+           like a brass sign; tap clearly-labelled enamel plaques to act.
+         FIRST VIEWPORT: oxblood nameplate up top, brass engraved balance, Send/
+           Receive as keylined enamel plaques, ledger-ruled recent activity.
+         FINISH: unreviewed and undocumented is unfinished; this build ends with
+           the finish review, the verdict, and DESIGN.md.
+         ============================================================================ -->
+
     <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
@@ -6,14 +23,158 @@
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 
-    <style name="Base.Theme.BankALDeir" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <!-- Enamel theme on a porcelain (light) ground. Day and night resolve to the
+         same scheme — the enamel world is fixed, not a dark/light toggle. -->
+    <style name="Base.Theme.BankALDeir" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Condensed signage voice everywhere: this is a world made of signs. -->
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_onTertiaryContainer</item>
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorOnError">@color/md_theme_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_theme_background</item>
+        <item name="colorOnBackground">@color/md_theme_onBackground</item>
+        <item name="colorSurface">@color/md_theme_surface</item>
+        <item name="colorOnSurface">@color/md_theme_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_outlineVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_surfaceContainerLowest</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_surfaceContainerLow</item>
+        <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
+        <item name="colorSurfaceBright">@color/md_theme_surfaceBright</item>
+        <item name="colorSurfaceDim">@color/md_theme_surfaceDim</item>
+        <item name="colorSurfaceInverse">@color/md_theme_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_inversePrimary</item>
+
+        <!-- No ripple anywhere: this covers every view that uses
+             selectableItemBackground(Borderless), list items, chips and dialogs. -->
+        <item name="android:colorControlHighlight">@android:color/transparent</item>
+
+        <item name="android:statusBarColor">@color/md_theme_background</item>
+        <item name="android:navigationBarColor">@color/md_theme_background</item>
+        <!-- Dark icons on the porcelain ground. -->
+        <item name="android:windowLightStatusBar">true</item>
+
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
+
+        <!-- Component defaults -->
+        <item name="textInputStyle">@style/Widget.BankALDeir.TextInputLayout</item>
+        <item name="materialCardViewStyle">@style/Widget.BankALDeir.Card</item>
+        <item name="materialButtonStyle">@style/Widget.BankALDeir.Button</item>
+        <item name="chipStyle">@style/Widget.BankALDeir.Chip</item>
+        <item name="bottomNavigationStyle">@style/Widget.Material3.BottomNavigationView</item>
     </style>
 
     <style name="Theme.BankALDeir" parent="Base.Theme.BankALDeir" />
-    <style name="Theme.App" parent="Theme.Material3.DayNight">
-        <item name="bottomNavigationStyle">@style/Widget.Material3.BottomNavigationView</item>
+
+    <style name="Theme.App" parent="Theme.BankALDeir" />
+
+    <!-- Shared Material 3 widget styles -->
+    <!-- Enamel plaque: a saturated colour field bounded by a dark keyline. -->
+    <style name="Widget.BankALDeir.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/enamel_keyline</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/button_press</item>
+    </style>
+
+    <style name="Widget.BankALDeir.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/enamel_keyline</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/button_press</item>
+    </style>
+
+    <style name="Widget.BankALDeir.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/button_press</item>
+    </style>
+
+    <style name="Widget.BankALDeir.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textSize">15sp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/button_press</item>
+    </style>
+
+    <!-- Borderless filled field: one input language app-wide, matching edt_emerald.
+         No resting or focused stroke; the fill alone carries the field. -->
+    <style name="Widget.BankALDeir.TextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/md_theme_surfaceContainerHigh</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="hintTextColor">@color/md_theme_primary</item>
+        <item name="android:textColorHint">@color/md_theme_onSurfaceVariant</item>
+    </style>
+
+    <!-- Porcelain plaque with an enamel keyline. -->
+    <style name="Widget.BankALDeir.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/md_theme_surfaceContainer</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.BankALDeir.Card.Elevated" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/md_theme_surfaceContainerHigh</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="strokeColor">@color/md_theme_outline</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.BankALDeir.IconButton" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="iconTint">@color/md_theme_primary</item>
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.BankALDeir.Chip" parent="Widget.Material3.Chip.Suggestion">
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+    <style name="ShapeAppearance.BankALDeir.Onboarding" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
     </style>
 </resources>

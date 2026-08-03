@@ -49,10 +49,10 @@ class MainPage : AppCompatActivity() {
         binding = ActivityMainPageBinding.inflate(layoutInflater)
         hideSystemBars()
         setContentView(binding.root)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_SECURE,
-            WindowManager.LayoutParams.FLAG_SECURE
-        )
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_SECURE,
+//            WindowManager.LayoutParams.FLAG_SECURE
+//        )
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -60,6 +60,7 @@ class MainPage : AppCompatActivity() {
         }
         readDataUser()
         showBanner()
+        loadAds()
         binding.btnRecive.setOnClickListener {
             val intent = Intent(this, Recive::class.java)
             startActivity(intent)
@@ -88,6 +89,13 @@ class MainPage : AppCompatActivity() {
         binding.payWithFatora.setOnClickListener {
             val intent = Intent(this@MainPage, FatoraMain::class.java)
             startActivity(intent)
+        }
+
+        // Shared floating bottom nav (Home selected here).
+        NavHelper.setup(this, "home")
+        // Arrived via the nav's Scan action? open the scanner.
+        if (intent.getBooleanExtra("startScan", false)) {
+            binding.payWithQrCode.post { binding.payWithQrCode.performClick() }
         }
 
 
@@ -287,6 +295,9 @@ class MainPage : AppCompatActivity() {
             binding.progressBarName.visibility = View.GONE
             binding.firstNamett.visibility = View.VISIBLE
             binding.firstNamett.text = firstName?.toString() ?: ""
+            val accStr = accountNumber?.toString().orEmpty()
+            binding.txtHeaderAccount.text =
+                if (accStr.length >= 4) "•••• " + accStr.takeLast(4) else "•••• ••••"
             readBalance(currentUserWalletId)
             if (profileImageUrl != null) {
                 Glide.with(this)
@@ -308,8 +319,7 @@ class MainPage : AppCompatActivity() {
         databaseReference.child(walletId).get().addOnSuccessListener {
             binding.progressBarBalance.visibility = View.GONE
             binding.balance.visibility = View.VISIBLE
-            val balance = it.child("Balance").value
-            val balanceDouble = balance?.toString()?.toDoubleOrNull() ?: 0.0
+            val balanceDouble = it.child("Balance").value?.toString()?.toDoubleOrNull() ?: 0.0
             val formattedBalance = "%.2f".format(balanceDouble)
             binding.balance.text = "$formattedBalance$"
         }
@@ -327,6 +337,45 @@ class MainPage : AppCompatActivity() {
         }.addOnFailureListener {
             binding.progressBarBanner.visibility = View.GONE
         }
+    }
+
+    // Promotional cards above the balance nameplate, read from the `ads` node.
+    private fun loadAds() {
+        binding.adsList.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        FirebaseDatabase.getInstance().getReference("homeCards")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("HomeCards", "onDataChange exists=${snapshot.exists()} count=${snapshot.childrenCount}")
+                    // Parse defensively so values typed as strings in the console still work.
+                    val ads = snapshot.children.mapNotNull { child ->
+                        val title = child.child("title").value?.toString().orEmpty()
+                        if (title.isBlank()) return@mapNotNull null
+                        val subtitle = child.child("subtitle").value?.toString().orEmpty()
+                        val imageUrl = child.child("imageUrl").value?.toString().orEmpty()
+                        val order = child.child("order").value?.toString()?.toDoubleOrNull()?.toInt() ?: 0
+                        val active = when (val a = child.child("active").value) {
+                            is Boolean -> a
+                            is String -> !a.equals("false", true)
+                            null -> true
+                            else -> true
+                        }
+                        AdItem(title, subtitle, imageUrl, order, active)
+                    }.filter { it.active }.sortedBy { it.order }
+                    Log.d("HomeCards", "usable cards=${ads.size}")
+                    if (ads.isEmpty()) {
+                        binding.adsList.visibility = View.GONE
+                    } else {
+                        binding.adsList.adapter = AdsAdapter(ads)
+                        binding.adsList.visibility = View.VISIBLE
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w("HomeCards", "cancelled: ${error.message}")
+                    binding.adsList.visibility = View.GONE
+                }
+            })
     }
 
     private fun updateAnalytics(income: Double, expenses: Double, count: Int) {

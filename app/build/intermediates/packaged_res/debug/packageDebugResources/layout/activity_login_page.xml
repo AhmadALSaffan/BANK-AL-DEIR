@@ -5,382 +5,264 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".Login.LoginPage">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="24dp">
+            android:orientation="vertical">
 
-            <!-- ── Header: logo + bank name ── -->
+            <!-- Oxblood header panel -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:paddingBottom="8dp"
-                android:layout_marginTop="36dp">
+                android:background="@drawable/enamel_header_panel"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="34dp">
 
-                <FrameLayout
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:background="@drawable/ic_bg_income"
-                    android:layout_marginEnd="12dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/porcelain_plate"
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
+                        android:layout_width="150dp"
+                        android:layout_height="46dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/iconbank" />
-
-                </FrameLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bank Al-Deir"
-                        android:textColor="#4edea3"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MOBILE BANKING"
-                        android:textColor="#7a9e8e"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.1" />
-
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:letterSpacing="0.16"
+                    android:text="MOBILE BANKING"
+                    android:textColor="@color/enamel_brass_light"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Welcome back"
+                    android:textColor="@color/porcelain_bright"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Sign in to your Bank Al-Deir account."
+                    android:textColor="#D9F1E7D2"
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- ── Hero text ── -->
+            <!-- Form -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="32dp"
-                android:paddingBottom="32dp">
+                android:paddingHorizontal="24dp"
+                android:paddingTop="24dp">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome to the"
-                    android:textColor="#FFFFFF"
-                    android:textSize="34sp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.14"
+                    android:text="EMAIL"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:text="BANK AL DEIR"
-                    android:textColor="#4edea3"
-                    android:textSize="34sp"
+                    android:hint="Email address"
+                    app:startIconDrawable="@drawable/customemail"
+                    app:startIconTint="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.14"
+                    android:text="PASSWORD"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Access your curated wealth dashboard with secure encryption."
-                    android:textColor="#7a9e8e"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="4dp" />
+                    android:hint="Password"
+                    app:endIconMode="password_toggle"
+                    app:startIconDrawable="@drawable/custompassword"
+                    app:startIconTint="?attr/colorPrimary">
 
-            </LinearLayout>
-
-            <!-- ── Email label ── -->
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EMAIL ADDRESS"
-                android:textColor="#7a9e8e"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12"
-                android:layout_marginBottom="8dp" />
-
-            <!-- ── Email field ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/edt_emerald"
-                android:layout_marginBottom="20dp"
-                android:paddingHorizontal="14dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/customperson"
-                    app:tint="#4edea3" />
-
-                <EditText
-                    android:id="@+id/edtEmail"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="client@private.wealth"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#3f5a50"
-                    android:textSize="15sp"
-                    android:imeOptions="actionNext" />
-
-            </LinearLayout>
-
-            <!-- ── Password label row (label + forgot) ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SECRET KEY"
-                    android:textColor="#7a9e8e"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.12" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/btnForget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Forgot Key?"
-                    android:textColor="#ffb95f"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="6dp"
+                    android:text="Forgot password?"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="?attr/colorPrimary" />
 
-            </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogin"
+                    style="@style/Widget.BankALDeir.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="18dp"
+                    android:text="Log in"
+                    android:textSize="17sp"
+                    app:cornerRadius="14dp" />
 
-            <!-- ── Password field ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/edt_emerald"
-                android:paddingHorizontal="14dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/custompassword"
-                    app:tint="#4edea3" />
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
 
-                <EditText
-                    android:id="@+id/edtPassword"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="••••••••••••"
-                    android:inputType="textPassword"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#3f5a50"
-                    android:textSize="15sp"
-                    android:imeOptions="actionDone" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="14dp"
+                        android:text="or continue with"
+                        android:textAppearance="?attr/textAppearanceLabelMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
-                <CheckBox
-                    android:id="@+id/seePassword"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="6dp"
-                    android:button="@drawable/view"
-                    android:buttonTint="#4a7a6a"
-                    android:background="@null"
-                    android:text="" />
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <!-- ── "Forgot password?" helper row ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="28dp">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loginWithGoogle"
+                        style="@style/Widget.BankALDeir.Button.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:text="Google"
+                        android:textColor="?attr/colorOnSurface"
+                        app:icon="@drawable/google_g"
+                        app:iconGravity="textStart"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loginWithPhoneNumber"
+                        style="@style/Widget.BankALDeir.Button.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="Phone"
+                        android:textColor="?attr/colorOnSurface"
+                        app:icon="@drawable/phone"
+                        app:iconGravity="textStart"
+                        app:iconSize="20dp"
+                        app:iconTint="?attr/colorPrimary" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loginWithGitHub"
+                        style="@style/Widget.BankALDeir.Button.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_weight="1"
+                        android:text="GitHub"
+                        android:visibility="gone"
+                        app:icon="@drawable/github32"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New to Bank Al-Deir? "
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/btnCreateAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="4dp"
+                        android:text="Sign up"
+                        android:textAppearance="?attr/textAppearanceLabelLarge"
+                        android:textColor="?attr/colorPrimary" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Did you forget your password?"
-                    android:textColor="#4a7a6a"
-                    android:textSize="12sp" />
-
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="28dp"
+                    android:alpha="0.6"
+                    android:gravity="center"
+                    android:text="Developed by Ahmed ELiwi ALSaffan"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
             </LinearLayout>
-
-            <!-- ── Login button ── -->
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/btnedit"
-                android:letterSpacing="0.08"
-                android:text="LOGIN"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <!-- ── Divider ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="20dp">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="#1a3d2e" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SECURE CONNECT"
-                    android:textColor="#3f5a50"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.12"
-                    android:layout_marginHorizontal="14dp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="#1a3d2e" />
-
-            </LinearLayout>
-
-            <!-- ── Social login buttons ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="32dp">
-
-                <Button
-                    android:id="@+id/loginWithGoogle"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/card_type_bg"
-                    android:drawableStart="@drawable/common_google_signin_btn_icon_light"
-                    android:drawablePadding="10dp"
-                    android:paddingStart="16dp"
-                    android:text="Google"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/loginWithPhoneNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/card_type_bg"
-                    android:drawableStart="@drawable/phone"
-                    android:drawableTint="#4edea3"
-                    android:drawablePadding="10dp"
-                    android:paddingStart="16dp"
-                    android:text="Phone"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/loginWithGitHub"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/card_type_bg"
-                    android:drawableStart="@drawable/github32"
-                    android:drawablePadding="10dp"
-                    android:paddingStart="16dp"
-                    android:text="GitHub"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-            <!-- ── Register row ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New to Bank Al-Deir? "
-                    android:textColor="#7a9e8e"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/btnCreateAccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SIGN UP"
-                    android:textColor="#4edea3"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <!-- ── Footer credit ── -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="32dp"
-                android:gravity="center"
-                android:text="This Programmed by : Ahmed ELiwi ALSaffan"
-                android:textColor="#2a4a3a"
-                android:textSize="10sp" />
-
         </LinearLayout>
     </ScrollView>
 

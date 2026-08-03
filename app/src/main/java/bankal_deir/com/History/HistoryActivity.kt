@@ -73,18 +73,6 @@ class HistoryActivity : AppCompatActivity() {
                 }
             }
         })
-
-        // Keep button working as well
-        binding.btnSearch.setOnClickListener {
-            val query = binding.searchFullHistory.text.toString().trim()
-            if (query.isEmpty()) {
-                isSearching = false
-                getTranData()
-            } else {
-                isSearching = true
-                searchTransactions(query)
-            }
-        }
     }
 
     private fun getTranData() {
@@ -117,15 +105,6 @@ class HistoryActivity : AppCompatActivity() {
 
                 tranArrayList = ArrayList(sortedByDate)
                 updateRecyclerView(tranArrayList)
-
-                binding.progressBarHistoryFull.visibility = View.GONE
-                binding.fullHistoryRec.visibility = View.VISIBLE
-
-                if (recyclerView.adapter == null) {
-                    recyclerView.adapter = MyAdapter(tranArrayList)
-                } else {
-                    (recyclerView.adapter as MyAdapter).updateData(tranArrayList)
-                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -149,12 +128,22 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun updateRecyclerView(data: ArrayList<PaymentTransaction>) {
+        binding.progressBarHistoryFull.visibility = View.GONE
+
         if (data.isEmpty()) {
-            binding.progressBarHistoryFull.visibility = View.GONE
             binding.fullHistoryRec.visibility = View.GONE
+            binding.txtHistoryCount.visibility = View.GONE
+            binding.emptyHistory.visibility = View.VISIBLE
+            binding.emptyTitle.text = if (isSearching) "No results" else "No transactions yet"
+            binding.emptySub.text =
+                if (isSearching) "Nothing matches your search."
+                else "Your payments and transfers will appear here."
         } else {
-            binding.progressBarHistoryFull.visibility = View.GONE
+            binding.emptyHistory.visibility = View.GONE
             binding.fullHistoryRec.visibility = View.VISIBLE
+            binding.txtHistoryCount.visibility = View.VISIBLE
+            binding.txtHistoryCount.text =
+                if (data.size == 1) "1 TRANSACTION" else "${data.size} TRANSACTIONS"
         }
 
         if (recyclerView.adapter == null) {

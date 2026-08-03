@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import bankal_deir.com.R
+import bankal_deir.com.OtpGate
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import bankal_deir.com.Fatora.Data.PaymentTransaction
@@ -113,7 +114,7 @@ class ElectricityPaymentFragment : Fragment() {
         binding.continueButton.text = "Processing..."
 
 
-        getUserWalletId(userId, amount, billNumber)
+        OtpGate.require(requireActivity(), onCancelled = { binding.continueButton.isEnabled = true; binding.continueButton.text = "Continue to payment" }) { getUserWalletId(userId, amount, billNumber) }
     }
 
     private fun getUserWalletId(userId: String, amount: Double, billNumber: String) {

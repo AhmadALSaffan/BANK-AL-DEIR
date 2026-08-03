@@ -56,15 +56,36 @@ class ShowTransaction : AppCompatActivity() {
         binding.DateShow.text = date
 
         when {
-            transactionNumber.startsWith("PLP") -> {
-                binding.typeTransactionTxt.text = "PayPal TopUp"
+            transactionNumber.startsWith("TRF") -> {
+                binding.typeTransactionTxt.text = "Card Transfer"
                 binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_plp)
 
                 binding.txtAmount.text = "+$$amount"
                 binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Success_Green))
 
                 binding.fromOrWalletTxt.text = "FROM"
-                binding.FromShow.text = "PayPal-External"
+                binding.FromShow.text = "Your balance"
+
+                binding.toWallet.text = "To"
+                binding.toWalletShow.text = "Card ending ${receiverWallet.takeLast(4)}"
+            }
+
+            transactionNumber.startsWith("PLP") -> {
+                binding.typeTransactionTxt.text = "Google Pay Top-up"
+                binding.typeTransactionTxt.setBackgroundResource(R.drawable.back_plp)
+
+                binding.txtAmount.text = "+$$amount"
+                binding.txtAmount.setTextColor(ContextCompat.getColor(this, R.color.Success_Green))
+
+                binding.fromOrWalletTxt.text = "FROM"
+                binding.FromShow.text = "Google Pay"
+                // Google Pay mark after the label.
+                val gpayIcon = ContextCompat.getDrawable(this, R.drawable.google_pay)
+                val size = (22 * resources.displayMetrics.density).toInt()
+                gpayIcon?.setBounds(0, 0, size, size)
+                binding.FromShow.setCompoundDrawablesRelative(null, null, gpayIcon, null)
+                binding.FromShow.compoundDrawablePadding =
+                    (8 * resources.displayMetrics.density).toInt()
 
                 binding.toWalletShow.text = receiverWallet
             }
@@ -235,11 +256,37 @@ class ShowTransaction : AppCompatActivity() {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("Transaction Number", transactionNumber)
             clipboard.setPrimaryClip(clip)
+            // Quick pulse so the tap is felt, not just toasted.
+            it.animate().scaleX(0.8f).scaleY(0.8f).setDuration(90).withEndAction {
+                it.animate().scaleX(1f).scaleY(1f).setDuration(160).start()
+            }.start()
             Toast.makeText(this, "Transaction number copied!", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnBackShow.setOnClickListener {
             finish()
+        }
+
+        playEntrance()
+    }
+
+    /** The amount, type and each detail row rise and fade in one after another. */
+    private fun playEntrance() {
+        val density = resources.displayMetrics.density
+        val risers = mutableListOf<android.view.View>(binding.txtAmount, binding.typeTransactionTxt)
+        for (i in 0 until binding.detailsList.childCount) {
+            risers.add(binding.detailsList.getChildAt(i))
+        }
+        risers.forEachIndexed { index, view ->
+            view.alpha = 0f
+            view.translationY = 18f * density
+            view.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setStartDelay(220L + index * 55L)
+                .setDuration(380)
+                .setInterpolator(android.view.animation.DecelerateInterpolator(1.5f))
+                .start()
         }
     }
 

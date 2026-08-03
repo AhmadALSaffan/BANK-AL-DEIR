@@ -33,6 +33,8 @@ class CardVariant : AppCompatActivity() {
 
         cardType = intent.getStringExtra("cardtype")?.lowercase()?.trim()
 
+        binding.btnBack.setOnClickListener { finish() }
+
         fetchPricesAndSetup()
 
         binding.btnProceedToDetails.setOnClickListener {

@@ -6,987 +6,571 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".MainPage">
 
+    <!-- Covers the screen when the app is backgrounded -->
     <LinearLayout
         android:id="@+id/shieldView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
         android:gravity="center"
-        android:background="@color/black"
         android:orientation="vertical"
         android:visibility="gone">
+
         <ImageView
             android:id="@+id/shieldLogo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/iconbank"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/iconbank" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/rootScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:fillViewport="true"
-        android:paddingBottom="80dp"
-        android:clipToPadding="false">
+        android:paddingBottom="112dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Top App Bar -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Home promo cards (Realtime DB `homeCards` node). Hidden until loaded. -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/adsList"
+                android:layout_width="match_parent"
+                android:layout_height="164dp"
+                android:layout_marginTop="24dp"
+                android:clipToPadding="false"
+                android:paddingStart="20dp"
+                android:paddingEnd="8dp"
+                android:visibility="gone"
+                tools:listitem="@layout/ad_card_item" />
+
+            <!-- Nameplate: the bank's enamel plaque. Oxblood field, brass legend,
+                 porcelain engraved balance. -->
+            <LinearLayout
                 android:id="@+id/headerCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="28dp">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/profileImageMain"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:padding="2dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:shapeAppearanceOverlay="@style/circuler"
-                    app:srcCompat="@drawable/profile"
-                    android:scaleType="centerCrop"
-                    app:strokeColor="#4edea3"
-                    app:strokeWidth="2dp" />
-
-                <ProgressBar
-                    android:id="@+id/progressBarProfileImage"
-                    style="?android:attr/progressBarStyleSmall"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/enamel_plaque_oxblood"
+                android:orientation="vertical"
+                android:paddingHorizontal="22dp"
+                android:paddingTop="22dp"
+                android:paddingBottom="26dp">
 
                 <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="14dp"
-                    app:layout_constraintStart_toEndOf="@id/profileImageMain"
-                    app:layout_constraintEnd_toStartOf="@id/notifCard"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/notifCard">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome back,"
-                        android:textColor="#aacfbb"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.12" />
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp">
-
-                        <TextView
-                            android:id="@+id/firstNamett"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="***************"
-                            android:textColor="#ffffff"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:visibility="gone"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/profileImageMain"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:scaleType="centerCrop"
+                            app:shapeAppearanceOverlay="@style/circuler"
+                            app:srcCompat="@drawable/profile"
+                            app:strokeColor="@color/enamel_brass"
+                            app:strokeWidth="1.5dp" />
 
                         <ProgressBar
-                            android:id="@+id/progressBarName"
+                            android:id="@+id/progressBarProfileImage"
                             style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:indeterminateTint="#4edea3"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                            android:text="Welcome back"
+                            android:textAppearance="?attr/textAppearanceLabelMedium"
+                            android:textColor="@color/enamel_brass_light" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/notifCard"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    app:cardBackgroundColor="#0d2b20"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp">
+
+                            <TextView
+                                android:id="@+id/firstNamett"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textAppearance="?attr/textAppearanceTitleLarge"
+                                android:textColor="@color/porcelain_bright"
+                                android:visibility="gone" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBarName"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:indeterminateTint="@color/enamel_brass_light" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <!-- Card details: contactless + chip -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="10dp"
+                        android:alpha="0.9"
+                        android:contentDescription="@null"
+                        android:rotation="90"
+                        android:src="@drawable/ic_contactless"
+                        app:tint="@color/enamel_brass_light" />
 
                     <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="10dp"
-                        app:srcCompat="@drawable/notification"
-                        app:tint="#4edea3" />
-                </androidx.cardview.widget.CardView>
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_chip"
+                        app:tint="@color/enamel_brass_light" />
+                </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- Brass sub-legend, tracked like a sign's second line -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:letterSpacing="0.14"
+                    android:text="TOTAL BALANCE"
+                    android:textAllCaps="true"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="@color/enamel_brass_light"
+                    android:textStyle="bold" />
 
-            <ProgressBar
-                android:id="@+id/progressBarTopRefresh"
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="6dp"
-                android:indeterminateTint="#4edea3"
-                android:visibility="gone" />
+                <FrameLayout
+                    android:id="@+id/balanceCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
 
-            <!-- Gradient Balance Card -->
-            <FrameLayout
-                android:id="@+id/balanceCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/emerald_card_gradient"
-                android:clipToOutline="true">
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.01"
+                        android:text="$0.00"
+                        android:textAppearance="?attr/textAppearanceDisplaySmall"
+                        android:textColor="@color/porcelain_bright"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
-                <!-- Watermark icon -->
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="12dp"
-                    android:alpha="0.18"
-                    android:src="@drawable/ic_wallet"
-                    app:tint="#ffffff" />
+                    <ProgressBar
+                        android:id="@+id/progressBarBalance"
+                        style="?android:attr/progressBarStyleSmall"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:indeterminateTint="@color/enamel_brass_light" />
+                </FrameLayout>
+
+                <!-- Hairline + account row (like an embossed card footer) -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="22dp"
+                    android:background="#33F1E7D2" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="24dp">
+                    android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                    <!-- Badge + Send icon row -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PREMIUM CARD"
-                            android:textColor="#003824"
-                            android:textSize="10sp"
-                            android:textStyle="bold"
-                            android:letterSpacing="0.18"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="12dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:background="@drawable/premium_badge"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <!-- Total Balance label -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total Balance"
-                        android:textColor="#ccfff0"
-                        android:textSize="13sp"
-                        android:layout_marginBottom="6dp" />
-
-                    <!-- Balance + eye button row -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/balanceContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp">
+                            android:letterSpacing="0.14"
+                            android:text="ACCOUNT"
+                            android:textColor="@color/enamel_brass_light"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/balance"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="**********"
-                            android:textColor="#ffffff"
-                            android:textSize="38sp"
-                            android:textStyle="bold"
-                            android:visibility="gone"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/btnViewDetails"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
-
-                        <ProgressBar
-                            android:id="@+id/progressBarBalance"
-                            style="?android:attr/progressBarStyle"
+                            android:id="@+id/txtHeaderAccount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:indeterminateTint="#ffffff"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="monospace"
+                            android:letterSpacing="0.14"
+                            android:text="•••• ••••"
+                            android:textColor="#E6F1E7D2"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/btnViewDetails"
-                            android:layout_width="42dp"
-                            android:layout_height="42dp"
-                            app:cardBackgroundColor="#1a4d3a"
-                            app:cardCornerRadius="21dp"
-                            app:cardElevation="0dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="11dp"
-                                android:src="@drawable/send40"
-                                android:scaleType="fitCenter"
-                                android:rotation="270"
-                                app:tint="#ffffff"
-                                android:background="?attr/selectableItemBackgroundBorderless"
-                                android:clickable="true"
-                                android:focusable="true" />
-                        </androidx.cardview.widget.CardView>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <!-- Card number dots -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="**** · **** · **** · 8824"
-                        android:textColor="#ccfff0"
-                        android:textSize="13sp"
-                        android:letterSpacing="0.18" />
-
+                        android:letterSpacing="0.1"
+                        android:text="USD"
+                        android:textColor="@color/enamel_brass_light"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </FrameLayout>
-
-            <!-- Send / Receive Buttons -->
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="14dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="#0d2b20"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
-
-                    <Button
-                        android:id="@+id/btnSend"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_send_transfer"
-                        android:drawableTint="#4edea3"
-                        android:drawablePadding="6dp"
-                        android:paddingStart="20dp"
-                        android:foreground="@drawable/custom_ripple"
-                        android:gravity="center"
-                        android:text="Send"
-                        android:textColor="#4edea3"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.04" />
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="#0d2b20"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
-
-                    <Button
-                        android:id="@+id/btnRecive"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_receive_income"
-                        android:drawableTint="#ffb95f"
-                        android:drawablePadding="6dp"
-                        android:paddingStart="20dp"
-                        android:foreground="@drawable/custom_ripple"
-                        android:gravity="center"
-                        android:text="Receive"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.04" />
-                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!-- PayPal Topup -->
-            <androidx.appcompat.widget.AppCompatButton
+            <!-- Primary actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSend"
+                    style="@style/Widget.BankALDeir.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text="Send"
+                    android:textSize="17sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_send_transfer"
+                    app:iconGravity="textStart"
+                    app:iconSize="24dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRecive"
+                    style="@style/Widget.BankALDeir.Button.Tonal"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="Receive"
+                    android:textSize="17sp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_receive_income"
+                    app:iconGravity="textStart"
+                    app:iconSize="24dp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPayPal"
+                style="@style/Widget.BankALDeir.Button.Outlined"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="14dp"
-                android:paddingStart="26dp"
-                android:background="@drawable/payp"
-                android:drawableStart="@drawable/paypal"
-                android:drawablePadding="-35dp"
-                android:foreground="@drawable/custom_ripple"
-                android:gravity="center"
-                android:text="Topup with PayPal"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04" />
+                android:layout_height="62dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Add money"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/google_pay"
+                app:iconGravity="textStart"
+                app:iconSize="24dp"
+                app:iconTint="@null" />
 
-            <!-- Banner (Firebase-loaded) -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="#0d2b20"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ProgressBar
-                        android:id="@+id/progressBarBanner"
-                        style="?android:attr/progressBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:indeterminateTint="#4edea3"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/bannerImg"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:scaleType="centerCrop"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearanceOverlay="@style/Roundcard" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Quick Actions -->
-            <androidx.cardview.widget.CardView
+            <!-- Shortcuts -->
+            <LinearLayout
                 android:id="@+id/quickActionsCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                app:cardCornerRadius="0dp"
-                app:cardElevation="0dp">
+                android:orientation="horizontal"
+                android:weightSum="5">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/myCards"
+                    style="@style/HomeShortcut">
+
+                    <ImageView
+                        style="@style/HomeShortcutIcon"
+                        android:src="@drawable/card48" />
+
+                    <TextView
+                        style="@style/HomeShortcutLabel"
+                        android:text="Cards" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/payWithQrCode"
+                    style="@style/HomeShortcut">
+
+                    <ImageView
+                        style="@style/HomeShortcutIcon"
+                        android:src="@drawable/scan64" />
+
+                    <TextView
+                        style="@style/HomeShortcutLabel"
+                        android:text="Scan" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/payWithFatora"
+                    style="@style/HomeShortcut">
+
+                    <ImageView
+                        style="@style/HomeShortcutIcon"
+                        android:src="@drawable/fatora" />
+
+                    <TextView
+                        style="@style/HomeShortcutLabel"
+                        android:text="Bills" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/quick_history"
+                    style="@style/HomeShortcut">
+
+                    <ImageView
+                        style="@style/HomeShortcutIcon"
+                        android:src="@drawable/historyclock" />
+
+                    <TextView
+                        style="@style/HomeShortcutLabel"
+                        android:text="History" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/quick_profile"
+                    style="@style/HomeShortcut">
+
+                    <ImageView
+                        style="@style/HomeShortcutIcon"
+                        android:src="@drawable/profile" />
+
+                    <TextView
+                        style="@style/HomeShortcutLabel"
+                        android:text="Profile" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Promotional banner, loaded from Firebase. Source art is 1376x767, so the
+                 frame is locked to 16:9 and the image fills it edge to edge, uncropped. -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/bannerImg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    app:layout_constraintDimensionRatio="H,16:9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/Roundcard" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarBanner"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginVertical="70dp"
+                    android:indeterminateTint="?attr/colorOnSurfaceVariant"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- This month -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="This month"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <ProgressBar
+                    android:id="@+id/analyticsProgressBar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:indeterminateTint="?attr/colorOnSurfaceVariant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="18dp"
-                        android:text="Quick Actions"
-                        android:textColor="#ffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:text="Received"
+                        android:textAppearance="?attr/textAppearanceLabelMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
-                    <!-- Row 1 -->
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/tvIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="$0.00"
+                        android:textAppearance="?attr/textAppearanceTitleLarge"
+                        android:textColor="?attr/colorOnSurface" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/incomeProgressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="3"
-                        android:layout_marginBottom="20dp">
-
-                        <LinearLayout
-                            android:id="@+id/myCards"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="84dp"
-                                android:layout_height="84dp"
-                                app:cardBackgroundColor="#0d2b20"
-                                app:cardCornerRadius="52dp"
-                                app:cardElevation="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-                                    <ImageView
-                                        android:layout_width="52dp"
-                                        android:layout_height="52dp"
-                                        android:src="@drawable/card48"
-                                        app:tint="#4edea3" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:letterSpacing="0.06"
-                                android:text="CARDS"
-                                android:textColor="#aacfbb"
-                                android:textSize="11sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/payWithQrCode"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="84dp"
-                                android:layout_height="84dp"
-                                app:cardBackgroundColor="#0d2b20"
-                                app:cardCornerRadius="52dp"
-                                app:cardElevation="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-                                    <ImageView
-                                        android:layout_width="52dp"
-                                        android:layout_height="52dp"
-                                        android:src="@drawable/scan64"
-                                        app:tint="#ffb95f" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="SCAN QR"
-                                android:textColor="#aacfbb"
-                                android:textSize="11sp"
-                                android:letterSpacing="0.06" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/payWithFatora"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="84dp"
-                                android:layout_height="84dp"
-                                app:cardBackgroundColor="#0d2b20"
-                                app:cardCornerRadius="52dp"
-                                app:cardElevation="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-                                    <ImageView
-                                        android:layout_width="80dp"
-                                        android:layout_height="50dp"
-                                        android:src="@drawable/fatora"
-                                        android:scaleType="fitCenter"
-                                        app:tint="#4edea3" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="FATORA"
-                                android:textColor="#aacfbb"
-                                android:textSize="11sp"
-                                android:letterSpacing="0.06" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Row 2 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <LinearLayout
-                            android:id="@+id/quick_profile"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="84dp"
-                                android:layout_height="84dp"
-                                app:cardBackgroundColor="#0d2b20"
-                                app:cardCornerRadius="52dp"
-                                app:cardElevation="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-                                    <ImageView
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:src="@drawable/profile"
-                                        app:tint="#4edea3" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="PROFILE"
-                                android:textColor="#aacfbb"
-                                android:textSize="11sp"
-                                android:letterSpacing="0.06" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/quick_history"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="84dp"
-                                android:layout_height="84dp"
-                                app:cardBackgroundColor="#0d2b20"
-                                app:cardCornerRadius="52dp"
-                                app:cardElevation="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-                                    <ImageView
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:src="@drawable/historyclock"
-                                        app:tint="#4edea3" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="HISTORY"
-                                android:textColor="#aacfbb"
-                                android:textSize="11sp"
-                                android:letterSpacing="0.06" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/quick_more"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="84dp"
-                                android:layout_height="84dp"
-                                app:cardBackgroundColor="#0d2b20"
-                                app:cardCornerRadius="52dp"
-                                app:cardElevation="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-                                    <ImageView
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:src="@drawable/more"
-                                        app:tint="#4edea3" />
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="MORE"
-                                android:textColor="#aacfbb"
-                                android:textSize="11sp"
-                                android:letterSpacing="0.06" />
-                        </LinearLayout>
-                    </LinearLayout>
-
+                        android:layout_marginTop="10dp"
+                        android:max="100"
+                        android:progress="0"
+                        app:indicatorColor="?attr/colorPrimary"
+                        app:trackColor="?attr/colorSurfaceContainerHigh"
+                        app:trackCornerRadius="2dp"
+                        app:trackThickness="4dp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Wealth Analytics -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="24dp"
-                app:cardBackgroundColor="#00251c"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <!-- Header -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spent"
+                        android:textAppearance="?attr/textAppearanceLabelMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/tvExpenses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="$0.00"
+                        android:textAppearance="?attr/textAppearanceTitleLarge"
+                        android:textColor="?attr/colorOnSurface" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/expenseProgressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Wealth Analytics"
-                            android:textColor="#ffffff"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
-
-                        <ProgressBar
-                            android:id="@+id/analyticsProgressBar"
-                            style="?android:attr/progressBarStyleSmall"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:indeterminateTint="#4edea3"
-                            android:visibility="visible"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <!-- Income & Expenses -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="20dp"
-                        android:weightSum="2">
-
-                        <!-- Income -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginEnd="8dp">
-
-                            <FrameLayout
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                android:background="@drawable/ic_bg_income"
-                                android:layout_marginEnd="10dp">
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_receive_income"
-                                    app:tint="#4edea3" />
-                            </FrameLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Income"
-                                    android:textColor="#aacfbb"
-                                    android:textSize="11sp"
-                                    android:letterSpacing="0.08" />
-                                <TextView
-                                    android:id="@+id/tvIncome"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="$0.00"
-                                    android:textColor="#4edea3"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <!-- Expenses -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginStart="8dp">
-
-                            <FrameLayout
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                android:background="@drawable/ic_bg_income"
-                                android:layout_marginEnd="10dp">
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_send_transfer"
-                                    app:tint="#ffb95f" />
-                            </FrameLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Spent"
-                                    android:textColor="#aacfbb"
-                                    android:textSize="11sp"
-                                    android:letterSpacing="0.08" />
-                                <TextView
-                                    android:id="@+id/tvExpenses"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="$0.00"
-                                    android:textColor="#ffb95f"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Income bar -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="10dp">
-
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:text="Income"
-                            android:textColor="#aacfbb"
-                            android:textSize="10sp" />
-
-                        <ProgressBar
-                            android:id="@+id/incomeProgressBar"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="8dp"
-                            android:layout_weight="1"
-                            android:progressTint="#4edea3"
-                            android:progressBackgroundTint="#0d2b20"
-                            android:max="100"
-                            android:progress="0" />
-                    </LinearLayout>
-
-                    <!-- Expense bar -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="18dp">
-
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:text="Spent"
-                            android:textColor="#aacfbb"
-                            android:textSize="10sp" />
-
-                        <ProgressBar
-                            android:id="@+id/expenseProgressBar"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="8dp"
-                            android:layout_weight="1"
-                            android:progressTint="#ffb95f"
-                            android:progressBackgroundTint="#0d2b20"
-                            android:max="100"
-                            android:progress="0" />
-                    </LinearLayout>
-
-                    <!-- Divider -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#0d2b20"
-                        android:layout_marginBottom="14dp" />
-
-                    <!-- Transaction count -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:src="@drawable/historyclock"
-                            app:tint="#4edea3"
-                            android:layout_marginEnd="8dp" />
-
-                        <TextView
-                            android:id="@+id/tvTotalTransactions"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Loading..."
-                            android:textColor="#aacfbb"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
+                        android:layout_marginTop="10dp"
+                        android:max="100"
+                        android:progress="0"
+                        app:indicatorColor="?attr/colorTertiary"
+                        app:trackColor="?attr/colorSurfaceContainerHigh"
+                        app:trackCornerRadius="2dp"
+                        app:trackThickness="4dp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-            <!-- Recent History header -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/tvTotalTransactions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="14dp"
+                android:text=""
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp" />
+
+            <!-- Recent activity -->
+            <TextView
+                android:id="@+id/historyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/historyLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recent History"
-                    android:textColor="#ffffff"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SEE ALL"
-                    android:textColor="#4edea3"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.08"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="Recent activity"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorOnSurface" />
 
             <ProgressBar
                 android:id="@+id/progressBartran"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:indeterminateTint="#4edea3" />
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:indeterminateTint="?attr/colorOnSurfaceVariant" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/userList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/transparent"
+                android:layout_marginTop="8dp"
                 android:clipToPadding="false"
-                android:paddingHorizontal="8dp"
                 android:visibility="gone"
                 tools:listitem="@layout/trasnaction_item" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+    <!-- Floating bottom nav (shared) -->
+    <include
+        layout="@layout/floating_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#0d1f18"
-        app:itemIconTint="@color/bottom_nav_color"
-        app:itemTextColor="@color/bottom_nav_color"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="18dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

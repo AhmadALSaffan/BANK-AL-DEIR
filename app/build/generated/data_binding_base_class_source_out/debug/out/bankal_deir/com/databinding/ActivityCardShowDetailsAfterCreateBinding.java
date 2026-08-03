@@ -4,7 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
-import com.google.android.material.imageview.ShapeableImageView;
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,28 +22,16 @@ public final class ActivityCardShowDetailsAfterCreateBinding implements ViewBind
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnClose;
-
-  @NonNull
-  public final ShapeableImageView imageView14;
+  public final MaterialButton btnClose;
 
   @NonNull
   public final ConstraintLayout main;
 
   @NonNull
+  public final LottieAnimationView successAnim;
+
+  @NonNull
   public final TextView textView32;
-
-  @NonNull
-  public final TextView textView36;
-
-  @NonNull
-  public final TextView textView38;
-
-  @NonNull
-  public final TextView textView40;
-
-  @NonNull
-  public final TextView textView41;
 
   @NonNull
   public final TextView txtCVV;
@@ -58,20 +46,15 @@ public final class ActivityCardShowDetailsAfterCreateBinding implements ViewBind
   public final TextView txtExp;
 
   private ActivityCardShowDetailsAfterCreateBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnClose, @NonNull ShapeableImageView imageView14,
-      @NonNull ConstraintLayout main, @NonNull TextView textView32, @NonNull TextView textView36,
-      @NonNull TextView textView38, @NonNull TextView textView40, @NonNull TextView textView41,
+      @NonNull MaterialButton btnClose, @NonNull ConstraintLayout main,
+      @NonNull LottieAnimationView successAnim, @NonNull TextView textView32,
       @NonNull TextView txtCVV, @NonNull TextView txtCardHolder, @NonNull TextView txtCardNumber,
       @NonNull TextView txtExp) {
     this.rootView = rootView;
     this.btnClose = btnClose;
-    this.imageView14 = imageView14;
     this.main = main;
+    this.successAnim = successAnim;
     this.textView32 = textView32;
-    this.textView36 = textView36;
-    this.textView38 = textView38;
-    this.textView40 = textView40;
-    this.textView41 = textView41;
     this.txtCVV = txtCVV;
     this.txtCardHolder = txtCardHolder;
     this.txtCardNumber = txtCardNumber;
@@ -107,46 +90,22 @@ public final class ActivityCardShowDetailsAfterCreateBinding implements ViewBind
     int id;
     missingId: {
       id = R.id.btnClose;
-      Button btnClose = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnClose = ViewBindings.findChildViewById(rootView, id);
       if (btnClose == null) {
-        break missingId;
-      }
-
-      id = R.id.imageView14;
-      ShapeableImageView imageView14 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView14 == null) {
         break missingId;
       }
 
       ConstraintLayout main = (ConstraintLayout) rootView;
 
+      id = R.id.successAnim;
+      LottieAnimationView successAnim = ViewBindings.findChildViewById(rootView, id);
+      if (successAnim == null) {
+        break missingId;
+      }
+
       id = R.id.textView32;
       TextView textView32 = ViewBindings.findChildViewById(rootView, id);
       if (textView32 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView36;
-      TextView textView36 = ViewBindings.findChildViewById(rootView, id);
-      if (textView36 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView38;
-      TextView textView38 = ViewBindings.findChildViewById(rootView, id);
-      if (textView38 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView40;
-      TextView textView40 = ViewBindings.findChildViewById(rootView, id);
-      if (textView40 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView41;
-      TextView textView41 = ViewBindings.findChildViewById(rootView, id);
-      if (textView41 == null) {
         break missingId;
       }
 
@@ -175,8 +134,7 @@ public final class ActivityCardShowDetailsAfterCreateBinding implements ViewBind
       }
 
       return new ActivityCardShowDetailsAfterCreateBinding((ConstraintLayout) rootView, btnClose,
-          imageView14, main, textView32, textView36, textView38, textView40, textView41, txtCVV,
-          txtCardHolder, txtCardNumber, txtExp);
+          main, successAnim, textView32, txtCVV, txtCardHolder, txtCardNumber, txtExp);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

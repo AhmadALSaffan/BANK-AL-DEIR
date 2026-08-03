@@ -28,6 +28,17 @@ data class transactions(
             )
         }
 
+        fun createTransferTransaction(userId: String, amount: Double, date: String): transactions {
+            return transactions(
+                transactionNumber = generateTransactionNumber("TRF"),
+                senderUserId = userId,
+                receiverWalletID = userId,
+                amount = amount,
+                date = date,
+                transactionType = "TRF"
+            )
+        }
+
         fun createSendTransaction(senderId: String, receiverId: String, amount: Double, date: String): transactions {
             return transactions(
                 transactionNumber = generateTransactionNumber("SYP"),

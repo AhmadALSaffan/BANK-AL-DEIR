@@ -18,6 +18,16 @@ class CardAdapter(
     private val onCardClick: (CardModel) -> Unit = {}
 ) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
+    private var mainCardKey: String = ""
+    private var walletBalance: Double = 0.0
+
+    /** The main card shows the wallet's main balance instead of its own. */
+    fun setMainInfo(mainKey: String, balance: Double) {
+        mainCardKey = mainKey
+        walletBalance = balance
+        notifyDataSetChanged()
+    }
+
     fun update(newCards: List<CardModel>) {
         val currentStates = this.cards.associate { it.cardnumber to it.isVisible }
 
@@ -38,6 +48,10 @@ class CardAdapter(
         val cardHolder: TextView = itemView.findViewById(R.id.card_holder)
         val cardBalance: TextView = itemView.findViewById(R.id.card_blance)
         val cardView: ImageView = itemView.findViewById(R.id.card_view)
+        val googlePayWallet: com.google.android.material.button.MaterialButton =
+            itemView.findViewById(R.id.btnGooglePayWallet)
+        val samsungPayWallet: com.google.android.material.button.MaterialButton =
+            itemView.findViewById(R.id.btnSamsungPayWallet)
 
         fun bind(card: CardModel) {
             applyState(card.isVisible)
@@ -48,9 +62,20 @@ class CardAdapter(
                 applyState(card.isVisible)
             }
 
+            googlePayWallet.setOnClickListener { comingSoon("Google Pay") }
+            samsungPayWallet.setOnClickListener { comingSoon("Samsung Pay") }
+
             itemView.setOnClickListener {
                 onCardClick(card)
             }
+        }
+
+        private fun comingSoon(wallet: String) {
+            android.widget.Toast.makeText(
+                itemView.context,
+                "Adding to $wallet is coming soon",
+                android.widget.Toast.LENGTH_SHORT
+            ).show()
         }
 
         private fun applyState(visible: Boolean) {
@@ -102,7 +127,10 @@ class CardAdapter(
         holder.expDate.text = card.cardexp
         holder.cvv.text = card.cardcvv
         holder.cardHolder.text = card.cardholder
-        holder.cardBalance.text = "$ ${card.Balnce}"
+        // The main card mirrors the wallet's main balance; others show their own.
+        val isMain = card.cardKey.isNotEmpty() && card.cardKey == mainCardKey
+        val shownBalance = if (isMain) walletBalance else card.Balnce
+        holder.cardBalance.text = "$ %,.2f".format(shownBalance)
 
         holder.bind(card)
 

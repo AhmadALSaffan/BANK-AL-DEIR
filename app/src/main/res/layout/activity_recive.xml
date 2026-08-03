@@ -6,410 +6,384 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".recive.Recive">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="90dp"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:paddingBottom="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="24dp"
-            android:paddingHorizontal="20dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="46dp">
 
-            <!-- Header: back arrow + title -->
+            <!-- Top bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="28dp">
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
 
                 <ImageView
                     android:id="@+id/frame"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/returnic"
-                    android:padding="4dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
+                    android:contentDescription="Back"
                     android:focusable="true"
-                    app:tint="#4edea3" />
+                    android:padding="10dp"
+                    android:src="@drawable/back"
+                    app:tint="?attr/colorOnSurface" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Share Account"
-                    android:textColor="#ffffff"
-                    android:textSize="22sp"
+                    android:layout_marginStart="6dp"
+                    android:text="Receive"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface" />
+            </LinearLayout>
+
+            <!-- QR plaque: oxblood enamel framing a scannable white tile -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/enamel_plaque_oxblood"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="26dp">
+
+                <FrameLayout
+                    android:id="@+id/frame2"
+                    android:layout_width="228dp"
+                    android:layout_height="228dp"
+                    android:background="@drawable/qr_white_frame"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/qr_codeImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="QR code"
+                        android:scaleType="fitCenter" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:letterSpacing="0.2"
+                    android:text="SCAN TO PAY"
+                    android:textColor="@color/enamel_brass_light"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Point a camera here to transfer to this account"
+                    android:textColor="#CCF1E7D2"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/accountQr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.08"
+                    android:text="ACC************"
+                    android:textColor="@color/porcelain_bright"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- QR Code card with gradient border -->
-            <LinearLayout
+            <!-- Account holder details -->
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="28dp"
-                android:background="@drawable/emerald_card_gradient"
-                android:padding="2dp">
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.15"
+                android:text="ACCOUNT HOLDER"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_type_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:letterSpacing="0.1"
+                            android:text="FIRST NAME"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/textFirstName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="**********"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?attr/colorOutlineVariant" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:letterSpacing="0.1"
+                            android:text="LAST NAME"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/textLastName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="**********"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorOutlineVariant" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    android:background="@drawable/qr_card_inner_bg"
-                    android:padding="24dp">
-
-                    <!-- White QR frame -->
-                    <FrameLayout
-                        android:id="@+id/frame2"
-                        android:layout_width="220dp"
-                        android:layout_height="220dp"
-                        android:background="@drawable/qr_white_frame"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/qr_codeImg"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="fitCenter" />
-
-                    </FrameLayout>
-
-                    <!-- Secure Scan label -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="SECURE SCAN"
-                        android:textColor="#4edea3"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.2" />
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Scan to instantly transfer to this vault"
-                        android:textColor="#aacfbb"
-                        android:textSize="12sp"
-                        android:gravity="center" />
+                        android:layout_marginBottom="4dp"
+                        android:letterSpacing="0.1"
+                        android:text="PHONE NUMBER"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="10sp" />
 
-                    <!-- Account number below QR -->
                     <TextView
-                        android:id="@+id/accountQr"
+                        android:id="@+id/textPhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="ACC************"
-                        android:textColor="#ccfff0"
-                        android:textSize="13sp"
-                        android:letterSpacing="0.08"
-                        android:fontFamily="monospace" />
+                        android:text="**********"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorOutlineVariant" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:letterSpacing="0.1"
+                        android:text="EMAIL"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/textEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="**********"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ── Details cards ── -->
+            <!-- Transfer identifiers -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.15"
+                android:text="TRANSFER TO"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
-            <!-- First Name -->
-            <androidx.cardview.widget.CardView
+            <!-- Account number + copy -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp">
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/card_type_bg"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="ACCOUNT NUMBER"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="10sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="14dp">
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FIRST NAME"
-                        android:textColor="#aacfbb"
-                        android:textSize="10sp"
-                        android:letterSpacing="0.14" />
-                    <TextView
-                        android:id="@+id/textFirstName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="**********"
-                        android:textColor="#ffffff"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Last Name -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="14dp">
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LAST NAME"
-                        android:textColor="#aacfbb"
-                        android:textSize="10sp"
-                        android:letterSpacing="0.14" />
-                    <TextView
-                        android:id="@+id/textLastName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="**********"
-                        android:textColor="#ffffff"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Phone Number -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="14dp">
-                    <LinearLayout
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textAccountNumber"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="PHONE NUMBER"
-                            android:textColor="#aacfbb"
-                            android:textSize="10sp"
-                            android:letterSpacing="0.14" />
-                        <TextView
-                            android:id="@+id/textPhoneNumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="**********"
-                            android:textColor="#ffffff"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/notification"
-                        app:tint="#4edea3"
-                        android:alpha="0.5" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.06"
+                        android:maxLines="1"
+                        android:text="**********"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            <!-- Email -->
-            <androidx.cardview.widget.CardView
+                    <TextView
+                        android:id="@+id/btnCopy2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/pill_brass"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="7dp"
+                        android:text="Copy"
+                        android:textColor="?attr/colorOnTertiaryContainer"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- IBAN + copy -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp">
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/card_type_bg"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="IBAN"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="10sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
                     android:gravity="center_vertical"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="14dp">
-                    <LinearLayout
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textIBAN"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/textView16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="EMAIL ADDRESS"
-                            android:textColor="#aacfbb"
-                            android:textSize="10sp"
-                            android:letterSpacing="0.14" />
-                        <TextView
-                            android:id="@+id/textEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="**********"
-                            android:textColor="#ffffff"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/ic_wallet"
-                        app:tint="#4edea3"
-                        android:alpha="0.5" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.04"
+                        android:maxLines="1"
+                        android:text="**********"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-            <!-- Account Number + Copy -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="14dp">
                     <TextView
-                        android:id="@+id/textView17"
+                        android:id="@+id/btnCopy1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ACCOUNT NUMBER"
-                        android:textColor="#aacfbb"
-                        android:textSize="10sp"
-                        android:letterSpacing="0.14" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="6dp">
-                        <TextView
-                            android:id="@+id/textAccountNumber"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="**********"
-                            android:textColor="#ffffff"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:fontFamily="monospace"
-                            android:letterSpacing="0.06" />
-                        <TextView
-                            android:id="@+id/btnCopy2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Copy"
-                            android:textColor="#4edea3"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:paddingHorizontal="14dp"
-                            android:paddingVertical="6dp"
-                            android:background="@drawable/copy_pill_bg"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple" />
-                    </LinearLayout>
+                        android:background="@drawable/pill_brass"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="7dp"
+                        android:text="Copy"
+                        android:textColor="?attr/colorOnTertiaryContainer"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-            <!-- IBAN + Copy -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="28dp"
-                app:cardBackgroundColor="#002018"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="14dp">
-                    <TextView
-                        android:id="@+id/textView18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="IBAN"
-                        android:textColor="#aacfbb"
-                        android:textSize="10sp"
-                        android:letterSpacing="0.14" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="6dp">
-                        <TextView
-                            android:id="@+id/textIBAN"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="**********"
-                            android:textColor="#ffffff"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:fontFamily="monospace"
-                            android:letterSpacing="0.04" />
-                        <TextView
-                            android:id="@+id/btnCopy1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Copy"
-                            android:textColor="#4edea3"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:paddingHorizontal="14dp"
-                            android:paddingVertical="6dp"
-                            android:background="@drawable/copy_pill_bg"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="@drawable/custom_ripple" />
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Share Details button -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBack"
+                style="@style/Widget.BankALDeir.Button"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/emerald_card_gradient"
-                android:text="Go Back"
-                android:textColor="#003824"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04"
-                android:foreground="@drawable/custom_ripple" />
+                android:layout_height="58dp"
+                android:layout_marginBottom="12dp"
+                android:text="Go back"
+                android:textSize="17sp" />
 
         </LinearLayout>
     </ScrollView>

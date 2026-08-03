@@ -1,5 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <size android:width="20dp" android:height="20dp" />
-    <solid android:color="@color/gray" />
+    <solid android:color="@android:color/transparent" />
+    <stroke android:width="2dp" android:color="@color/md_theme_outline" />
 </shape>

@@ -6,23 +6,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class CardItemBinding implements ViewBinding {
   @NonNull
-  private final CardView rootView;
+  private final LinearLayout rootView;
 
   @NonNull
   public final ImageView backgroundImage;
+
+  @NonNull
+  public final MaterialButton btnGooglePayWallet;
+
+  @NonNull
+  public final MaterialButton btnSamsungPayWallet;
 
   @NonNull
   public final TextView cardBlance;
@@ -48,12 +55,15 @@ public final class CardItemBinding implements ViewBinding {
   @NonNull
   public final FrameLayout lockOverlay;
 
-  private CardItemBinding(@NonNull CardView rootView, @NonNull ImageView backgroundImage,
+  private CardItemBinding(@NonNull LinearLayout rootView, @NonNull ImageView backgroundImage,
+      @NonNull MaterialButton btnGooglePayWallet, @NonNull MaterialButton btnSamsungPayWallet,
       @NonNull TextView cardBlance, @NonNull TextView cardHolder, @NonNull TextView cardNumber,
       @NonNull ImageView cardView, @NonNull TextView cvv, @NonNull TextView expDate,
       @NonNull ImageView imgLockBadge, @NonNull FrameLayout lockOverlay) {
     this.rootView = rootView;
     this.backgroundImage = backgroundImage;
+    this.btnGooglePayWallet = btnGooglePayWallet;
+    this.btnSamsungPayWallet = btnSamsungPayWallet;
     this.cardBlance = cardBlance;
     this.cardHolder = cardHolder;
     this.cardNumber = cardNumber;
@@ -66,7 +76,7 @@ public final class CardItemBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public CardView getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -94,6 +104,18 @@ public final class CardItemBinding implements ViewBinding {
       id = R.id.backgroundImage;
       ImageView backgroundImage = ViewBindings.findChildViewById(rootView, id);
       if (backgroundImage == null) {
+        break missingId;
+      }
+
+      id = R.id.btnGooglePayWallet;
+      MaterialButton btnGooglePayWallet = ViewBindings.findChildViewById(rootView, id);
+      if (btnGooglePayWallet == null) {
+        break missingId;
+      }
+
+      id = R.id.btnSamsungPayWallet;
+      MaterialButton btnSamsungPayWallet = ViewBindings.findChildViewById(rootView, id);
+      if (btnSamsungPayWallet == null) {
         break missingId;
       }
 
@@ -145,8 +167,9 @@ public final class CardItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new CardItemBinding((CardView) rootView, backgroundImage, cardBlance, cardHolder,
-          cardNumber, cardView, cvv, expDate, imgLockBadge, lockOverlay);
+      return new CardItemBinding((LinearLayout) rootView, backgroundImage, btnGooglePayWallet,
+          btnSamsungPayWallet, cardBlance, cardHolder, cardNumber, cardView, cvv, expDate,
+          imgLockBadge, lockOverlay);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

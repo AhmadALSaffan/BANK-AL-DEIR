@@ -4,7 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,7 +23,7 @@ public final class ActivityOtpPageBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnSignUpAfterOTP;
+  public final MaterialButton btnSignUpAfterOTP;
 
   @NonNull
   public final ImageView imageView6;
@@ -65,7 +65,7 @@ public final class ActivityOtpPageBinding implements ViewBinding {
   public final TextView textView13;
 
   private ActivityOtpPageBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnSignUpAfterOTP, @NonNull ImageView imageView6,
+      @NonNull MaterialButton btnSignUpAfterOTP, @NonNull ImageView imageView6,
       @NonNull ConstraintLayout main, @NonNull EditText otp1, @NonNull EditText otp2,
       @NonNull EditText otp3, @NonNull EditText otp4, @NonNull EditText otp5,
       @NonNull EditText otp6, @NonNull TextView resendOTP, @NonNull TextView showEmail,
@@ -115,7 +115,7 @@ public final class ActivityOtpPageBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnSignUpAfterOTP;
-      Button btnSignUpAfterOTP = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnSignUpAfterOTP = ViewBindings.findChildViewById(rootView, id);
       if (btnSignUpAfterOTP == null) {
         break missingId;
       }

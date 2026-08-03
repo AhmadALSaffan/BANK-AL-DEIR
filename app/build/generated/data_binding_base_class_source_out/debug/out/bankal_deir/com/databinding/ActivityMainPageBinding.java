@@ -4,7 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,17 +11,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -30,6 +27,9 @@ import java.lang.String;
 public final class ActivityMainPageBinding implements ViewBinding {
   @NonNull
   private final CoordinatorLayout rootView;
+
+  @NonNull
+  public final RecyclerView adsList;
 
   @NonNull
   public final ProgressBar analyticsProgressBar;
@@ -41,58 +41,37 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final FrameLayout balanceCard;
 
   @NonNull
-  public final ConstraintLayout balanceContainer;
-
-  @NonNull
   public final ShapeableImageView bannerImg;
 
   @NonNull
-  public final BottomNavigationView bottomNavigation;
+  public final MaterialButton btnPayPal;
 
   @NonNull
-  public final AppCompatButton btnPayPal;
+  public final MaterialButton btnRecive;
 
   @NonNull
-  public final Button btnRecive;
+  public final MaterialButton btnSend;
 
   @NonNull
-  public final Button btnSend;
-
-  @NonNull
-  public final CardView btnViewDetails;
-
-  @NonNull
-  public final ProgressBar expenseProgressBar;
+  public final LinearProgressIndicator expenseProgressBar;
 
   @NonNull
   public final TextView firstNamett;
 
   @NonNull
-  public final ConstraintLayout headerCard;
+  public final LinearLayout headerCard;
 
   @NonNull
   public final TextView historyLabel;
 
   @NonNull
-  public final ImageView imageView11;
-
-  @NonNull
-  public final ProgressBar incomeProgressBar;
-
-  @NonNull
-  public final LinearLayout linearLayout;
-
-  @NonNull
-  public final LinearLayout linearLayout2;
+  public final LinearProgressIndicator incomeProgressBar;
 
   @NonNull
   public final CoordinatorLayout main;
 
   @NonNull
   public final LinearLayout myCards;
-
-  @NonNull
-  public final CardView notifCard;
 
   @NonNull
   public final LinearLayout payWithFatora;
@@ -116,19 +95,13 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final ProgressBar progressBarProfileImage;
 
   @NonNull
-  public final ProgressBar progressBarTopRefresh;
-
-  @NonNull
   public final ProgressBar progressBartran;
 
   @NonNull
-  public final CardView quickActionsCard;
+  public final LinearLayout quickActionsCard;
 
   @NonNull
   public final LinearLayout quickHistory;
-
-  @NonNull
-  public final LinearLayout quickMore;
 
   @NonNull
   public final LinearLayout quickProfile;
@@ -152,51 +125,45 @@ public final class ActivityMainPageBinding implements ViewBinding {
   public final TextView tvTotalTransactions;
 
   @NonNull
+  public final TextView txtHeaderAccount;
+
+  @NonNull
   public final RecyclerView userList;
 
   private ActivityMainPageBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull ProgressBar analyticsProgressBar, @NonNull TextView balance,
-      @NonNull FrameLayout balanceCard, @NonNull ConstraintLayout balanceContainer,
-      @NonNull ShapeableImageView bannerImg, @NonNull BottomNavigationView bottomNavigation,
-      @NonNull AppCompatButton btnPayPal, @NonNull Button btnRecive, @NonNull Button btnSend,
-      @NonNull CardView btnViewDetails, @NonNull ProgressBar expenseProgressBar,
-      @NonNull TextView firstNamett, @NonNull ConstraintLayout headerCard,
-      @NonNull TextView historyLabel, @NonNull ImageView imageView11,
-      @NonNull ProgressBar incomeProgressBar, @NonNull LinearLayout linearLayout,
-      @NonNull LinearLayout linearLayout2, @NonNull CoordinatorLayout main,
-      @NonNull LinearLayout myCards, @NonNull CardView notifCard,
-      @NonNull LinearLayout payWithFatora, @NonNull LinearLayout payWithQrCode,
-      @NonNull ShapeableImageView profileImageMain, @NonNull ProgressBar progressBarBalance,
-      @NonNull ProgressBar progressBarBanner, @NonNull ProgressBar progressBarName,
-      @NonNull ProgressBar progressBarProfileImage, @NonNull ProgressBar progressBarTopRefresh,
-      @NonNull ProgressBar progressBartran, @NonNull CardView quickActionsCard,
-      @NonNull LinearLayout quickHistory, @NonNull LinearLayout quickMore,
-      @NonNull LinearLayout quickProfile, @NonNull NestedScrollView rootScrollView,
-      @NonNull ImageView shieldLogo, @NonNull LinearLayout shieldView, @NonNull TextView tvExpenses,
-      @NonNull TextView tvIncome, @NonNull TextView tvTotalTransactions,
+      @NonNull RecyclerView adsList, @NonNull ProgressBar analyticsProgressBar,
+      @NonNull TextView balance, @NonNull FrameLayout balanceCard,
+      @NonNull ShapeableImageView bannerImg, @NonNull MaterialButton btnPayPal,
+      @NonNull MaterialButton btnRecive, @NonNull MaterialButton btnSend,
+      @NonNull LinearProgressIndicator expenseProgressBar, @NonNull TextView firstNamett,
+      @NonNull LinearLayout headerCard, @NonNull TextView historyLabel,
+      @NonNull LinearProgressIndicator incomeProgressBar, @NonNull CoordinatorLayout main,
+      @NonNull LinearLayout myCards, @NonNull LinearLayout payWithFatora,
+      @NonNull LinearLayout payWithQrCode, @NonNull ShapeableImageView profileImageMain,
+      @NonNull ProgressBar progressBarBalance, @NonNull ProgressBar progressBarBanner,
+      @NonNull ProgressBar progressBarName, @NonNull ProgressBar progressBarProfileImage,
+      @NonNull ProgressBar progressBartran, @NonNull LinearLayout quickActionsCard,
+      @NonNull LinearLayout quickHistory, @NonNull LinearLayout quickProfile,
+      @NonNull NestedScrollView rootScrollView, @NonNull ImageView shieldLogo,
+      @NonNull LinearLayout shieldView, @NonNull TextView tvExpenses, @NonNull TextView tvIncome,
+      @NonNull TextView tvTotalTransactions, @NonNull TextView txtHeaderAccount,
       @NonNull RecyclerView userList) {
     this.rootView = rootView;
+    this.adsList = adsList;
     this.analyticsProgressBar = analyticsProgressBar;
     this.balance = balance;
     this.balanceCard = balanceCard;
-    this.balanceContainer = balanceContainer;
     this.bannerImg = bannerImg;
-    this.bottomNavigation = bottomNavigation;
     this.btnPayPal = btnPayPal;
     this.btnRecive = btnRecive;
     this.btnSend = btnSend;
-    this.btnViewDetails = btnViewDetails;
     this.expenseProgressBar = expenseProgressBar;
     this.firstNamett = firstNamett;
     this.headerCard = headerCard;
     this.historyLabel = historyLabel;
-    this.imageView11 = imageView11;
     this.incomeProgressBar = incomeProgressBar;
-    this.linearLayout = linearLayout;
-    this.linearLayout2 = linearLayout2;
     this.main = main;
     this.myCards = myCards;
-    this.notifCard = notifCard;
     this.payWithFatora = payWithFatora;
     this.payWithQrCode = payWithQrCode;
     this.profileImageMain = profileImageMain;
@@ -204,11 +171,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.progressBarBanner = progressBarBanner;
     this.progressBarName = progressBarName;
     this.progressBarProfileImage = progressBarProfileImage;
-    this.progressBarTopRefresh = progressBarTopRefresh;
     this.progressBartran = progressBartran;
     this.quickActionsCard = quickActionsCard;
     this.quickHistory = quickHistory;
-    this.quickMore = quickMore;
     this.quickProfile = quickProfile;
     this.rootScrollView = rootScrollView;
     this.shieldLogo = shieldLogo;
@@ -216,6 +181,7 @@ public final class ActivityMainPageBinding implements ViewBinding {
     this.tvExpenses = tvExpenses;
     this.tvIncome = tvIncome;
     this.tvTotalTransactions = tvTotalTransactions;
+    this.txtHeaderAccount = txtHeaderAccount;
     this.userList = userList;
   }
 
@@ -246,6 +212,12 @@ public final class ActivityMainPageBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.adsList;
+      RecyclerView adsList = ViewBindings.findChildViewById(rootView, id);
+      if (adsList == null) {
+        break missingId;
+      }
+
       id = R.id.analyticsProgressBar;
       ProgressBar analyticsProgressBar = ViewBindings.findChildViewById(rootView, id);
       if (analyticsProgressBar == null) {
@@ -264,50 +236,32 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.balanceContainer;
-      ConstraintLayout balanceContainer = ViewBindings.findChildViewById(rootView, id);
-      if (balanceContainer == null) {
-        break missingId;
-      }
-
       id = R.id.bannerImg;
       ShapeableImageView bannerImg = ViewBindings.findChildViewById(rootView, id);
       if (bannerImg == null) {
         break missingId;
       }
 
-      id = R.id.bottomNavigation;
-      BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, id);
-      if (bottomNavigation == null) {
-        break missingId;
-      }
-
       id = R.id.btnPayPal;
-      AppCompatButton btnPayPal = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnPayPal = ViewBindings.findChildViewById(rootView, id);
       if (btnPayPal == null) {
         break missingId;
       }
 
       id = R.id.btnRecive;
-      Button btnRecive = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnRecive = ViewBindings.findChildViewById(rootView, id);
       if (btnRecive == null) {
         break missingId;
       }
 
       id = R.id.btnSend;
-      Button btnSend = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnSend = ViewBindings.findChildViewById(rootView, id);
       if (btnSend == null) {
         break missingId;
       }
 
-      id = R.id.btnViewDetails;
-      CardView btnViewDetails = ViewBindings.findChildViewById(rootView, id);
-      if (btnViewDetails == null) {
-        break missingId;
-      }
-
       id = R.id.expenseProgressBar;
-      ProgressBar expenseProgressBar = ViewBindings.findChildViewById(rootView, id);
+      LinearProgressIndicator expenseProgressBar = ViewBindings.findChildViewById(rootView, id);
       if (expenseProgressBar == null) {
         break missingId;
       }
@@ -319,7 +273,7 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       id = R.id.headerCard;
-      ConstraintLayout headerCard = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout headerCard = ViewBindings.findChildViewById(rootView, id);
       if (headerCard == null) {
         break missingId;
       }
@@ -330,27 +284,9 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageView11;
-      ImageView imageView11 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView11 == null) {
-        break missingId;
-      }
-
       id = R.id.incomeProgressBar;
-      ProgressBar incomeProgressBar = ViewBindings.findChildViewById(rootView, id);
+      LinearProgressIndicator incomeProgressBar = ViewBindings.findChildViewById(rootView, id);
       if (incomeProgressBar == null) {
-        break missingId;
-      }
-
-      id = R.id.linearLayout;
-      LinearLayout linearLayout = ViewBindings.findChildViewById(rootView, id);
-      if (linearLayout == null) {
-        break missingId;
-      }
-
-      id = R.id.linearLayout2;
-      LinearLayout linearLayout2 = ViewBindings.findChildViewById(rootView, id);
-      if (linearLayout2 == null) {
         break missingId;
       }
 
@@ -359,12 +295,6 @@ public final class ActivityMainPageBinding implements ViewBinding {
       id = R.id.myCards;
       LinearLayout myCards = ViewBindings.findChildViewById(rootView, id);
       if (myCards == null) {
-        break missingId;
-      }
-
-      id = R.id.notifCard;
-      CardView notifCard = ViewBindings.findChildViewById(rootView, id);
-      if (notifCard == null) {
         break missingId;
       }
 
@@ -410,12 +340,6 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.progressBarTopRefresh;
-      ProgressBar progressBarTopRefresh = ViewBindings.findChildViewById(rootView, id);
-      if (progressBarTopRefresh == null) {
-        break missingId;
-      }
-
       id = R.id.progressBartran;
       ProgressBar progressBartran = ViewBindings.findChildViewById(rootView, id);
       if (progressBartran == null) {
@@ -423,7 +347,7 @@ public final class ActivityMainPageBinding implements ViewBinding {
       }
 
       id = R.id.quickActionsCard;
-      CardView quickActionsCard = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout quickActionsCard = ViewBindings.findChildViewById(rootView, id);
       if (quickActionsCard == null) {
         break missingId;
       }
@@ -431,12 +355,6 @@ public final class ActivityMainPageBinding implements ViewBinding {
       id = R.id.quick_history;
       LinearLayout quickHistory = ViewBindings.findChildViewById(rootView, id);
       if (quickHistory == null) {
-        break missingId;
-      }
-
-      id = R.id.quick_more;
-      LinearLayout quickMore = ViewBindings.findChildViewById(rootView, id);
-      if (quickMore == null) {
         break missingId;
       }
 
@@ -482,20 +400,25 @@ public final class ActivityMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.txtHeaderAccount;
+      TextView txtHeaderAccount = ViewBindings.findChildViewById(rootView, id);
+      if (txtHeaderAccount == null) {
+        break missingId;
+      }
+
       id = R.id.userList;
       RecyclerView userList = ViewBindings.findChildViewById(rootView, id);
       if (userList == null) {
         break missingId;
       }
 
-      return new ActivityMainPageBinding((CoordinatorLayout) rootView, analyticsProgressBar,
-          balance, balanceCard, balanceContainer, bannerImg, bottomNavigation, btnPayPal, btnRecive,
-          btnSend, btnViewDetails, expenseProgressBar, firstNamett, headerCard, historyLabel,
-          imageView11, incomeProgressBar, linearLayout, linearLayout2, main, myCards, notifCard,
-          payWithFatora, payWithQrCode, profileImageMain, progressBarBalance, progressBarBanner,
-          progressBarName, progressBarProfileImage, progressBarTopRefresh, progressBartran,
-          quickActionsCard, quickHistory, quickMore, quickProfile, rootScrollView, shieldLogo,
-          shieldView, tvExpenses, tvIncome, tvTotalTransactions, userList);
+      return new ActivityMainPageBinding((CoordinatorLayout) rootView, adsList,
+          analyticsProgressBar, balance, balanceCard, bannerImg, btnPayPal, btnRecive, btnSend,
+          expenseProgressBar, firstNamett, headerCard, historyLabel, incomeProgressBar, main,
+          myCards, payWithFatora, payWithQrCode, profileImageMain, progressBarBalance,
+          progressBarBanner, progressBarName, progressBarProfileImage, progressBartran,
+          quickActionsCard, quickHistory, quickProfile, rootScrollView, shieldLogo, shieldView,
+          tvExpenses, tvIncome, tvTotalTransactions, txtHeaderAccount, userList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

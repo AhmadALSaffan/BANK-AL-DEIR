@@ -214,6 +214,7 @@ class OTP_Page : AppCompatActivity() {
     }
     fun random(){
         random= Random.Default.nextInt(100000..999999)
+        Log.d("OTP_DEBUG_TEMP", "OTP is $random")
         try {
             val otpHtml = """
 <!DOCTYPE html>

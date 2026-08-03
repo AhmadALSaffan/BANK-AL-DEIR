@@ -5,103 +5,85 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backsy"
+    android:background="?android:attr/colorBackground"
     tools:context=".History.HistoryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-        <!-- ── Header ── -->
+        <!-- Top bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingTop="20dp"
-            android:paddingBottom="16dp"
-            android:paddingHorizontal="16dp">
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp">
 
             <ImageView
                 android:id="@+id/backHistory"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_bg_income"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Back"
                 android:padding="10dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/back"
-                app:tint="#4edea3" />
+                android:src="@drawable/back"
+                app:tint="?attr/colorOnSurface" />
 
-            <TextView
-                android:id="@+id/imageView9"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
                 android:layout_weight="1"
-                android:layout_marginStart="14dp"
-                android:text="Transaction History"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="History"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/txtHistoryCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text=""
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- ── Search bar ── -->
-        <LinearLayout
+        <!-- Search (live) -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="6dp">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="14dp"
+            android:hint="Search by number or date"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="?attr/colorPrimary">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchFullHistory"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/send_field_card"
-                android:hint="Search by number or date…"
-                android:textColorHint="#7a9e8e"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:paddingHorizontal="14dp"
-                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:imeOptions="actionSearch"
-                android:singleLine="true" />
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/btnSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:background="@drawable/emerald_card_gradient"
-                android:text="Search"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:paddingHorizontal="18dp"
-                android:gravity="center" />
-
-        </LinearLayout>
-
-        <!-- ── Hint label ── -->
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:text="Search by transaction number or date (dd/MM/yyyy)"
-            android:textColor="#4a6e5c"
-            android:textSize="11sp" />
-
-        <!-- ── List / Loader ── -->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- List / loader / empty -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
@@ -111,26 +93,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:paddingHorizontal="8dp"
-                android:paddingBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:visibility="invisible" />
+                android:layoutAnimation="@anim/fatora_layout_anim"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="20dp"
+                android:visibility="invisible"
+                tools:listitem="@layout/trasnaction_item" />
 
             <ProgressBar
                 android:id="@+id/progressBarHistoryFull"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:indeterminateTint="#4edea3"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="?attr/colorPrimary" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Empty state -->
+            <LinearLayout
+                android:id="@+id/emptyHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="40dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.55"
+                    android:contentDescription="@null"
+                    android:src="@drawable/historyclock"
+                    app:tint="?attr/colorOnSurfaceVariant" />
+
+                <TextView
+                    android:id="@+id/emptyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="No transactions yet"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/emptySub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Your payments and transfers will appear here."
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </FrameLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

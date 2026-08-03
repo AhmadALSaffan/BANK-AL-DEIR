@@ -4,11 +4,9 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +14,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -25,22 +25,22 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Spinner aspinnerReason;
+  public final MaterialButton btnCancel;
 
   @NonNull
-  public final Button btnCancel;
+  public final MaterialButton btnSendMoney;
 
   @NonNull
-  public final Button btnSendMoney;
+  public final ImageView chevronReason;
 
   @NonNull
-  public final EditText edtAcountNumberWallet;
+  public final TextInputEditText edtAcountNumberWallet;
 
   @NonNull
   public final EditText edtAmount;
 
   @NonNull
-  public final EditText edtNotes;
+  public final TextInputEditText edtNotes;
 
   @NonNull
   public final LinearLayout frame;
@@ -52,28 +52,34 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
   public final ConstraintLayout main;
 
   @NonNull
-  public final TextView textView21;
+  public final LinearLayout reasonSelector;
 
   @NonNull
   public final TextView txtBalance;
 
+  @NonNull
+  public final TextView txtReason;
+
   private ActivitySendMoneyBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Spinner aspinnerReason, @NonNull Button btnCancel, @NonNull Button btnSendMoney,
-      @NonNull EditText edtAcountNumberWallet, @NonNull EditText edtAmount,
-      @NonNull EditText edtNotes, @NonNull LinearLayout frame, @NonNull ImageView imageView8,
-      @NonNull ConstraintLayout main, @NonNull TextView textView21, @NonNull TextView txtBalance) {
+      @NonNull MaterialButton btnCancel, @NonNull MaterialButton btnSendMoney,
+      @NonNull ImageView chevronReason, @NonNull TextInputEditText edtAcountNumberWallet,
+      @NonNull EditText edtAmount, @NonNull TextInputEditText edtNotes, @NonNull LinearLayout frame,
+      @NonNull ImageView imageView8, @NonNull ConstraintLayout main,
+      @NonNull LinearLayout reasonSelector, @NonNull TextView txtBalance,
+      @NonNull TextView txtReason) {
     this.rootView = rootView;
-    this.aspinnerReason = aspinnerReason;
     this.btnCancel = btnCancel;
     this.btnSendMoney = btnSendMoney;
+    this.chevronReason = chevronReason;
     this.edtAcountNumberWallet = edtAcountNumberWallet;
     this.edtAmount = edtAmount;
     this.edtNotes = edtNotes;
     this.frame = frame;
     this.imageView8 = imageView8;
     this.main = main;
-    this.textView21 = textView21;
+    this.reasonSelector = reasonSelector;
     this.txtBalance = txtBalance;
+    this.txtReason = txtReason;
   }
 
   @Override
@@ -103,26 +109,26 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.aspinnerReason;
-      Spinner aspinnerReason = ViewBindings.findChildViewById(rootView, id);
-      if (aspinnerReason == null) {
-        break missingId;
-      }
-
       id = R.id.btnCancel;
-      Button btnCancel = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnCancel = ViewBindings.findChildViewById(rootView, id);
       if (btnCancel == null) {
         break missingId;
       }
 
       id = R.id.btnSendMoney;
-      Button btnSendMoney = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnSendMoney = ViewBindings.findChildViewById(rootView, id);
       if (btnSendMoney == null) {
         break missingId;
       }
 
+      id = R.id.chevronReason;
+      ImageView chevronReason = ViewBindings.findChildViewById(rootView, id);
+      if (chevronReason == null) {
+        break missingId;
+      }
+
       id = R.id.edtAcountNumberWallet;
-      EditText edtAcountNumberWallet = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtAcountNumberWallet = ViewBindings.findChildViewById(rootView, id);
       if (edtAcountNumberWallet == null) {
         break missingId;
       }
@@ -134,7 +140,7 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
       }
 
       id = R.id.edtNotes;
-      EditText edtNotes = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtNotes = ViewBindings.findChildViewById(rootView, id);
       if (edtNotes == null) {
         break missingId;
       }
@@ -153,9 +159,9 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
 
       ConstraintLayout main = (ConstraintLayout) rootView;
 
-      id = R.id.textView21;
-      TextView textView21 = ViewBindings.findChildViewById(rootView, id);
-      if (textView21 == null) {
+      id = R.id.reasonSelector;
+      LinearLayout reasonSelector = ViewBindings.findChildViewById(rootView, id);
+      if (reasonSelector == null) {
         break missingId;
       }
 
@@ -165,9 +171,15 @@ public final class ActivitySendMoneyBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySendMoneyBinding((ConstraintLayout) rootView, aspinnerReason, btnCancel,
-          btnSendMoney, edtAcountNumberWallet, edtAmount, edtNotes, frame, imageView8, main,
-          textView21, txtBalance);
+      id = R.id.txtReason;
+      TextView txtReason = ViewBindings.findChildViewById(rootView, id);
+      if (txtReason == null) {
+        break missingId;
+      }
+
+      return new ActivitySendMoneyBinding((ConstraintLayout) rootView, btnCancel, btnSendMoney,
+          chevronReason, edtAcountNumberWallet, edtAmount, edtNotes, frame, imageView8, main,
+          reasonSelector, txtBalance, txtReason);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

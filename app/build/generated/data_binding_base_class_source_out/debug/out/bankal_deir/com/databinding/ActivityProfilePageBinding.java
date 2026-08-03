@@ -4,7 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -27,7 +27,7 @@ public final class ActivityProfilePageBinding implements ViewBinding {
   public final ImageView backProfile;
 
   @NonNull
-  public final Button btnEdit;
+  public final MaterialButton btnEdit;
 
   @NonNull
   public final LinearLayout btnLogOut;
@@ -43,21 +43,6 @@ public final class ActivityProfilePageBinding implements ViewBinding {
 
   @NonNull
   public final ShapeableImageView profileImageEdit;
-
-  @NonNull
-  public final TextView textView24;
-
-  @NonNull
-  public final TextView textView28;
-
-  @NonNull
-  public final TextView textView29;
-
-  @NonNull
-  public final TextView textView30;
-
-  @NonNull
-  public final TextView textView31;
 
   @NonNull
   public final TextView txtAccountNumber;
@@ -78,14 +63,12 @@ public final class ActivityProfilePageBinding implements ViewBinding {
   public final TextView txtPhoneNumber;
 
   private ActivityProfilePageBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView backProfile, @NonNull Button btnEdit, @NonNull LinearLayout btnLogOut,
-      @NonNull LinearLayout btnSecurity, @NonNull LinearLayout btnSettings,
-      @NonNull ConstraintLayout main, @NonNull ShapeableImageView profileImageEdit,
-      @NonNull TextView textView24, @NonNull TextView textView28, @NonNull TextView textView29,
-      @NonNull TextView textView30, @NonNull TextView textView31,
-      @NonNull TextView txtAccountNumber, @NonNull TextView txtEmail,
-      @NonNull TextView txtFirstName, @NonNull TextView txtFullName, @NonNull TextView txtLastName,
-      @NonNull TextView txtPhoneNumber) {
+      @NonNull ImageView backProfile, @NonNull MaterialButton btnEdit,
+      @NonNull LinearLayout btnLogOut, @NonNull LinearLayout btnSecurity,
+      @NonNull LinearLayout btnSettings, @NonNull ConstraintLayout main,
+      @NonNull ShapeableImageView profileImageEdit, @NonNull TextView txtAccountNumber,
+      @NonNull TextView txtEmail, @NonNull TextView txtFirstName, @NonNull TextView txtFullName,
+      @NonNull TextView txtLastName, @NonNull TextView txtPhoneNumber) {
     this.rootView = rootView;
     this.backProfile = backProfile;
     this.btnEdit = btnEdit;
@@ -94,11 +77,6 @@ public final class ActivityProfilePageBinding implements ViewBinding {
     this.btnSettings = btnSettings;
     this.main = main;
     this.profileImageEdit = profileImageEdit;
-    this.textView24 = textView24;
-    this.textView28 = textView28;
-    this.textView29 = textView29;
-    this.textView30 = textView30;
-    this.textView31 = textView31;
     this.txtAccountNumber = txtAccountNumber;
     this.txtEmail = txtEmail;
     this.txtFirstName = txtFirstName;
@@ -141,7 +119,7 @@ public final class ActivityProfilePageBinding implements ViewBinding {
       }
 
       id = R.id.btnEdit;
-      Button btnEdit = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnEdit = ViewBindings.findChildViewById(rootView, id);
       if (btnEdit == null) {
         break missingId;
       }
@@ -169,36 +147,6 @@ public final class ActivityProfilePageBinding implements ViewBinding {
       id = R.id.profileImageEdit;
       ShapeableImageView profileImageEdit = ViewBindings.findChildViewById(rootView, id);
       if (profileImageEdit == null) {
-        break missingId;
-      }
-
-      id = R.id.textView24;
-      TextView textView24 = ViewBindings.findChildViewById(rootView, id);
-      if (textView24 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView28;
-      TextView textView28 = ViewBindings.findChildViewById(rootView, id);
-      if (textView28 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView29;
-      TextView textView29 = ViewBindings.findChildViewById(rootView, id);
-      if (textView29 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView30;
-      TextView textView30 = ViewBindings.findChildViewById(rootView, id);
-      if (textView30 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView31;
-      TextView textView31 = ViewBindings.findChildViewById(rootView, id);
-      if (textView31 == null) {
         break missingId;
       }
 
@@ -239,9 +187,8 @@ public final class ActivityProfilePageBinding implements ViewBinding {
       }
 
       return new ActivityProfilePageBinding((ConstraintLayout) rootView, backProfile, btnEdit,
-          btnLogOut, btnSecurity, btnSettings, main, profileImageEdit, textView24, textView28,
-          textView29, textView30, textView31, txtAccountNumber, txtEmail, txtFirstName, txtFullName,
-          txtLastName, txtPhoneNumber);
+          btnLogOut, btnSecurity, btnSettings, main, profileImageEdit, txtAccountNumber, txtEmail,
+          txtFirstName, txtFullName, txtLastName, txtPhoneNumber);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

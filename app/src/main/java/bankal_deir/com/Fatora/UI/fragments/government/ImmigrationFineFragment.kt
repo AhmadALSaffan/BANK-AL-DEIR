@@ -12,6 +12,7 @@ import bankal_deir.com.Fatora.Data.PaymentTransaction
 import bankal_deir.com.Fatora.Data.PaymentUtils.isValidIdNumber
 import bankal_deir.com.MainPage
 import bankal_deir.com.R
+import bankal_deir.com.OtpGate
 import bankal_deir.com.databinding.FragmentImmigrationFineBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -83,7 +84,7 @@ class ImmigrationFineFragment : Fragment() {
         binding.continueButton.isEnabled = false
         binding.continueButton.text = "Processing..."
 
-        getUserWalletId(userId, amount, idNumber)
+        OtpGate.require(requireActivity(), onCancelled = { binding.continueButton.isEnabled = true; binding.continueButton.text = "Continue to payment" }) { getUserWalletId(userId, amount, idNumber) }
     }
 
     private fun getUserWalletId(userId: String, amount: Double, idNumber: String) {

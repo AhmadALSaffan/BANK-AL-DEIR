@@ -3,313 +3,172 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/card_type_bg"
-    android:padding="24dp">
+    android:orientation="vertical">
 
-    <!-- Header -->
+    <!-- Oxblood cap -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="20dp">
+        android:background="@drawable/oxblood_cap_top"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="22dp">
 
-        <FrameLayout
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:background="@drawable/ic_bg_income"
-            android:layout_marginEnd="14dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.18"
+            android:text="CARD SECURITY"
+            android:textColor="@color/enamel_brass_light"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPinDialogTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Create PIN"
+            android:textColor="@color/porcelain_bright"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- PIN dots, framed as a display field on the plaque -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/pin_dots_field"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="26dp"
+            android:paddingVertical="16dp">
 
             <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_lock"
-                app:tint="#4edea3" />
+                android:id="@+id/pinDot1"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginHorizontal="9dp"
+                android:contentDescription="@null"
+                android:src="@drawable/pin_circle_empty" />
 
-        </FrameLayout>
+            <ImageView
+                android:id="@+id/pinDot2"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginHorizontal="9dp"
+                android:contentDescription="@null"
+                android:src="@drawable/pin_circle_empty" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/pinDot3"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginHorizontal="9dp"
+                android:contentDescription="@null"
+                android:src="@drawable/pin_circle_empty" />
 
-            <TextView
-                android:id="@+id/txtPinDialogTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Create PIN"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enter a 4-digit PIN for your card"
-                android:textColor="#7a9e8e"
-                android:textSize="13sp" />
-
+            <ImageView
+                android:id="@+id/pinDot4"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginHorizontal="9dp"
+                android:contentDescription="@null"
+                android:src="@drawable/pin_circle_empty" />
         </LinearLayout>
-
     </LinearLayout>
 
-    <!-- Divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#1a3d2e"
-        android:layout_marginBottom="20dp" />
-
-    <!-- PIN dots row -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp">
-
-        <ImageView
-            android:id="@+id/pinDot1"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginHorizontal="10dp"
-            android:src="@drawable/pin_circle_empty" />
-
-        <ImageView
-            android:id="@+id/pinDot2"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginHorizontal="10dp"
-            android:src="@drawable/pin_circle_empty" />
-
-        <ImageView
-            android:id="@+id/pinDot3"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginHorizontal="10dp"
-            android:src="@drawable/pin_circle_empty" />
-
-        <ImageView
-            android:id="@+id/pinDot4"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginHorizontal="10dp"
-            android:src="@drawable/pin_circle_empty" />
-
-    </LinearLayout>
-
-    <!-- Numpad -->
+    <!-- Body: disc keypad -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
-        <!-- Row 1: 1 2 3 -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn1"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="1"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn1" style="@style/PinDialogDisc" android:text="1" />
 
-            <Button
-                android:id="@+id/btn2"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="2"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn2" style="@style/PinDialogDisc" android:text="2" />
 
-            <Button
-                android:id="@+id/btn3"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="3"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
+            <Button android:id="@+id/btn3" style="@style/PinDialogDisc" android:text="3" />
         </LinearLayout>
 
-        <!-- Row 2: 4 5 6 -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn4"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="4"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn4" style="@style/PinDialogDisc" android:text="4" />
 
-            <Button
-                android:id="@+id/btn5"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="5"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn5" style="@style/PinDialogDisc" android:text="5" />
 
-            <Button
-                android:id="@+id/btn6"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="6"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
+            <Button android:id="@+id/btn6" style="@style/PinDialogDisc" android:text="6" />
         </LinearLayout>
 
-        <!-- Row 3: 7 8 9 -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn7"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="7"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn7" style="@style/PinDialogDisc" android:text="7" />
 
-            <Button
-                android:id="@+id/btn8"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="8"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn8" style="@style/PinDialogDisc" android:text="8" />
 
-            <Button
-                android:id="@+id/btn9"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="9"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
+            <Button android:id="@+id/btn9" style="@style/PinDialogDisc" android:text="9" />
         </LinearLayout>
 
-        <!-- Row 4: clear 0 backspace -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnClearPin"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_expense"
+                style="@style/PinDialogDisc"
                 android:text="CLR"
-                android:textColor="#ff5f5f"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
+                android:textColor="?attr/colorError"
+                android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/btn0"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
-                android:text="0"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <Button android:id="@+id/btn0" style="@style/PinDialogDisc" android:text="0" />
 
             <Button
                 android:id="@+id/btnBackspace"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/ic_bg_income"
+                style="@style/PinDialogDisc"
                 android:text="⌫"
-                android:textColor="#7a9e8e"
-                android:textSize="20sp" />
-
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="22sp" />
         </LinearLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmPin"
+            style="@style/Widget.BankALDeir.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:text="Confirm PIN"
+            app:cornerRadius="14dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelPin"
+            style="@style/Widget.BankALDeir.Button.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Cancel"
+            android:textColor="?attr/colorOnSurfaceVariant" />
     </LinearLayout>
-
-    <!-- Confirm + Cancel buttons -->
-    <Button
-        android:id="@+id/btnConfirmPin"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btnedit"
-        android:text="Confirm PIN"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnCancelPin"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/send_field_card"
-        android:text="Cancel"
-        android:textColor="#7a9e8e"
-        android:textSize="14sp"
-        android:textStyle="bold" />
 
 </LinearLayout>

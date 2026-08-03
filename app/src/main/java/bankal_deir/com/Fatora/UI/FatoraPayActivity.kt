@@ -20,6 +20,17 @@ class FatoraPayActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // So OTP codes can be delivered as notifications.
+        bankal_deir.com.OtpGate.ensurePermission(this)
+
+        // Back steps through the payment flow, then leaves Fatora.
+        val navHost = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as androidx.navigation.fragment.NavHostFragment
+        val navController = navHost.navController
+        findViewById<android.widget.ImageView>(R.id.btnBack).setOnClickListener {
+            if (!navController.popBackStack()) finish()
+        }
     }
     private fun hideSystemBars() {
         WindowCompat.setDecorFitsSystemWindows(window, false)

@@ -7,6 +7,7 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
@@ -53,7 +54,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="bankal_deir.com.braintree" />
+                <!-- Braintree derives this from the package name with underscores
+                     stripped: "bankal_deir.com" -> "bankaldeir.com.braintree". -->
+                <data android:scheme="bankaldeir.com.braintree" />
             </intent-filter>
         </activity>
         <activity
@@ -119,8 +122,7 @@
         <activity
             android:name=".Login.LoginPage"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
+            android:windowSoftInputMode="adjustResize" />        <activity
             android:name=".MainActivity"
             android:exported="true">
 

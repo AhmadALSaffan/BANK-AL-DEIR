@@ -1,264 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/optionsSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/card_type_bg"
-    android:padding="24dp">
+    android:orientation="vertical">
 
-    <!-- Header -->
+    <!-- Oxblood cap -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="20dp">
+        android:background="@drawable/oxblood_cap_top"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="20dp">
 
-        <FrameLayout
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:background="@drawable/ic_bg_income"
-            android:layout_marginEnd="14dp">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_id_card"
-                app:tint="#4edea3" />
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:letterSpacing="0.16"
+            android:text="MANAGE CARD"
+            android:textColor="@color/enamel_brass_light"
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Card Options"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Card options"
+            android:textColor="@color/porcelain_bright"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtDialogCardName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="**** **** **** 1234"
-                android:textColor="#7a9e8e"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/txtDialogCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"
+            android:text="•••• 1234"
+            android:textColor="#D9F1E7D2"
+            android:textSize="13sp" />
     </LinearLayout>
 
-    <!-- Divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#1a3d2e"
-        android:layout_marginBottom="16dp" />
-
-    <!-- PIN option -->
+    <!-- Body -->
     <LinearLayout
-        android:id="@+id/optionPin"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="4dp"
-        android:layout_marginBottom="8dp">
-
-        <FrameLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_bg_income"
-            android:layout_marginEnd="16dp">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_lock"
-                app:tint="#4edea3" />
-
-        </FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="18dp">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:id="@+id/optionTransfer"
+            style="@style/CardOptionRow">
 
-            <TextView
-                android:id="@+id/txtPinOptionLabel"
-                android:layout_width="wrap_content"
+            <ImageView
+                style="@style/CardOptionIcon"
+                android:src="@drawable/ic_send_transfer"
+                app:tint="?attr/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Create PIN"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Secure your card with a 4-digit PIN"
-                android:textColor="#7a9e8e"
-                android:textSize="12sp" />
+                <TextView style="@style/CardOptionTitle" android:text="Add money to this card" />
 
+                <TextView style="@style/CardOptionSub" android:text="Move funds from your balance or another card" />
+            </LinearLayout>
+
+            <ImageView style="@style/CardOptionChevron" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/ic_arrow_forward"
-            app:tint="#3f5a50" />
+        <LinearLayout
+            android:id="@+id/optionMain"
+            style="@style/CardOptionRow">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imgMainIcon"
+                style="@style/CardOptionIcon"
+                android:src="@drawable/ic_star"
+                app:tint="?attr/colorPrimary" />
 
-    <!-- Divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#1a3d2e"
-        android:layout_marginBottom="8dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    <!-- Lock/Unlock option -->
-    <LinearLayout
-        android:id="@+id/optionLock"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="4dp"
-        android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/txtMainLabel"
+                    style="@style/CardOptionTitle"
+                    android:text="Set as main card" />
 
-        <FrameLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_bg_income"
-            android:layout_marginEnd="16dp">
+                <TextView
+                    android:id="@+id/txtMainSubLabel"
+                    style="@style/CardOptionSub"
+                    android:text="Show your main balance on this card" />
+            </LinearLayout>
+
+            <ImageView style="@style/CardOptionChevron" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="6dp" />
+
+        <LinearLayout
+            android:id="@+id/optionPin"
+            style="@style/CardOptionRow">
+
+            <ImageView
+                style="@style/CardOptionIcon"
+                android:src="@drawable/ic_key"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtPinOptionLabel"
+                    style="@style/CardOptionTitle"
+                    android:text="Create PIN" />
+
+                <TextView style="@style/CardOptionSub" android:text="Protect this card with a 4-digit PIN" />
+            </LinearLayout>
+
+            <ImageView style="@style/CardOptionChevron" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/optionLock"
+            style="@style/CardOptionRow">
 
             <ImageView
                 android:id="@+id/imgLockIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
+                style="@style/CardOptionIcon"
                 android:src="@drawable/ic_lock"
-                app:tint="#ffb95f" />
+                app:tint="?attr/colorOnSurfaceVariant" />
 
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtLockLabel"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Lock Card"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtLockSubLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Temporarily disable card transactions"
-                android:textColor="#7a9e8e"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/txtLockLabel"
+                    style="@style/CardOptionTitle"
+                    android:text="Lock card" />
 
+                <TextView
+                    android:id="@+id/txtLockSubLabel"
+                    style="@style/CardOptionSub"
+                    android:text="Temporarily block transactions" />
+            </LinearLayout>
+
+            <ImageView style="@style/CardOptionChevron" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/ic_arrow_forward"
-            app:tint="#3f5a50" />
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="6dp" />
 
-    </LinearLayout>
-
-    <!-- Divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#1a3d2e"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Delete option -->
-    <LinearLayout
-        android:id="@+id/optionDelete"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="4dp"
-        android:layout_marginBottom="8dp">
-
-        <FrameLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="#3d0a0a"
-            android:layout_marginEnd="16dp">
+        <LinearLayout
+            android:id="@+id/optionDelete"
+            style="@style/CardOptionRow">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_check"
-                app:tint="#ff5f5f" />
+                style="@style/CardOptionIcon"
+                android:src="@drawable/ic_trash"
+                app:tint="?attr/colorError" />
 
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Delete Card"
-                android:textColor="#ff5f5f"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Permanently remove this card"
-                android:textColor="#7a4a4a"
-                android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete card"
+                    android:textColor="?attr/colorError"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
+                <TextView style="@style/CardOptionSub" android:text="Permanently remove this card" />
+            </LinearLayout>
+
+            <ImageView style="@style/CardOptionChevron" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/ic_arrow_forward"
-            app:tint="#7a3a3a" />
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelOptions"
+            style="@style/Widget.BankALDeir.Button.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Close"
+            android:textColor="?attr/colorOnSurfaceVariant" />
     </LinearLayout>
-
-    <!-- Cancel button -->
-    <Button
-        android:id="@+id/btnCancelOptions"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/send_field_card"
-        android:text="Cancel"
-        android:textColor="#7a9e8e"
-        android:textSize="14sp"
-        android:textStyle="bold" />
 
 </LinearLayout>

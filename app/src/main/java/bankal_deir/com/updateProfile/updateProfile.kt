@@ -58,6 +58,8 @@ class updateProfile : AppCompatActivity() {
         }
 
 
+        binding.backEdit.setOnClickListener { finish() }
+
         mAuth = FirebaseAuth.getInstance()
         val repository = AuthRepository()
         viewModel = ViewModelProvider(

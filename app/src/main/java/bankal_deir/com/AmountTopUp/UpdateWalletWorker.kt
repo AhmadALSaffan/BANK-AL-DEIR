@@ -26,9 +26,9 @@ class UpdateWalletWorker(appContext: Context, workerParams: WorkerParameters) :
 
             val dbRef = FirebaseDatabase.getInstance().getReference("wallets").child(walletId)
 
+            // The wallet Balance is the single main balance (the main card mirrors it).
             val snapshot = dbRef.child("Balance").get().await()
             val currentBalance = snapshot.getValue(Double::class.java) ?: 0.0
-
             dbRef.child("Balance").setValue(currentBalance + amount).await()
 
             Log.d("UpdateWorker", "Database update COMPLETED online")

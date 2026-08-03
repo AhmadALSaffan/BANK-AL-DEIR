@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:text="Select Item"
     android:padding="10dp"
-    android:textColor="@color/white"
+    android:textColor="?attr/colorOnSurface"
     android:background="@drawable/drowp"
     android:textSize="20sp"
     android:layout_height="wrap_content">

@@ -1,39 +1,31 @@
 package bankal_deir.com.pinPage
 
-import android.app.Dialog
+import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.os.Handler
+import android.os.Looper
 import android.view.View
-import android.view.Window
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import bankal_deir.com.MainActivity
-import bankal_deir.com.MainPage
-import bankal_deir.com.R
-import bankal_deir.com.databinding.ActivityPinPageBinding
-import com.google.firebase.auth.FirebaseAuth
-import android.content.Context
-import android.os.Handler
-import android.os.Looper
-import android.widget.Button
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import bankal_deir.com.Login.LoginPage
-
+import bankal_deir.com.MainActivity
+import bankal_deir.com.MainPage
+import bankal_deir.com.databinding.ActivityPinPageBinding
+import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
 
 class PinPage : AppCompatActivity() {
     private lateinit var binding: ActivityPinPageBinding
     private val viewModel: PinViewModel by viewModels()
-    private lateinit var buttons: List<Button>
+    private lateinit var buttons: List<MaterialButton>
     private lateinit var userId: String
     private lateinit var mAuth: FirebaseAuth
     private lateinit var pinEdit: EditText
@@ -44,14 +36,10 @@ class PinPage : AppCompatActivity() {
     private val prefs by lazy { getSharedPreferences("PinPrefs", Context.MODE_PRIVATE) }
     private var failedAttempts = 0
     private var lockoutStartTime = 0L
+    private var verifying = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.setDefaultUncaughtExceptionHandler { thread, exception ->
-            android.util.Log.e("CRASH_HANDLER", "Uncaught Exception", exception)
-            exception.printStackTrace()
-        }
-
         enableEdgeToEdge()
         mAuth = FirebaseAuth.getInstance()
         binding = ActivityPinPageBinding.inflate(layoutInflater)
@@ -69,9 +57,9 @@ class PinPage : AppCompatActivity() {
             finish()
             return
         }
+
         binding.btnSignOut.setOnClickListener {
-            val Auth = FirebaseAuth.getInstance()
-            Auth.signOut()
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginPage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
@@ -80,114 +68,92 @@ class PinPage : AppCompatActivity() {
 
         pinEdit = binding.pinEdit
 
-        pinEdit.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        circles = listOf(binding.circle1, binding.circle2, binding.circle3, binding.circle4)
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null && s.length == 4) {
-                    viewModel.verifyPin(userId, s.toString())
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
-
-        val progressDialog = Dialog(this)
-        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.setCancelable(false)
-        progressDialog.setContentView(R.layout.progress)
-        progressDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        circles = listOf(
-            binding.circle1,
-            binding.circle2,
-            binding.circle3,
-            binding.circle4
+        buttons = listOf(
+            binding.btn1, binding.btn2, binding.btn3,
+            binding.btn4, binding.btn5, binding.btn6,
+            binding.btn7, binding.btn8, binding.btn9,
+            binding.btn0
         )
 
-         buttons = listOf(
-            binding.btn1,
-            binding.btn2,
-            binding.btn3,
-            binding.btn4,
-            binding.btn5,
-            binding.btn6,
-            binding.btn7,
-            binding.btn8,
-            binding.btn9,
-            binding.btn0,
-        )
+        (buttons + binding.btnDelete).forEach { PinFeedback.attachKeyPress(it) }
+
         failedAttempts = prefs.getInt("failedAttempts", 0)
         lockoutStartTime = prefs.getLong("lockoutStartTime", 0L)
-
         checkLockout()
 
         buttons.forEach { button ->
             button.setOnClickListener {
+                if (verifying) return@setOnClickListener
                 if (isLockedOut()) {
-                    Toast.makeText(this, "Too many attempts. Please wait 15 minutes.", Toast.LENGTH_SHORT).show()
+                    showMessage("Too many attempts. Try again in 15 minutes.")
                     return@setOnClickListener
                 }
                 if (pinBuilder.length < 4) {
+                    hideMessage()
                     pinBuilder.append(button.text)
-                    updateCircles()
+                    pinEdit.setText(pinBuilder)
+                    PinFeedback.fillDot(circles[pinBuilder.length - 1])
                 }
-
-                if (pinBuilder.length == 4) {
-                    progressDialog.show()
-                    viewModel.verifyPin(userId, pinBuilder.toString())
-                }
+                if (pinBuilder.length == 4) submit()
             }
         }
 
         binding.btnDelete.setOnClickListener {
-            if (pinBuilder.isNotEmpty()) {
-                pinBuilder.deleteCharAt(pinBuilder.length - 1)
-                updateCircles()
-            }
-        }
-
-        binding.btnOk.setOnClickListener {
-            if (isLockedOut()) {
-                Toast.makeText(this, "Too many attempts. Please wait 15 minutes.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            if (pinBuilder.length == 4) {
-                progressDialog.show()
-                viewModel.verifyPin(userId, pinBuilder.toString())
-            } else {
-                Toast.makeText(this@PinPage, "Please Enter The Pin Code !", Toast.LENGTH_SHORT).show()
-            }
+            if (verifying || pinBuilder.isEmpty()) return@setOnClickListener
+            PinFeedback.clearDot(circles[pinBuilder.length - 1])
+            pinBuilder.deleteCharAt(pinBuilder.length - 1)
+            pinEdit.setText(pinBuilder)
         }
 
         viewModel.pinStatus.observe(this) { success ->
             if (success) {
                 resetLockout()
-                progressDialog.dismiss()
-                val intent = Intent(this@PinPage, MainPage::class.java)
-                startActivity(intent)
-                finish()
-            }
-            if (!success){
+                PinFeedback.acceptDots(circles) {
+                    startActivity(Intent(this@PinPage, MainPage::class.java))
+                    finish()
+                }
+            } else {
                 failedAttempts++
                 saveFailedAttempts()
-                if (failedAttempts >= maxAttempts) {
-                    startLockout()
+                val remaining = maxAttempts - failedAttempts
+
+                PinFeedback.rejectDots(circles) {
+                    pinBuilder.clear()
+                    pinEdit.setText("")
+                    verifying = false
+                    if (failedAttempts >= maxAttempts) startLockout()
                 }
-                pinBuilder.clear()
-                updateCircles()
-                progressDialog.dismiss()
-                Toast.makeText(this@PinPage,"The PIN CODE is not correct please write it again !", Toast.LENGTH_SHORT).show()
+                showMessage(
+                    if (remaining > 0) "Wrong PIN. $remaining attempts left."
+                    else "Too many attempts. Locked for 15 minutes."
+                )
             }
         }
-
 
         viewModel.errorMessage.observe(this) { message ->
             if (message.isNotEmpty()) {
-                Toast.makeText(this@PinPage, message, Toast.LENGTH_SHORT).show()
-                progressDialog.dismiss()
+                verifying = false
+                showMessage(message)
             }
         }
+    }
+
+    /** The 4th digit submits on its own — no OK key to hunt for. */
+    private fun submit() {
+        verifying = true
+        viewModel.verifyPin(userId, pinBuilder.toString())
+    }
+
+    private fun showMessage(text: String) {
+        binding.tvPinMessage.text = text
+        binding.tvPinMessage.animate().alpha(1f).setDuration(160).start()
+    }
+
+    private fun hideMessage() {
+        if (binding.tvPinMessage.alpha == 0f) return
+        binding.tvPinMessage.animate().alpha(0f).setDuration(160).start()
     }
 
     override fun onStart() {
@@ -197,11 +163,7 @@ class PinPage : AppCompatActivity() {
             redirectToLogin()
         } else {
             user.getIdToken(true).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    null
-                } else {
-                    redirectToLogin()
-                }
+                if (!task.isSuccessful) redirectToLogin()
             }
         }
     }
@@ -213,39 +175,20 @@ class PinPage : AppCompatActivity() {
         finish()
     }
 
-
-
-    private fun updateCircles() {
-        pinEdit.setText(pinBuilder)
-        for (i in circles.indices) {
-            circles[i].setBackgroundResource(
-                if (i < pinBuilder.length) R.drawable.pin_circle_filled
-                else R.drawable.pin_circle_empty
-            )
-        }
-    }
     private fun isLockedOut(): Boolean {
-        if (lockoutStartTime == 0L) {
-            android.util.Log.d("PinPage", "No lockout set")
-            return false
-        }
+        if (lockoutStartTime == 0L) return false
         val elapsed = System.currentTimeMillis() - lockoutStartTime
-        android.util.Log.d("PinPage", "Lockout elapsed time: $elapsed ms")
-
         if (elapsed >= lockoutDurationMillis) {
-            android.util.Log.d("PinPage", "Lockout expired, resetting")
             resetLockout()
             return false
         }
-        android.util.Log.d("PinPage", "Still locked out")
         return true
     }
-
 
     private fun startLockout() {
         lockoutStartTime = System.currentTimeMillis()
         saveLockoutStartTime()
-        Toast.makeText(this, "Too many failed attempts. Locked for 15 minutes.", Toast.LENGTH_LONG).show()
+        showMessage("Too many failed attempts. Locked for 15 minutes.")
         disableInput()
     }
 
@@ -259,16 +202,14 @@ class PinPage : AppCompatActivity() {
 
     private fun disableInput() {
         buttons.forEach { it.isEnabled = false }
-        binding.btnOk.isEnabled = false
+        binding.btnDelete.isEnabled = false
         val remaining = lockoutDurationMillis - (System.currentTimeMillis() - lockoutStartTime)
-        Handler(Looper.getMainLooper()).postDelayed({
-            resetLockout()
-        }, remaining)
+        Handler(Looper.getMainLooper()).postDelayed({ resetLockout() }, remaining)
     }
 
     private fun enableInput() {
         buttons.forEach { it.isEnabled = true }
-        binding.btnOk.isEnabled = true
+        binding.btnDelete.isEnabled = true
     }
 
     private fun saveFailedAttempts() {
@@ -280,12 +221,9 @@ class PinPage : AppCompatActivity() {
     }
 
     private fun checkLockout() {
-        if (isLockedOut()) {
-            disableInput()
-        } else {
-            enableInput()
-        }
+        if (isLockedOut()) disableInput() else enableInput()
     }
+
     private fun hideSystemBars() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
@@ -294,5 +232,4 @@ class PinPage : AppCompatActivity() {
             systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
-
 }

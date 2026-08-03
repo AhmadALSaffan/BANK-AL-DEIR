@@ -4,9 +4,6 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -25,40 +25,40 @@ public final class ActivitySignUpBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnSignUp;
+  public final TextView btnGoLogin;
 
   @NonNull
-  public final CheckBox checkBox;
+  public final MaterialButton btnSignUp;
 
   @NonNull
-  public final EditText edtEmailsign;
+  public final MaterialCheckBox checkBox;
 
   @NonNull
-  public final EditText edtFirstName;
+  public final TextInputEditText edtEmailsign;
 
   @NonNull
-  public final EditText edtLastName;
+  public final TextInputEditText edtFirstName;
 
   @NonNull
-  public final EditText edtPasswordCheck;
+  public final TextInputEditText edtLastName;
 
   @NonNull
-  public final EditText edtPasswordsign;
+  public final TextInputEditText edtPasswordCheck;
+
+  @NonNull
+  public final TextInputEditText edtPasswordsign;
 
   @NonNull
   public final Spinner edtPhoneCode;
 
   @NonNull
-  public final EditText edtPhoneNumber;
+  public final TextInputEditText edtPhoneNumber;
 
   @NonNull
   public final ImageView imageView;
 
   @NonNull
   public final ConstraintLayout main;
-
-  @NonNull
-  public final CheckBox seePasswordSignUp;
 
   @NonNull
   public final TextView textView10;
@@ -69,14 +69,16 @@ public final class ActivitySignUpBinding implements ViewBinding {
   @NonNull
   public final TextView textView7;
 
-  private ActivitySignUpBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnSignUp,
-      @NonNull CheckBox checkBox, @NonNull EditText edtEmailsign, @NonNull EditText edtFirstName,
-      @NonNull EditText edtLastName, @NonNull EditText edtPasswordCheck,
-      @NonNull EditText edtPasswordsign, @NonNull Spinner edtPhoneCode,
-      @NonNull EditText edtPhoneNumber, @NonNull ImageView imageView,
-      @NonNull ConstraintLayout main, @NonNull CheckBox seePasswordSignUp,
-      @NonNull TextView textView10, @NonNull TextView textView6, @NonNull TextView textView7) {
+  private ActivitySignUpBinding(@NonNull ConstraintLayout rootView, @NonNull TextView btnGoLogin,
+      @NonNull MaterialButton btnSignUp, @NonNull MaterialCheckBox checkBox,
+      @NonNull TextInputEditText edtEmailsign, @NonNull TextInputEditText edtFirstName,
+      @NonNull TextInputEditText edtLastName, @NonNull TextInputEditText edtPasswordCheck,
+      @NonNull TextInputEditText edtPasswordsign, @NonNull Spinner edtPhoneCode,
+      @NonNull TextInputEditText edtPhoneNumber, @NonNull ImageView imageView,
+      @NonNull ConstraintLayout main, @NonNull TextView textView10, @NonNull TextView textView6,
+      @NonNull TextView textView7) {
     this.rootView = rootView;
+    this.btnGoLogin = btnGoLogin;
     this.btnSignUp = btnSignUp;
     this.checkBox = checkBox;
     this.edtEmailsign = edtEmailsign;
@@ -88,7 +90,6 @@ public final class ActivitySignUpBinding implements ViewBinding {
     this.edtPhoneNumber = edtPhoneNumber;
     this.imageView = imageView;
     this.main = main;
-    this.seePasswordSignUp = seePasswordSignUp;
     this.textView10 = textView10;
     this.textView6 = textView6;
     this.textView7 = textView7;
@@ -121,44 +122,50 @@ public final class ActivitySignUpBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnGoLogin;
+      TextView btnGoLogin = ViewBindings.findChildViewById(rootView, id);
+      if (btnGoLogin == null) {
+        break missingId;
+      }
+
       id = R.id.btnSignUp;
-      Button btnSignUp = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnSignUp = ViewBindings.findChildViewById(rootView, id);
       if (btnSignUp == null) {
         break missingId;
       }
 
       id = R.id.checkBox;
-      CheckBox checkBox = ViewBindings.findChildViewById(rootView, id);
+      MaterialCheckBox checkBox = ViewBindings.findChildViewById(rootView, id);
       if (checkBox == null) {
         break missingId;
       }
 
       id = R.id.edtEmailsign;
-      EditText edtEmailsign = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtEmailsign = ViewBindings.findChildViewById(rootView, id);
       if (edtEmailsign == null) {
         break missingId;
       }
 
       id = R.id.edtFirstName;
-      EditText edtFirstName = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtFirstName = ViewBindings.findChildViewById(rootView, id);
       if (edtFirstName == null) {
         break missingId;
       }
 
       id = R.id.edtLastName;
-      EditText edtLastName = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtLastName = ViewBindings.findChildViewById(rootView, id);
       if (edtLastName == null) {
         break missingId;
       }
 
       id = R.id.edtPasswordCheck;
-      EditText edtPasswordCheck = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtPasswordCheck = ViewBindings.findChildViewById(rootView, id);
       if (edtPasswordCheck == null) {
         break missingId;
       }
 
       id = R.id.edtPasswordsign;
-      EditText edtPasswordsign = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtPasswordsign = ViewBindings.findChildViewById(rootView, id);
       if (edtPasswordsign == null) {
         break missingId;
       }
@@ -170,7 +177,7 @@ public final class ActivitySignUpBinding implements ViewBinding {
       }
 
       id = R.id.edtPhoneNumber;
-      EditText edtPhoneNumber = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtPhoneNumber = ViewBindings.findChildViewById(rootView, id);
       if (edtPhoneNumber == null) {
         break missingId;
       }
@@ -182,12 +189,6 @@ public final class ActivitySignUpBinding implements ViewBinding {
       }
 
       ConstraintLayout main = (ConstraintLayout) rootView;
-
-      id = R.id.seePasswordSignUp;
-      CheckBox seePasswordSignUp = ViewBindings.findChildViewById(rootView, id);
-      if (seePasswordSignUp == null) {
-        break missingId;
-      }
 
       id = R.id.textView10;
       TextView textView10 = ViewBindings.findChildViewById(rootView, id);
@@ -207,9 +208,9 @@ public final class ActivitySignUpBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySignUpBinding((ConstraintLayout) rootView, btnSignUp, checkBox,
+      return new ActivitySignUpBinding((ConstraintLayout) rootView, btnGoLogin, btnSignUp, checkBox,
           edtEmailsign, edtFirstName, edtLastName, edtPasswordCheck, edtPasswordsign, edtPhoneCode,
-          edtPhoneNumber, imageView, main, seePasswordSignUp, textView10, textView6, textView7);
+          edtPhoneNumber, imageView, main, textView10, textView6, textView7);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

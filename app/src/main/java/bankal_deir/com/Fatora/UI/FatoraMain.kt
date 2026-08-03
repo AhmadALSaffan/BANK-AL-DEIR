@@ -20,6 +20,7 @@ class FatoraMain : AppCompatActivity() {
         binding = ActivityFatoraMainBinding.inflate(layoutInflater)
         hideSystemBars()
         setContentView(binding.root)
+        bankal_deir.com.NavHelper.setup(this, "bills")
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -29,6 +30,7 @@ class FatoraMain : AppCompatActivity() {
             val intent = Intent(this, FatoraPayActivity::class.java)
             startActivity(intent)
         }
+        binding.btnBack.setOnClickListener { finish() }
     }
     private fun hideSystemBars() {
         WindowCompat.setDecorFitsSystemWindows(window, false)

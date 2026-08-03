@@ -4,7 +4,7 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -24,61 +25,78 @@ public final class ActivityCreateNewCardBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView btnDiscover;
+  public final ImageView btnBack;
 
   @NonNull
-  public final ShapeableImageView btnFatora;
+  public final MaterialButton btnGetCard;
 
   @NonNull
-  public final ShapeableImageView btnMasterCard;
+  public final LinearLayout featureChips;
 
   @NonNull
-  public final Button btnSelectedCard;
+  public final FrameLayout heroFrame;
 
   @NonNull
-  public final ShapeableImageView btnVisa;
+  public final ShapeableImageView imgHeroCard;
 
   @NonNull
-  public final ShapeableImageView imageView14;
+  public final ImageView loungeIcon;
 
   @NonNull
-  public final LinearLayout linDiscover;
+  public final ImageView loungeLogo;
 
   @NonNull
-  public final LinearLayout linFatora;
+  public final LinearLayout loungeRow;
 
   @NonNull
-  public final LinearLayout linMasterCard;
+  public final TextView loungeSub;
 
   @NonNull
-  public final LinearLayout linVisa;
+  public final TextView loungeTitle;
 
   @NonNull
   public final ConstraintLayout main;
 
   @NonNull
-  public final TextView textView23;
+  public final TextView txtHeroDesc;
+
+  @NonNull
+  public final TextView txtHeroFee;
+
+  @NonNull
+  public final TextView txtHeroTitle;
+
+  @NonNull
+  public final LinearLayout typeTabs;
+
+  @NonNull
+  public final LinearLayout variantTabs;
 
   private ActivityCreateNewCardBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView btnDiscover, @NonNull ShapeableImageView btnFatora,
-      @NonNull ShapeableImageView btnMasterCard, @NonNull Button btnSelectedCard,
-      @NonNull ShapeableImageView btnVisa, @NonNull ShapeableImageView imageView14,
-      @NonNull LinearLayout linDiscover, @NonNull LinearLayout linFatora,
-      @NonNull LinearLayout linMasterCard, @NonNull LinearLayout linVisa,
-      @NonNull ConstraintLayout main, @NonNull TextView textView23) {
+      @NonNull ImageView btnBack, @NonNull MaterialButton btnGetCard,
+      @NonNull LinearLayout featureChips, @NonNull FrameLayout heroFrame,
+      @NonNull ShapeableImageView imgHeroCard, @NonNull ImageView loungeIcon,
+      @NonNull ImageView loungeLogo, @NonNull LinearLayout loungeRow, @NonNull TextView loungeSub,
+      @NonNull TextView loungeTitle, @NonNull ConstraintLayout main, @NonNull TextView txtHeroDesc,
+      @NonNull TextView txtHeroFee, @NonNull TextView txtHeroTitle, @NonNull LinearLayout typeTabs,
+      @NonNull LinearLayout variantTabs) {
     this.rootView = rootView;
-    this.btnDiscover = btnDiscover;
-    this.btnFatora = btnFatora;
-    this.btnMasterCard = btnMasterCard;
-    this.btnSelectedCard = btnSelectedCard;
-    this.btnVisa = btnVisa;
-    this.imageView14 = imageView14;
-    this.linDiscover = linDiscover;
-    this.linFatora = linFatora;
-    this.linMasterCard = linMasterCard;
-    this.linVisa = linVisa;
+    this.btnBack = btnBack;
+    this.btnGetCard = btnGetCard;
+    this.featureChips = featureChips;
+    this.heroFrame = heroFrame;
+    this.imgHeroCard = imgHeroCard;
+    this.loungeIcon = loungeIcon;
+    this.loungeLogo = loungeLogo;
+    this.loungeRow = loungeRow;
+    this.loungeSub = loungeSub;
+    this.loungeTitle = loungeTitle;
     this.main = main;
-    this.textView23 = textView23;
+    this.txtHeroDesc = txtHeroDesc;
+    this.txtHeroFee = txtHeroFee;
+    this.txtHeroTitle = txtHeroTitle;
+    this.typeTabs = typeTabs;
+    this.variantTabs = variantTabs;
   }
 
   @Override
@@ -108,77 +126,101 @@ public final class ActivityCreateNewCardBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnDiscover;
-      ImageView btnDiscover = ViewBindings.findChildViewById(rootView, id);
-      if (btnDiscover == null) {
+      id = R.id.btnBack;
+      ImageView btnBack = ViewBindings.findChildViewById(rootView, id);
+      if (btnBack == null) {
         break missingId;
       }
 
-      id = R.id.btnFatora;
-      ShapeableImageView btnFatora = ViewBindings.findChildViewById(rootView, id);
-      if (btnFatora == null) {
+      id = R.id.btnGetCard;
+      MaterialButton btnGetCard = ViewBindings.findChildViewById(rootView, id);
+      if (btnGetCard == null) {
         break missingId;
       }
 
-      id = R.id.btnMasterCard;
-      ShapeableImageView btnMasterCard = ViewBindings.findChildViewById(rootView, id);
-      if (btnMasterCard == null) {
+      id = R.id.featureChips;
+      LinearLayout featureChips = ViewBindings.findChildViewById(rootView, id);
+      if (featureChips == null) {
         break missingId;
       }
 
-      id = R.id.btnSelectedCard;
-      Button btnSelectedCard = ViewBindings.findChildViewById(rootView, id);
-      if (btnSelectedCard == null) {
+      id = R.id.heroFrame;
+      FrameLayout heroFrame = ViewBindings.findChildViewById(rootView, id);
+      if (heroFrame == null) {
         break missingId;
       }
 
-      id = R.id.btnVisa;
-      ShapeableImageView btnVisa = ViewBindings.findChildViewById(rootView, id);
-      if (btnVisa == null) {
+      id = R.id.imgHeroCard;
+      ShapeableImageView imgHeroCard = ViewBindings.findChildViewById(rootView, id);
+      if (imgHeroCard == null) {
         break missingId;
       }
 
-      id = R.id.imageView14;
-      ShapeableImageView imageView14 = ViewBindings.findChildViewById(rootView, id);
-      if (imageView14 == null) {
+      id = R.id.loungeIcon;
+      ImageView loungeIcon = ViewBindings.findChildViewById(rootView, id);
+      if (loungeIcon == null) {
         break missingId;
       }
 
-      id = R.id.linDiscover;
-      LinearLayout linDiscover = ViewBindings.findChildViewById(rootView, id);
-      if (linDiscover == null) {
+      id = R.id.loungeLogo;
+      ImageView loungeLogo = ViewBindings.findChildViewById(rootView, id);
+      if (loungeLogo == null) {
         break missingId;
       }
 
-      id = R.id.linFatora;
-      LinearLayout linFatora = ViewBindings.findChildViewById(rootView, id);
-      if (linFatora == null) {
+      id = R.id.loungeRow;
+      LinearLayout loungeRow = ViewBindings.findChildViewById(rootView, id);
+      if (loungeRow == null) {
         break missingId;
       }
 
-      id = R.id.linMasterCard;
-      LinearLayout linMasterCard = ViewBindings.findChildViewById(rootView, id);
-      if (linMasterCard == null) {
+      id = R.id.loungeSub;
+      TextView loungeSub = ViewBindings.findChildViewById(rootView, id);
+      if (loungeSub == null) {
         break missingId;
       }
 
-      id = R.id.linVisa;
-      LinearLayout linVisa = ViewBindings.findChildViewById(rootView, id);
-      if (linVisa == null) {
+      id = R.id.loungeTitle;
+      TextView loungeTitle = ViewBindings.findChildViewById(rootView, id);
+      if (loungeTitle == null) {
         break missingId;
       }
 
       ConstraintLayout main = (ConstraintLayout) rootView;
 
-      id = R.id.textView23;
-      TextView textView23 = ViewBindings.findChildViewById(rootView, id);
-      if (textView23 == null) {
+      id = R.id.txtHeroDesc;
+      TextView txtHeroDesc = ViewBindings.findChildViewById(rootView, id);
+      if (txtHeroDesc == null) {
         break missingId;
       }
 
-      return new ActivityCreateNewCardBinding((ConstraintLayout) rootView, btnDiscover, btnFatora,
-          btnMasterCard, btnSelectedCard, btnVisa, imageView14, linDiscover, linFatora,
-          linMasterCard, linVisa, main, textView23);
+      id = R.id.txtHeroFee;
+      TextView txtHeroFee = ViewBindings.findChildViewById(rootView, id);
+      if (txtHeroFee == null) {
+        break missingId;
+      }
+
+      id = R.id.txtHeroTitle;
+      TextView txtHeroTitle = ViewBindings.findChildViewById(rootView, id);
+      if (txtHeroTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.typeTabs;
+      LinearLayout typeTabs = ViewBindings.findChildViewById(rootView, id);
+      if (typeTabs == null) {
+        break missingId;
+      }
+
+      id = R.id.variantTabs;
+      LinearLayout variantTabs = ViewBindings.findChildViewById(rootView, id);
+      if (variantTabs == null) {
+        break missingId;
+      }
+
+      return new ActivityCreateNewCardBinding((ConstraintLayout) rootView, btnBack, btnGetCard,
+          featureChips, heroFrame, imgHeroCard, loungeIcon, loungeLogo, loungeRow, loungeSub,
+          loungeTitle, main, txtHeroDesc, txtHeroFee, txtHeroTitle, typeTabs, variantTabs);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

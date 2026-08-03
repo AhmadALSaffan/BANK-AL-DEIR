@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bankal_deir.com.Fatora.Data.PaymentTransaction
@@ -42,6 +43,17 @@ class cards : AppCompatActivity() {
     private var refreshRunnable: Runnable? = null
     private val handler = android.os.Handler(Looper.getMainLooper())
     private var cachedWalletId: String? = null
+    private var cachedMainCardKey: String = ""
+    private var cachedCards: List<CardModel> = emptyList()
+    private var cachedWalletBalance: Double = 0.0
+
+    private val notifPermLauncher = registerForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.RequestPermission()
+    ) { }
+
+    companion object {
+        private const val OTP_NOTIF_ID = 4201
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +61,7 @@ class cards : AppCompatActivity() {
         binding = ActivityCardsBinding.inflate(layoutInflater)
         hideSystemBars()
         setContentView(binding.root)
+        NavHelper.setup(this, "cards")
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -75,8 +88,15 @@ class cards : AppCompatActivity() {
             startActivity(Intent(this, createNewCard::class.java))
         }
 
-        binding.btnCardPreferences.setOnClickListener {
-            Toast.makeText(this, "Card preferences coming soon", Toast.LENGTH_SHORT).show()
+        binding.btnBack.setOnClickListener { finish() }
+
+        // Ask for notification permission so OTP codes can be delivered.
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU &&
+            androidx.core.content.ContextCompat.checkSelfPermission(
+                this, android.Manifest.permission.POST_NOTIFICATIONS
+            ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+        ) {
+            notifPermLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
         }
 
         binding.tvViewAll.setOnClickListener {
@@ -132,6 +152,30 @@ class cards : AppCompatActivity() {
             )
         }
 
+        val optionTransfer = dialog.findViewById<LinearLayout>(R.id.optionTransfer)
+        val optionMain = dialog.findViewById<LinearLayout>(R.id.optionMain)
+        val txtMainLabel = dialog.findViewById<TextView>(R.id.txtMainLabel)
+        val txtMainSubLabel = dialog.findViewById<TextView>(R.id.txtMainSubLabel)
+
+        // Reflect whether this card is already the main one.
+        if (card.cardKey == cachedMainCardKey && cachedMainCardKey.isNotEmpty()) {
+            txtMainLabel.text = "Main card"
+            txtMainSubLabel.text = "Your balance lives on this card"
+            optionMain.alpha = 0.5f
+            optionMain.isEnabled = false
+        }
+
+        optionTransfer.setOnClickListener {
+            dialog.dismiss()
+            showTransferDialog(card)
+        }
+
+        optionMain.setOnClickListener {
+            if (card.cardKey == cachedMainCardKey) return@setOnClickListener
+            dialog.dismiss()
+            confirmMakeMain(card)
+        }
+
         optionPin.setOnClickListener {
             dialog.dismiss()
             showPinDialog(card)
@@ -149,7 +193,284 @@ class cards : AppCompatActivity() {
 
         btnCancel.setOnClickListener { dialog.dismiss() }
 
+        dialog.setOnShowListener { animateSheetIn(dialog.findViewById(R.id.optionsSheet)) }
         dialog.show()
+    }
+
+    /** Slides the sheet up and staggers its rows in. */
+    private fun animateSheetIn(sheet: View?) {
+        sheet ?: return
+        val group = sheet as? android.view.ViewGroup ?: return
+        sheet.translationY = 60f * resources.displayMetrics.density
+        sheet.alpha = 0f
+        sheet.animate().translationY(0f).alpha(1f).setDuration(260)
+            .setInterpolator(android.view.animation.DecelerateInterpolator(1.6f)).start()
+        for (i in 0 until group.childCount) {
+            val child = group.getChildAt(i)
+            child.alpha = 0f
+            child.translationY = 20f * resources.displayMetrics.density
+            child.animate().alpha(1f).translationY(0f)
+                .setStartDelay(60L + i * 35L).setDuration(240)
+                .setInterpolator(android.view.animation.DecelerateInterpolator(1.4f)).start()
+        }
+    }
+
+    // ── Transfer money onto a card, from the wallet or another card ──────────
+
+    /**
+     * A place money can come from. [cardKey] is empty for the wallet's main balance,
+     * otherwise it's the source card's key. [balance] is what's currently available.
+     */
+    private data class TransferSource(val label: String, val cardKey: String, val balance: Double)
+
+    private fun showTransferDialog(destCard: CardModel) {
+        val walletId = cachedWalletId ?: return
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_transfer_to_card)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.92).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        val txtDest = dialog.findViewById<TextView>(R.id.txtTransferDest)
+        val txtAvailable = dialog.findViewById<TextView>(R.id.txtTransferAvailable)
+        val dropdown = dialog.findViewById<com.google.android.material.textfield.MaterialAutoCompleteTextView>(R.id.dropdownSource)
+        val edtAmount = dialog.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.edtTransferAmount)
+        val btnConfirm = dialog.findViewById<Button>(R.id.btnConfirmTransfer)
+        val btnCancel = dialog.findViewById<Button>(R.id.btnCancelTransfer)
+
+        txtDest.text = "To card ending ${destCard.cardnumber.takeLast(4).ifEmpty { "????" }}"
+
+        // The main card IS the main balance, so it's never listed twice.
+        val destIsMain = destCard.cardKey.isNotEmpty() && destCard.cardKey == cachedMainCardKey
+        val sources = mutableListOf<TransferSource>()
+        FirebaseDatabase.getInstance().getReference("wallets/$walletId/Balance")
+            .get().addOnSuccessListener { balSnap ->
+                val walletBalance = balSnap.value?.toString()?.toDoubleOrNull() ?: 0.0
+                // "Main balance" == the main card; offer it only when it isn't the destination.
+                if (!destIsMain) {
+                    sources.add(TransferSource("Main balance", "", walletBalance))
+                }
+                cachedCards
+                    .filter { it.cardKey != destCard.cardKey && it.cardKey != cachedMainCardKey }
+                    .forEach { c ->
+                        sources.add(
+                            TransferSource(
+                                "Card ending ${c.cardnumber.takeLast(4)}",
+                                c.cardKey,
+                                c.Balnce
+                            )
+                        )
+                    }
+                val labels = sources.map { "${it.label}  ·  $%,.2f".format(it.balance) }
+                dropdown.setSimpleItems(labels.toTypedArray())
+                dropdown.setText(labels[0], false)
+                txtAvailable.text = "Available: $%,.2f".format(sources[0].balance)
+
+                dropdown.setOnItemClickListener { _, _, pos, _ ->
+                    txtAvailable.text = "Available: $%,.2f".format(sources[pos].balance)
+                }
+            }
+
+        btnConfirm.setOnClickListener {
+            val selectedIndex = sources.indexOfFirst {
+                dropdown.text.toString().startsWith(it.label)
+            }.let { if (it < 0) 0 else it }
+            val source = sources.getOrNull(selectedIndex)
+            val amount = edtAmount.text.toString().toDoubleOrNull()
+            when {
+                source == null ->
+                    Toast.makeText(this, "Pick a source", Toast.LENGTH_SHORT).show()
+                amount == null || amount <= 0 ->
+                    Toast.makeText(this, "Enter a valid amount", Toast.LENGTH_SHORT).show()
+                amount > source.balance ->
+                    Toast.makeText(this, "Not enough in ${source.label.lowercase()}", Toast.LENGTH_SHORT).show()
+                else -> {
+                    dialog.dismiss()
+                    startTransferWithOtp(source, destCard, amount)
+                }
+            }
+        }
+        btnCancel.setOnClickListener { dialog.dismiss() }
+
+        dialog.setOnShowListener { animateSheetIn(dialog.findViewById(R.id.transferSheet)) }
+        dialog.show()
+    }
+
+    // ── OTP confirmation ──────────────────────────────────────────────────────
+
+    private val otpChannelId = "otp_channel"
+
+    /** Sends a 4-digit code as a notification, then asks the user to enter it. */
+    private fun startTransferWithOtp(source: TransferSource, destCard: CardModel, amount: Double) {
+        var code = (1000..9999).random().toString()
+        postOtpNotification(code)
+
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_otp)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.92).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        val edtOtp = dialog.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.edtOtp)
+        val btnVerify = dialog.findViewById<Button>(R.id.btnVerifyOtp)
+        val btnCancel = dialog.findViewById<Button>(R.id.btnCancelOtp)
+        val txtResend = dialog.findViewById<TextView>(R.id.txtResendOtp)
+
+        txtResend.setOnClickListener {
+            code = (1000..9999).random().toString()
+            postOtpNotification(code)
+            Toast.makeText(this, "New code sent", Toast.LENGTH_SHORT).show()
+        }
+
+        btnVerify.setOnClickListener {
+            if (edtOtp.text.toString() == code) {
+                dialog.dismiss()
+                NotificationManagerCompat.from(this).cancel(OTP_NOTIF_ID)
+                performTransfer(source, destCard, amount)
+            } else {
+                edtOtp.error = "Incorrect code"
+                dialog.findViewById<View>(R.id.otpSheet).let { shake(it) }
+            }
+        }
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+            NotificationManagerCompat.from(this).cancel(OTP_NOTIF_ID)
+        }
+
+        dialog.setOnShowListener { animateSheetIn(dialog.findViewById(R.id.otpSheet)) }
+        dialog.show()
+    }
+
+    private fun shake(view: View?) {
+        view ?: return
+        android.animation.ObjectAnimator.ofFloat(
+            view, View.TRANSLATION_X, 0f, -16f, 16f, -10f, 10f, 0f
+        ).apply { duration = 400; start() }
+    }
+
+    private fun postOtpNotification(code: String) {
+        val nm = getSystemService(NOTIFICATION_SERVICE) as android.app.NotificationManager
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val channel = android.app.NotificationChannel(
+                otpChannelId, "Verification codes",
+                android.app.NotificationManager.IMPORTANCE_HIGH
+            )
+            nm.createNotificationChannel(channel)
+        }
+        val notif = androidx.core.app.NotificationCompat.Builder(this, otpChannelId)
+            .setSmallIcon(R.drawable.ic_lock)
+            .setContentTitle("Bank Al-Deir verification")
+            .setContentText("Your code is $code. Do not share it with anyone.")
+            .setPriority(androidx.core.app.NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .build()
+        if (androidx.core.content.ContextCompat.checkSelfPermission(
+                this, android.Manifest.permission.POST_NOTIFICATIONS
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+        ) {
+            NotificationManagerCompat.from(this).notify(OTP_NOTIF_ID, notif)
+        } else {
+            // Notifications are off — surface the code so the user isn't locked out.
+            Toast.makeText(this, "Your code: $code", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    /** Moves [amount] from [source] onto [destCard], atomically. The main card and
+     *  the "Main balance" both resolve to the wallet Balance node. */
+    private fun performTransfer(source: TransferSource, destCard: CardModel, amount: Double) {
+        val walletId = cachedWalletId ?: return
+        val db = FirebaseDatabase.getInstance().getReference("wallets/$walletId")
+        val destIsMain = destCard.cardKey.isNotEmpty() && destCard.cardKey == cachedMainCardKey
+        val sourcePath = if (source.cardKey.isEmpty()) "Balance" else "cards/${source.cardKey}/Balnce"
+        val destPath = if (destIsMain) "Balance" else "cards/${destCard.cardKey}/Balnce"
+
+        db.child(sourcePath).get().addOnSuccessListener { srcSnap ->
+            val sourceBalance = srcSnap.value?.toString()?.toDoubleOrNull() ?: 0.0
+            if (amount > sourceBalance) {
+                Toast.makeText(this, "Not enough balance", Toast.LENGTH_SHORT).show()
+                return@addOnSuccessListener
+            }
+            db.child(destPath).get().addOnSuccessListener { destSnap ->
+                val destBalance = destSnap.value?.toString()?.toDoubleOrNull() ?: 0.0
+                val updates = mapOf(
+                    sourcePath to sourceBalance - amount,
+                    destPath to destBalance + amount
+                )
+                db.updateChildren(updates)
+                    .addOnSuccessListener {
+                        recordTransferTransaction(amount)
+                        Toast.makeText(this, "Transferred $%,.2f".format(amount), Toast.LENGTH_SHORT).show()
+                        loadUserCardsQuiet()
+                        loadWalletBalance()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Transfer failed", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
+    }
+
+    private fun recordTransferTransaction(amount: Double) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val date = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(java.util.Date())
+        val tx = bankal_deir.com.AmountTopUp.transactions.createTransferTransaction(uid, amount, date)
+        FirebaseDatabase.getInstance().getReference("history")
+            .child(tx.transactionNumber).setValue(tx)
+    }
+
+    // ── Make main card ────────────────────────────────────────────────────────
+
+    private fun confirmMakeMain(card: CardModel) {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Set as main card?")
+            .setMessage("Your main balance will be shown on this card. Top-ups and payments use the same balance.")
+            .setPositiveButton("Set as main") { _, _ -> makeMainCard(card) }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private val maxMainChanges = 3
+
+    private fun makeMainCard(card: CardModel) {
+        val walletId = cachedWalletId ?: return
+        val db = FirebaseDatabase.getInstance().getReference("wallets/$walletId")
+        db.get().addOnSuccessListener { snap ->
+            val changes = snap.child("mainCardChanges").value?.toString()?.toIntOrNull() ?: 0
+            if (changes >= maxMainChanges) {
+                Toast.makeText(
+                    this,
+                    "You can only change your main card $maxMainChanges times.",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@addOnSuccessListener
+            }
+            val walletBalance = snap.child("Balance").value?.toString()?.toDoubleOrNull() ?: 0.0
+            // Absorb this card's own balance into the main balance so nothing is lost,
+            // then the card mirrors the main balance from here on.
+            val updates = mapOf(
+                "Balance" to walletBalance + card.Balnce,
+                "cards/${card.cardKey}/Balnce" to 0.0,
+                "mainCardKey" to card.cardKey,
+                "mainCardChanges" to changes + 1
+            )
+            db.updateChildren(updates)
+                .addOnSuccessListener {
+                    cachedMainCardKey = card.cardKey
+                    val left = maxMainChanges - (changes + 1)
+                    Toast.makeText(this, "This is now your main card · $left changes left", Toast.LENGTH_SHORT).show()
+                    loadUserCardsQuiet()
+                    loadWalletBalance()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Couldn't update main card", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 
     // ── PIN Dialog ───────────────────────────────────────────────────────────
@@ -315,9 +636,12 @@ class cards : AppCompatActivity() {
                     val walletId = snapshot.value?.toString() ?: return
                     FirebaseDatabase.getInstance().getReference("wallets").child(walletId)
                         .get().addOnSuccessListener { walletSnap ->
-                            val balance = walletSnap.child("Balance").value
-                                ?.toString()?.toDoubleOrNull() ?: 0.0
-                            binding.tvAvailableCredit.text = "$%.2f".format(balance)
+                            cachedMainCardKey = walletSnap.child("mainCardKey").value?.toString() ?: ""
+                            // The wallet Balance is the one main balance; the main card mirrors it.
+                            val balance = walletSnap.child("Balance").value?.toString()?.toDoubleOrNull() ?: 0.0
+                            cachedWalletBalance = balance
+                            binding.tvAvailableCredit.text = "$%,.2f".format(balance)
+                            adapter.setMainInfo(cachedMainCardKey, balance)
                         }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -391,6 +715,7 @@ class cards : AppCompatActivity() {
                                     } else Log.w("CardsActivity", "Null card at ${cardSnap.key}")
                                 }
                                 Log.d("CardsActivity", "Fetched ${cardList.size} cards from wallet $walletId")
+                                cachedCards = cardList
                                 adapter.update(cardList)
                                 updateCardStats(cardList.size)
                                 progressDialog.dismiss()
@@ -415,17 +740,16 @@ class cards : AppCompatActivity() {
     }
 
     private fun updateCardStats(count: Int) {
-        binding.tvTotalCards.text = if (count == 1) "1 Card" else "$count Cards"
-        binding.tvSecurityStatus.text = if (count > 0) "Protected" else "No Cards"
+        binding.tvTotalCards.text = if (count == 1) "1 card" else "$count cards"
         updateCarouselDots(count)
     }
 
     private fun updateCarouselDots(count: Int) {
-        val active = 0xFF4edea3.toInt()
-        val inactive = 0xFF143b30.toInt()
-        binding.dot1.setBackgroundColor(if (count >= 1) active else inactive)
-        binding.dot2.setBackgroundColor(if (count >= 2) active else inactive)
-        binding.dot3.setBackgroundColor(if (count >= 3) active else inactive)
+        val on = R.drawable.onboarding_dot_active
+        val off = R.drawable.onboarding_dot
+        binding.dot1.setBackgroundResource(if (count >= 1) on else off)
+        binding.dot2.setBackgroundResource(if (count >= 2) on else off)
+        binding.dot3.setBackgroundResource(if (count >= 3) on else off)
     }
 
     private fun scheduleRefresh() {
@@ -461,6 +785,7 @@ class cards : AppCompatActivity() {
                                     }
                                 }
                                 Log.d("CardsActivity", "Auto-refreshed: ${cardList.size} cards")
+                                cachedCards = cardList
                                 adapter.update(cardList)
                                 updateCardStats(cardList.size)
                                 scheduleRefresh()

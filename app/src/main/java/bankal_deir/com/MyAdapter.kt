@@ -15,9 +15,9 @@ import bankal_deir.com.ShowTransaction.ShowTransaction
 class MyAdapter(private var transList: ArrayList<PaymentTransaction>)
     : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-    // Theme colors
-    private val COLOR_INCOME  = 0xFF4edea3.toInt()   // emerald green
-    private val COLOR_EXPENSE = 0xFFFF6F61.toInt()   // soft red
+    // Enamel signal inks — legible on the porcelain ground.
+    private val COLOR_INCOME  = 0xFF1E6B41.toInt()   // signal green (received)
+    private val COLOR_EXPENSE = 0xFFBE4A22.toInt()   // signal orange (spent)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MyViewHolder(
@@ -29,42 +29,35 @@ class MyAdapter(private var transList: ArrayList<PaymentTransaction>)
         val tx = transList[position]
         val context = holder.itemView.context
 
-        // Helper to apply income style
+        // Flat rows: a tinted glyph and a colour-coded amount. No badge behind the icon.
         fun income(label: String, iconRes: Int) {
             holder.tr_Type.text = label
-            holder.tr_Type.setTextColor(COLOR_INCOME)
-            holder.tr_number.setTextColor(COLOR_INCOME)
-            holder.tr_amount.text  = "+${tx.amount}$"
+            holder.tr_amount.text = "+$%,.2f".format(tx.amount)
             holder.tr_amount.setTextColor(COLOR_INCOME)
-            holder.outlineBox.setBackgroundResource(R.drawable.ic_bg_income)
             holder.outlineBox.setImageResource(iconRes)
-            ImageViewCompat.setImageTintList(
-                holder.outlineBox,
-                ColorStateList.valueOf(COLOR_INCOME)
-            )
+            ImageViewCompat.setImageTintList(holder.outlineBox, ColorStateList.valueOf(COLOR_INCOME))
         }
 
-        // Helper to apply expense style
         fun expense(label: String, iconRes: Int) {
             holder.tr_Type.text = label
-            holder.tr_Type.setTextColor(COLOR_EXPENSE)
-            holder.tr_number.setTextColor(0xFF7a9e8e.toInt())
-            holder.tr_amount.text  = "-${tx.amount}$"
+            holder.tr_amount.text = "-$%,.2f".format(tx.amount)
             holder.tr_amount.setTextColor(COLOR_EXPENSE)
-            holder.outlineBox.setBackgroundResource(R.drawable.ic_bg_expense)
             holder.outlineBox.setImageResource(iconRes)
-            ImageViewCompat.setImageTintList(
-                holder.outlineBox,
-                ColorStateList.valueOf(COLOR_EXPENSE)
-            )
+            ImageViewCompat.setImageTintList(holder.outlineBox, ColorStateList.valueOf(COLOR_EXPENSE))
         }
 
-        holder.tr_number.text = tx.transactionNumber
-        holder.tr_date.text   = tx.date
+        holder.tr_number.text = "#" + tx.transactionNumber.takeLast(6)
+        holder.tr_date.text = tx.date
 
         when {
-            tx.transactionNumber.startsWith("PLP") ->
-                income("Top-up", R.drawable.ic_topup)
+            tx.transactionNumber.startsWith("PLP") -> {
+                income("Top-up", R.drawable.google_pay)
+                // Keep the Google Pay logo in its own colours instead of the income tint.
+                ImageViewCompat.setImageTintList(holder.outlineBox, null)
+            }
+
+            tx.transactionNumber.startsWith("TRF") ->
+                income("Card transfer", R.drawable.ic_send_transfer)
 
             tx.transactionNumber.startsWith("SYP") ->
                 expense("Send", R.drawable.ic_send_transfer)
@@ -98,15 +91,10 @@ class MyAdapter(private var transList: ArrayList<PaymentTransaction>)
 
             else -> {
                 holder.tr_Type.text = "Transaction"
-                holder.tr_Type.setTextColor(0xFFaacfbb.toInt())
-                holder.tr_amount.text = "${tx.amount}$"
-                holder.tr_amount.setTextColor(0xFFaacfbb.toInt())
-                holder.outlineBox.setBackgroundResource(R.drawable.ic_bg_income)
+                holder.tr_amount.text = "$%,.2f".format(tx.amount)
+                holder.tr_amount.setTextColor(COLOR_INCOME)
                 holder.outlineBox.setImageResource(R.drawable.ic_send_transfer)
-                ImageViewCompat.setImageTintList(
-                    holder.outlineBox,
-                    ColorStateList.valueOf(0xFFaacfbb.toInt())
-                )
+                ImageViewCompat.setImageTintList(holder.outlineBox, ColorStateList.valueOf(COLOR_INCOME))
             }
         }
 

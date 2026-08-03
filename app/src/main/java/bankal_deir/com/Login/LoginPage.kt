@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -36,19 +37,67 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.OAuthProvider
 
 
 class LoginPage : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 9001
     private lateinit var binding: ActivityLoginPageBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
     private val viewModel: LoginViewModel by viewModels {
         LoginViewModelFactory(AuthRepository())
     }
+
+    private val googleSignInLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        try {
+            val account = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                .getResult(ApiException::class.java)
+            val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+
+            viewModel.signInWithGoogle(this, credential).observe(this) { signInResult ->
+                signInResult.onSuccess { routeAfterSignIn() }
+                signInResult.onFailure { e ->
+                    // The LiveData is seeded with a "Loading" failure before the
+                    // request completes; only surface real errors.
+                    if (e.message != "Loading") {
+                        Toast.makeText(
+                            this,
+                            e.message ?: "Google sign-in failed",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        } catch (e: ApiException) {
+            if (e.statusCode != CommonStatusCodes.CANCELED) {
+                Toast.makeText(
+                    this,
+                    "Google sign-in failed (${e.statusCode})",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    /** Existing users go to the PIN prompt, brand-new ones set a PIN first. */
+    private fun routeAfterSignIn() {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        FirebaseDatabase.getInstance().reference
+            .child("users").child(userId).child("pin").get()
+            .addOnSuccessListener { snapshot ->
+                val target = if (snapshot.exists()) PinPage::class.java else createPinCode::class.java
+                val intent = Intent(this, target)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -80,8 +129,11 @@ class LoginPage : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.loginWithGoogle.setOnClickListener {
-            val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
+            // Sign out of the cached Google session first, otherwise the picker is
+            // skipped and a stale account is silently reused.
+            googleSignInClient.signOut().addOnCompleteListener {
+                googleSignInLauncher.launch(googleSignInClient.signInIntent)
+            }
         }
         binding.loginWithPhoneNumber.setOnClickListener {
             val intent = Intent(this@LoginPage, LoginWithPhoneNumber::class.java)
@@ -171,13 +223,6 @@ class LoginPage : AppCompatActivity() {
 
         binding.btnCreateAccount.setOnClickListener {
             startActivity(Intent(this, SignUp::class.java))
-        }
-
-        binding.seePassword.setOnClickListener {
-            binding.edtPassword.inputType = if (binding.seePassword.isChecked)
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            else
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         }
 
         binding.btnForget.setOnClickListener {

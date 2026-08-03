@@ -4,39 +4,35 @@ package bankal_deir.com.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import bankal_deir.com.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ForgetpasswordBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final MaterialCardView rootView;
 
   @NonNull
-  public final Button btnCancelForget;
+  public final MaterialButton btnCancelForget;
 
   @NonNull
-  public final Button btnReset;
+  public final MaterialButton btnReset;
 
   @NonNull
   public final LinearLayout buttonContainer;
 
   @NonNull
-  public final CardView cardContainer;
-
-  @NonNull
-  public final EditText edtEmailForget;
+  public final TextInputEditText edtEmailForget;
 
   @NonNull
   public final TextView tvInstruction;
@@ -44,15 +40,14 @@ public final class ForgetpasswordBinding implements ViewBinding {
   @NonNull
   public final TextView tvTitle;
 
-  private ForgetpasswordBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnCancelForget,
-      @NonNull Button btnReset, @NonNull LinearLayout buttonContainer,
-      @NonNull CardView cardContainer, @NonNull EditText edtEmailForget,
+  private ForgetpasswordBinding(@NonNull MaterialCardView rootView,
+      @NonNull MaterialButton btnCancelForget, @NonNull MaterialButton btnReset,
+      @NonNull LinearLayout buttonContainer, @NonNull TextInputEditText edtEmailForget,
       @NonNull TextView tvInstruction, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnCancelForget = btnCancelForget;
     this.btnReset = btnReset;
     this.buttonContainer = buttonContainer;
-    this.cardContainer = cardContainer;
     this.edtEmailForget = edtEmailForget;
     this.tvInstruction = tvInstruction;
     this.tvTitle = tvTitle;
@@ -60,7 +55,7 @@ public final class ForgetpasswordBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public MaterialCardView getRoot() {
     return rootView;
   }
 
@@ -86,13 +81,13 @@ public final class ForgetpasswordBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnCancelForget;
-      Button btnCancelForget = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnCancelForget = ViewBindings.findChildViewById(rootView, id);
       if (btnCancelForget == null) {
         break missingId;
       }
 
       id = R.id.btnReset;
-      Button btnReset = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnReset = ViewBindings.findChildViewById(rootView, id);
       if (btnReset == null) {
         break missingId;
       }
@@ -103,14 +98,8 @@ public final class ForgetpasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.cardContainer;
-      CardView cardContainer = ViewBindings.findChildViewById(rootView, id);
-      if (cardContainer == null) {
-        break missingId;
-      }
-
       id = R.id.edtEmailForget;
-      EditText edtEmailForget = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText edtEmailForget = ViewBindings.findChildViewById(rootView, id);
       if (edtEmailForget == null) {
         break missingId;
       }
@@ -127,8 +116,8 @@ public final class ForgetpasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ForgetpasswordBinding((ConstraintLayout) rootView, btnCancelForget, btnReset,
-          buttonContainer, cardContainer, edtEmailForget, tvInstruction, tvTitle);
+      return new ForgetpasswordBinding((MaterialCardView) rootView, btnCancelForget, btnReset,
+          buttonContainer, edtEmailForget, tvInstruction, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
