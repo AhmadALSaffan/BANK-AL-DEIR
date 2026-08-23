@@ -32,6 +32,25 @@
 </div> 
 
 ---
+## App Preview
+
+</div>
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" style="background:#1a1a1a; border-radius:24px; padding:12px; border: 2px solid #333;">
+        <img
+          src="https://raw.githubusercontent.com/AhmadALSaffan/BANK-AL-DEIR/3766667ed2a59d61a62b4d2bd81326c33c6dd4f0/freemockup-video-4k-2026-08-23-23-35-42-ezgif.com-video-to-gif-converter%20%281%29%20%281%29.gif"
+          alt="Yalla Khedma app demo"
+          width="980"
+          style="border-radius:16px; display:block;"
+        />
+      </td>
+    </tr>
+  </table>
+</div> 
+
+---
 
 ## Overview
 
@@ -43,29 +62,22 @@
 
 ## Screenshots
 
-| Splash | Onboarding 1 | Onboarding 2 | Onboarding 3 | Login |
+| Onboarding 1 | Onboarding 2 | Onboarding 3 | Login | Sign Up |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/01_splash-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/02_onboarding_1-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/03_onboarding_2-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/04_onboarding_3-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/05_login-portrait.png" width="200"> |
+| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/onbording%201.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/onbording%202.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/onbording%203.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Login.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Sign%20Up.png" width="200"> |
 
-| Signup | Choose PIN | Unlock PIN | Dashboard | Cards |
+| PIN Code | Home | Cards | Create Card | Confirm Card |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/06_signup-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/08_choose_pin-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/09_enter_pin_unlock-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/10_main_dashboard-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/11_cards_page-portrait.png" width="200"> |
+| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/PIN%20Code.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Home.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Cards.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Create%20Card.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Confirm%20Card.png" width="200"> |
 
-| Card Variants | Create Card | Card Details | Send Money | Receive Money |
+| Send | Receive | Top-up | Cards Settings | Transfer Between Cards |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/12_card_variant_selection-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/13_create_new_card-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/14_card_final_details-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/15_send_money-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/16_receive_money-portrait.png" width="200"> |
+| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Send.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Recive.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/TOPUP.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/cards%20settings.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/transfer%20between%20cards.png" width="200"> |
 
-| Bills / Fatora | Fatora Categories | University Menu | History | Top-up |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/17_bills_fatora-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/18_fatora_categories-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/19_university_menu-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/20_history-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/21_topup_addmoney-portrait.png" width="200"> |
+| Cards PIN Code | Lock Card |
+|:---:|:---:|
+| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/cards%20PIN%20CODE.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup%20(1)/Lock%20Card.png" width="200"> |
 
-| Transaction Details | Card Options | Add Card Money | Create Card PIN | Lock Card Confirm |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/22_transaction_details-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/23_card_options_dialog-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/24_card_add_money-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/25_card_create_pin-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/26_card_lock_confirm-portrait.png" width="200"> |
-
-| Cards Locked | Verify Success | Card Tap |
-|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/27_cards_page_locked-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/7-tmp_after_verify-portrait.png" width="200"> | <img src="https://ik.imagekit.io/qeitebnxx/Bank%20AL%20Deir/samsung-galaxy-s24-ultra-mockup/tmp_card_tap-portrait.png" width="200"> |
 ---
 
 ## Features
