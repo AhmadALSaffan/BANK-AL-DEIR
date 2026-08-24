@@ -42,7 +42,7 @@
         <img
           src="https://raw.githubusercontent.com/AhmadALSaffan/BANK-AL-DEIR/3766667ed2a59d61a62b4d2bd81326c33c6dd4f0/freemockup-video-4k-2026-08-23-23-35-42-ezgif.com-video-to-gif-converter%20%281%29%20%281%29.gif"
           alt="Yalla Khedma app demo"
-          width="980"
+          width="780"
           style="border-radius:16px; display:block;"
         />
       </td>
