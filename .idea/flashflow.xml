@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FlashFlowSettings">
+    <option name="rules">
+      <list>
+        <RuleState>
+          <option name="ruleId" value="FF-L001" />
+          <option name="threshold" value="8" />
+        </RuleState>
+        <RuleState>
+          <option name="ruleId" value="FF-L002" />
+          <option name="threshold" value="80" />
+        </RuleState>
+        <RuleState>
+          <option name="ruleId" value="FF-L003" />
+        </RuleState>
+        <RuleState>
+          <option name="ruleId" value="FF-L004" />
+        </RuleState>
+        <RuleState>
+          <option name="ruleId" value="FF-L005" />
+        </RuleState>
+        <RuleState>
+          <option name="ruleId" value="FF-L006" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+</project>

@@ -9,9 +9,6 @@
     <style name="Roundcard">
         <item name="cornerSize">5%</item>
     </style>
-    <style name="RoundBack">
-        <item name="cornerSize">5%</item>
-    </style>
 
     <!-- Buttons inflate as MaterialButton under the Material3 theme, so M3
          attributes (cornerRadius, backgroundTint) apply here. -->

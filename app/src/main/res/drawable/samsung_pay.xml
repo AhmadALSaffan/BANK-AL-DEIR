@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simplified Samsung Pay mark: Samsung-blue rounded tile with the flowing
+     white ribbons from the icon. Not the official asset. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <path
+        android:pathData="M10,4 L38,4 A6,6 0 0 1 44,10 L44,38 A6,6 0 0 1 38,44 L10,44 A6,6 0 0 1 4,38 L4,10 A6,6 0 0 1 10,4 Z">
+        <aapt:attr xmlns:aapt="http://schemas.android.com/aapt" name="android:fillColor">
+            <gradient
+                android:startX="4" android:startY="4"
+                android:endX="44" android:endY="44"
+                android:type="linear">
+                <item android:offset="0" android:color="#FF1B4DE0" />
+                <item android:offset="1" android:color="#FF1428A0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <path
+        android:pathData="M9,28 C17,18 25,32 39,18"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M9,34 C17,24 25,38 39,24"
+        android:strokeColor="#CCFFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+</vector>

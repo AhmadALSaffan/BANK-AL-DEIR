@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import bankal_deir.com.MainActivity
+import bankal_deir.com.onboarding.MainActivity
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivitySplashBinding
 

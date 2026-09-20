@@ -80,26 +80,26 @@
             android:name=".pinPage.PinPage"
             android:exported="false" />
         <activity
-            android:name=".CardVariant"
+            android:name=".cards.CardVariant"
             android:exported="false" />
         <activity
             android:name=".updateProfile.updateProfile"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".cardShowDetailsAfterCreate"
+            android:name=".cards.cardShowDetailsAfterCreate"
             android:exported="false" />
         <activity
-            android:name=".finalDetailsNewCard"
+            android:name=".cards.finalDetailsNewCard"
             android:exported="false" />
         <activity
-            android:name=".createNewCard"
+            android:name=".cards.createNewCard"
             android:exported="false" />
         <activity
-            android:name=".cards"
+            android:name=".cards.cards"
             android:exported="false" />
         <activity
-            android:name=".profilePage"
+            android:name=".profile.profilePage"
             android:exported="false" />
         <activity
             android:name=".sendmoney.sendMoney"
@@ -117,19 +117,19 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".MainPage"
+            android:name=".home.MainPage"
             android:exported="false" />
         <activity
             android:name=".Login.LoginPage"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />        <activity
-            android:name=".MainActivity"
+            android:name=".onboarding.MainActivity"
             android:exported="true">
 
         </activity>
 
         <activity
-            android:name=".CustomCaptureActivity"
+            android:name=".scanner.CustomCaptureActivity"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:theme="@style/Theme.AppCompat.NoActionBar"

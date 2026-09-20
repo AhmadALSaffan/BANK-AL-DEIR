@@ -15,7 +15,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.work.*
-import bankal_deir.com.MainPage
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.databinding.ActivityAmountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

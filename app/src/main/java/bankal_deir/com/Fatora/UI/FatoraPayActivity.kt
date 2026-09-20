@@ -22,7 +22,7 @@ class FatoraPayActivity : AppCompatActivity() {
         }
 
         // So OTP codes can be delivered as notifications.
-        bankal_deir.com.OtpGate.ensurePermission(this)
+        bankal_deir.com.common.OtpGate.ensurePermission(this)
 
         // Back steps through the payment flow, then leaves Fatora.
         val navHost = supportFragmentManager

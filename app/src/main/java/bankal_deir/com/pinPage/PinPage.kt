@@ -16,8 +16,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import bankal_deir.com.Login.LoginPage
-import bankal_deir.com.MainActivity
-import bankal_deir.com.MainPage
+import bankal_deir.com.onboarding.MainActivity
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.databinding.ActivityPinPageBinding
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth

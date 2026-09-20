@@ -21,9 +21,9 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
-import bankal_deir.com.Login.ViewModel.LoginViewModel
-import bankal_deir.com.Login.ViewModel.LoginViewModelFactory
-import bankal_deir.com.MainPage
+import bankal_deir.com.Login.viewmodel.LoginViewModel
+import bankal_deir.com.Login.viewmodel.LoginViewModelFactory
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.Signup.SignUp
 import bankal_deir.com.databinding.ActivityLoginPageBinding

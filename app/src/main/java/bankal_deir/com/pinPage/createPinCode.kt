@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import bankal_deir.com.MainPage
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityCreatePinCodeBinding
 import com.google.android.material.button.MaterialButton

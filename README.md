@@ -88,6 +88,55 @@
 
 ---
 
+## Architecture
+
+The app follows **MVVM** (Model-View-ViewModel), organized as one package per feature under `app/src/main/java/bankal_deir/com/`. Each feature keeps its screens (View), its `viewmodel/` (state/business logic), and its `repository/` (Firebase/data access) together; small, cross-cutting pieces live in shared packages instead of the app root.
+
+```
+bankal_deir.com/
+├── App.kt                    # Application class
+├── common/                   # Cross-feature UI helpers (floating bottom nav, OTP confirmation gate)
+├── security/                 # PIN hashing
+├── onboarding/                # Welcome / onboarding pager
+├── home/                      # Dashboard (balance, recent activity, quick actions)
+├── ads/                       # Home-screen promotional cards
+├── scanner/                   # QR scan-to-pay capture screen
+├── profile/                   # View/update profile
+├── transactions/              # Shared transaction model + list adapter
+├── cards/                     # Card list, card variants, create/lock/manage cards
+├── Login/                     # Email & phone login
+│   ├── viewmodel/
+│   └── repository/
+├── Signup/                    # Registration + OTP verification
+├── Splash/                    # Launch screen
+├── pinPage/                   # PIN gate (create/verify) + its own ViewModel
+├── recive/                    # Receive money
+│   ├── ReciveViewModel.kt
+│   └── ReciveRepository.kt
+├── sendmoney/                 # Send money
+│   ├── SendMoneyViewModel.kt
+│   └── SendMoneyRepository.kt
+├── updateProfile/             # Edit profile
+│   ├── viewmodel/
+│   └── repository/
+├── AmountTopUp/               # Google Pay top-up flow
+├── History/                   # Full transaction history
+├── ShowTransaction/           # Single transaction receipt/detail
+└── Fatora/                    # Bill pay (government, university, mobile, electricity)
+    ├── Data/                  # Models + payment utilities
+    ├── PaymentRepository.kt
+    └── UI/
+        ├── FatoraMain.kt / FatoraPayActivity.kt
+        └── fragments/          # One package per bill category
+```
+
+**Conventions:**
+- Views (Activities/Fragments) hold layout/UI logic only; state and Firebase calls live in a feature's `ViewModel` + `Repository`.
+- Shared, multi-feature utilities (`NavHelper`, `OtpGate`) live in `common/`, not the app root — the root package holds only the `Application` class.
+- Resources follow the same "only what's used" rule as code: `res/` is kept free of orphaned drawables, layouts, and styles from earlier iterations.
+
+---
+
 ## Getting Started
 
 ### Prerequisites

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Porcelain bottom sheet: rounded top only. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/md_theme_surfaceContainerLowest" />
+    <corners
+        android:topLeftRadius="26dp"
+        android:topRightRadius="26dp" />
+</shape>

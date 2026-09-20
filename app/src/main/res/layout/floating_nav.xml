@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared floating bottom nav. Include it and call NavHelper.setup(activity, current). -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/floatingNav"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/md_theme_surfaceBright"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="10dp"
+    app:strokeColor="@color/md_theme_outline"
+    app:strokeWidth="1.5dp">
+
+    <FrameLayout
+        android:id="@+id/navContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Circle that follows the finger and snaps to the chosen icon -->
+        <View
+            android:id="@+id/navIndicator"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="6dp"
+            android:alpha="0"
+            android:background="@drawable/nav_indicator_bg" />
+
+        <LinearLayout
+            android:id="@+id/navItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="6dp">
+
+            <LinearLayout android:id="@+id/navHome" style="@style/FloatNavItem">
+                <ImageView style="@style/FloatNavIcon" android:contentDescription="Home" android:src="@drawable/home" app:tint="?attr/colorOnSurfaceVariant" />
+                <TextView style="@style/FloatNavLabel" android:text="Home" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navCards" style="@style/FloatNavItem">
+                <ImageView style="@style/FloatNavIcon" android:contentDescription="Cards" android:src="@drawable/card48" app:tint="?attr/colorOnSurfaceVariant" />
+                <TextView style="@style/FloatNavLabel" android:text="Cards" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navBills" style="@style/FloatNavItem">
+                <ImageView style="@style/FloatNavIcon" android:contentDescription="Bills" android:src="@drawable/ic_bill" app:tint="?attr/colorOnSurfaceVariant" />
+                <TextView style="@style/FloatNavLabel" android:text="Bills" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navProfile" style="@style/FloatNavItem">
+                <ImageView style="@style/FloatNavIcon" android:contentDescription="Profile" android:src="@drawable/person" app:tint="?attr/colorOnSurfaceVariant" />
+                <TextView style="@style/FloatNavLabel" android:text="Profile" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>

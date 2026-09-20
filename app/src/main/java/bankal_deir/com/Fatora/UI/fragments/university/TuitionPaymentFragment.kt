@@ -15,9 +15,9 @@ import bankal_deir.com.Fatora.Data.PaymentUtils.generateReferenceNumber
 import bankal_deir.com.Fatora.Data.PaymentUtils.generateTransactionNumber
 import bankal_deir.com.Fatora.Data.PaymentUtils.getCurrentDate
 import bankal_deir.com.Fatora.Data.PaymentUtils.isValidStudentNumber
-import bankal_deir.com.MainPage
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.R
-import bankal_deir.com.OtpGate
+import bankal_deir.com.common.OtpGate
 import bankal_deir.com.databinding.FragmentTuitionPaymentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot

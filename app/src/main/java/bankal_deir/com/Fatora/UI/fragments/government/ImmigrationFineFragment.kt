@@ -10,9 +10,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import bankal_deir.com.Fatora.Data.PaymentTransaction
 import bankal_deir.com.Fatora.Data.PaymentUtils.isValidIdNumber
-import bankal_deir.com.MainPage
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.R
-import bankal_deir.com.OtpGate
+import bankal_deir.com.common.OtpGate
 import bankal_deir.com.databinding.FragmentImmigrationFineBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot

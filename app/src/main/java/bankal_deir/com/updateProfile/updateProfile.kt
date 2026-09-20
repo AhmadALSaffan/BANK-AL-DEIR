@@ -16,11 +16,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import bankal_deir.com.MainPage
+import bankal_deir.com.home.MainPage
 import bankal_deir.com.R
 import bankal_deir.com.databinding.ActivityUpdateProfileBinding
-import bankal_deir.com.profilePage
-import bankal_deir.com.updateProfile.ViewModel.updateViewModel
+import bankal_deir.com.profile.profilePage
+import bankal_deir.com.updateProfile.viewmodel.updateViewModel
 import bankal_deir.com.updateProfile.repository.AuthRepository
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth

@@ -87,8 +87,6 @@
 
     <style name="Theme.BankALDeir" parent="Base.Theme.BankALDeir" />
 
-    <style name="Theme.App" parent="Theme.BankALDeir" />
-
     <!-- Shared Material 3 widget styles -->
     <!-- Enamel plaque: a saturated colour field bounded by a dark keyline. -->
     <style name="Widget.BankALDeir.Button" parent="Widget.Material3.Button">
